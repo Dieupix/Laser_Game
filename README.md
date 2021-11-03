@@ -1,6 +1,6 @@
 <img align="right" src="https://www.fst.uha.fr/wp-content/uploads/2018/06/cropped-logo-site-V3.png" title="Logo de la Faculté des Sciences et Techniques (FST) de Mulhouse - Université de Haute Alsace (UHA)">
 
-# Projet de Programmation Orientée Objets
+# Projet de POO - Laser Game
 
 [![License Apach-2.0](https://img.shields.io/github/license/Dieupix/Maquette_FST?color=dark&style=for-the-badge)](https://github.com/Dieupix/Maquette_FST/blob/main/LICENSE)
 [![Faculté FST](https://img.shields.io/badge/Faculté-FST-blue?style=for-the-badge)](https://www.fst.uha.fr)
@@ -20,7 +20,7 @@ Ce projet consiste à ...
 ## Structure du projet
 
 ```
-Projet POO L3 S1
+Laser_Game
 ├── Headers
 |   ├──
 └── Sources
@@ -41,10 +41,10 @@ Comité de pilotage :\
 L'équipe du MOE :
 | Membre            | Rôle                  |
 |:---|:---|
-| BARRÈRE Manuel    | Responsable projet    |
+| BARRÈRE Manuel    | Responsable projet & développeur   |
 | CHARRIER Mathis   | Développeur           |
 | JANON Alexandre   | Développeur           |
-| POMMIER Logan     | Développeur           |
+| TAMRABET Meriem   | Développeur           |
 
 Merci à [Discord](https://discord.com) et [Webex](https://www.webex.com) pour la communication au sein du groupe.\
 Merci à [GanttProject](https://www.ganttproject.biz) pour son application GanttProject.\
