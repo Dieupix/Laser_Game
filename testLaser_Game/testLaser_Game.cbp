@@ -32,7 +32,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../Laser_Game/laser.h" />
 		<Unit filename="doctest.h" />
+		<Unit filename="laserTest.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

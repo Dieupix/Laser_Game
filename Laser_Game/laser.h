@@ -27,7 +27,7 @@ class laser : public objet
          * the laser can have
          ***********************************************/
         enum directions{
-            LEFT, RIGHT, UP, DOWN;
+            LEFT, RIGHT, UP, DOWN
         };
 
         // Constructors
