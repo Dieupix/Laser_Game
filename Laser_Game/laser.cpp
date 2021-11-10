@@ -24,6 +24,14 @@ double laser::getStep() const {return this->step;}
 
 // ---------- Setters ----------
 
+void laser::setDirection(short short int direction){
+    this->direction = direction;
+}
+
+void laser::setStep(double step){
+    this->step = step;
+}
+
 // ---------- End of setters ----------
 
 // ---------- Functions ----------

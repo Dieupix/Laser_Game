@@ -36,7 +36,7 @@ class laser : public objet
          *
          * @param p : The initial position of the laser
          * @param direction : The initial direction of the laser
-         * @param step : The step of the laser
+         * @param step : The step of the laser when it moves
          * @return Creates a laser
          ***********************************************/
         laser(const point&, int, double);
@@ -56,10 +56,11 @@ class laser : public objet
         double getStep() const;
 
         // Setters
+        void setDirection(short short int);
+        void setStep(double);
 
         // Functions
-        void changeDirection(short short int);
-        void move();
+        void moveByStep();
 
 }; // End of laser
 
