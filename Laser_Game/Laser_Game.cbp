@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="doctest.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="objet.cpp" />
+		<Unit filename="objet.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
