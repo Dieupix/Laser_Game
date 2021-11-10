@@ -52,14 +52,43 @@ class laser : public objet
         // Overloads
 
         // Getters
+        /************************************************
+         * @brief Getter for the direction of the laser : constant
+         *
+         * @return Returns the direction of the laser
+         ***********************************************/
         short short int getDirection() const;
+        /************************************************
+         * @brief Getter for the step of the laser : constant
+         *
+         * @return Returns the step of the laser
+         ***********************************************/
         double getStep() const;
 
         // Setters
+        /************************************************
+         * @brief Setter for the direction of the laser
+         *
+         * @param direction : The new direction of the laser
+         * @return Returns nothing
+         ***********************************************/
         void setDirection(short short int);
+        /************************************************
+         * @brief Setter for the step of the laser
+         *
+         * @param step : The new step of the laser
+         * @return Returns nothing
+         ***********************************************/
         void setStep(double);
 
         // Functions
+        /************************************************
+         * @brief A function that moves the laser
+         *
+         * @details This function moves the laser from its position
+         * by its direction and its step
+         * @return Returns nothing
+         ***********************************************/
         void moveByStep();
 
 }; // End of laser
