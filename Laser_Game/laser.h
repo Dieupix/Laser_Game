@@ -51,6 +51,12 @@ class laser : public objet
 
         // Overloads
 
+        // Getters
+        short short int getDirection() const;
+        double getStep() const;
+
+        // Setters
+
         // Functions
         void changeDirection(short short int);
         void move();

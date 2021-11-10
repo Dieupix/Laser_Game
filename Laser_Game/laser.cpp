@@ -16,6 +16,10 @@ laser::laser(const point& p, int direction, double step) : objet{p}, this->direc
 
 // ---------- Getters ----------
 
+short short int laser::getDirection() const {return this->direction;}
+
+double laser::getStep() const {return this->step;}
+
 // ---------- End of getters ----------
 
 // ---------- Setters ----------
