@@ -33,9 +33,14 @@
 *.app
 
 ### CodeBlocks ###
-# specific to CodeBlocks IDE
+# Specific to CodeBlocks IDE
 *.layout
 *.depend
-# generated directories
+
+# Generated directories
 bin/
 obj/
+
+### doxygen ###
+# Specific to doxygen
+doxygen/
