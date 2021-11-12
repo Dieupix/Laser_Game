@@ -41,7 +41,7 @@
 		<Unit filename="objet.h" />
 		<Extensions>
 			<DoxyBlocks>
-				<comment_style block="4" line="0" />
+				<comment_style block="0" line="1" />
 				<doxyfile_project />
 				<doxyfile_build />
 				<doxyfile_warnings />
