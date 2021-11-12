@@ -2,7 +2,7 @@
 
 // ---------- Constructors ----------
 
-laser::laser(const point& p, int direction, double step) : objet{p}, this->direction{direction}, this->step{step} {}
+laser::laser(const point& p, short int direction, double step) : objet{p}, direction{direction}, step{step} {}
 
 // ---------- End of constructors ----------
 
@@ -16,7 +16,7 @@ laser::laser(const point& p, int direction, double step) : objet{p}, this->direc
 
 // ---------- Getters ----------
 
-short short int laser::getDirection() const {return this->direction;}
+short int laser::getDirection() const {return this->direction;}
 
 double laser::getStep() const {return this->step;}
 
@@ -24,7 +24,7 @@ double laser::getStep() const {return this->step;}
 
 // ---------- Setters ----------
 
-void laser::setDirection(short short int direction){
+void laser::setDirection(short int direction){
     this->direction = direction;
 }
 
@@ -35,6 +35,31 @@ void laser::setStep(double step){
 // ---------- End of setters ----------
 
 // ---------- Functions ----------
+
+void laser::moveByStep(){
+    switch(this->direction){
+        case directions::LEFT: {
+            shift(-this->step, 0);
+            break;
+        }
+        case directions::RIGHT: {
+            shift(this->step, 0);
+            break;
+        }
+        case directions::UP: {
+            shift(0, this->step);
+            break;
+        }
+        case directions::DOWN: {
+            shift(0, -this->step);
+            break;
+        }
+        default: {
+            cerr << "Error:  laser::moveByStep(): the direction \"" << this->direction << "\" is not defined" << endl;
+            break;
+        }
+    }
+}
 
 // ---------- End of functions ----------
 

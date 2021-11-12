@@ -10,7 +10,7 @@ class laser : public objet
           * @brief The direction of the laser
           * @see enum directions
           */
-        short short int direction;
+        short int direction;
         /**
          * @brief The step of the laser
          */
@@ -58,10 +58,10 @@ class laser : public objet
          *
          * @param p : The initial position of the laser
          * @param direction : The initial direction of the laser
-         * @param step : The step of the laser when it moves
+         * @param step : The step of the laser when it moves (by default 1.0)
          * @return Creates a laser
          */
-        laser(const point&, int, double);
+        laser(const point&, short int, double = 1.0);
 
         // Destructor
         /**
@@ -79,7 +79,7 @@ class laser : public objet
          *
          * @return Returns the direction of the laser
          */
-        short short int getDirection() const;
+        short int getDirection() const;
         /**
          * @brief Getter function for the step of the laser : constant
          *
@@ -94,7 +94,7 @@ class laser : public objet
          * @param direction : The new direction of the laser
          * @return Returns nothing
          */
-        void setDirection(short short int);
+        void setDirection(short int);
         /**
          * @brief Setter function for the step of the laser
          *
