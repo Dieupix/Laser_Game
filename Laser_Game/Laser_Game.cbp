@@ -45,8 +45,9 @@
 			<DoxyBlocks>
 				<comment_style block="0" line="1" />
 				<doxyfile_project />
-				<doxyfile_build />
+				<doxyfile_build extract_all="1" extract_private="1" extract_static="1" />
 				<doxyfile_warnings />
+				<doxyfile_alpha_index alphabetical_index="0" />
 				<doxyfile_output />
 				<doxyfile_dot />
 				<general use_at_in_tags="1" />

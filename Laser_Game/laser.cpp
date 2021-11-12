@@ -38,12 +38,12 @@ void laser::setStep(double step){
 
 void laser::moveByStep(){
     switch(this->direction){
-        case directions::LEFT: {
-            shift(-this->step, 0);
-            break;
-        }
         case directions::RIGHT: {
             shift(this->step, 0);
+            break;
+        }
+        case directions::LEFT: {
+            shift(-this->step, 0);
             break;
         }
         case directions::UP: {
