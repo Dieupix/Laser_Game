@@ -112,6 +112,14 @@ class laser : public objet
          * @return Returns nothing
          */
         void moveByStep();
+        /**
+         * @brief A function that prints the laser on an output stream
+         *
+         * @param ost : The output stream
+         * @return Returns nothing
+         */
+        void print(std::ostream&) const override;
+
 
 }; // End of laser
 
