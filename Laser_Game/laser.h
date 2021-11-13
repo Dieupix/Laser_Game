@@ -36,19 +36,19 @@ class laser : public objet
             UP,
             DOWN
         };
-        /** \var laser::directions laser::RIGHT
+        /** @var laser::directions laser::RIGHT
          * @brief Right direction
          * @details The direction when the laser goes to the right.
          */
-        /** \var laser::directions laser::LEFT
+        /** @var laser::directions laser::LEFT
          * @brief Left direction
          * @details The direction when the laser goes to the left.
          */
-        /** \var laser::directions laser::UP
+        /** @var laser::directions laser::UP
          * @brief Up direction
          * @details The direction when the laser goes to the top.
          */
-        /** \var laser::directions laser::DOWN
+        /** @var laser::directions laser::DOWN
          * @brief Down direction
          * @details The direction when the laser goes to the bottom.
          */
@@ -113,7 +113,7 @@ class laser : public objet
          */
         void moveByStep();
         /**
-         * @brief A function that prints the laser on an output stream
+         * @brief A constant function that prints the laser on an output stream
          *
          * @param ost : The output stream
          * @return Returns nothing
