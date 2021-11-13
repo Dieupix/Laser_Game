@@ -18,6 +18,6 @@ class objet
        virtual void print(std::ostream& ost) const;
 };
 
-void operator<<(const std::ostream& ost; const objet& o);
+void operator<<(const std::ostream& ost, const objet& o);
 
 #endif // OBJET_H

@@ -1,5 +1,6 @@
 #include "objet.h"
 #include "point.h"
+#include <iostream>
 
 /** Constructeur d'objet
 @param p : un point x,y
@@ -60,7 +61,7 @@ void objet::print(std::ostream& ost) const
 @param ost : le flot de sortie
 @param o : l'objet
 */
-void operator<<(const std::ostream& ost; const objet& o)
+void operator<<(const std::ostream& ost, const objet& o)
 {
     o.print(ost);
 }
