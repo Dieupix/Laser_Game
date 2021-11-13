@@ -61,7 +61,8 @@ void objet::print(std::ostream& ost) const
 @param ost : le flot de sortie
 @param o : l'objet
 */
-void operator<<(const std::ostream& ost, const objet& o)
+std::ostream& operator<<(std::ostream& ost, const objet& o)
 {
     o.print(ost);
+    return ost;
 }
