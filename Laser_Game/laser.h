@@ -6,8 +6,8 @@
 /**
  * @class laser laser.h
  * @brief A class that represents a laser
- * @details This class represents a laser with its position,
- * its direction and a step
+ * @details This class represents a laser, which is an @a objet
+ * with a @a direction and a @a step.
  */
 class laser : public objet
 {
@@ -57,9 +57,9 @@ class laser : public objet
         /**
          * @brief Constructor with a position, a direction and a step
          *
-         * @param p : The initial position of the laser
-         * @param direction : The initial direction of the laser
-         * @param step : The step of the laser when it moves (by default 1.0)
+         * @param[in] p : The initial position of the laser
+         * @param[in] direction : The initial direction of the laser
+         * @param[in] step : The step of the laser when it moves (by default 1.0)
          * @return Creates a laser with its parameters
          */
         laser(const point&, short int, double = 1.0);
@@ -91,14 +91,14 @@ class laser : public objet
         /**
          * @brief Setter function for the direction of the laser
          *
-         * @param direction : The new direction of the laser
+         * @param[in] direction : The new direction of the laser
          * @return Returns nothing
          */
         void setDirection(short int);
         /**
          * @brief Setter function for the step of the laser
          *
-         * @param step : The new step of the laser
+         * @param[in] step : The new step of the laser
          * @return Returns nothing
          */
         void setStep(double);
@@ -115,7 +115,7 @@ class laser : public objet
         /**
          * @brief A constant function that prints the laser on an output stream
          *
-         * @param ost : The output stream
+         * @param[out] ost : The output stream
          * @return Returns nothing
          */
         void print(std::ostream&) const override;
