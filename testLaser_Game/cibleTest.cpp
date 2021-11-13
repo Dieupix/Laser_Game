@@ -4,12 +4,12 @@
 
 TEST_CASE("Test of the class cible"){
 
-    point position{0, 0} ;
-   cible c (position) ;
+    point P{0, 0} ;
+   cible c (P) ;
 
     SUBCASE("Test of the constructor"){
         /// @TODO - add the REQUIRE for the position
-        REQUIRE_EQ(c.getCible(), position);
+        REQUIRE_EQ(c.getCible(), P);
 
     }
 
@@ -25,17 +25,17 @@ TEST_CASE("Test of the class cible"){
     //-------------- isAffected ------------------------------------------
 
          point position{0, 0};
-    short short int direction = laser::directions::RIGHT;
+    short  int direction = laser::directions::RIGHT;
     double step = 1.0;
 
     laser l {position, direction, step};
 
       point B{0, 0 };
-     c.moveCible(b) ;
+     c.moveCible(B) ;
 
        SUBCASE("Test of is affected "){
         /// @TODO - add the REQUIRE for the position
-        REQUIRE(c.isAffected() == true ) ;
+        REQUIRE(c.isAffected(l) == true ) ;
 
     }
 

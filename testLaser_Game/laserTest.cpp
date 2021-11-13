@@ -3,7 +3,7 @@
 
 TEST_CASE("Test of the class laser"){
     point position{0, 0};
-    short short int direction = laser::directions::RIGHT;
+    short  int direction = laser::directions::RIGHT;
     double step = 1.0;
 
     laser l {position, direction, step};
