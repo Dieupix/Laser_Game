@@ -67,6 +67,7 @@ class point
         * @return void
         */
         void read(std::istream& ist);
+        bool operator==(const point& b) const ;
     private:
         double d_x, d_y;
 };

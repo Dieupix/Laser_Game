@@ -43,3 +43,7 @@ void point::print(std::ostream& ost) const
 {
     ost<<'('<<d_x<<','<<d_y<<')';
 }
+bool point::operator==(const point& b) const
+{
+    return (( d_x ==b.x())&& ( d_y ==b.y()) ) ;
+}
