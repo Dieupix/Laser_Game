@@ -55,7 +55,7 @@ void laser::moveByStep(){
             break;
         }
         default: {
-            cerr << "Error:  laser::moveByStep(): the direction \"" << this->direction << "\" is not defined" << endl;
+            std::cerr << "Error:  laser::moveByStep(): the direction \"" << this->direction << "\" is not defined" << std::endl;
             break;
         }
     }
