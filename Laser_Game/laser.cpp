@@ -62,7 +62,7 @@ void laser::moveByStep(){
 }
 
 void laser::print(std::ostream& ost) const {
-    ost << "Laser[position" << d_p << ", direction(";
+    ost << "Laser[position" << getPoint() << ", direction(";
     switch(direction){
         case directions::RIGHT: {
             ost << "RIGHT";
