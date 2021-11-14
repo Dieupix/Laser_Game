@@ -34,6 +34,9 @@
 		</Compiler>
 		<Unit filename="../Laser_Game/cible.h" />
 		<Unit filename="../Laser_Game/laser.h" />
+		<Unit filename="../Laser_Game/objet.h" />
+		<Unit filename="../Laser_Game/point.h" />
+		<Unit filename="../Laser_Game/tireur.h" />
 		<Unit filename="cibleTest.cpp" />
 		<Unit filename="doctest.h" />
 		<Unit filename="laserTest.cpp" />
