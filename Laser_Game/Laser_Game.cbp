@@ -41,6 +41,8 @@
 		<Unit filename="objet.h" />
 		<Unit filename="point.cpp" />
 		<Unit filename="point.h" />
+		<Unit filename="tireur.cpp" />
+		<Unit filename="tireur.h" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="1" />
