@@ -74,6 +74,7 @@ class point
         * @return void
         */
         void read(std::istream& ist);
+<<<<<<< HEAD
 
         /** @brief Permet de tester l'égaliter de 2 points
          *
@@ -177,6 +178,9 @@ class point
          *
          */
     point& operator/=(double d);
+=======
+        bool operator==(const point& b) const ;
+>>>>>>> 3d12b6ff4c7376e5ff4ea871ba02ad4793bd6617
     private:
         double d_x, d_y;
 };

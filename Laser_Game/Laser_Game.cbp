@@ -34,6 +34,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="cible.cpp" />
+		<Unit filename="cible.h" />
 		<Unit filename="laser.cpp" />
 		<Unit filename="laser.h" />
 		<Unit filename="main.cpp" />
