@@ -18,7 +18,7 @@ objet::objet(point p) : d_p{p}
 /** Setter de point d'un objet
 @param p : le nouveau point de l'objet
 */
-void objet::setPoint(const point& p)
+void objet::setPosition(const point& p)
 {
     d_p = p;
 }
@@ -26,7 +26,7 @@ void objet::setPoint(const point& p)
 /**Getter de point d'un objet
 @return le point de l'objet courant
 */
-point objet::getPoint() const
+point objet::getPosition() const
 {
     return d_p;
 }
@@ -49,6 +49,22 @@ void objet::shift(const point& p)
     d_p.shift(p.x(),p.y());
 }
 
+/**Deplace l'objet par de p(x,y)
+@param x : le deplacement en abscisse (reel)
+@param y : le deplacement en ordonnee (reel)
+*/
+void objet::move(const point& p)
+{
+    d_p.move(p.x(),p.y());
+}
+/**Deplace l'objet par translation de p(x,y)
+@param x : le deplacement en abscisse (reel)
+@param y : le deplacement en ordonnee (reel)
+*/
+void objet::move(double x, double y)
+{
+    d_p.move(x,y);
+}
 /**Imprime l'objet o(x,y)
 @param ost : le flot de sortie
 */

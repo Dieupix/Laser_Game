@@ -24,7 +24,7 @@
          */
     void cible::setCible(const cible& C)
     {
-        setPoint( C.getPoint() ) ;
+        setPosition( C.getPosition() ) ;
     }
 // ---------- End of setters ----------
 
@@ -78,7 +78,7 @@
          */
     bool cible::isAffected(laser& L ) const
     {
-        return(L.getPoint() == getPoint() ) ;
+        return(L.getPosition() == getPosition() ) ;
     }
 
 // ---------- End of isAffected  -----------------------------
@@ -90,5 +90,5 @@
 */
 void cible::print(std::ostream& ost) const
 {
-   getPoint().print(ost);
+   getPosition().print(ost);
 }

@@ -11,10 +11,12 @@ class objet
        objet(point p);
        objet();
        virtual ~objet() = default;
-       void setPoint(const point& p);
-       point getPoint() const;
+       void setPosition(const point& p);
+       point getPosition() const;
        void shift(double x, double y);
        void shift(const point& p);
+       void move(const point& p);
+       void move(double x, double y);
        virtual void print(std::ostream& ost) const;
 };
 
