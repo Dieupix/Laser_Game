@@ -9,7 +9,8 @@ TEST_CASE("Test of the class laser"){
     laser l {position, direction, step};
 
     SUBCASE("Test of the constructor"){
-        /// @TODO - add the REQUIRE for the position
+        //REQUIRE_EQ(l.getPosition(), point{-1, -1}); // SHOULD FAIL
+        REQUIRE_EQ(l.getPosition(), position);
         REQUIRE_EQ(l.getDirection(), direction);
         REQUIRE_EQ(l.getStep(), step);
     }

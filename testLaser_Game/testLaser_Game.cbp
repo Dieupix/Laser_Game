@@ -32,16 +32,21 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../Laser_Game/cible.cpp" />
 		<Unit filename="../Laser_Game/cible.h" />
+		<Unit filename="../Laser_Game/laser.cpp" />
 		<Unit filename="../Laser_Game/laser.h" />
+		<Unit filename="../Laser_Game/objet.cpp" />
 		<Unit filename="../Laser_Game/objet.h" />
+		<Unit filename="../Laser_Game/point.cpp" />
 		<Unit filename="../Laser_Game/point.h" />
+		<Unit filename="../Laser_Game/tireur.cpp" />
 		<Unit filename="../Laser_Game/tireur.h" />
-		<Unit filename="ObjetTest.cpp" />
 		<Unit filename="cibleTest.cpp" />
 		<Unit filename="doctest.h" />
 		<Unit filename="laserTest.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="objetTest.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

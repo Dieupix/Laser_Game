@@ -8,17 +8,16 @@ TEST_CASE("Test of the class object"){
     objet o {position};
 
     SUBCASE("Test of the constructor"){
-        /// @TODO - add the REQUIRE for the position
         REQUIRE_EQ(o.getPosition(), position);
     }
 
     SUBCASE("Test of moveObject"){
         o.move(position_deplace);
-        REQUIRE_EQ(o.getPosition(), {3,6} );
+        REQUIRE_EQ(o.getPosition(), point{3,6} );
     }
 
     SUBCASE("Test of shiftObject"){
         o.shift(position_deplace);
-        REQUIRE_EQ(o.getPosition(), {2,5} );
+        REQUIRE_EQ(o.getPosition(), point{2,5} );
     }
 }

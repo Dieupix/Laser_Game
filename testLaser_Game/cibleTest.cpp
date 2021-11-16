@@ -1,7 +1,7 @@
 #include "doctest.h"
 #include "../Laser_Game/cible.h"
 #include "../Laser_Game/laser.h"
-
+/*
 TEST_CASE("Test of the class cible"){
 
     point P{0, 0} ;
@@ -39,4 +39,4 @@ TEST_CASE("Test of the class cible"){
 
     }
 
-}
+}*/
