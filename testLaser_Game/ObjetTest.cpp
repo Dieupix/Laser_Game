@@ -1,7 +1,7 @@
 #include "doctest.h"
 #include "../Laser_Game/objet.h"
 #include "../Laser_Game/point.h"
-
+/*
 TEST_CASE("Test of the class object"){
     point position{1, 1};
     point position_deplace {2,5};
@@ -20,4 +20,4 @@ TEST_CASE("Test of the class object"){
         o.shift(position_deplace);
         REQUIRE_EQ(o.getPosition(), point{2,5} );
     }
-}
+}*/
