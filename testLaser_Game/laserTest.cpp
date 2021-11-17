@@ -33,11 +33,29 @@ TEST_CASE("Test of the class laser"){
         }
     }
 
-    SUBCASE("Test of the function moveByStep()"){
+    SUBCASE("Test of the moveByStep() function"){
         point expectedPosition {1.0, 0};
         l.moveByStep();
 
         //REQUIRE_EQ(l.getPosition(), point{-1.5, 0}); // SHOULD FAIL
         REQUIRE_EQ(l.getPosition(), expectedPosition);
+    }
+
+    SUBCASE("Test of the turning functions"){
+        SUBCASE("Test of the turnLeft() function"){
+            auto expectedDirection = laser::directions::UP;
+            l.turnLeft();
+
+            //REQUIRE_EQ(l.getDirection(), laser::directions::DOWN); // SHOULD FAIL
+            REQUIRE_EQ(l.getDirection(), expectedDirection);
+        }
+
+        SUBCASE("Test of the turnRight() function"){
+            auto expectedDirection = laser::directions::DOWN;
+            l.turnRight();
+
+            //REQUIRE_EQ(l.getDirection(), laser::directions::UP); // SHOULD FAIL
+            REQUIRE_EQ(l.getDirection(), expectedDirection);
+        }
     }
 }
