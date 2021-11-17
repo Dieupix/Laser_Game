@@ -32,8 +32,8 @@ class laser : public objet
          */
         enum directions{
             RIGHT,
-            LEFT,
             UP,
+            LEFT,
             DOWN
         };
         /** @var laser::directions laser::RIGHT
