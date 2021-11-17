@@ -14,9 +14,9 @@ class laser : public objet
     private:
          /**
           * @brief The direction of the laser
-          * @see enum directions
+          * @see directions
           */
-        short int direction;
+        short unsigned int direction;
         /**
          * @brief The step of the laser
          */
@@ -62,7 +62,7 @@ class laser : public objet
          * @param[in] step : The step of the laser when it moves (by default 1.0)
          * @return Creates a laser with its parameters
          */
-        laser(const point&, short int, double = 1.0);
+        laser(const point&, short unsigned int, double = 1.0);
 
         // Destructor
         /**
@@ -79,7 +79,7 @@ class laser : public objet
          *
          * @return Returns the direction of the laser
          */
-        short int getDirection() const;
+        short unsigned int getDirection() const;
         /**
          * @brief Constant getter function for the step of the laser
          *
@@ -94,7 +94,7 @@ class laser : public objet
          * @param[in] direction : The new direction of the laser
          * @return Returns nothing
          */
-        void setDirection(short int);
+        void setDirection(short unsigned int);
         /**
          * @brief Setter function for the step of the laser
          *
@@ -118,7 +118,23 @@ class laser : public objet
          * @param[out] ost : The output stream
          * @return Returns nothing
          */
-        void print(std::ostream&) const override;
+        virtual void print(std::ostream&) const override;
+        /**
+         * @brief A function that changes the direction of the laser
+         * by 90 degrees to the left.
+         * @see directions
+         *
+         * @return Returns nothing
+         */
+        void turnLeft();
+        /**
+         * @brief A function that changes the direction of the laser
+         * by 90 degrees to the right.
+         * @see directions
+         *
+         * @return Returns nothing
+         */
+        void turnRight();
 
 
 }; // End of laser
