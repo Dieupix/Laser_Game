@@ -8,7 +8,7 @@
          * @param[in] position : The initial position of the cible
          * @return Creates a cible with its parameters
          */
-    cible::cible(const point& position) : objet{position}
+    cible::cible(const point& position) : objet{position}, d_affected{false}
     {
 
     }
@@ -78,7 +78,10 @@
          */
     bool cible::isAffected(laser& L ) const
     {
-        return(L.getPosition() == getPosition() ) ;
+        bool affected = L.getPosition() == getPosition() ;
+         d_affected = affected ;
+
+        return(affected ) ;
     }
 
 // ---------- End of isAffected  -----------------------------

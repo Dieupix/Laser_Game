@@ -39,6 +39,8 @@
 		<Unit filename="laser.cpp" />
 		<Unit filename="laser.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="miroir.cpp" />
+		<Unit filename="miroir.h" />
 		<Unit filename="objet.cpp" />
 		<Unit filename="objet.h" />
 		<Unit filename="point.cpp" />

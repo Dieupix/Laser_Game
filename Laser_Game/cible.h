@@ -17,7 +17,13 @@ public :
     void moveCible(double& , double& ) ;
     bool isAffected(laser& ) const;
     virtual void print(std::ostream& ost) const override;
+    bool operator==(const objet& ) const ;
+    bool operator!=(const objet& ) const ;
 
+
+private :
+
+   bool d_affected ;
 
 };
 
