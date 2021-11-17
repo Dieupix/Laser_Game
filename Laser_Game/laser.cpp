@@ -2,7 +2,7 @@
 
 // ---------- Constructors ----------
 
-laser::laser(const point& p, short unsigned int direction, double step) : objet{p}, direction{direction}, step{step} {}
+laser::laser(const point& p, directions direction, double step) : objet{p}, direction{direction}, step{step} {}
 
 // ---------- End of constructors ----------
 
@@ -24,7 +24,7 @@ double laser::getStep() const {return this->step;}
 
 // ---------- Setters ----------
 
-void laser::setDirection(short unsigned int direction){
+void laser::setDirection(directions direction){
     this->direction = direction;
 }
 
@@ -86,11 +86,11 @@ void laser::print(std::ostream& ost) const {
 }
 
 void laser::turnLeft(){
-    this->direction = static_cast<directions>((this->direction + 1) % 4);
+    this->direction = static_cast<directions>(this->direction + 1) % 4;
 }
 
 void laser::turnRight(){
-    this->direction = static_cast<directions>((this->direction - 1) % 4);
+    this->direction = static_cast<directions>(this->direction - 1) % 4;
 }
 
 // ---------- End of functions ----------

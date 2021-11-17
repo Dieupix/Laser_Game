@@ -30,7 +30,7 @@ class laser : public objet
          * @details This enumeration defines the different directions
          * the laser can have.
          */
-        enum directions{
+        enum directions : short unsigned int{
             RIGHT,
             UP,
             LEFT,
@@ -62,7 +62,7 @@ class laser : public objet
          * @param[in] step : The step of the laser when it moves (by default 1.0)
          * @return Creates a laser with its parameters
          */
-        laser(const point&, short unsigned int, double = 1.0);
+        laser(const point&, directions, double = 1.0);
 
         // Destructor
         /**
@@ -94,7 +94,7 @@ class laser : public objet
          * @param[in] direction : The new direction of the laser
          * @return Returns nothing
          */
-        void setDirection(short unsigned int);
+        void setDirection(directions);
         /**
          * @brief Setter function for the step of the laser
          *
