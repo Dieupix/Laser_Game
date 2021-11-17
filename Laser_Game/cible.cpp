@@ -76,13 +76,13 @@
          * @return  true if the cible is hit by the laser
          * @return false if not
          */
-    bool cible::isAffected(laser& L ) const
+    /*bool cible::isAffected(laser& L ) const
     {
         bool affected = L.getPosition() == getPosition() ;
          d_affected = affected ;
 
         return(affected ) ;
-    }
+    }*/
 
 // ---------- End of isAffected  -----------------------------
 
