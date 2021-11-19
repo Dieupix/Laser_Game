@@ -41,6 +41,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="miroir.cpp" />
 		<Unit filename="miroir.h" />
+		<Unit filename="mur.cpp" />
+		<Unit filename="mur.h" />
 		<Unit filename="objet.cpp" />
 		<Unit filename="objet.h" />
 		<Unit filename="point.cpp" />

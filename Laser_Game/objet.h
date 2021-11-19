@@ -7,9 +7,10 @@ class objet
 {
    private :
        point d_p;
-   public :
+   protected:
        objet(point p);
        objet();
+   public :
        virtual ~objet() = default;
        void setPosition(const point& p);
        point getPosition() const;
