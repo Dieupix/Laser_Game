@@ -36,6 +36,8 @@
 		<Unit filename="../Laser_Game/cible.h" />
 		<Unit filename="../Laser_Game/laser.cpp" />
 		<Unit filename="../Laser_Game/laser.h" />
+		<Unit filename="../Laser_Game/miroir.cpp" />
+		<Unit filename="../Laser_Game/miroir.h" />
 		<Unit filename="../Laser_Game/objet.cpp" />
 		<Unit filename="../Laser_Game/objet.h" />
 		<Unit filename="../Laser_Game/point.cpp" />
@@ -46,6 +48,7 @@
 		<Unit filename="doctest.h" />
 		<Unit filename="laserTest.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="miroirTest.cpp" />
 		<Unit filename="objetTest.cpp" />
 		<Extensions />
 	</Project>

@@ -1,7 +1,7 @@
 #include "doctest.h"
 #include "../Laser_Game/cible.h"
 #include "../Laser_Game/laser.h"
-/*
+
 TEST_CASE("Test of the class cible"){
 
     point P{0, 0} ;
@@ -9,7 +9,7 @@ TEST_CASE("Test of the class cible"){
 
     SUBCASE("Test of the constructor"){
         /// @TODO - add the REQUIRE for the position
-        REQUIRE_EQ(c.getCible(), P);
+        REQUIRE_EQ(c.getPosition(), P);
 
     }
 
@@ -19,16 +19,18 @@ TEST_CASE("Test of the class cible"){
 
        SUBCASE("Test of moveCible "){
         /// @TODO - add the REQUIRE for the position
-        REQUIRE_EQ(c.getCible(), A);
+        REQUIRE_EQ(c.getPosition(), A);
 
     }
+
     //-------------- isAffected ------------------------------------------
 
-         point position{0, 0};
-    short  int direction = laser::directions::RIGHT;
+    point position{0, 0};
+    auto direction = laser::directions::RIGHT;
     double step = 1.0;
 
     laser l {position, direction, step};
+
 
       point B{0, 0 };
      c.moveCible(B) ;
@@ -39,4 +41,4 @@ TEST_CASE("Test of the class cible"){
 
     }
 
-}*/
+}

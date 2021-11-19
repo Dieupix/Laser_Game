@@ -4,9 +4,9 @@
 
 // ---------- Constructors ----------
   /**
-         * @brief Constructor with a position
-         * @param[in] position : The initial position of the cible
-         * @return Creates a cible with its parameters
+         * @brief Constructeur avec position
+         * @param[in] position : La position initial de la cible
+         * @return Crée une cible avec une position
          */
     cible::cible(const point& position) : objet{position}, d_affected{false}
     {
@@ -76,13 +76,13 @@
          * @return  true if the cible is hit by the laser
          * @return false if not
          */
-    /*bool cible::isAffected(laser& L ) const
+    bool cible::isAffected(laser& L )
     {
         bool affected = L.getPosition() == getPosition() ;
          d_affected = affected ;
 
         return(affected ) ;
-    }*/
+    }
 
 // ---------- End of isAffected  -----------------------------
 
