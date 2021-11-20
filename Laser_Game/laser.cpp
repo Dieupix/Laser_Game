@@ -2,7 +2,7 @@
 
 // ---------- Constructors ----------
 
-laser::laser(const point& p, directions direction, double step) : objet{p}, direction{direction}, step{step} {}
+laser::laser(const point& p, directions direction, double step) : object{p}, direction{direction}, step{step} {}
 
 // ---------- End of constructors ----------
 
@@ -60,7 +60,7 @@ void laser::moveByStep(){
         }
     }
 }
-
+/*
 void laser::print(std::ostream& ost) const {
     ost << "Laser[position" << getPosition() << ", direction(";
     switch(direction){
@@ -84,7 +84,7 @@ void laser::print(std::ostream& ost) const {
     }
     ost << "), step(" << step << ")]";
 }
-
+*/
 void laser::turnLeft(){
     this->direction = static_cast<directions>(this->direction + 1) % 4;
 }

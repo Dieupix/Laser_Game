@@ -1,26 +1,27 @@
-#ifndef OBJET_H
-#define OBJET_H
+#ifndef OBJECT_H
+#define OBJECT_H
 
 #include "point.h"
 
-class objet
+class object
 {
    private :
        point d_p;
    protected:
-       objet(point p);
-       objet();
+       object(point p);
+       object();
    public :
-       virtual ~objet() = default;
+       virtual ~object() = default;
        void setPosition(const point& p);
        point getPosition() const;
        void shift(double x, double y);
        void shift(const point& p);
        void move(const point& p);
        void move(double x, double y);
-       virtual void print(std::ostream& ost) const;
+       bool operator==(const object& o) const;
+       bool operator!=(const object& o) const;
 };
 
-std::ostream& operator<<(std::ostream& ost, const objet& o);
+std::ostream& operator<<(std::ostream& ost, const object& o);
 
 #endif // OBJET_H

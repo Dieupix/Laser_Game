@@ -41,14 +41,17 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="miroir.cpp" />
 		<Unit filename="miroir.h" />
-		<Unit filename="mur.cpp" />
-		<Unit filename="mur.h" />
-		<Unit filename="objet.cpp" />
-		<Unit filename="objet.h" />
+		<Unit filename="object.cpp" />
+		<Unit filename="object.h" />
 		<Unit filename="point.cpp" />
 		<Unit filename="point.h" />
 		<Unit filename="tireur.cpp" />
 		<Unit filename="tireur.h" />
+		<Unit filename="viewer.h" />
+		<Unit filename="viewerWall.cpp" />
+		<Unit filename="viewerWall.h" />
+		<Unit filename="wall.cpp" />
+		<Unit filename="wall.h" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="1" />

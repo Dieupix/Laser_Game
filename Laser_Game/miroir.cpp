@@ -1,6 +1,6 @@
 #include"miroir.h"
 #include "laser.h"
-#include "objet.h"
+#include "object.h"
 
 
 // ---------- Constructeur-------------------------------
@@ -10,7 +10,7 @@
        * @return Crée un miroir avec un sens donnée en paramètre
        */
 
-miroir::miroir(const point& position ,sens Smirroir ) : objet{position} , d_sens{basGauche_hautDroit},
+miroir::miroir(const point& position ,sens Smirroir ) : object{position} , d_sens{basGauche_hautDroit},
                                   d_miroirtouchee {false}
 {
 
@@ -24,13 +24,13 @@ miroir::miroir(const point& position ,sens Smirroir ) : objet{position} , d_sens
        * @param[in] ost : un flux de sortie
        * @return Affiche la position du miroir
        */
-
+/*
 void miroir::print(std::ostream& ost) const
 {
     getPosition().print(ost);
     // est ce qu il faut afficher dans quel sens ?
 }
-
+*/
 // ---------------- Fin Print -------------------------------
 
 // ----------------------getSens -------------------------------

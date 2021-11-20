@@ -1,9 +1,9 @@
 #ifndef TIREUR_H
 #define TIREUR_H
-#include "objet.h"
+#include "object.h"
 
 
-class tireur : public objet
+class tireur : public object
 {
     public:
         tireur();
