@@ -12,6 +12,16 @@ laser::laser(const point& p, directions direction, double step) : objet{p}, dire
 
 // ---------- Overloads ----------
 
+bool laser::operator==(const laser& l) const{
+    return  getPosition() == l.getPosition() and
+            getDirection() == l.getDirection() and
+            getStep() == l.getStep();
+}
+
+bool laser::operator!=(const laser& l) const{
+    return not operator==(l);
+}
+
 // ---------- End of overloads ----------
 
 // ---------- Getters ----------

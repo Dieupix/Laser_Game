@@ -11,17 +11,6 @@
  */
 class laser : public objet
 {
-    private:
-         /**
-          * @brief The direction of the laser
-          * @see directions
-          */
-        short unsigned int direction;
-        /**
-         * @brief The step of the laser
-         */
-        double step;
-
     public:
 
         // Enumeration
@@ -53,17 +42,6 @@ class laser : public objet
          * @details The direction when the laser goes to the bottom.
          */
 
-        // Constructors
-        /**
-         * @brief Constructor with a position, a direction and a step
-         *
-         * @param[in] p : The initial position of the laser
-         * @param[in] direction : The initial direction of the laser
-         * @param[in] step : The step of the laser when it moves (by default 1.0)
-         * @return Creates a laser with its parameters
-         */
-        laser(const point&, directions, double = 1.0);
-
         // Destructor
         /**
          * @brief Default-implemented destructor
@@ -72,6 +50,25 @@ class laser : public objet
         virtual ~laser() = default;
 
         // Overloads
+
+        /**
+         * @brief Binary operator == : constant
+         * @details Tests if all the member variables of two
+         * lasers are equals
+         *
+         * @param l : The laser to test with
+         * @return Returns true if both of the lasers are equals, else false
+         */
+        bool operator==(const laser&) const;
+        /**
+         * @brief Binary operator != : constant
+         * @details Tests if at least one of the member variables of two
+         * lasers are different
+         *
+         * @param l : The laser to test with
+         * @return Returns true if both of the lasers are different, else false
+         */
+        bool operator!=(const laser&) const;
 
         // Getters
         /**
@@ -135,6 +132,28 @@ class laser : public objet
          * @return Returns nothing
          */
         void turnRight();
+
+    private:
+         /**
+          * @brief The direction of the laser
+          * @see directions
+          */
+        short unsigned int direction;
+        /**
+         * @brief The step of the laser
+         */
+        double step;
+
+        // Constructors
+        /**
+         * @brief Constructor with a position, a direction and a step
+         *
+         * @param[in] p : The initial position of the laser
+         * @param[in] direction : The initial direction of the laser
+         * @param[in] step : The step of the laser when it moves (by default 1.0)
+         * @return Creates a laser with its parameters
+         */
+        laser(const point&, directions, double = 1.0);
 
 
 }; // End of laser
