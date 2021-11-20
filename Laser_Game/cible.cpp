@@ -1,6 +1,6 @@
 #include"cible.h"
 #include"laser.h"
-#include "objet.h"
+#include "object.h"
 
 // ---------- Constructors ----------
   /**
@@ -8,7 +8,7 @@
          * @param[in] position : La position initial de la cible
          * @return Crée une cible avec une position
          */
-    cible::cible(const point& position) : objet{position}, d_affected{false}
+    cible::cible(const point& position) : object{position}, d_affected{false}
     {
 
     }
@@ -51,7 +51,7 @@
          */
      void cible::moveCible(point& p)
      {
-         objet::shift(p) ;
+         object::shift(p) ;
      }
 // ---------- End of moveCible  -----------------------------
 // ---------- Functions moveCible ------------------------
@@ -65,7 +65,7 @@
          */
     void cible::moveCible(double& x , double& y )
         {
-         objet::shift(x, y) ;
+         object::shift(x, y) ;
         }
 // ---------- End of moveCible  -----------------------------
 // ---------- Functions isAffected ------------------------
@@ -91,7 +91,9 @@
    * @brief Print cible
    * @param[in] ost :
 */
+/*
 void cible::print(std::ostream& ost) const
 {
    getPosition().print(ost);
 }
+*/

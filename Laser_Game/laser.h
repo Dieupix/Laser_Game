@@ -1,7 +1,7 @@
 #ifndef LASER_H
 #define LASER_H
 
-#include "objet.h"
+#include "object.h"
 
 /**
  * @class laser laser.h
@@ -9,7 +9,7 @@
  * @details This class represents a laser, which is an @a objet
  * with a @a direction and a @a step.
  */
-class laser : public objet
+class laser : public object
 {
     public:
 
@@ -109,13 +109,6 @@ class laser : public objet
          * @return Returns nothing
          */
         void moveByStep();
-        /**
-         * @brief A constant function that prints the laser on an output stream
-         *
-         * @param[out] ost : The output stream
-         * @return Returns nothing
-         */
-        virtual void print(std::ostream&) const override;
         /**
          * @brief A function that changes the direction of the laser
          * by 90 degrees to the left.

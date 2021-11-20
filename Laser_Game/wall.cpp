@@ -1,0 +1,36 @@
+#include "wall.h"
+
+#include "object.h"
+#include "point.h"
+#include "laser.h"
+
+/**Constructeur de la classe mur initialise a faux pour sa donnee estTouche
+@param p : un point (x,y)
+@return un mur m{false} avec une position*/
+wall::wall(const point& p) : d_affected{false}, object{p}
+{}
+
+/**Dis si le mur a ete touche par un laser
+@param l : le laser
+@return VRAI si il a ete touche, FAUX sinon*/
+bool wall::isAffected(const laser& l) const
+{
+    return(getPosition() == l.getPosition());
+}
+
+/**Change la donnee du mur estTouche
+*/
+void wall::changeAffected()
+{
+    d_affected = !d_affected;
+}
+
+/**Imprime le mur
+@param ost : le flot de sortie
+*/
+/*
+void wall::print(std::ostream& ost) const
+{
+    getPosition().print(ost);
+}
+*/

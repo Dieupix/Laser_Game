@@ -1,11 +1,11 @@
 #ifndef CIBLE_H_INCLUDED
 #define CIBLE_H_INCLUDED
 
-#include "objet.h"
+#include "object.h"
 
 class laser ;
 
-class cible : public objet
+class cible : public object
 {
 public :
 
@@ -16,9 +16,8 @@ public :
     void moveCible(point&) ;
     void moveCible(double& , double& ) ;
     bool isAffected(laser& ) ;
-    virtual void print(std::ostream& ost) const override;
-    bool operator==(const objet& ) const ;
-    bool operator!=(const objet& ) const ;
+    bool operator==(const object& ) const ;
+    bool operator!=(const object& ) const ;
 
 
 private :

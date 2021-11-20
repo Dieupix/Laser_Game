@@ -1,4 +1,4 @@
-#include "objet.h"
+#include "object.h"
 #include "point.h"
 #include <iostream>
 
@@ -6,19 +6,19 @@
 @param p : un point x,y
 @return un objet o{p}
 */
-objet::objet(point p) : d_p{p}
+object::object(point p) : d_p{p}
 {}
 
 /** Constructeur par defaut d'objet
 @return un objet o{0,0}
 */
- objet::objet() : d_p{0,0}
+ object::object() : d_p{0,0}
 {}
 
 /** Setter de point d'un objet
 @param p : le nouveau point de l'objet
 */
-void objet::setPosition(const point& p)
+void object::setPosition(const point& p)
 {
     d_p = p;
 }
@@ -26,7 +26,7 @@ void objet::setPosition(const point& p)
 /**Getter de point d'un objet
 @return le point de l'objet courant
 */
-point objet::getPosition() const
+point object::getPosition() const
 {
     return d_p;
 }
@@ -35,7 +35,7 @@ point objet::getPosition() const
 @param x : le deplacement en abscisse (reel)
 @param y : le deplacement en ordonnee (reel)
 */
-void objet::shift(double x, double y)
+void object::shift(double x, double y)
 {
     d_p.shift(x,y);
 }
@@ -44,7 +44,7 @@ void objet::shift(double x, double y)
 @param x : le deplacement en abscisse (reel)
 @param y : le deplacement en ordonnee (reel)
 */
-void objet::shift(const point& p)
+void object::shift(const point& p)
 {
     d_p.shift(p.x(),p.y());
 }
@@ -53,7 +53,7 @@ void objet::shift(const point& p)
 @param x : le deplacement en abscisse (reel)
 @param y : le deplacement en ordonnee (reel)
 */
-void objet::move(const point& p)
+void object::move(const point& p)
 {
     d_p.move(p.x(),p.y());
 }
@@ -61,24 +61,35 @@ void objet::move(const point& p)
 @param x : le deplacement en abscisse (reel)
 @param y : le deplacement en ordonnee (reel)
 */
-void objet::move(double x, double y)
+void object::move(double x, double y)
 {
     d_p.move(x,y);
 }
-/**Imprime l'objet o(x,y)
-@param ost : le flot de sortie
+
+/**Operateur d'egalite : test si la position d'un objet est la meme que celle passee en parametre
+@param o : un objet
+@return true ou false
 */
-void objet::print(std::ostream& ost) const
+bool object::operator==(const object& o) const
 {
-    d_p.print(ost);
+    return d_p == o.getPosition();
+}
+
+/**Operateur d'inegalite : test si la position d'un objet est differente que celle passee en parametre
+@param o : un objet
+@return true ou false
+*/
+bool object::operator!=(const object& o) const
+{
+    return !(*this == o);
 }
 
 /**Surcharge de l'operateur << pour permettre d'afficher un objet (cout<<o)
 @param ost : le flot de sortie
 @param o : l'objet
 */
-std::ostream& operator<<(std::ostream& ost, const objet& o)
+std::ostream& operator<<(std::ostream& ost, const object& o)
 {
-    o.print(ost);
+    //Afficheur d'objet
     return ost;
 }
