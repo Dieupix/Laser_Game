@@ -14,7 +14,7 @@ class tireur : public object
         };
         tireur(const point &p, directions);
         virtual ~tireur() = default;
-        laser tire(int step);
+        laser tire(double step);
     private:
         directions direction;
 
