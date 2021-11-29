@@ -2,7 +2,7 @@
 #define LASER_H
 
 #include "object.h"
-
+class tireur;
 /**
  * @class laser laser.h
  * @brief A class that represents a laser
@@ -11,7 +11,7 @@
  */
 class laser : public object
 {
-    public:
+    public: friend tireur;
 
         // Enumeration
         /**

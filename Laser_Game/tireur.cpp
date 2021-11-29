@@ -1,11 +1,10 @@
 #include "tireur.h"
 
-tireur::tireur()
-{
-    //ctor
-}
+tireur::tireur(const point &p, directions direction) : object{p}, direction{direction}
+{}
 
-tireur::~tireur()
+laser tireur::tire(int step)
 {
-    //dtor
+    laser l{this->getPosition(), direction, step};
+    return l;
 }
