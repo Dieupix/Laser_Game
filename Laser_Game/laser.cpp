@@ -26,7 +26,7 @@ bool laser::operator!=(const laser& l) const{
 
 // ---------- Getters ----------
 
-short unsigned int laser::getDirection() const {return this->direction;}
+laser::directions laser::getDirection() const {return this->direction;}
 
 double laser::getStep() const {return this->step;}
 
@@ -96,11 +96,11 @@ void laser::print(std::ostream& ost) const {
 }
 */
 void laser::turnLeft(){
-    this->direction = static_cast<directions>(this->direction + 1) % 4;
+    this->direction = static_cast<directions>(static_cast<directions>(this->direction + 1) % 4);
 }
 
 void laser::turnRight(){
-    this->direction = static_cast<directions>(this->direction - 1) % 4;
+    this->direction = static_cast<directions>(static_cast<directions>(this->direction - 1) % 4);
 }
 
 // ---------- End of functions ----------

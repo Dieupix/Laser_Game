@@ -76,7 +76,7 @@ class laser : public object
          *
          * @return Returns the direction of the laser
          */
-        short unsigned int getDirection() const;
+        laser::directions getDirection() const;
         /**
          * @brief Constant getter function for the step of the laser
          *
@@ -131,7 +131,7 @@ class laser : public object
           * @brief The direction of the laser
           * @see directions
           */
-        short unsigned int direction;
+        directions direction;
         /**
          * @brief The step of the laser
          */
