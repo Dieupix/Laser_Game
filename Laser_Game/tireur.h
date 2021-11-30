@@ -6,21 +6,42 @@
 class tireur : public object
 {
     public:
+         /** @brief L'enumeration des directions disponibles pour le tireur
+          */
          enum directions : short unsigned int{
             RIGHT,
             UP,
             LEFT,
             DOWN
         };
+
+        /** @brief Constructeur du tireur
+         *
+         * @param p const point& une position
+         * @param directions une direction de l'énumération de directions
+         *
+         */
         tireur(const point &p, directions);
+
+        /** @brief Destructeur virtuel de la classe
+         */
         virtual ~tireur() = default;
         tireur::directions getDirection() const;
         void setDirection(directions direction);
-        laser tire(double step = 1.0);
         virtual void print(std::ostream& ost) const override;
-    private:
-        directions direction;
 
+
+        /** @brief Permet au tireur de tirer
+         *
+         * @param un double qui determine le pas du tir
+         * @return le laser
+         *
+         */
+        laser tire(double step = 1.0);
+    private:
+        /** @brief la direction du tireur
+         */
+        directions direction;
 };
 
 #endif // TIREUR_H
