@@ -11,11 +11,8 @@ public :
 
     cible(const point& position) ;
     virtual ~cible() = default;
-    void setCible(const cible& C);
-    cible getCible() const;
-    void moveCible(point&) ;
-    void moveCible(double& , double& ) ;
     bool isAffected(laser& ) ;
+    virtual void print(std::ostream& ost) const override;
     bool operator==(const object& ) const ;
     bool operator!=(const object& ) const ;
 

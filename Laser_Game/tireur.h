@@ -14,7 +14,10 @@ class tireur : public object
         };
         tireur(const point &p, directions);
         virtual ~tireur() = default;
-        laser tire(double step);
+        tireur::directions getDirection() const;
+        void setDirection(directions direction);
+        laser tire(double step = 1.0);
+        virtual void print(std::ostream& ost) const override;
     private:
         directions direction;
 

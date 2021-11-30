@@ -16,58 +16,13 @@
 // ---------- End of constructors ----------
 
 // ---------- Setters ----------
- /**
-         * @brief Setter function for the cible
-         *
-         * @param[in] cible : The new cible
-         * @return Returns nothing
-         */
-    void cible::setCible(const cible& C)
-    {
-        setPosition( C.getPosition() ) ;
-    }
+
 // ---------- End of setters ----------
 
-
 // ----------  Getters ----------
-/**
-         * @brief Constant getter function for the cible
-         *
-         * @return Returns the cible
-         */
-    cible cible::getCible() const
-    {
-        return *this ;
-    }
+
 // ---------- End of Getters -----------------------------
 
-// ---------- Functions moveCible ------------------------
-        /**
-         * @brief A function that moves the cible
-         * @details This function moves the  position of the cible
-         * to another point
-         * @param[in] point : the new position
-         * @return Returns nothing
-         */
-     void cible::moveCible(point& p)
-     {
-         object::shift(p) ;
-     }
-// ---------- End of moveCible  -----------------------------
-// ---------- Functions moveCible ------------------------
-      /**
-         * @brief A function that moves the cible
-         * @details This function moves the position of the target
-         * to another coordinate
-         * @param[in] x : the new X
-         * @param[in] y : the new Y
-         * @return Returns nothing
-         */
-    void cible::moveCible(double& x , double& y )
-        {
-         object::shift(x, y) ;
-        }
-// ---------- End of moveCible  -----------------------------
 // ---------- Functions isAffected ------------------------
       /**
          * @brief A function that moves the cible
@@ -91,9 +46,10 @@
    * @brief Print cible
    * @param[in] ost :
 */
-/*
+
 void cible::print(std::ostream& ost) const
 {
+    // ost << "Cible[position" << getPosition() << "];
    getPosition().print(ost);
 }
-*/
+

@@ -18,6 +18,7 @@ class object
        void shift(const point& p);
        void move(const point& p);
        void move(double x, double y);
+       virtual void print(std::ostream& ost) const = 0;
        bool operator==(const object& o) const;
        bool operator!=(const object& o) const;
 };

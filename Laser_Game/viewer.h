@@ -1,12 +1,24 @@
 #ifndef VIEWER_H
 #define VIEWER_H
-#include "object.h"
+
+#include <iostream>
+#include <memory>
+
+#include "laser.h"
+#include "tireur.h"
+
+using std::cerr;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::make_unique;
+using std::unique_ptr;
 
 class viewer
 {
 public:
     virtual ~viewer() = default;
-    virtual void printObject(const object& o, std::ostream& ost) const = 0;
-    virtual void printObjectInGame(std::ostream& ost) const = 0;
+    virtual void printLaser(unique_ptr<laser>& l) const = 0;
+    virtual void printTireur(unique_ptr<tireur>& l) const = 0;
 };
 #endif // VIEWER_H

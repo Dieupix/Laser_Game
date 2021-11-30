@@ -70,7 +70,7 @@ void laser::moveByStep(){
         }
     }
 }
-/*
+
 void laser::print(std::ostream& ost) const {
     ost << "Laser[position" << getPosition() << ", direction(";
     switch(direction){
@@ -94,7 +94,7 @@ void laser::print(std::ostream& ost) const {
     }
     ost << "), step(" << step << ")]";
 }
-*/
+
 void laser::turnLeft(){
     this->direction = static_cast<directions>(static_cast<directions>(this->direction + 1) % 4);
 }

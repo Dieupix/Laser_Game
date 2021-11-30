@@ -48,8 +48,8 @@
 		<Unit filename="tireur.cpp" />
 		<Unit filename="tireur.h" />
 		<Unit filename="viewer.h" />
-		<Unit filename="viewerWall.cpp" />
-		<Unit filename="viewerWall.h" />
+		<Unit filename="viewerOnTerminal.cpp" />
+		<Unit filename="viewerOnTerminal.h" />
 		<Unit filename="wall.cpp" />
 		<Unit filename="wall.h" />
 		<Extensions>
