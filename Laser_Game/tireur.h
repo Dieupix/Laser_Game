@@ -39,7 +39,6 @@ class tireur : public object
         /** @brief la direction du tireur
          */
         directions direction;
-
 };
 
 #endif // TIREUR_H

@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="./" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="./" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -36,6 +38,8 @@
 		</Compiler>
 		<Unit filename="cible.cpp" />
 		<Unit filename="cible.h" />
+		<Unit filename="grille.cpp" />
+		<Unit filename="grille.h" />
 		<Unit filename="laser.cpp" />
 		<Unit filename="laser.h" />
 		<Unit filename="main.cpp" />
