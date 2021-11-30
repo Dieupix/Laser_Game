@@ -34,6 +34,7 @@ void tireur::print(std::ostream& ost) const {
 
 
 tireur::directions tireur::getDirection() const{
+    return direction;
 }
 void tireur::setDirection(directions direction){
 }
