@@ -17,6 +17,7 @@
 		AC44F9F62756AA30002B1BB4 /* laser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9E92756AA30002B1BB4 /* laser.cpp */; };
 		AC44F9F72756AA30002B1BB4 /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9EE2756AA30002B1BB4 /* object.cpp */; };
 		AC44F9F82756AA30002B1BB4 /* wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9F12756AA30002B1BB4 /* wall.cpp */; };
+		AC4E0A352757C91100F09D16 /* ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC4E0A332757C91100F09D16 /* ground.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,8 @@
 		AC44F9EF2756AA30002B1BB4 /* wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wall.h; sourceTree = "<group>"; };
 		AC44F9F02756AA30002B1BB4 /* point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = point.h; sourceTree = "<group>"; };
 		AC44F9F12756AA30002B1BB4 /* wall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wall.cpp; sourceTree = "<group>"; };
+		AC4E0A332757C91100F09D16 /* ground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ground.cpp; sourceTree = "<group>"; };
+		AC4E0A342757C91100F09D16 /* ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ground.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 		AC44F9972756A4CA002B1BB4 /* Laser_Game */ = {
 			isa = PBXGroup;
 			children = (
+				AC4E0A332757C91100F09D16 /* ground.cpp */,
+				AC4E0A342757C91100F09D16 /* ground.h */,
 				AC44F9E92756AA30002B1BB4 /* laser.cpp */,
 				AC44F9EB2756AA30002B1BB4 /* laser.h */,
 				AC44F9E42756AA30002B1BB4 /* miroir.cpp */,
@@ -173,6 +178,7 @@
 				AC44F9E22756A9BD002B1BB4 /* cible.cpp in Sources */,
 				AC44F9F52756AA30002B1BB4 /* point.cpp in Sources */,
 				AC44F9F22756AA30002B1BB4 /* miroir.cpp in Sources */,
+				AC4E0A352757C91100F09D16 /* ground.cpp in Sources */,
 				AC44F9E12756A9BD002B1BB4 /* grille.cpp in Sources */,
 				AC44F9F32756AA30002B1BB4 /* viewerOnTerminal.cpp in Sources */,
 				AC44F9992756A4CA002B1BB4 /* main.cpp in Sources */,
