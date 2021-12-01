@@ -7,6 +7,14 @@
 #include "object.h"
 #include "grille.h"
 
+using std::cerr;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::make_unique;
+using std::unique_ptr;
+using std::vector;
+
 class ground : public grille
 {
     private:
@@ -15,9 +23,30 @@ class ground : public grille
         vector<unique_ptr<object>> objects;
 
     public:
-        ground();
+
+        // Constructors
+        ground(int cellsWidth, int cellsHeight);
+
+        // Destructors
         virtual ~ground() = default;
 
-};
+        // Overloads
+
+        // Getters
+        point getPosition() const;
+        int getNbCellsWidth() const;
+        int getNbCellsHeight() const;
+        vector<unique_ptr<object>>& getObjects();
+
+        // Setters
+        void setPosition(const point&);
+        void setNbCellsWidth(int);
+        void setNbCellsHeight(int);
+
+        // Functions
+
+}; // End of ground
+
+// Global functions
 
 #endif // GROUND_H
