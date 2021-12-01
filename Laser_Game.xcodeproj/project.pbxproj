@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		AC44F9992756A4CA002B1BB4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9982756A4CA002B1BB4 /* main.cpp */; };
+		AC44F9E12756A9BD002B1BB4 /* grille.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9DC2756A9BD002B1BB4 /* grille.cpp */; };
+		AC44F9E22756A9BD002B1BB4 /* cible.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9DE2756A9BD002B1BB4 /* cible.cpp */; };
+		AC44F9F22756AA30002B1BB4 /* miroir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9E42756AA30002B1BB4 /* miroir.cpp */; };
+		AC44F9F32756AA30002B1BB4 /* viewerOnTerminal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9E52756AA30002B1BB4 /* viewerOnTerminal.cpp */; };
+		AC44F9F42756AA30002B1BB4 /* tireur.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9E62756AA30002B1BB4 /* tireur.cpp */; };
+		AC44F9F52756AA30002B1BB4 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9E72756AA30002B1BB4 /* point.cpp */; };
+		AC44F9F62756AA30002B1BB4 /* laser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9E92756AA30002B1BB4 /* laser.cpp */; };
+		AC44F9F72756AA30002B1BB4 /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9EE2756AA30002B1BB4 /* object.cpp */; };
+		AC44F9F82756AA30002B1BB4 /* wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC44F9F12756AA30002B1BB4 /* wall.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +34,25 @@
 /* Begin PBXFileReference section */
 		AC44F9952756A4CA002B1BB4 /* Laser_Game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Laser_Game; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC44F9982756A4CA002B1BB4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AC44F9DC2756A9BD002B1BB4 /* grille.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grille.cpp; sourceTree = "<group>"; };
+		AC44F9DD2756A9BD002B1BB4 /* grille.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grille.h; sourceTree = "<group>"; };
+		AC44F9DE2756A9BD002B1BB4 /* cible.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cible.cpp; sourceTree = "<group>"; };
+		AC44F9E02756A9BD002B1BB4 /* cible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cible.h; sourceTree = "<group>"; };
+		AC44F9E32756AA30002B1BB4 /* object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
+		AC44F9E42756AA30002B1BB4 /* miroir.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = miroir.cpp; sourceTree = "<group>"; };
+		AC44F9E52756AA30002B1BB4 /* viewerOnTerminal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viewerOnTerminal.cpp; sourceTree = "<group>"; };
+		AC44F9E62756AA30002B1BB4 /* tireur.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tireur.cpp; sourceTree = "<group>"; };
+		AC44F9E72756AA30002B1BB4 /* point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
+		AC44F9E82756AA30002B1BB4 /* viewerOnTerminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viewerOnTerminal.h; sourceTree = "<group>"; };
+		AC44F9E92756AA30002B1BB4 /* laser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = laser.cpp; sourceTree = "<group>"; };
+		AC44F9EA2756AA30002B1BB4 /* tireur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tireur.h; sourceTree = "<group>"; };
+		AC44F9EB2756AA30002B1BB4 /* laser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = laser.h; sourceTree = "<group>"; };
+		AC44F9EC2756AA30002B1BB4 /* miroir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = miroir.h; sourceTree = "<group>"; };
+		AC44F9ED2756AA30002B1BB4 /* viewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viewer.h; sourceTree = "<group>"; };
+		AC44F9EE2756AA30002B1BB4 /* object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = object.cpp; sourceTree = "<group>"; };
+		AC44F9EF2756AA30002B1BB4 /* wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wall.h; sourceTree = "<group>"; };
+		AC44F9F02756AA30002B1BB4 /* point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = point.h; sourceTree = "<group>"; };
+		AC44F9F12756AA30002B1BB4 /* wall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wall.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +85,25 @@
 		AC44F9972756A4CA002B1BB4 /* Laser_Game */ = {
 			isa = PBXGroup;
 			children = (
+				AC44F9E92756AA30002B1BB4 /* laser.cpp */,
+				AC44F9EB2756AA30002B1BB4 /* laser.h */,
+				AC44F9E42756AA30002B1BB4 /* miroir.cpp */,
+				AC44F9EC2756AA30002B1BB4 /* miroir.h */,
+				AC44F9EE2756AA30002B1BB4 /* object.cpp */,
+				AC44F9E32756AA30002B1BB4 /* object.h */,
+				AC44F9E72756AA30002B1BB4 /* point.cpp */,
+				AC44F9F02756AA30002B1BB4 /* point.h */,
+				AC44F9E62756AA30002B1BB4 /* tireur.cpp */,
+				AC44F9EA2756AA30002B1BB4 /* tireur.h */,
+				AC44F9ED2756AA30002B1BB4 /* viewer.h */,
+				AC44F9E52756AA30002B1BB4 /* viewerOnTerminal.cpp */,
+				AC44F9E82756AA30002B1BB4 /* viewerOnTerminal.h */,
+				AC44F9F12756AA30002B1BB4 /* wall.cpp */,
+				AC44F9EF2756AA30002B1BB4 /* wall.h */,
+				AC44F9DE2756A9BD002B1BB4 /* cible.cpp */,
+				AC44F9E02756A9BD002B1BB4 /* cible.h */,
+				AC44F9DC2756A9BD002B1BB4 /* grille.cpp */,
+				AC44F9DD2756A9BD002B1BB4 /* grille.h */,
 				AC44F9982756A4CA002B1BB4 /* main.cpp */,
 			);
 			path = Laser_Game;
@@ -119,6 +166,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC44F9F42756AA30002B1BB4 /* tireur.cpp in Sources */,
+				AC44F9F72756AA30002B1BB4 /* object.cpp in Sources */,
+				AC44F9F62756AA30002B1BB4 /* laser.cpp in Sources */,
+				AC44F9F82756AA30002B1BB4 /* wall.cpp in Sources */,
+				AC44F9E22756A9BD002B1BB4 /* cible.cpp in Sources */,
+				AC44F9F52756AA30002B1BB4 /* point.cpp in Sources */,
+				AC44F9F22756AA30002B1BB4 /* miroir.cpp in Sources */,
+				AC44F9E12756A9BD002B1BB4 /* grille.cpp in Sources */,
+				AC44F9F32756AA30002B1BB4 /* viewerOnTerminal.cpp in Sources */,
 				AC44F9992756A4CA002B1BB4 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
