@@ -1,6 +1,6 @@
 #include "viewerOnTerminal.h"
 
-void viewerOnTerminal::printLaser(unique_ptr<laser>& l) const{
+void viewerOnTerminal::printLaser(const unique_ptr<laser>& l) const{
     switch(l->getDirection()){
     case laser::directions::RIGHT:
     case laser::directions::LEFT:
@@ -22,7 +22,7 @@ void viewerOnTerminal::printLaser(unique_ptr<laser>& l) const{
     }
 }
 
-void viewerOnTerminal::printTireur(unique_ptr<tireur>& t) const{
+void viewerOnTerminal::printTireur(const unique_ptr<tireur>& t) const{
     switch(t->getDirection()){
     case tireur::directions::RIGHT:
         {

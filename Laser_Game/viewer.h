@@ -18,7 +18,7 @@ class viewer
 {
 public:
     virtual ~viewer() = default;
-    virtual void printLaser(unique_ptr<laser>& l) const = 0;
-    virtual void printTireur(unique_ptr<tireur>& l) const = 0;
+    virtual void printLaser(const unique_ptr<laser>& l) const = 0;
+    virtual void printTireur(const unique_ptr<tireur>& l) const = 0;
 };
 #endif // VIEWER_H

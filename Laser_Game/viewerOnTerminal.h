@@ -9,8 +9,8 @@ class viewerOnTerminal : public viewer
         viewerOnTerminal() = default;
         virtual ~viewerOnTerminal() = default;
 
-        virtual void printLaser(unique_ptr<laser>& l) const override;
-        virtual void printTireur(unique_ptr<tireur>& t) const override;
+        virtual void printLaser(const unique_ptr<laser>& l) const override;
+        virtual void printTireur(const unique_ptr<tireur>& t) const override;
 };
 
 #endif // VIEWERONTERMINAL_H
