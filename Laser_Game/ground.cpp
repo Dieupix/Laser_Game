@@ -48,10 +48,10 @@ void ground::setNbCellsHeight(int nbCellsHeight){
 // ---------- Functions --------
 
 void ground::print(std::ostream& ost) const{
-    ost << "Terrain[grille";
+    ost << "Ground[";
     grille::print(ost);
     ost << ", position" << position << ", nbCellsWidth(" << nbCellsWidth << "), nbCellsHeight(" << nbCellsHeight << ")]" << endl;
-    ost << "Objets " << objects.size() << " :" << endl;
+    ost << "Objects " << objects.size() << " :" << endl;
     for(unsigned i = 0; i < objects.size(); ++i) ost << i+1 << " : " << *objects[i] << endl;
 }
 
