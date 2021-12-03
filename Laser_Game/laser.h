@@ -2,16 +2,17 @@
 #define LASER_H
 
 #include "object.h"
-class tireur;
+
 /**
  * @class laser laser.h
  * @brief A class that represents a laser
- * @details This class represents a laser, which is an @a objet
+ * @details This class represents a laser, which is an @a object
  * with a @a direction and a @a step.
  */
 class laser : public object
 {
-    public: friend tireur;
+    public:
+        friend class tireur;
 
         // Enumeration
         /**
@@ -45,7 +46,7 @@ class laser : public object
         // Destructor
         /**
          * @brief Default-implemented destructor
-         * @details Destroys the laser
+         * @details Destroys the laser.
          */
         virtual ~laser() = default;
 
@@ -54,7 +55,7 @@ class laser : public object
         /**
          * @brief Binary operator == : constant
          * @details Tests if all the member variables of two
-         * lasers are equals
+         * lasers are equals.
          *
          * @param l : The laser to test with
          * @return Returns true if both of the lasers are equals, else false
@@ -63,7 +64,7 @@ class laser : public object
         /**
          * @brief Binary operator != : constant
          * @details Tests if at least one of the member variables of two
-         * lasers are different
+         * lasers are different.
          *
          * @param l : The laser to test with
          * @return Returns true if both of the lasers are different, else false
@@ -110,8 +111,7 @@ class laser : public object
          */
         void moveByStep();
         /**
-         * @brief A function that prints the characteristics
-         * of a laser
+         * @brief A function that prints the characteristics of a laser
          * @details A laser is printed as Laser[position(x,y), direction(DIRECTION), step(STEP)]
          *
          * @param ost : The output stream
