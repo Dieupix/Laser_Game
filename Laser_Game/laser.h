@@ -91,7 +91,7 @@ class laser : public object
          * @param[in] direction : The new direction of the laser
          * @return Returns nothing
          */
-        void setDirection(directions);
+        void setDirection(laser::directions);
         /**
          * @brief Setter function for the step of the laser
          *
@@ -140,7 +140,7 @@ class laser : public object
           * @brief The direction of the laser
           * @see directions
           */
-        directions direction;
+        laser::directions direction;
         /**
          * @brief The step of the laser
          */
@@ -155,7 +155,7 @@ class laser : public object
          * @param[in] step : The step of the laser when it moves (by default 1.0)
          * @return Creates a laser with its parameters
          */
-        laser(const point&, directions, double = 1.0);
+        laser(const point&, laser::directions, double = 1.0);
 
 
 }; // End of laser
