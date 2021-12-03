@@ -47,6 +47,10 @@ void ground::setNbCellsHeight(int nbCellsHeight){
 
 // ---------- Functions --------
 
+void ground::addObject(unique_ptr<object> obj){
+    objects.push_back(move(obj));
+}
+
 void ground::print(std::ostream& ost) const{
     ost << "Ground[";
     grille::print(ost);

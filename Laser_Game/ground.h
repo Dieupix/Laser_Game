@@ -12,6 +12,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::make_unique;
+using std::move;
 using std::unique_ptr;
 using std::vector;
 
@@ -117,6 +118,13 @@ class ground : public grille
         void setNbCellsHeight(int);
 
         // Functions
+        /**
+         * @brief A function that adds an object to the ground
+         *
+         * @param obj : The object to add to the ground
+         * @return Returns nothing
+         */
+        void addObject(unique_ptr<object>);
         /**
          * @brief A constant function that prints a ground on an output stream
          * @details A ground is printed as : \n

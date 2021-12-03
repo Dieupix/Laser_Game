@@ -25,7 +25,6 @@ class laser : public object
         virtual ~laser() = default;
 
         // Overloads
-
         /**
          * @brief Binary operator == : constant
          * @details Tests if all the member variables of two

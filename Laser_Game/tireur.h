@@ -6,9 +6,6 @@
 class tireur : public object
 {
     public:
-         /** @brief L'enumeration des directions disponibles pour le tireur
-          */
-
 
         /** @brief Constructeur du tireur
          *
