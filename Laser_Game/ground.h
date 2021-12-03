@@ -33,16 +33,20 @@ class ground : public grille
         /**
          * @brief The number of cells in width
          */
-        int nbCellsWidth;
+        unsigned nbCellsWidth;
         /**
          * @brief The number of cells in height
          */
-        int nbCellsHeight;
+        unsigned nbCellsHeight;
+        /**
+         * @brief The total number of objects
+         */
+        int nbOfObjects;
         /**
          * @brief The list of objects
          * @details Contains all the objects that are on the ground.
          */
-        vector<unique_ptr<object>> objects;
+        vector<vector<unique_ptr<object>>> objects;
 
     public:
 
@@ -57,7 +61,7 @@ class ground : public grille
          * @param nbCellsHeight : The number of cells in height
          * @return Creates a ground that is a grid, with its position, list of objects and number of cells
          */
-        ground(const point& position, int cellsWidth, int cellsHeight, int nbCellsWidth, int nbCellsHeight);
+        ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight);
 
         // Destructor
         /**
@@ -80,19 +84,25 @@ class ground : public grille
          *
          * @return Returns the number of cells in width
          */
-        int getNbCellsWidth() const;
+        unsigned getNbCellsWidth() const;
         /**
          * @brief Getter function for the number of cells in height
          *
          * @return Returns the number of cells in height
          */
-        int getNbCellsHeight() const;
+        unsigned getNbCellsHeight() const;
+        /**
+         * @brief Getter function for the total number of objects
+         *
+         * @return Returns the number of objects on the ground
+         */
+        int getNbOfObjects() const;
         /**
          * @brief Getter function for the list of objects
          *
          * @return Returns the list of objects
          */
-        vector<unique_ptr<object>>& getObjects();
+        vector<vector<unique_ptr<object>>> getObjects() const;
 
         // Setters
         /**
@@ -124,7 +134,7 @@ class ground : public grille
          * @param obj : The object to add to the ground
          * @return Returns nothing
          */
-        void addObject(unique_ptr<object>);
+        void addObjectAt(unique_ptr<object>, unsigned, unsigned);
         /**
          * @brief A constant function that prints a ground on an output stream
          * @details A ground is printed as : \n
@@ -144,7 +154,7 @@ class ground : public grille
          * @param index : The index where to remove the object
          * @return Returns nothing
          */
-        void removeObjectAt(unsigned);
+        void removeObjectAt(unsigned, unsigned);
 
 }; // End of ground
 

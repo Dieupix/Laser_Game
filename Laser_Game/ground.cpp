@@ -2,9 +2,12 @@
 
 // ---------- Constructors ----------
 
-ground::ground(const point& position, int cellsWidth, int cellsHeight, int nbCellsWidth, int nbCellsHeight) :
-    grille{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}
+ground::ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight) :
+    grille{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}, nbOfObjects{0}
 {
+    objects.resize(nbCellsHeight);
+    for(unsigned i = 0; i < nbCellsHeight; ++i)
+        objects[i].resize(nbCellsWidth);
 }
 
 // ---------- End of constructors ----------
@@ -21,11 +24,14 @@ ground::ground(const point& position, int cellsWidth, int cellsHeight, int nbCel
 
 point ground::getPosition() const {return this->position;}
 
-int ground::getNbCellsWidth() const {return this->nbCellsWidth;}
+unsigned ground::getNbCellsWidth() const {return this->nbCellsWidth;}
 
-int ground::getNbCellsHeight() const {return this->nbCellsHeight;}
+unsigned ground::getNbCellsHeight() const {return this->nbCellsHeight;}
 
-vector<unique_ptr<object>>& ground::getObjects() {return this->objects;}
+int ground::getNbOfObjects() const {return this->nbOfObjects;}
+
+/// @TODO - WHY IT DOES NOT WORK ???
+//vector<vector<unique_ptr<object>>> ground::getObjects() const {return this->objects;}
 
 // ---------- End of getters ----------
 
@@ -47,32 +53,45 @@ void ground::setNbCellsHeight(int nbCellsHeight){
 
 // ---------- Functions --------
 
-void ground::addObject(unique_ptr<object> obj){
-    objects.push_back(move(obj));
-}
-
-void ground::removeObjectAt(unsigned index){
-    if(index == 0)
-        if(objects.size() == 0)
-            throw std::out_of_range("Index is out of range");
-        else
-            objects.erase(objects.begin() + index);
-    else if(index > objects.size())
-        throw std::out_of_range("Index is out of range");
-    else
-        objects.erase(objects.begin() + index);
+void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
+    if(i > nbCellsHeight)
+        throw std::out_of_range("The i index is out of range");
+    else if(j > nbCellsWidth)
+        throw std::out_of_range("The j index is out of range");
+    else{
+        if(!objects[i][j]) ++nbOfObjects;
+        objects[i][j] = move(obj);
+    }
 }
 
 void ground::print(std::ostream& ost) const{
     ost << "Ground[";
     grille::print(ost);
     ost << ", position" << position << ", nbCellsWidth(" << nbCellsWidth << "), nbCellsHeight(" << nbCellsHeight << ")]" << endl;
-    ost << "Objects (" << objects.size() << ')';
+    ost << "List of objects (" << nbOfObjects << ')';
 
-    if(objects.size() == 0) cout << endl;
+    if(nbOfObjects == 0) cout << endl;
     else {
         cout << " :" << endl;
-        for(unsigned i = 0; i < objects.size(); ++i) ost << i+1 << " : " << *objects[i] << endl;
+        unsigned k = 0;
+        for(unsigned i = 0; i < objects.size(); ++i){
+            for(unsigned j = 0; j < objects.size(); ++j){
+                if(objects[i][j]){
+                   ost << ++k << " : " << *objects[i][j] << endl;
+                }
+            }
+        }
+    }
+}
+
+void ground::removeObjectAt(unsigned i, unsigned j){
+    if(i > nbCellsHeight)
+        throw std::out_of_range("The i index is out of range");
+    else if(j > nbCellsWidth)
+        throw std::out_of_range("The j index is out of range");
+    else if(objects[i][j]){
+        objects[i][j].reset();
+        --nbOfObjects;
     }
 }
 
