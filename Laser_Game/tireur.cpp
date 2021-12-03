@@ -30,6 +30,7 @@ void tireur::print(std::ostream& ost) const {
             break;
         }
     }
+    ost << ")]";
 }
 
 
