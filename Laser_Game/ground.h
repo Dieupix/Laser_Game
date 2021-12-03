@@ -19,29 +19,29 @@ using std::vector;
  * @class ground ground.h
  * @brief A class that represents a ground
  * @details This class represents a ground, which is a @a grid
- * at a @a position, with a number of cells in width and height and a list of @a objects.
+ * at a @a position, with a @a number of cells in width and height and a list of @a objects.
  */
 class ground : public grille
 {
     private:
         /**
          * @brief The position of the ground
-         / @details Represents the position of the ground based on the grid
+         * @details Represents the position of the ground based on the grid.
          */
         point position;
-        int nbCellsWidth, nbCellsHeight;
         /**
-         * @brief The list of objects
-         * @details Contains all the objects that are on the ground
-         */
-        vector<unique_ptr<object>> objects;
-        /** @var ground::nbCellsWidth
          * @brief The number of cells in width
          */
-         /** @var ground::nbCellsHeight
+        int nbCellsWidth;
+        /**
          * @brief The number of cells in height
          */
-
+        int nbCellsHeight;
+        /**
+         * @brief The list of objects
+         * @details Contains all the objects that are on the ground.
+         */
+        vector<unique_ptr<object>> objects;
 
     public:
 
@@ -58,70 +58,70 @@ class ground : public grille
          */
         ground(const point& position, int cellsWidth, int cellsHeight, int nbCellsWidth, int nbCellsHeight);
 
-        // Destructors
+        // Destructor
         /**
          * @brief Default-implemented destructor
-         * @details Destroys the ground
+         * @details Destroys the ground.
          */
         virtual ~ground() = default;
 
         // Overloads
 
         // Getters
-        /** @brief
+        /**
+         * @brief Getter function for the position
          *
-         * @return point
-         *
+         * @return Returns the position of the ground
          */
         point getPosition() const;
-        /** @brief
+        /**
+         * @brief Getter function for the number of cells in width
          *
-         * @return int
-         *
+         * @return Returns the number of cells in width
          */
         int getNbCellsWidth() const;
-        /** @brief
+        /**
+         * @brief Getter function for the number of cells in height
          *
-         * @return int
-         *
+         * @return Returns the number of cells in height
          */
         int getNbCellsHeight() const;
         /**
          * @brief Getter function for the list of objects
          *
-         * @return vector<unique_ptr<object>>&
+         * @return Returns the list of objects
          */
         vector<unique_ptr<object>>& getObjects();
 
         // Setters
-        /** @brief
+        /**
+         * @brief Setter function for the position
          *
-         * @param point& const
-         * @return void
-         *
+         * @param[in] point : The new position
+         * @return Returns nothing
          */
         void setPosition(const point&);
-        /** @brief
+        /**
+         * @brief Setter function for the number of cells in width
          *
-         * @param int
-         * @return void
-         *
+         * @param[in] nbCellsWidth : The new number of cells
+         * @return Returns nothing
          */
         void setNbCellsWidth(int);
-        /** @brief
+        /**
+         * @brief Setter function for the number of cells in height
          *
-         * @param int
-         * @return void
-         *
+         * @param[in] nbCellsHeight : The new number of cells
+         * @return Returns nothing
          */
         void setNbCellsHeight(int);
 
         // Functions
         /**
          * @brief A constant function that prints a ground on an output stream
-         * @details A ground is printed as :
-         * Ground[Grid[cellsWidth(x), cellsHeight(x)], position(x,y), nbCellsWidth(x) nbCellsHeight(x)]
-         * Objects (x) :
+         * @details A ground is printed as : \n
+         * Ground[Grid[cellsWidth(x), cellsHeight(x)], position(x,y), nbCellsWidth(x) nbCellsHeight(x)] \n
+         * Objects (x) : \n
          * 1 : Object(...)
          *
          * @param ost : The output stream to print on

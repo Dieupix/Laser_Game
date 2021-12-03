@@ -19,13 +19,13 @@ ground::ground(const point& position, int cellsWidth, int cellsHeight, int nbCel
 
 // ---------- Getters ----------
 
-point ground::getPosition() const { return this->position; }
+point ground::getPosition() const {return this->position;}
 
-int ground::getNbCellsWidth() const { return this->nbCellsWidth; }
+int ground::getNbCellsWidth() const {return this->nbCellsWidth;}
 
-int ground::getNbCellsHeight() const { return this->nbCellsHeight; }
+int ground::getNbCellsHeight() const {return this->nbCellsHeight;}
 
-vector<unique_ptr<object>>& ground::getObjects() { return this->objects; }
+vector<unique_ptr<object>>& ground::getObjects() {return this->objects;}
 
 // ---------- End of getters ----------
 
