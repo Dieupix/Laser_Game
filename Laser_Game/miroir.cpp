@@ -38,7 +38,7 @@ void miroir::print(std::ostream& ost) const
        * @brief getter du sens du miroir
        * @return le sens du miroir courant
        */
-miroir::sens  miroir::getSens() const
+sens  miroir::getSens() const
 {
     return d_sens ;
 }
@@ -64,12 +64,12 @@ if ( estTouchee(l) )
    switch ( d_sens )
     {
     case basGauche_hautDroit :
-        if( (l.getDirection() == laser::directions::UP ) || (l.getDirection() == laser::directions::DOWN)  )
+        if( (l.getDirection() == directions::UP ) || (l.getDirection() == directions::DOWN)  )
             l.turnRight() ;
         else l.turnLeft() ;
         break;
     case  hautGauche_basDroit :
-        if( (l.getDirection() == laser::directions::LEFT ) || (l.getDirection() == laser::directions::RIGHT)  )
+        if( (l.getDirection() == directions::LEFT ) || (l.getDirection() == directions::RIGHT)  )
             l.turnLeft() ;
         else l.turnRight() ;
         break;

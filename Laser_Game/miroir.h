@@ -1,19 +1,16 @@
 #ifndef MIROIR_H_INCLUDED
 #define MIROIR_H_INCLUDED
 
+#include "enumTypes.h"
 #include "object.h"
+
+using namespace enumTypes;
 
 class laser ;
 class miroir : public object
 {
 
     public:
-
-
-        enum sens : bool  {
-            basGauche_hautDroit,
-            hautGauche_basDroit
-        };
 
     miroir( const point& position, sens Smirroir ) ;
     ~miroir()  = default ;

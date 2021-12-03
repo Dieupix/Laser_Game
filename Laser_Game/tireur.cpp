@@ -5,7 +5,7 @@ tireur::tireur(const point &p, directions direction) : object{p}, direction{dire
 
 laser tireur::tire(double step)
 {
-    laser l{this->getPosition(), static_cast<laser::directions>(direction), step};
+    laser l{this->getPosition(), direction, step};
     return l;
 }
 
@@ -34,7 +34,7 @@ void tireur::print(std::ostream& ost) const {
 }
 
 
-tireur::directions tireur::getDirection() const{
+directions tireur::getDirection() const{
     return direction;
 }
 void tireur::setDirection(directions direction){

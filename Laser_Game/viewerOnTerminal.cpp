@@ -2,14 +2,14 @@
 
 void viewerOnTerminal::printLaser(const unique_ptr<laser>& l) const{
     switch(l->getDirection()){
-    case laser::directions::RIGHT:
-    case laser::directions::LEFT:
+    case directions::RIGHT:
+    case directions::LEFT:
         {
             cout << '-';
             break;
         }
-    case laser::directions::UP:
-    case laser::directions::DOWN:
+    case directions::UP:
+    case directions::DOWN:
         {
             cout << '|';
             break;
@@ -24,22 +24,22 @@ void viewerOnTerminal::printLaser(const unique_ptr<laser>& l) const{
 
 void viewerOnTerminal::printTireur(const unique_ptr<tireur>& t) const{
     switch(t->getDirection()){
-    case tireur::directions::RIGHT:
+    case directions::RIGHT:
         {
             cout << '>';
             break;
         }
-    case tireur::directions::LEFT:
+    case directions::LEFT:
         {
             cout << '<';
             break;
         }
-    case tireur::directions::UP:
+    case directions::UP:
         {
             cout << '^';
             break;
         }
-    case tireur::directions::DOWN:
+    case directions::DOWN:
         {
             cout << 'v';
             break;

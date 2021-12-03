@@ -2,7 +2,7 @@
 
 // ---------- Constructors ----------
 
-laser::laser(const point& p, laser::directions direction, double step) : object{p}, direction{direction}, step{step} {}
+laser::laser(const point& p, directions direction, double step) : object{p}, direction{direction}, step{step} {}
 
 // ---------- End of constructors ----------
 
@@ -26,7 +26,7 @@ bool laser::operator!=(const laser& l) const{
 
 // ---------- Getters ----------
 
-laser::directions laser::getDirection() const {return this->direction;}
+directions laser::getDirection() const {return this->direction;}
 
 double laser::getStep() const {return this->step;}
 
@@ -34,7 +34,7 @@ double laser::getStep() const {return this->step;}
 
 // ---------- Setters ----------
 
-void laser::setDirection(laser::directions direction){
+void laser::setDirection(directions direction){
     this->direction = direction;
 }
 

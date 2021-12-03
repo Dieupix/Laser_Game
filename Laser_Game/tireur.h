@@ -8,12 +8,7 @@ class tireur : public object
     public:
          /** @brief L'enumeration des directions disponibles pour le tireur
           */
-         enum directions : short unsigned int{
-            RIGHT,
-            UP,
-            LEFT,
-            DOWN
-        };
+
 
         /** @brief Constructeur du tireur
          *
@@ -26,7 +21,7 @@ class tireur : public object
         /** @brief Destructeur virtuel de la classe
          */
         virtual ~tireur() = default;
-        tireur::directions getDirection() const;
+        directions getDirection() const;
         void setDirection(directions direction);
         virtual void print(std::ostream& ost) const override;
 

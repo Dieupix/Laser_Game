@@ -1,7 +1,10 @@
 #ifndef LASER_H
 #define LASER_H
 
+#include "enumTypes.h"
 #include "object.h"
+
+using namespace enumTypes;
 
 /**
  * @class laser laser.h
@@ -13,35 +16,6 @@ class laser : public object
 {
     public:
         friend class tireur;
-
-        // Enumeration
-        /**
-         * @brief Enumeration of the directions
-         * @details This enumeration defines the different directions
-         * the laser can have.
-         */
-        enum directions : short unsigned int{
-            RIGHT,
-            UP,
-            LEFT,
-            DOWN
-        };
-        /** @var laser::directions laser::RIGHT
-         * @brief Right direction
-         * @details The direction when the laser goes to the right.
-         */
-        /** @var laser::directions laser::LEFT
-         * @brief Left direction
-         * @details The direction when the laser goes to the left.
-         */
-        /** @var laser::directions laser::UP
-         * @brief Up direction
-         * @details The direction when the laser goes to the top.
-         */
-        /** @var laser::directions laser::DOWN
-         * @brief Down direction
-         * @details The direction when the laser goes to the bottom.
-         */
 
         // Destructor
         /**
@@ -77,7 +51,7 @@ class laser : public object
          *
          * @return Returns the direction of the laser
          */
-        laser::directions getDirection() const;
+        directions getDirection() const;
         /**
          * @brief Constant getter function for the step of the laser
          *
@@ -92,7 +66,7 @@ class laser : public object
          * @param[in] direction : The new direction of the laser
          * @return Returns nothing
          */
-        void setDirection(laser::directions);
+        void setDirection(directions);
         /**
          * @brief Setter function for the step of the laser
          *
@@ -140,7 +114,7 @@ class laser : public object
           * @brief The direction of the laser
           * @see directions
           */
-        laser::directions direction;
+        directions direction;
         /**
          * @brief The step of the laser
          */
@@ -155,7 +129,7 @@ class laser : public object
          * @param[in] step : The step of the laser when it moves (by default 1.0)
          * @return Creates a laser with its parameters
          */
-        laser(const point&, laser::directions, double = 1.0);
+        laser(const point&, directions, double = 1.0);
 
 
 }; // End of laser
