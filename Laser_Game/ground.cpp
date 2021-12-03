@@ -2,8 +2,10 @@
 
 // ---------- Constructors ----------
 
-ground::ground(int cellsWidth, int cellsHeight) : grille{cellsWidth, cellsHeight}
-{}
+ground::ground(const point& position, int cellsWidth, int cellsHeight, int nbCellsWidth, int nbCellsHeight) :
+    grille{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}
+{
+}
 
 // ---------- End of constructors ----------
 
@@ -44,6 +46,14 @@ void ground::setNbCellsHeight(int nbCellsHeight){
 // ---------- End of setters ----------
 
 // ---------- Functions --------
+
+void ground::print(std::ostream& ost) const{
+    ost << "Terrain[grille";
+    grille::print(ost);
+    ost << ", position" << position << ", nbCellsWidth(" << nbCellsWidth << "), nbCellsHeight(" << nbCellsHeight << ")]" << endl;
+    ost << "Objets " << objects.size() << " :" << endl;
+    for(unsigned i = 0; i < objects.size(); ++i) ost << i+1 << " : " << *objects[i] << endl;
+}
 
 // ---------- End of functions ----------
 
