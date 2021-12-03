@@ -136,6 +136,15 @@ class ground : public grille
          * @return Returns nothing
          */
         virtual void print(std::ostream& ost) const;
+        /**
+         * @brief A function that removes the object at an index
+         * @details The index has to be in the range of 0 and the size of the list of objects.
+         * @exception out_of_range : Throws this exception if the index is out of range
+         *
+         * @param index : The index where to remove the object
+         * @return Returns nothing
+         */
+        void removeObjectAt(unsigned);
 
 }; // End of ground
 

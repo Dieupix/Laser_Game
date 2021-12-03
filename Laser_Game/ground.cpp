@@ -51,12 +51,29 @@ void ground::addObject(unique_ptr<object> obj){
     objects.push_back(move(obj));
 }
 
+void ground::removeObjectAt(unsigned index){
+    if(index == 0)
+        if(objects.size() == 0)
+            throw std::out_of_range("Index is out of range");
+        else
+            objects.erase(objects.begin() + index);
+    else if(index > objects.size())
+        throw std::out_of_range("Index is out of range");
+    else
+        objects.erase(objects.begin() + index);
+}
+
 void ground::print(std::ostream& ost) const{
     ost << "Ground[";
     grille::print(ost);
     ost << ", position" << position << ", nbCellsWidth(" << nbCellsWidth << "), nbCellsHeight(" << nbCellsHeight << ")]" << endl;
-    ost << "Objects " << objects.size() << " :" << endl;
-    for(unsigned i = 0; i < objects.size(); ++i) ost << i+1 << " : " << *objects[i] << endl;
+    ost << "Objects (" << objects.size() << ')';
+
+    if(objects.size() == 0) cout << endl;
+    else {
+        cout << " :" << endl;
+        for(unsigned i = 0; i < objects.size(); ++i) ost << i+1 << " : " << *objects[i] << endl;
+    }
 }
 
 // ---------- End of functions ----------
