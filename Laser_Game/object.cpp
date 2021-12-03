@@ -91,5 +91,6 @@ bool object::operator!=(const object& o) const
 std::ostream& operator<<(std::ostream& ost, const object& o)
 {
     //Afficheur d'objet
+    o.print(ost);
     return ost;
 }

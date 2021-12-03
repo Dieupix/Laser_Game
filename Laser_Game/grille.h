@@ -29,7 +29,7 @@ class grille
         *
         * @return void
         */
-        void print(std::ostream& ost) const;
+        virtual void print(std::ostream& ost) const;
 
 
         /** @brief Permet de lire un flux

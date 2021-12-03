@@ -25,7 +25,7 @@ class ground : public grille
     public:
 
         // Constructors
-        ground(const point&, int, int, int, int);
+        ground(const point& position, int cellsWidth, int cellsHeight, int nbCellsWidth, int nbCellsHeight);
 
         // Destructors
         virtual ~ground() = default;
@@ -44,7 +44,7 @@ class ground : public grille
         void setNbCellsHeight(int);
 
         // Functions
-        void print(std::ostream& ost) const;
+        virtual void print(std::ostream& ost) const;
 
 }; // End of ground
 
