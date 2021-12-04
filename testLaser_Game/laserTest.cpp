@@ -11,6 +11,8 @@ laser createLaserForTest(const point& p, const directions& direction, double ste
     return {p, direction, step};
 }
 
+// Need to test the class object before
+
 TEST_CASE("Test of the class laser"){
     point position{0, 0};
     auto direction = directions::RIGHT;
