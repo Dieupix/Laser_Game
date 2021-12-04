@@ -1,5 +1,25 @@
 #include "viewerOnTerminal.h"
 
+void viewerOnTerminal::print(const unique_ptr<object>& obj) const{
+    if(dynamic_cast<laser*>(obj.get())){
+
+        auto tmp = dynamic_cast<laser*>(obj.get());
+        printLaser(make_unique<laser>(*tmp));
+
+    }else if(dynamic_cast<wall*>(obj.get())){
+
+        /*auto tmp = dynamic_cast<wall*>(obj.get());
+        printWall(make_unique<wall>(*tmp));*/
+
+    }else if(dynamic_cast<tireur*>(obj.get())){
+
+        auto tmp = dynamic_cast<tireur*>(obj.get());
+        printTireur(make_unique<tireur>(*tmp));
+
+    }else
+        cerr << "Unknown type" << endl;
+}
+
 void viewerOnTerminal::printLaser(const unique_ptr<laser>& l) const{
     switch(l->getDirection()){
     case directions::RIGHT:
@@ -50,4 +70,7 @@ void viewerOnTerminal::printTireur(const unique_ptr<tireur>& t) const{
             break;
         }
     }
+}
+void viewerOnTerminal::printWall(const unique_ptr<wall>&) const{
+    cout << '#';
 }
