@@ -1,10 +1,13 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
+#include "enumTypes.h"
 #include "point.h"
 
 class object
 {
+    friend object createObjectForTest(const point&);
+
    private :
        point d_p;
    protected:
@@ -18,7 +21,7 @@ class object
        void shift(const point& p);
        void move(const point& p);
        void move(double x, double y);
-       virtual void print(std::ostream& ost) const = 0;
+       virtual void print(std::ostream& ost) const;
        bool operator==(const object& o) const;
        bool operator!=(const object& o) const;
 };

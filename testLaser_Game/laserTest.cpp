@@ -1,12 +1,22 @@
 #include "doctest.h"
 #include "../Laser_Game/laser.h"
 
+#include <string>
+#include <sstream>
+
+using std::ostringstream;
+using std::string;
+
+laser createLaserForTest(const point& p, const directions& direction, double step){
+    return {p, direction, step};
+}
+
 TEST_CASE("Test of the class laser"){
     point position{0, 0};
-    auto direction = laser::directions::RIGHT;
+    auto direction = directions::RIGHT;
     double step = 1.0;
 
-    laser l {position, direction, step};
+    auto l = createLaserForTest(position, direction, step);
 
     SUBCASE("Test of the constructor"){
         //REQUIRE_EQ(l.getPosition(), point{-1, -1}); // SHOULD FAIL
@@ -17,19 +27,19 @@ TEST_CASE("Test of the class laser"){
 
     SUBCASE("Test of the setters"){
         SUBCASE("Test of the direction setter"){
-            auto newDirection = laser::directions::LEFT;
+            auto newDirection = directions::LEFT;
             l.setDirection(newDirection);
 
-            //REQUIRE_EQ(l.getDirection(), laser::directions::UP); // SHOULD FAIL
-            REQUIRE_EQ(l.getDirection(), newDirection);
+            //CHECK_EQ(l.getDirection(), directions::UP); // SHOULD FAIL
+            CHECK_EQ(l.getDirection(), newDirection);
         }
 
         SUBCASE("Test of the step setter"){
             double newStep = 2.5;
             l.setStep(newStep);
 
-            //REQUIRE_EQ(l.getStep(), 1.6); // SHOULD FAIL
-            REQUIRE_EQ(l.getStep(), newStep);
+            //CHECK_EQ(l.getStep(), 1.6); // SHOULD FAIL
+            CHECK_EQ(l.getStep(), newStep);
         }
     }
 
@@ -37,25 +47,38 @@ TEST_CASE("Test of the class laser"){
         point expectedPosition {1.0, 0};
         l.moveByStep();
 
-        //REQUIRE_EQ(l.getPosition(), point{-1.5, 0}); // SHOULD FAIL
-        REQUIRE_EQ(l.getPosition(), expectedPosition);
+        //CHECK_EQ(l.getPosition(), point{-1.5, 0}); // SHOULD FAIL
+        CHECK_EQ(l.getPosition(), expectedPosition);
     }
 
     SUBCASE("Test of the turning functions"){
         SUBCASE("Test of the turnLeft() function"){
-            auto expectedDirection = laser::directions::UP;
+            auto expectedDirection = directions::UP;
             l.turnLeft();
 
-            //REQUIRE_EQ(l.getDirection(), laser::directions::DOWN); // SHOULD FAIL
-            REQUIRE_EQ(l.getDirection(), expectedDirection);
+            //CHECK_EQ(l.getDirection(), directions::DOWN); // SHOULD FAIL
+            CHECK_EQ(l.getDirection(), expectedDirection);
         }
 
         SUBCASE("Test of the turnRight() function"){
-            auto expectedDirection = laser::directions::DOWN;
+            auto expectedDirection = directions::DOWN;
             l.turnRight();
 
-            //REQUIRE_EQ(l.getDirection(), laser::directions::UP); // SHOULD FAIL
-            REQUIRE_EQ(l.getDirection(), expectedDirection);
+            //CHECK_EQ(l.getDirection(), directions::UP); // SHOULD FAIL
+            CHECK_EQ(l.getDirection(), expectedDirection);
         }
     }
+
+    SUBCASE("Test of the print() function"){
+        string expectedOutput = "Laser[position(0,0), direction(RIGHT), step(1)]";
+
+        ostringstream ost;
+        l.print(ost);
+
+        string read = ost.str();
+
+        //CHECK_EQ(read, "I want you to fail"); // SHOULD FAIL
+        CHECK_EQ(read, expectedOutput);
+    }
 }
+

@@ -1,7 +1,10 @@
 #ifndef TIREUR_H
 #define TIREUR_H
 #include "object.h"
-#include "laser.h"
+
+using namespace enumTypes;
+
+class laser;
 
 class tireur : public object
 {

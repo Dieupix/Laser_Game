@@ -1,12 +1,12 @@
 #include "tireur.h"
+#include "laser.h"
 
 tireur::tireur(const point &p, directions direction) : object{p}, direction{direction}
 {}
 
 laser tireur::tire(double step)
 {
-    laser l{this->getPosition(), direction, step};
-    return l;
+    return {this->getPosition(), direction, step};
 }
 
 void tireur::print(std::ostream& ost) const {

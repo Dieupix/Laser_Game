@@ -34,22 +34,42 @@
 		</Compiler>
 		<Unit filename="../Laser_Game/cible.cpp" />
 		<Unit filename="../Laser_Game/cible.h" />
+		<Unit filename="../Laser_Game/enumTypes.h" />
+		<Unit filename="../Laser_Game/grille.cpp" />
+		<Unit filename="../Laser_Game/grille.h" />
+		<Unit filename="../Laser_Game/ground.cpp" />
+		<Unit filename="../Laser_Game/ground.h" />
 		<Unit filename="../Laser_Game/laser.cpp" />
 		<Unit filename="../Laser_Game/laser.h" />
 		<Unit filename="../Laser_Game/miroir.cpp" />
 		<Unit filename="../Laser_Game/miroir.h" />
-		<Unit filename="../Laser_Game/objet.cpp" />
-		<Unit filename="../Laser_Game/objet.h" />
+		<Unit filename="../Laser_Game/object.cpp" />
+		<Unit filename="../Laser_Game/object.h" />
 		<Unit filename="../Laser_Game/point.cpp" />
 		<Unit filename="../Laser_Game/point.h" />
 		<Unit filename="../Laser_Game/tireur.cpp" />
 		<Unit filename="../Laser_Game/tireur.h" />
+		<Unit filename="../Laser_Game/viewer.h" />
+		<Unit filename="../Laser_Game/viewerOnTerminal.cpp" />
+		<Unit filename="../Laser_Game/viewerOnTerminal.h" />
+		<Unit filename="../Laser_Game/wall.cpp" />
+		<Unit filename="../Laser_Game/wall.h" />
 		<Unit filename="cibleTest.cpp" />
 		<Unit filename="doctest.h" />
 		<Unit filename="laserTest.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="miroirTest.cpp" />
 		<Unit filename="objetTest.cpp" />
-		<Extensions />
+		<Extensions>
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build extract_all="1" extract_private="1" extract_static="1" />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general use_at_in_tags="1" />
+			</DoxyBlocks>
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

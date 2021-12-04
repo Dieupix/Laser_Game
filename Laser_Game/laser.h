@@ -1,10 +1,11 @@
 #ifndef LASER_H
 #define LASER_H
 
-#include "enumTypes.h"
 #include "object.h"
 
 using namespace enumTypes;
+
+#include "tireur.h"
 
 /**
  * @class laser laser.h
@@ -14,8 +15,16 @@ using namespace enumTypes;
  */
 class laser : public object
 {
+    /**
+     * @brief Allows the class tireur to shoot
+     */
+    friend laser tireur::tire(double);
+    /**
+     * @brief Allows the program to test the class laser
+     */
+    friend laser createLaserForTest(const point&, const directions&, double);
+
     public:
-        friend class tireur;
 
         // Destructor
         /**
