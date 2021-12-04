@@ -29,7 +29,6 @@ TEST_CASE("Test of the class ground"){
     }
 
     SUBCASE("Test of the addObjectAt() function"){
-
     }
 
     SUBCASE("Test of the print() function"){
