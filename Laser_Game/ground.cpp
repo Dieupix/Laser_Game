@@ -30,8 +30,7 @@ unsigned ground::getNbCellsHeight() const {return this->nbCellsHeight;}
 
 int ground::getNbOfObjects() const {return this->nbOfObjects;}
 
-/// @TODO - WHY IT DOES NOT WORK ???
-//vector<vector<unique_ptr<object>>> ground::getObjects() const {return this->objects;}
+const vector<vector<unique_ptr<object>>>& ground::getObjects() const {return this->objects;}
 
 // ---------- End of getters ----------
 

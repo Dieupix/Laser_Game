@@ -102,7 +102,7 @@ class ground : public grille
          *
          * @return Returns the list of objects
          */
-        vector<vector<unique_ptr<object>>> getObjects() const;
+        const vector<vector<unique_ptr<object>>>& getObjects() const;
 
         // Setters
         /**
