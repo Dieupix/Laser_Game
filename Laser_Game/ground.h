@@ -1,6 +1,7 @@
 #ifndef GROUND_H
 #define GROUND_H
 
+#include <fstream>
 #include <memory>
 #include <string>
 #include <sstream>
@@ -13,9 +14,12 @@ using std::cerr;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::ifstream;
 using std::make_unique;
 using std::move;
+using std::ofstream;
 using std::string;
+using std::stringstream;
 using std::unique_ptr;
 using std::vector;
 
@@ -144,9 +148,9 @@ class ground : public grille
          * @brief A function that loads a ground from a file
          *
          * @param fileName : The file name to load the ground from
-         * @return Returns nothing
+         * @return Returns true if the ground has been successfully loaded, false otherwise
          */
-        void loadGround(const string& fileName);
+        bool loadGround(const string& fileName);
         /**
          * @brief A constant function that prints a ground on an output stream
          * @details A ground is printed as : \n
@@ -173,9 +177,9 @@ class ground : public grille
          * @brief A constant function that saves the ground in a file
          *
          * @param fileName : The file name to save the ground in
-         * @return Returns nothing
+         * @return Returns true if the ground has been successfully saved, false otherwise
          */
-        void saveGround(const string& fileName) const;
+        bool saveGround(const string& fileName) const;
 
 }; // End of ground
 

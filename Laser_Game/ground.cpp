@@ -63,6 +63,23 @@ void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
     }
 }
 
+bool ground::loadGround(const string& fileName){
+    ifstream ifs(fileName.c_str());
+    if(!ifs){
+        cerr << "ERROR : cannot open \"" << fileName << "\" in reading..." << endl;
+        return false;
+    } else{
+
+        /*stringstream buffer;
+        buffer << ifs.rdbuf();
+        string loaded = buffer.str();*/
+
+        ifs.read((char*)this, sizeof(this));
+
+        return true;
+    }
+}
+
 void ground::print(std::ostream& ost) const{
     ost << "Ground[";
     grille::print(ost);
@@ -91,6 +108,21 @@ void ground::removeObjectAt(unsigned i, unsigned j){
     else if(objects[i][j]){
         objects[i][j].reset();
         --nbOfObjects;
+    }
+}
+
+bool ground::saveGround(const string& fileName) const{
+    ofstream ofs(fileName);
+    if(!ofs){
+        cerr << "ERROR : cannot open \"" << fileName << "\" for writting..." << endl;
+        return false;
+    } else{
+        /*stringstream toSave;
+        print(toSave);
+        ofs << toSave.rdbuf();*/
+
+        ofs.write((char*)this, sizeof(this));
+        return true;
     }
 }
 
