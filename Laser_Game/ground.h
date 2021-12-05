@@ -2,6 +2,8 @@
 #define GROUND_H
 
 #include <memory>
+#include <string>
+#include <sstream>
 #include <vector>
 
 #include "object.h"
@@ -13,6 +15,7 @@ using std::cout;
 using std::endl;
 using std::make_unique;
 using std::move;
+using std::string;
 using std::unique_ptr;
 using std::vector;
 
@@ -129,20 +132,30 @@ class ground : public grille
 
         // Functions
         /**
-         * @brief A function that adds an object to the ground
+         * @brief A function that adds an object on the ground
          *
          * @param obj : The object to add to the ground
+         * @param i : The i index where to add the object
+         * @param j : The j index where to add the object
          * @return Returns nothing
          */
         void addObjectAt(unique_ptr<object>, unsigned, unsigned);
+        /**
+         * @brief A function that loads a ground from a file
+         *
+         * @param fileName : The file name to load the ground from
+         * @return Returns nothing
+         */
+        void loadGround(const string& fileName);
         /**
          * @brief A constant function that prints a ground on an output stream
          * @details A ground is printed as : \n
          * Ground[Grid[cellsWidth(x), cellsHeight(x)], position(x,y), nbCellsWidth(x) nbCellsHeight(x)] \n
          * Objects (x) : \n
-         * 1 : Object(...)
+         * 1 : Object(...) \n
+         * 2 : Object(...)
          *
-         * @param ost : The output stream to print on
+         * @param[out] ost : The output stream to print on
          * @return Returns nothing
          */
         virtual void print(std::ostream& ost) const;
@@ -151,10 +164,18 @@ class ground : public grille
          * @details The index has to be in the range of 0 and the size of the list of objects.
          * @exception out_of_range : Throws this exception if the index is out of range
          *
-         * @param index : The index where to remove the object
+         * @param i : The i index where to remove the object
+         * @param j : The j index where to remove the object
          * @return Returns nothing
          */
         void removeObjectAt(unsigned, unsigned);
+        /**
+         * @brief A constant function that saves the ground in a file
+         *
+         * @param fileName : The file name to save the ground in
+         * @return Returns nothing
+         */
+        void saveGround(const string& fileName) const;
 
 }; // End of ground
 
