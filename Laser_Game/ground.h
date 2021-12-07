@@ -125,14 +125,14 @@ class ground : public grille
          * @param[in] nbCellsWidth : The new number of cells
          * @return Returns nothing
          */
-        void setNbCellsWidth(int);
+        void setNbCellsWidth(unsigned);
         /**
          * @brief Setter function for the number of cells in height
          *
          * @param[in] nbCellsHeight : The new number of cells
          * @return Returns nothing
          */
-        void setNbCellsHeight(int);
+        void setNbCellsHeight(unsigned);
 
         // Functions
         /**

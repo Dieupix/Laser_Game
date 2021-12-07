@@ -40,12 +40,17 @@ void ground::setPosition(const point& position){
     this->position = position;
 }
 
-void ground::setNbCellsWidth(int nbCellsWidth){
+void ground::setNbCellsWidth(unsigned nbCellsWidth){
     this->nbCellsWidth = nbCellsWidth;
+    for(unsigned i = 0; i < objects.size(); ++i)
+    {
+        objects[i].resize(nbCellsWidth);
+    }
 }
 
-void ground::setNbCellsHeight(int nbCellsHeight){
+void ground::setNbCellsHeight(unsigned nbCellsHeight){
     this->nbCellsHeight = nbCellsHeight;
+    objects.resize(nbCellsHeight);
 }
 
 // ---------- End of setters ----------
@@ -84,14 +89,13 @@ void ground::print(std::ostream& ost) const{
     ost << "Ground[";
     grille::print(ost);
     ost << ", position" << position << ", nbCellsWidth(" << nbCellsWidth << "), nbCellsHeight(" << nbCellsHeight << ")]" << endl;
-    ost << "List of objects (" << nbOfObjects << ')';
+    ost << "List of objects (" << nbOfObjects << ") :" << endl;
 
-    if(nbOfObjects == 0) cout << endl;
+    if(nbOfObjects == 0) cout << "Empty" << endl;
     else {
-        cout << " :" << endl;
         unsigned k = 0;
         for(unsigned i = 0; i < objects.size(); ++i){
-            for(unsigned j = 0; j < objects.size(); ++j){
+            for(unsigned j = 0; j < objects[i].size(); ++j){
                 if(objects[i][j]){
                    ost << ++k << " : " << *objects[i][j] << endl;
                 }
