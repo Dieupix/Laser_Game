@@ -1,5 +1,11 @@
 #include "ground.h"
 
+#include <sstream>
+#include <string>
+
+using std::string;
+using std::stringstream;
+
 // ---------- Constructors ----------
 
 ground::ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight) :
@@ -68,21 +74,13 @@ void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
     }
 }
 
-bool ground::loadGround(const string& fileName){
-    ifstream ifs(fileName.c_str());
-    if(!ifs){
-        cerr << "ERROR : cannot open \"" << fileName << "\" in reading..." << endl;
-        return false;
-    } else{
+void ground::loadGround(istream& ist)
+{
+    /// @TODO : change the loading method
 
-        /*stringstream buffer;
-        buffer << ifs.rdbuf();
-        string loaded = buffer.str();*/
-
-        ifs.read((char*)this, sizeof(this));
-
-        return true;
-    }
+    stringstream buffer;
+    buffer << ist.rdbuf();
+    string loaded = buffer.str();
 }
 
 void ground::print(std::ostream& ost) const{
@@ -115,19 +113,14 @@ void ground::removeObjectAt(unsigned i, unsigned j){
     }
 }
 
-bool ground::saveGround(const string& fileName) const{
-    ofstream ofs(fileName);
-    if(!ofs){
-        cerr << "ERROR : cannot open \"" << fileName << "\" for writting..." << endl;
-        return false;
-    } else{
-        /*stringstream toSave;
-        print(toSave);
-        ofs << toSave.rdbuf();*/
+void ground::saveGround(ostream& ost) const
+{
+    /// @TODO : change the saving method
 
-        ofs.write((char*)this, sizeof(this));
-        return true;
-    }
+    string toSave;
+
+    ost << toSave;
+
 }
 
 // ---------- End of functions ----------

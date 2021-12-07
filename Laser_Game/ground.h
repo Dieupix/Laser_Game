@@ -1,25 +1,18 @@
 #ifndef GROUND_H
 #define GROUND_H
 
-#include <fstream>
 #include <memory>
-#include <string>
-#include <sstream>
 #include <vector>
 
 #include "object.h"
 #include "grille.h"
 
-using std::cerr;
-using std::cin;
 using std::cout;
 using std::endl;
-using std::ifstream;
+using std::istream;
 using std::make_unique;
 using std::move;
-using std::ofstream;
-using std::string;
-using std::stringstream;
+using std::ostream;
 using std::unique_ptr;
 using std::vector;
 
@@ -145,12 +138,12 @@ class ground : public grille
          */
         void addObjectAt(unique_ptr<object>, unsigned, unsigned);
         /**
-         * @brief A function that loads a ground from a file
+         * @brief A function that loads a ground from an input stream
          *
-         * @param fileName : The file name to load the ground from
-         * @return Returns true if the ground has been successfully loaded, false otherwise
+         * @param ist : The input stream to load the ground from
+         * @return Returns nothing
          */
-        bool loadGround(const string& fileName);
+        void loadGround(istream&);
         /**
          * @brief A constant function that prints a ground on an output stream
          * @details A ground is printed as : \n
@@ -162,7 +155,7 @@ class ground : public grille
          * @param[out] ost : The output stream to print on
          * @return Returns nothing
          */
-        virtual void print(std::ostream& ost) const;
+        virtual void print(ostream& ost) const;
         /**
          * @brief A function that removes the object at an index
          * @details The index has to be in the range of 0 and the size of the list of objects.
@@ -174,12 +167,12 @@ class ground : public grille
          */
         void removeObjectAt(unsigned, unsigned);
         /**
-         * @brief A constant function that saves the ground in a file
+         * @brief A constant function that saves the ground in an output stream
          *
-         * @param fileName : The file name to save the ground in
-         * @return Returns true if the ground has been successfully saved, false otherwise
+         * @param ost : The output stream to save the ground in
+         * @return Returns nothing
          */
-        bool saveGround(const string& fileName) const;
+        void saveGround(ostream&) const;
 
 }; // End of ground
 
