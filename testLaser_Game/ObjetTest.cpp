@@ -6,7 +6,7 @@ object createObjectForTest(const point& p){
     return {p};
 }
 
-TEST_CASE("Test of the class object"){
+TEST_CASE("1 - Test of the class object"){
     point position{1, 1};
     point position_deplace {2,5};
     object obj = createObjectForTest(position);

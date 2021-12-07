@@ -1,7 +1,7 @@
 #include "doctest.h"
 #include "../Laser_Game/miroir.h"
 
-TEST_CASE("Test of the class cible"){
+TEST_CASE("2 - Test of the class mirror"){
 
    auto sensM = sens::basGauche_hautDroit ;
    point position{0, 0};

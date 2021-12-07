@@ -4,7 +4,7 @@
 
 // Need to test the class grille before
 
-TEST_CASE("Test of the class ground"){
+TEST_CASE("3 - Test of the class ground"){
 
     point position(0, 0);
     double cellsWidth = 1.0, cellsHeight = 1.0;

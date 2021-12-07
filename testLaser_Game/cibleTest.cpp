@@ -2,7 +2,7 @@
 #include "../Laser_Game/cible.h"
 #include "../Laser_Game/laser.h"
 
-/*TEST_CASE("Test of the class cible"){
+/*TEST_CASE("2 - Test of the class cible"){
 
     point P{0, 0} ;
    cible c (P) ;
@@ -29,7 +29,7 @@
     auto direction = laser::directions::RIGHT;
     double step = 1.0;
 
-    laser l {position, direction, step};
+    laser l = createLaserForTest(position, direction, step);
 
 
       point B{0, 0 };
