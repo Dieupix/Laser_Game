@@ -7,26 +7,31 @@
 using std::ostringstream;
 using std::string;
 
-laser createLaserForTest(const point& p, const directions& direction, double step){
+laser createLaserForTest(const point& p, const directions& direction, double step)
+{
     return {p, direction, step};
 }
 
-TEST_CASE("2 - Test of the class laser"){
+TEST_CASE("2 - Test of the class laser")
+{
     point position{0, 0};
     auto direction = directions::RIGHT;
     double step = 1.0;
 
     auto l = createLaserForTest(position, direction, step);
 
-    SUBCASE("Test of the constructor"){
+    SUBCASE("Test of the constructor")
+    {
         //REQUIRE_EQ(l.getPosition(), point{-1, -1}); // SHOULD FAIL
         REQUIRE_EQ(l.getPosition(), position);
         REQUIRE_EQ(l.getDirection(), direction);
         REQUIRE_EQ(l.getStep(), step);
     }
 
-    SUBCASE("Test of the setters"){
-        SUBCASE("Test of the direction setter"){
+    SUBCASE("Test of the setters")
+    {
+        SUBCASE("Test of the setDirection() function")
+        {
             auto newDirection = directions::LEFT;
             l.setDirection(newDirection);
 
@@ -34,7 +39,8 @@ TEST_CASE("2 - Test of the class laser"){
             CHECK_EQ(l.getDirection(), newDirection);
         }
 
-        SUBCASE("Test of the step setter"){
+        SUBCASE("Test of the setStep() function")
+        {
             double newStep = 2.5;
             l.setStep(newStep);
 
@@ -43,7 +49,8 @@ TEST_CASE("2 - Test of the class laser"){
         }
     }
 
-    SUBCASE("Test of the moveByStep() function"){
+    SUBCASE("Test of the moveByStep() function")
+    {
         point expectedPosition {1.0, 0};
         l.moveByStep();
 
@@ -51,8 +58,10 @@ TEST_CASE("2 - Test of the class laser"){
         CHECK_EQ(l.getPosition(), expectedPosition);
     }
 
-    SUBCASE("Test of the turning functions"){
-        SUBCASE("Test of the turnLeft() function"){
+    SUBCASE("Test of the turning functions")
+    {
+        SUBCASE("Test of the turnLeft() function")
+        {
             auto expectedDirection = directions::UP;
             l.turnLeft();
 
@@ -60,7 +69,8 @@ TEST_CASE("2 - Test of the class laser"){
             CHECK_EQ(l.getDirection(), expectedDirection);
         }
 
-        SUBCASE("Test of the turnRight() function"){
+        SUBCASE("Test of the turnRight() function")
+        {
             auto expectedDirection = directions::DOWN;
             l.turnRight();
 
@@ -69,7 +79,8 @@ TEST_CASE("2 - Test of the class laser"){
         }
     }
 
-    SUBCASE("Test of the print() function"){
+    SUBCASE("Test of the print() function")
+    {
         string expectedOutput = "Laser[position(0,0), direction(RIGHT), step(1)]";
 
         ostringstream ost;
