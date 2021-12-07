@@ -6,10 +6,11 @@
 #include <string>
 #include <sstream>
 
-using std::ostringstream;
+using std::stringstream;
 using std::string;
 
-TEST_CASE("3 - Test of the class ground")
+TEST_CASE("3 - Test of the class ground"
+          * doctest::skip(true))
 {
     point position(0, 0);
     double cellsWidth = 1.0, cellsHeight = 1.0;
@@ -68,7 +69,24 @@ TEST_CASE("3 - Test of the class ground")
 
     SUBCASE("Test of the addObjectAt() function")
     {
+        /// @TODO : implement the subcase
+    }
 
+    SUBCASE("Test of the loadGround() function")
+    {
+        string expectedInput = "";
+
+        stringstream ist;
+        for(auto c : expectedInput)
+        {
+            ist << c;
+        }
+
+        g.loadGround(ist);
+
+        /// @TODO : setup all check
+        CHECK_EQ(true, true); // SHOULD FAIL
+        CHECK_EQ(false, false);
     }
 
     SUBCASE("Test of the print() function")
@@ -78,7 +96,7 @@ TEST_CASE("3 - Test of the class ground")
                                                 "List of objects (1) :\n" +
                                                 "1 : Tireur[position(0,0), direction(RIGHT)]\n";
 
-        ostringstream ost;
+        stringstream ost;
         g.print(ost);
 
         string read = ost.str();
@@ -88,6 +106,20 @@ TEST_CASE("3 - Test of the class ground")
 
     SUBCASE("Test of the removeObjectAt() function")
     {
+        /// @TODO : implement the subcase
+    }
 
+    SUBCASE("Test of the saveGround() function")
+    {
+        string expectedOutput = "";
+
+        stringstream ost;
+        g.saveGround(ost);
+
+        string read = ost.str();
+
+        /// @TODO : setup all check
+        //CHECK_EQ(read, "I want you to fail"); // SHOULD FAIL
+        CHECK_EQ(read, expectedOutput);
     }
 }

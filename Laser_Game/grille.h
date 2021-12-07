@@ -13,14 +13,12 @@ class grille
          */
         grille(int longueur, int largeur);
 
-
         /** @brief Destructeur virtuel de la grile
          *
          * @return virtual
          *
          */
         virtual ~grille() = default;
-
 
         /**
         * @brief Permet d'écrire sur un flux
@@ -31,6 +29,7 @@ class grille
         */
         virtual void print(std::ostream& ost) const;
 
+        /// @TODO : add getters function for private variable members
 
         /** @brief Permet de lire un flux
          *
@@ -46,6 +45,7 @@ class grille
          * @param Le nombre de cellule en largeur
          */
         int d_longueurCells, d_largeurCells;
+        /// @TODO : change types from int to double - DON'T FORGET THE CONSTRUCTOR
 };
 
 std::ostream& operator<<(std::ostream& ost, const grille & g);
