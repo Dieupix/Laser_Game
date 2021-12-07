@@ -1,15 +1,35 @@
 #include "viewerOnTerminal.h"
 
+void viewerOnTerminal::print(const unique_ptr<object>& obj) const{
+    if(dynamic_cast<laser*>(obj.get())){
+
+        auto tmp = dynamic_cast<laser*>(obj.get());
+        printLaser(make_unique<laser>(*tmp));
+
+    }else if(dynamic_cast<wall*>(obj.get())){
+
+        /*auto tmp = dynamic_cast<wall*>(obj.get());
+        printWall(make_unique<wall>(*tmp));*/
+
+    }else if(dynamic_cast<tireur*>(obj.get())){
+
+        auto tmp = dynamic_cast<tireur*>(obj.get());
+        printTireur(make_unique<tireur>(*tmp));
+
+    }else
+        cerr << "Unknown type" << endl;
+}
+
 void viewerOnTerminal::printLaser(const unique_ptr<laser>& l) const{
     switch(l->getDirection()){
-    case laser::directions::RIGHT:
-    case laser::directions::LEFT:
+    case directions::RIGHT:
+    case directions::LEFT:
         {
             cout << '-';
             break;
         }
-    case laser::directions::UP:
-    case laser::directions::DOWN:
+    case directions::UP:
+    case directions::DOWN:
         {
             cout << '|';
             break;
@@ -24,22 +44,22 @@ void viewerOnTerminal::printLaser(const unique_ptr<laser>& l) const{
 
 void viewerOnTerminal::printTireur(const unique_ptr<tireur>& t) const{
     switch(t->getDirection()){
-    case tireur::directions::RIGHT:
+    case directions::RIGHT:
         {
             cout << '>';
             break;
         }
-    case tireur::directions::LEFT:
+    case directions::LEFT:
         {
             cout << '<';
             break;
         }
-    case tireur::directions::UP:
+    case directions::UP:
         {
             cout << '^';
             break;
         }
-    case tireur::directions::DOWN:
+    case directions::DOWN:
         {
             cout << 'v';
             break;
@@ -50,4 +70,7 @@ void viewerOnTerminal::printTireur(const unique_ptr<tireur>& t) const{
             break;
         }
     }
+}
+void viewerOnTerminal::printWall(const unique_ptr<wall>&) const{
+    cout << '#';
 }

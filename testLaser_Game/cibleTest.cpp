@@ -2,7 +2,7 @@
 #include "../Laser_Game/cible.h"
 #include "../Laser_Game/laser.h"
 
-TEST_CASE("Test of the class cible"){
+/*TEST_CASE("Test of the class cible"){
 
     point P{0, 0} ;
    cible c (P) ;
@@ -41,4 +41,4 @@ TEST_CASE("Test of the class cible"){
 
     }
 
-}
+}*/

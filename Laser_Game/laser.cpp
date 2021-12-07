@@ -26,7 +26,7 @@ bool laser::operator!=(const laser& l) const{
 
 // ---------- Getters ----------
 
-laser::directions laser::getDirection() const {return this->direction;}
+directions laser::getDirection() const {return this->direction;}
 
 double laser::getStep() const {return this->step;}
 

@@ -2,59 +2,42 @@
 #define LASER_H
 
 #include "object.h"
-class tireur;
+
+using namespace enumTypes;
+
+#include "tireur.h"
+
 /**
  * @class laser laser.h
  * @brief A class that represents a laser
- * @details This class represents a laser, which is an @a objet
+ * @details This class represents a laser, which is an @a object
  * with a @a direction and a @a step.
  */
 class laser : public object
 {
-    public: friend tireur;
+    /**
+     * @brief Allows the class tireur to shoot
+     */
+    friend laser tireur::tire(double);
+    /**
+     * @brief Allows the program to test the class laser
+     */
+    friend laser createLaserForTest(const point&, const directions&, double);
 
-        // Enumeration
-        /**
-         * @brief Enumeration of the directions
-         * @details This enumeration defines the different directions
-         * the laser can have.
-         */
-        enum directions : short unsigned int{
-            RIGHT,
-            UP,
-            LEFT,
-            DOWN
-        };
-        /** @var laser::directions laser::RIGHT
-         * @brief Right direction
-         * @details The direction when the laser goes to the right.
-         */
-        /** @var laser::directions laser::LEFT
-         * @brief Left direction
-         * @details The direction when the laser goes to the left.
-         */
-        /** @var laser::directions laser::UP
-         * @brief Up direction
-         * @details The direction when the laser goes to the top.
-         */
-        /** @var laser::directions laser::DOWN
-         * @brief Down direction
-         * @details The direction when the laser goes to the bottom.
-         */
+    public:
 
         // Destructor
         /**
          * @brief Default-implemented destructor
-         * @details Destroys the laser
+         * @details Destroys the laser.
          */
         virtual ~laser() = default;
 
         // Overloads
-
         /**
          * @brief Binary operator == : constant
          * @details Tests if all the member variables of two
-         * lasers are equals
+         * lasers are equals.
          *
          * @param l : The laser to test with
          * @return Returns true if both of the lasers are equals, else false
@@ -63,7 +46,7 @@ class laser : public object
         /**
          * @brief Binary operator != : constant
          * @details Tests if at least one of the member variables of two
-         * lasers are different
+         * lasers are different.
          *
          * @param l : The laser to test with
          * @return Returns true if both of the lasers are different, else false
@@ -76,7 +59,7 @@ class laser : public object
          *
          * @return Returns the direction of the laser
          */
-        laser::directions getDirection() const;
+        directions getDirection() const;
         /**
          * @brief Constant getter function for the step of the laser
          *
@@ -110,8 +93,7 @@ class laser : public object
          */
         void moveByStep();
         /**
-         * @brief A function that prints the characteristics
-         * of a laser
+         * @brief A function that prints the characteristics of a laser
          * @details A laser is printed as Laser[position(x,y), direction(DIRECTION), step(STEP)]
          *
          * @param ost : The output stream

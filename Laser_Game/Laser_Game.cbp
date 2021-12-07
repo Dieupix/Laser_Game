@@ -38,6 +38,7 @@
 		</Compiler>
 		<Unit filename="cible.cpp" />
 		<Unit filename="cible.h" />
+		<Unit filename="enumTypes.h" />
 		<Unit filename="grille.cpp" />
 		<Unit filename="grille.h" />
 		<Unit filename="ground.cpp" />
@@ -64,7 +65,6 @@
 				<doxyfile_project />
 				<doxyfile_build extract_all="1" extract_private="1" extract_static="1" />
 				<doxyfile_warnings />
-				<doxyfile_alpha_index alphabetical_index="0" />
 				<doxyfile_output />
 				<doxyfile_dot />
 				<general use_at_in_tags="1" />
