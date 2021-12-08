@@ -3,13 +3,15 @@
 #include <sstream>
 #include <string>
 
+#include "miroir.h"
+
 using std::string;
 using std::stringstream;
 
 // ---------- Constructors ----------
 
 ground::ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight) :
-    grille{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}, nbOfObjects{0}
+    grille{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}, nbOfObjects{0}, nbOfMirrors{0}
 {
     objects.resize(nbCellsHeight);
     for(unsigned i = 0; i < nbCellsHeight; ++i)
@@ -34,7 +36,9 @@ unsigned ground::getNbCellsWidth() const {return this->nbCellsWidth;}
 
 unsigned ground::getNbCellsHeight() const {return this->nbCellsHeight;}
 
-int ground::getNbOfObjects() const {return this->nbOfObjects;}
+unsigned ground::getNbOfObjects() const {return this->nbOfObjects;}
+
+unsigned ground::getNbOfMirrors() const {return this->nbOfMirrors;}
 
 const vector<vector<unique_ptr<object>>>& ground::getObjects() const {return this->objects;}
 
@@ -65,16 +69,28 @@ void ground::setNbCellsHeight(unsigned nbCellsHeight){
 
 void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
     if(i > nbCellsHeight)
+    {
         throw std::out_of_range("The i index is out of range");
+    }
     else if(j > nbCellsWidth)
+    {
         throw std::out_of_range("The j index is out of range");
-    else{
-        if(!objects[i][j]) ++nbOfObjects;
-        objects[i][j] = move(obj);
+    }
+    else
+    {
+        if(!objects[i][j])
+        {
+            if(dynamic_cast<miroir*>(obj.get()))
+            {
+                ++nbOfMirrors;
+            }
+            objects[i][j] = move(obj);
+            ++nbOfObjects;
+        }
     }
 }
 
-void ground::loadGround(istream& ist)
+void ground::loadFrom(istream& ist)
 {
     /// @TODO : change the loading method
 
@@ -83,18 +99,22 @@ void ground::loadGround(istream& ist)
     string loaded = buffer.str();
 }
 
-void ground::print(std::ostream& ost) const{
+void ground::print(ostream& ost) const{
     ost << "Ground[";
     grille::print(ost);
     ost << ", position" << position << ", nbCellsWidth(" << nbCellsWidth << "), nbCellsHeight(" << nbCellsHeight << ")]" << endl;
     ost << "List of objects (" << nbOfObjects << ") :" << endl;
 
     if(nbOfObjects == 0) cout << "Empty" << endl;
-    else {
+    else
+    {
         unsigned k = 0;
-        for(unsigned i = 0; i < objects.size(); ++i){
-            for(unsigned j = 0; j < objects[i].size(); ++j){
-                if(objects[i][j]){
+        for(unsigned i = 0; i < objects.size(); ++i)
+        {
+            for(unsigned j = 0; j < objects[i].size(); ++j)
+            {
+                if(objects[i][j])
+                {
                    ost << ++k << " : " << *objects[i][j] << endl;
                 }
             }
@@ -102,22 +122,35 @@ void ground::print(std::ostream& ost) const{
     }
 }
 
-void ground::removeObjectAt(unsigned i, unsigned j){
+void ground::removeObjectAt(unsigned i, unsigned j)
+{
     if(i > nbCellsHeight)
+    {
         throw std::out_of_range("The i index is out of range");
+    }
     else if(j > nbCellsWidth)
+    {
         throw std::out_of_range("The j index is out of range");
-    else if(objects[i][j]){
-        objects[i][j].reset();
-        --nbOfObjects;
+    }
+    else
+    {
+        if(objects[i][j])
+        {
+            if(dynamic_cast<miroir*>(objects[i][j].get()))
+            {
+                --nbOfMirrors;
+            }
+            objects[i][j].reset();
+            --nbOfObjects;
+        }
     }
 }
 
-void ground::saveGround(ostream& ost) const
+void ground::saveIn(ostream& ost) const
 {
     /// @TODO : change the saving method
 
-    string toSave;
+    string toSave = "";
 
     ost << toSave;
 

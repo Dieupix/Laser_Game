@@ -41,7 +41,11 @@ class ground : public grille
         /**
          * @brief The total number of objects
          */
-        int nbOfObjects;
+        unsigned nbOfObjects;
+        /**
+         * @brief The total number of mirrors
+         */
+        unsigned nbOfMirrors;
         /**
          * @brief The list of objects
          * @details Contains all the objects that are on the ground.
@@ -54,11 +58,11 @@ class ground : public grille
         /**
          * @brief Constructor with all member variables
          *
-         * @param position : The position of the ground on the grid
-         * @param cellsWidth : The size of each cells in width
-         * @param cellsHeight : The size of each cells in height
-         * @param nbCellsWidth : The number of cells in width
-         * @param nbCellsHeight : The number of cells in height
+         * @param[in] position : The position of the ground on the grid
+         * @param[in] cellsWidth : The size of each cells in width
+         * @param[in] cellsHeight : The size of each cells in height
+         * @param[in] nbCellsWidth : The number of cells in width
+         * @param[in] nbCellsHeight : The number of cells in height
          * @return Creates a ground that is a grid, with its position, list of objects and number of cells
          */
         ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight);
@@ -96,7 +100,13 @@ class ground : public grille
          *
          * @return Returns the number of objects on the ground
          */
-        int getNbOfObjects() const;
+        unsigned getNbOfObjects() const;
+        /**
+         * @brief Getter function for the total number of mirrors
+         *
+         * @return Returns the number of mirrors on the ground
+         */
+        unsigned getNbOfMirrors() const;
         /**
          * @brief Getter function for the list of objects
          *
@@ -130,8 +140,11 @@ class ground : public grille
         // Functions
         /**
          * @brief A function that adds an object on the ground
+         * @details This function adds an object to the ground if there is a place
+         * at the position (i, j), otherwise the object is not added.
+         * @exception out_of_range : Throws this exception if an index is out of range
          *
-         * @param obj : The object to add to the ground
+         * @param[in] obj : The object to add to the ground
          * @param i : The i index where to add the object
          * @param j : The j index where to add the object
          * @return Returns nothing
@@ -140,10 +153,10 @@ class ground : public grille
         /**
          * @brief A function that loads a ground from an input stream
          *
-         * @param ist : The input stream to load the ground from
+         * @param[in] ist : The input stream to load the ground from
          * @return Returns nothing
          */
-        void loadGround(istream&);
+        void loadFrom(istream&);
         /**
          * @brief A constant function that prints a ground on an output stream
          * @details A ground is printed as : \n
@@ -155,11 +168,11 @@ class ground : public grille
          * @param[out] ost : The output stream to print on
          * @return Returns nothing
          */
-        virtual void print(ostream& ost) const;
+        virtual void print(ostream&) const;
         /**
          * @brief A function that removes the object at an index
          * @details The index has to be in the range of 0 and the size of the list of objects.
-         * @exception out_of_range : Throws this exception if the index is out of range
+         * @exception out_of_range : Throws this exception if an index is out of range
          *
          * @param i : The i index where to remove the object
          * @param j : The j index where to remove the object
@@ -169,10 +182,10 @@ class ground : public grille
         /**
          * @brief A constant function that saves the ground in an output stream
          *
-         * @param ost : The output stream to save the ground in
+         * @param[out] ost : The output stream to save the ground in
          * @return Returns nothing
          */
-        void saveGround(ostream&) const;
+        void saveIn(ostream&) const;
 
 }; // End of ground
 
