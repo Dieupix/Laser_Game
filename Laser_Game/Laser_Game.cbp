@@ -43,6 +43,7 @@
 		<Unit filename="grille.h" />
 		<Unit filename="ground.cpp" />
 		<Unit filename="ground.h" />
+		<Unit filename="jeu.h" />
 		<Unit filename="laser.cpp" />
 		<Unit filename="laser.h" />
 		<Unit filename="main.cpp" />
