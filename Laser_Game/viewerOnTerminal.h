@@ -6,13 +6,35 @@
 class viewerOnTerminal : public viewer
 {
     private:
-        static constexpr unsigned spacing = 2;
-        static constexpr char blanck = '.';
+        /**
+         * @brief The character to print when it is blank
+         */
+        char blank;
+        /**
+         * @brief The spacing
+         */
+        unsigned spacing;
 
     public:
-        viewerOnTerminal() = default;
+        // Constructors
+        viewerOnTerminal(char = '.', unsigned = 2);
+
+        // Destructor
+        /**
+         * @brief Default-implemented destructor
+         * @details Destroys the viewerOnTerminal
+         */
         virtual ~viewerOnTerminal() = default;
 
+        // Getters
+        char getBlank() const;
+        unsigned getSpacing() const;
+
+        // Setters
+        void setBlank(char);
+        void setSpacing(unsigned);
+
+        // Functions
         virtual void print(const unique_ptr<object>&) const override;
 
         virtual void printCible(const cible&) const override;
@@ -21,6 +43,9 @@ class viewerOnTerminal : public viewer
         virtual void printMirror(const miroir&) const override;
         virtual void printShooter(const tireur&) const override;
         virtual void printWall(const wall&) const override;
-};
+
+}; // End of viewerOnTerminal
+
+// Global functions
 
 #endif // VIEWERONTERMINAL_H

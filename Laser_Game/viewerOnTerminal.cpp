@@ -1,5 +1,43 @@
 #include "viewerOnTerminal.h"
 
+// ---------- Constructors ----------
+
+viewerOnTerminal::viewerOnTerminal(char blank, unsigned spacing) : blank{blank}, spacing{spacing} {}
+
+// ---------- End of constructors ----------
+
+// ---------- Destructor ----------
+
+// ---------- End of destructor ----------
+
+// ---------- Overloads ----------
+
+// ---------- End of overloads ----------
+
+// ---------- Getters ----------
+
+char viewerOnTerminal::getBlank() const {return this->blank;}
+
+unsigned viewerOnTerminal::getSpacing() const {return this->spacing;}
+
+// ---------- End of getters ----------
+
+// ---------- Setters ----------
+
+void viewerOnTerminal::setBlank(char blank)
+{
+    this->blank = blank;
+}
+
+void viewerOnTerminal::setSpacing(unsigned spacing)
+{
+    this->spacing = spacing;
+}
+
+// ---------- End of setters ----------
+
+// ---------- Functions --------
+
 void viewerOnTerminal::print(const unique_ptr<object>& obj) const
 {
     if(dynamic_cast<cible*>(obj.get())) // For the target
@@ -36,8 +74,6 @@ void viewerOnTerminal::print(const unique_ptr<object>& obj) const
         cerr << "Unknown type" << endl;
 }
 
-
-
 void viewerOnTerminal::printCible(const cible&) const
 {
     cout << 'O';
@@ -52,7 +88,7 @@ void viewerOnTerminal::printGround(const ground& g) const
             if(g.getObjects()[i][j])
                 print(g.getObjects()[i][j]);
             else
-                cout << blanck;
+                cout << blank;
 
             for(unsigned i = 0; i < spacing; ++i) cout << ' ';
         }
@@ -143,3 +179,9 @@ void viewerOnTerminal::printWall(const wall&) const
 {
     cout << '#';
 }
+
+// ---------- End of functions ----------
+
+// ---------- Global functions ----------
+
+// ---------- End of global functions ----------
