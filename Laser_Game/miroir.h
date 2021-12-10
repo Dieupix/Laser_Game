@@ -17,6 +17,7 @@ class miroir : public object
      sens  getSens() const ;
        void changeDirectionLaser(laser& ) const ;
        bool estTouchee(laser& ) const;
+       virtual void print(std::ostream& ost) const override;
      private:
 
        sens d_sens;

@@ -101,3 +101,32 @@ bool miroir::estTouchee(laser& L ) const
     return(touchee ) ;
 }
 // ---------------------- Fin estTouchee ------------------------------
+
+/**
+   * @brief Print cible
+   * @param[in] ost :
+*/
+
+void miroir::print(std::ostream& ost) const
+{
+    ost << "Miroir [position" << getPosition()<<", sens : " ;
+    switch(getSens() )
+    {
+        case sens::basGauche_hautDroit :{
+            ost<<"basGauche_hautDroit,";
+            break;
+        }
+        case sens::hautGauche_basDroit :{
+            ost<<"hautGauche_basDroit,";
+            break ;
+        }
+    }
+    if(d_miroirtouchee)
+    ost <<" est touchee]" ;
+    else
+     ost <<" n'est pas touchee]" ;
+
+
+}
+
+

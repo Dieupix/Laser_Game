@@ -33,10 +33,10 @@
          */
     bool cible::isAffected(laser& L )
     {
-        bool affected = L.getPosition() == getPosition() ;
-         d_affected = affected ;
 
-        return(affected ) ;
+         d_affected = (*this == L );
+
+        return(d_affected ) ;
     }
 
 // ---------- End of isAffected  -----------------------------
@@ -49,7 +49,24 @@
 
 void cible::print(std::ostream& ost) const
 {
-    // ost << "Cible[position" << getPosition() << "];
-   getPosition().print(ost);
+    ost << "Cible[position" << getPosition() <<", ";
+    if( d_affected )
+        ost<<"est touchée par un laser" ;
+    else
+         ost<<"n'est pas touchée par un laser" ;
+
+
+ ost<<"]";
+}
+
+bool cible::operator==(const object& a ) const
+{
+     return getPosition() == a.getPosition() ;
+
+}
+bool cible::operator!=(const object& a ) const
+{
+    return getPosition() == a.getPosition() ;
+
 }
 

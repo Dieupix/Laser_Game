@@ -82,7 +82,7 @@ TEST_CASE("3 - Test of the class ground"
             ist << c;
         }
 
-        g.loadGround(ist);
+        g.loadFrom(ist);
 
         /// @TODO : setup all check
         CHECK_EQ(true, true); // SHOULD FAIL
@@ -114,7 +114,7 @@ TEST_CASE("3 - Test of the class ground"
         string expectedOutput = "";
 
         stringstream ost;
-        g.saveGround(ost);
+        g.saveIn(ost);
 
         string read = ost.str();
 
@@ -123,3 +123,4 @@ TEST_CASE("3 - Test of the class ground"
         CHECK_EQ(read, expectedOutput);
     }
 }
+
