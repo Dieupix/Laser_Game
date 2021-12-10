@@ -5,24 +5,22 @@
 #include"miroir.h"
 #include"ground.h"
 
-class JEU
+class Game
 {
 public :
-    JEU() ;
-    ~JEU() = default ;
-    void ajoutMiroir(const Miroir&) ;
-    void supprimeMiroir(const Miroir& ) ;
+    Game(const ground& terrain);
+    ~Game() = default ;
+    void addMirror(const miroir& m) ;
+    void removeMirror(const miroir& m) ;
     void run() ;
     void read() ;
-    void savegarder() ;
+    void save() ;
     void start() ;
 private :
-    ground d_terrin ;
+    ground d_terrain ;
 
 };
 
 #endif // JEU_H_INCLUDED
 
 
-
-#endif // JEU_H_INCLUDED
