@@ -96,3 +96,7 @@ std::ostream& operator<<(std::ostream& ost, const object& o)
     o.print(ost);
     return ost;
 }
+
+object createObjectForTest(const point& p){
+    return {p};
+}

@@ -13,11 +13,9 @@ TEST_CASE("3 - Test of the class wall")
     {
         REQUIRE_EQ(w.getPosition(), p);
     }
-    /*
-    //Laser is private...
-    laser l{p};
-    laser nl{np};
-    SUBCASE("Test of the affectation")
+    laser l = createLaserForTest(p, RIGHT);
+    laser nl = createLaserForTest(np, RIGHT);
+    /*SUBCASE("Test of the affectation")
     {
         SUBCASE("Test of not affected")
         {
@@ -32,6 +30,5 @@ TEST_CASE("3 - Test of the class wall")
             REQUIRE_EQ(w.changeAffected(), true);
             REQUIRE_EQ(w.changeAffected(), false);
         }
-    }
-    */
+    }*/
 }

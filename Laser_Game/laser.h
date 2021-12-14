@@ -144,4 +144,6 @@ class laser : public object
 
 // Global functions
 
+laser createLaserForTest(const point&, const directions&, double = 1.0);
+
 #endif // LASER_H

@@ -107,5 +107,10 @@ void laser::turnRight(){
 
 // ---------- Global functions ----------
 
+laser createLaserForTest(const point& p, const directions& direction, double step)
+{
+    return {p, direction, step};
+}
+
 // ---------- End of global functions ----------
 

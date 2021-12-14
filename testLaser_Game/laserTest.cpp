@@ -7,11 +7,6 @@
 using std::ostringstream;
 using std::string;
 
-laser createLaserForTest(const point& p, const directions& direction, double step)
-{
-    return {p, direction, step};
-}
-
 TEST_CASE("2 - Test of the class laser")
 {
     point position{0, 0};

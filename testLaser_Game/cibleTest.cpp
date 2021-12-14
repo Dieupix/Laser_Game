@@ -39,7 +39,7 @@ TEST_CASE("2 - Test of the class cible")
     //-------------- isAffected ------------------------------------------
 
 
-/*
+
     SUBCASE("Test of is affected ")
     {
 
@@ -69,7 +69,7 @@ TEST_CASE("2 - Test of the class cible")
     cible c (p) ;
     auto direction = directions::RIGHT;
     double step = 1.0;
-    auto l = Create_laser(p, direction, step);
+    auto l = createLaserForTest(p, direction, step);
     SUBCASE("Test of the print() function")
     {
         string expectedOutput = "Cible[position(0,0), est touchée par un laser]";
@@ -121,7 +121,6 @@ TEST_CASE("2 - Test of the class cible")
             CHECK_EQ(resultat, false);
         }
     }
-*/
 
 }
 #endif //CIBLETEST_H_INCLUDED

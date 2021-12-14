@@ -1,5 +1,6 @@
 #include "doctest.h"
 #include "../Laser_Game/miroir.h"
+#include "../Laser_Game/laser.h"
 
 #include <string>
 #include <sstream>
@@ -24,7 +25,7 @@ TEST_CASE("2 - Test of the class mirror"){
         REQUIRE_EQ(m.getPosition() ,  position );
 
     }
-   /* SUBCASE("Test of the function ChangeDirectionLaser ")
+   SUBCASE("Test of the function ChangeDirectionLaser ")
     {
 
     auto direction = directions::RIGHT;
@@ -36,26 +37,26 @@ TEST_CASE("2 - Test of the class mirror"){
     L.turnLeft() ;
     REQUIRE_EQ(l.getDirection() ,  L.getDirection() );
 
-    }*/
-    /* SUBCASE("Test of the function estToucher ")
+    }
+    SUBCASE("Test of the function estToucher ")
     {
 
     auto direction = directions::RIGHT;
     double step = 1.0;
 
     auto l = createLaserForTest(position, direction, step);
-    Subcase(" miroir is affected ")
+    SUBCASE(" miroir is affected ")
     {
     REQUIRE_EQ(m.estTouchee(l) ,  true );
 
     }
-    Subcase(" miroir is not affected ")
+    SUBCASE(" miroir is not affected ")
     {
      l.moveByStep() ;
     REQUIRE_EQ(m.estTouchee(l) ,  false );
 
     }
-    }*/
+    }
 
      SUBCASE("Test of the print() function")
     {

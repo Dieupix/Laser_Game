@@ -27,5 +27,6 @@ class object
 };
 
 std::ostream& operator<<(std::ostream& ost, const object& o);
+object createObjectForTest(const point&);
 
 #endif // OBJET_H
