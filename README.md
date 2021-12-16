@@ -16,33 +16,44 @@
 
 Ce projet consiste à créer un jeu de tir avec des lasers. Sur un terrain entouré de murs, se placent un tireur et une cible. Le tireur tire un laser qui doit toucher la cible pour gagner. Au préalable, le joueur peut poser des miroirs pour faire dévier le laser de sa trajectoire et éviter certains obstacles.
 
-<a id="user-content-structure" class="anchor" href="#structure" aria-hidden="true"> </a>
+<a id="user-content-structure" class="anchor" href="#structure" aria-hidden="true"></a>
 ## Structure du projet
 
 ```
 Laser_Game
 ├── Headers
+    ├── enumTypes.h
+|   ├── game.h
+|   ├── grid.h
+|   ├── ground.h
 |   ├── laser.h
 |   ├── mirror.h
 |   ├── object.h
 |   ├── point.h
 |   ├── shooter.h
 |   ├── target.h
+|   ├── viewer.h
+|   ├── viewerOnTerminal.cpp
 |   └── wall.h
 └── Sources
+    ├── game.cpp
+    ├── grid.cpp
+    ├── ground.cpp
     ├── laser.cpp
+    ├── main.cpp
     ├── mirror.cpp
     ├── object.cpp
     ├── point.cpp
     ├── shooter.cpp.cpp
     ├── target.cpp
+    ├── viewerOnTerminal.cpp
     └── wall.cpp
 ```
 
-<a id="user-content-contributions" class="anchor" href="#contributions" aria-hidden="true"> </a>
+<a id="user-content-contributions" class="anchor" href="#contributions" aria-hidden="true"></a>
 ## Contributions au projet
 
-Professeur encadrant :\
+Professeur(s) encadrant(s) :\
 \- M. RIVIÈRE Stéphane
 
 L'équipe du MOE :
