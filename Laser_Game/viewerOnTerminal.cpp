@@ -40,9 +40,9 @@ void viewerOnTerminal::setSpacing(unsigned spacing)
 
 void viewerOnTerminal::print(const unique_ptr<object>& obj) const
 {
-    if(dynamic_cast<cible*>(obj.get())) // For the target
+    if(dynamic_cast<target*>(obj.get())) // For the target
     {
-        auto tmp = dynamic_cast<cible*>(obj.get());
+        auto tmp = dynamic_cast<target*>(obj.get());
         printCible(*tmp);
 
     }
@@ -52,9 +52,9 @@ void viewerOnTerminal::print(const unique_ptr<object>& obj) const
         printLaser(*tmp);
 
     }
-    else if(dynamic_cast<miroir*>(obj.get())) // For the mirror
+    else if(dynamic_cast<mirror*>(obj.get())) // For the mirror
     {
-        auto tmp = dynamic_cast<miroir*>(obj.get());
+        auto tmp = dynamic_cast<mirror*>(obj.get());
         printMirror(*tmp);
 
     }
@@ -74,7 +74,7 @@ void viewerOnTerminal::print(const unique_ptr<object>& obj) const
         cerr << "Unknown type" << endl;
 }
 
-void viewerOnTerminal::printCible(const cible&) const
+void viewerOnTerminal::printCible(const target&) const
 {
     cout << 'O';
 }
@@ -124,7 +124,7 @@ void viewerOnTerminal::printLaser(const laser& l) const
     }
 }
 
-void viewerOnTerminal::printMirror(const miroir& m) const
+void viewerOnTerminal::printMirror(const mirror& m) const
 {
     switch(m.getSens())
     {

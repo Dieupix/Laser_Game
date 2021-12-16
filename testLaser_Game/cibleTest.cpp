@@ -13,7 +13,7 @@ using std::string;
 
 
 
-TEST_CASE("2 - Test of the class cible")
+TEST_CASE("2 - Test of the class target")
 {
 
 
@@ -21,7 +21,7 @@ TEST_CASE("2 - Test of the class cible")
     SUBCASE("Test of the constructor")
     {
         point P{0, 0} ;
-        cible c (P) ;
+        target c (P) ;
         REQUIRE_EQ(c.getPosition(), P);
 
     }
@@ -29,7 +29,7 @@ TEST_CASE("2 - Test of the class cible")
     SUBCASE("Test of the  position")
     {
         point P{1, 10} ;
-        cible c (P) ;
+        target c (P) ;
         REQUIRE_EQ(c.getPosition(), P);
 
     }
@@ -51,13 +51,13 @@ TEST_CASE("2 - Test of the class cible")
         SUBCASE("Test  is affected ")
         {
             point P{0, 0} ;
-            cible c (P) ;
+            target c (P) ;
             REQUIRE(c.isAffected(l) == true ) ;
         }
         SUBCASE("Test  is NOT affected ")
         {
             point P{0, 0} ;
-            cible c (P) ;
+            target c (P) ;
             REQUIRE(c.isAffected(l) == false ) ;
         }
 
@@ -66,23 +66,23 @@ TEST_CASE("2 - Test of the class cible")
 
     //-----------------print------------------------------------------
     point p{0, 0} ;
-    cible c (p) ;
+    target c (p) ;
     auto direction = directions::RIGHT;
     double step = 1.0;
     auto l = createLaserForTest(p, direction, step);
     SUBCASE("Test of the print() function")
     {
-        string expectedOutput = "Cible[position(0,0), est touchée par un laser]";
+        string expectedOutput = "target[position(0,0), est touchée par un laser]";
         ostringstream ost;
         c.isAffected(l) ;
         c.print(ost);
         string read = ost.str();
         CHECK_EQ(read, expectedOutput);
-        SUBCASE("Test if the print if cible is not affected")
+        SUBCASE("Test if the print if target is not affected")
         {
             point A{10, 0} ;
-            cible c (A) ;
-            string expectedOutput = "Cible[position(0,0), n'est pas touchée par un laser]";
+            target c (A) ;
+            string expectedOutput = "target[position(0,0), n'est pas touchée par un laser]";
             ostringstream ost;
             c.isAffected(l) ;
             c.print(ost);
@@ -99,7 +99,7 @@ TEST_CASE("2 - Test of the class cible")
         SUBCASE("Test operator == object ")
         {
             point p{0, 0} ;
-            cible c (p) ;
+            target c (p) ;
             auto direction = directions::RIGHT;
             double step = 1.0;
             auto l = createLaserForTest(p, direction, step);
@@ -112,7 +112,7 @@ TEST_CASE("2 - Test of the class cible")
 
 
             point p{0, 0} ;
-            cible c (p) ;
+            target c (p) ;
             point p2{10, 0} ;
             auto direction = directions::RIGHT;
             double step = 1.0;

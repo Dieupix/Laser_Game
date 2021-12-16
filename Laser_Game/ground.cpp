@@ -80,7 +80,7 @@ void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
     {
         if(!objects[i][j])
         {
-            if(dynamic_cast<miroir*>(obj.get()))
+            if(dynamic_cast<mirror*>(obj.get()))
             {
                 ++nbOfMirrors;
             }
@@ -136,7 +136,7 @@ void ground::removeObjectAt(unsigned i, unsigned j)
     {
         if(objects[i][j])
         {
-            if(dynamic_cast<miroir*>(objects[i][j].get()))
+            if(dynamic_cast<mirror*>(objects[i][j].get()))
             {
                 --nbOfMirrors;
             }

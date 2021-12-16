@@ -4,41 +4,22 @@
 
 
 // ---------- Constructeur-------------------------------
-/**
-       * @brief Constructeur avec un sens
-       * @param[in] sens : Le sens initial du miroir
-       * @return Crée un miroir avec un sens donnée en paramètre
-       */
 
-miroir::miroir(const point& position ,sens Smirroir ) : object{position} , d_sens{basGauche_hautDroit},
-                                  d_miroirtouchee {false}
+
+mirror::mirror(const point& position ,sens Smirror) : object{position} , d_sens{basGauche_hautDroit},
+                                  d_mirrortouched {false}
 {
 
 }
 // ---------- Fin Constructeur-------------------------------
 
 
-// ----------------------Print -------------------------------
-/**
-       * @brief Afficher la position d'un mirroir
-       * @param[in] ost : un flux de sortie
-       * @return Affiche la position du miroir
-       */
-/*
-void miroir::print(std::ostream& ost) const
-{
-    getPosition().print(ost);
-    // est ce qu il faut afficher dans quel sens ?
-}
-*/
-// ---------------- Fin Print -------------------------------
+
+
 
 // ----------------------getSens -------------------------------
-/**
-       * @brief getter du sens du miroir
-       * @return le sens du miroir courant
-       */
-sens  miroir::getSens() const
+
+sens  mirror::getSens() const
 {
     return d_sens ;
 }
@@ -46,13 +27,8 @@ sens  miroir::getSens() const
 // ----------------------Fin getSens -------------------------------
 
 // ---------------------- changeDirectionLaser -------------------------------
-/**
-       * @brief Méthode qui permet de changer la direction d'un laser
-       * si il a touché le miroir
-       * @param[in] laser : un laser
-       * @return change la direction du laser
-       */
-void miroir::changeDirectionLaser(laser& l ) const
+
+void mirror::changeDirectionLaser(laser& l ) const
 {
     /*  RIGHT,
       UP,
@@ -83,13 +59,8 @@ if ( estTouchee(l) )
 // ---------------------- Fin changeDirectionLaser -------------------------------
 
 // ---------------------- estTouchee -------------------------------
-/**
-       * @brief Méthode qui permet de verifier si le laser a touché le miroir
-       * @param[in] laser : un laser
-       * @return  True : si il est touché
-       * @return False : si il est pas touché
-       */
-bool miroir::estTouchee(laser& L ) const
+
+bool mirror::estTouchee(laser& L ) const
 {
     bool touchee = (L.getPosition() == getPosition() ) ;
     if (touchee)
@@ -102,13 +73,9 @@ bool miroir::estTouchee(laser& L ) const
 }
 // ---------------------- Fin estTouchee ------------------------------
 
-/**
-   * @brief Print cible
-   * @param[in] ost :
-*/
-
-void miroir::print(std::ostream& ost) const
+void mirror::print(std::ostream& ost) const
 {
+
     ost << "Miroir [position" << getPosition()<<", sens : " ;
     switch(getSens() )
     {
@@ -121,11 +88,10 @@ void miroir::print(std::ostream& ost) const
             break ;
         }
     }
-    if(d_miroirtouchee)
+    if(d_mirrortouched)
     ost <<" est touchee]" ;
     else
      ost <<" n'est pas touchee]" ;
-
 
 }
 

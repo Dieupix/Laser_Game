@@ -10,11 +10,11 @@ class Game
 public :
     Game(const ground& terrain);
     ~Game() = default ;
-    void addMirror(const miroir& m) ;
-    void removeMirror(const miroir& m) ;
+    void addMirror(const mirror& m) ;
+    void removeMirror(const mirror& m) ;
     void run() ;
     void read() ;
-    void save() ;
+    void save(std::string nameFile) const ;
     void start() ;
 private :
     ground d_terrain ;

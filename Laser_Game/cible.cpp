@@ -3,12 +3,8 @@
 #include "object.h"
 
 // ---------- Constructors ----------
-  /**
-         * @brief Constructeur avec position
-         * @param[in] position : La position initial de la cible
-         * @return Crée une cible avec une position
-         */
-    cible::cible(const point& position) : object{position}, d_affected{false}
+
+    target::target(const point& position) : object{position}, d_affected{false}
     {
 
     }
@@ -24,14 +20,8 @@
 // ---------- End of Getters -----------------------------
 
 // ---------- Functions isAffected ------------------------
-      /**
-         * @brief A function that moves the cible
-         * @details This function test if the target is hit by the laser
-         * @param[in] laser
-         * @return  true if the cible is hit by the laser
-         * @return false if not
-         */
-    bool cible::isAffected(laser& L )
+
+    bool target::isAffected(laser& L )
     {
 
          d_affected = (*this == L );
@@ -42,12 +32,8 @@
 // ---------- End of isAffected  -----------------------------
 
 
-/**
-   * @brief Print cible
-   * @param[in] ost :
-*/
 
-void cible::print(std::ostream& ost) const
+void target::print(std::ostream& ost) const
 {
     ost << "Cible[position" << getPosition() <<", ";
     if( d_affected )
@@ -59,12 +45,12 @@ void cible::print(std::ostream& ost) const
  ost<<"]";
 }
 
-bool cible::operator==(const object& a ) const
+bool target::operator==(const object& a ) const
 {
      return getPosition() == a.getPosition() ;
 
 }
-bool cible::operator!=(const object& a ) const
+bool target::operator!=(const object& a ) const
 {
     return getPosition() == a.getPosition() ;
 

@@ -7,22 +7,60 @@
 using namespace enumTypes;
 
 class laser ;
-class miroir : public object
+class mirror : public object
 {
 
     public:
+   /** @brief constructor of a mirror
+    *
+    * @param[in] have a position
+    * @param[in] have a sens
+    *
+    */
+    mirror( const point& position, sens Smirror ) ;
 
-    miroir( const point& position, sens Smirroir ) ;
-    ~miroir()  = default ;
+    // Destructor
+    /**
+     * @brief Default-implemented destructor
+     * @details Destroys the mirror.
+     */
+
+    ~mirror()  = default ;
+
+    /**
+    * @brief  Get Sens of the mirror
+    * @return Sens
+    */
      sens  getSens() const ;
+     /**
+    * @brief  change the direction of the laser
+    *   when the laser touch the mirror
+    *
+    */
        void changeDirectionLaser(laser& ) const ;
+       /**
+    * @brief Check if the laser touched the mirror
+    * @return True : if he touched
+    * @return False : if he didn't
+    *
+    */
        bool estTouchee(laser& ) const;
+
+          /**
+    * @brief Print the  Characteristics of the mirror
+    * @param[in] ost
+    *
+    */
        virtual void print(std::ostream& ost) const override;
      private:
-
+        /**
+        *  @brief The mirror has Boolean that says whether or
+        * not the mirror is hit by a laser
+        * he has sens  basGauche_hautDroit and  hautGauche_basDroit
+        */
        sens d_sens;
 
-        bool  d_miroirtouchee;
+        bool  d_mirrortouched;
 
 };
 

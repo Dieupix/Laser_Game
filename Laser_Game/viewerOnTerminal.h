@@ -37,10 +37,10 @@ class viewerOnTerminal : public viewer
         // Functions
         virtual void print(const unique_ptr<object>&) const override;
 
-        virtual void printCible(const cible&) const override;
+        virtual void printCible(const target&) const override;
         virtual void printGround(const ground&) const override;
         virtual void printLaser(const laser&) const override;
-        virtual void printMirror(const miroir&) const override;
+        virtual void printMirror(const mirror&) const override;
         virtual void printShooter(const tireur&) const override;
         virtual void printWall(const wall&) const override;
 
