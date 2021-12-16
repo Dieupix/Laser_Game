@@ -16,7 +16,7 @@
 
 Ce projet consiste à créer un jeu de tir avec des lasers. Sur un terrain entouré de murs, se placent un tireur et une cible. Le tireur tire un laser qui doit toucher la cible pour gagner. Au préalable, le joueur peut poser des miroirs pour faire dévier le laser de sa trajectoire et éviter certains obstacles.
 
-<a id="project-content-structure" class="anchor" href="#structure" aria-hidden="true"></a>
+<a id="user-content-structure" class="anchor" href="#structure" aria-hidden="true"></a>
 ## Structure du projet
 
 ```
@@ -50,7 +50,7 @@ Laser_Game
     └── wall.cpp
 ```
 
-<a id="project-content-contributors" class="anchor" href="#contributions" aria-hidden="true"></a>
+<a id="user-content-contributions" class="anchor" href="#contributions" aria-hidden="true"></a>
 ## Contributions au projet
 
 Professeur(s) encadrant(s) :\
