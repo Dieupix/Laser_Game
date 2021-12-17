@@ -29,8 +29,6 @@ class grille
         */
         virtual void print(std::ostream& ost) const;
 
-        /// @TODO : add getters function for private variable members
-
         /** @brief Permet de lire un flux
          *
          * @param ist std::istream&
@@ -45,7 +43,8 @@ class grille
          * @param Le nombre de cellule en largeur
          */
         int d_longueurCells, d_largeurCells;
-        /// @TODO : change types from int to double - DON'T FORGET THE CONSTRUCTOR
+        /// @TODO - Mathis : add getters function for private variable members
+        /// @TODO - Mathis : change types from int to double - DON'T FORGET THE CONSTRUCTOR
 };
 
 std::ostream& operator<<(std::ostream& ost, const grille & g);
