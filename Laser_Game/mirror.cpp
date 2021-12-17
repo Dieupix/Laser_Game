@@ -1,4 +1,4 @@
-#include"miroir.h"
+#include"mirror.h"
 #include "laser.h"
 #include "object.h"
 

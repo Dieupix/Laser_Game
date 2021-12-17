@@ -4,11 +4,11 @@
 #include <iostream>
 #include <memory>
 
-#include "cible.h"
 #include "ground.h"
 #include "laser.h"
-#include "miroir.h"
-#include "tireur.h"
+#include "mirror.h"
+#include "shooter.h"
+#include "target.h"
 #include "wall.h"
 
 using std::cerr;

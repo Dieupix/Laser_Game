@@ -1,4 +1,4 @@
-#include "tireur.h"
+#include "shooter.h"
 #include "laser.h"
 
 tireur::tireur(const point &p, directions direction) : object{p}, direction{direction}

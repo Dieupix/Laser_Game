@@ -2,10 +2,9 @@
 #define LASER_H
 
 #include "object.h"
+#include "shooter.h"
 
 using namespace enumTypes;
-
-#include "tireur.h"
 
 /**
  * @class laser laser.h

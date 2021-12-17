@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "object.h"
-#include "grille.h"
+#include "grid.h"
 
 using std::cout;
 using std::endl;

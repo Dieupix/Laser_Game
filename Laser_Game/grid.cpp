@@ -1,4 +1,4 @@
-#include "grille.h"
+#include "grid.h"
 
 grille::grille(int longueur, int larger) : d_longueurCells{longueur}, d_largeurCells{larger}
 {}

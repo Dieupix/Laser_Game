@@ -2,7 +2,7 @@
 #define JEU_H_INCLUDED
 
 
-#include"miroir.h"
+#include"mirror.h"
 #include"ground.h"
 
 class Game

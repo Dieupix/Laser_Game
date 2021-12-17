@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 
-#include "miroir.h"
+#include "mirror.h"
 
 using std::string;
 using std::stringstream;
