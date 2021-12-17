@@ -70,6 +70,16 @@ TEST_CASE("3 - Test of the class ground"
     SUBCASE("Test of the addObjectAt() function")
     {
         /// @TODO - Alex : implement the subcase
+
+        WHEN("The object is a mirror")
+        {
+
+        }
+
+        WHEN("The object is not a mirror")
+        {
+
+        }
     }
 
     SUBCASE("Test of the loadGround() function")
@@ -107,6 +117,16 @@ TEST_CASE("3 - Test of the class ground"
     SUBCASE("Test of the removeObjectAt() function")
     {
         /// @TODO - Alex : implement the subcase
+
+        WHEN("The object is a mirror")
+        {
+
+        }
+
+        WHEN("The object is not a mirror")
+        {
+
+        }
     }
 
     SUBCASE("Test of the saveGround() function")
