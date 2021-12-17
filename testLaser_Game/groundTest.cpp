@@ -1,7 +1,7 @@
 #include "doctest.h"
 
 #include "../Laser_Game/ground.h"
-#include "../Laser_Game/tireur.h"
+#include "../Laser_Game/shooter.h"
 
 #include <string>
 #include <sstream>
@@ -69,7 +69,7 @@ TEST_CASE("3 - Test of the class ground"
 
     SUBCASE("Test of the addObjectAt() function")
     {
-        /// @TODO : implement the subcase
+        /// @TODO - Alex : implement the subcase
     }
 
     SUBCASE("Test of the loadGround() function")
@@ -84,7 +84,7 @@ TEST_CASE("3 - Test of the class ground"
 
         g.loadFrom(ist);
 
-        /// @TODO : setup all check
+        /// @TODO - Alex : setup all checks
         CHECK_EQ(true, true); // SHOULD FAIL
         CHECK_EQ(false, false);
     }
@@ -106,7 +106,7 @@ TEST_CASE("3 - Test of the class ground"
 
     SUBCASE("Test of the removeObjectAt() function")
     {
-        /// @TODO : implement the subcase
+        /// @TODO - Alex : implement the subcase
     }
 
     SUBCASE("Test of the saveGround() function")
@@ -118,7 +118,7 @@ TEST_CASE("3 - Test of the class ground"
 
         string read = ost.str();
 
-        /// @TODO : setup all check
+        /// @TODO - Alex : setup all checks
         //CHECK_EQ(read, "I want you to fail"); // SHOULD FAIL
         CHECK_EQ(read, expectedOutput);
     }

@@ -41,7 +41,6 @@
 		<Unit filename="../Laser_Game/ground.h" />
 		<Unit filename="../Laser_Game/laser.cpp" />
 		<Unit filename="../Laser_Game/laser.h" />
-		<Unit filename="../Laser_Game/main.cpp" />
 		<Unit filename="../Laser_Game/mirror.cpp" />
 		<Unit filename="../Laser_Game/mirror.h" />
 		<Unit filename="../Laser_Game/object.cpp" />
@@ -57,13 +56,13 @@
 		<Unit filename="../Laser_Game/viewerOnTerminal.h" />
 		<Unit filename="../Laser_Game/wall.cpp" />
 		<Unit filename="../Laser_Game/wall.h" />
-		<Unit filename="cibleTest.cpp" />
 		<Unit filename="doctest.h" />
 		<Unit filename="groundTest.cpp" />
 		<Unit filename="laserTest.cpp" />
 		<Unit filename="main.cpp" />
-		<Unit filename="miroirTest.cpp" />
-		<Unit filename="objetTest.cpp" />
+		<Unit filename="mirrorTest.cpp" />
+		<Unit filename="objectTest.cpp" />
+		<Unit filename="targetTest.cpp" />
 		<Unit filename="wallTest.cpp" />
 		<Extensions>
 			<DoxyBlocks>
