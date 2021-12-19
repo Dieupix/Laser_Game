@@ -22,7 +22,7 @@ Ce projet consiste à créer un jeu de tir avec des lasers. Sur un terrain entou
 ```
 Laser_Game
 ├── Headers
-    ├── enumTypes.h
+|   ├── enumTypes.h
 |   ├── game.h
 |   ├── grid.h
 |   ├── ground.h
@@ -48,6 +48,47 @@ Laser_Game
     ├── target.cpp
     ├── viewerOnTerminal.cpp
     └── wall.cpp
+    
+testLaser_Game
+├── Headers
+|   ├── Laser_Game
+|   |   ├── enumTypes.h
+|   |   ├── game.h
+|   |   ├── grid.h
+|   |   ├── ground.h
+|   |   ├── laser.h
+|   |   ├── mirror.h
+|   |   ├── object.h
+|   |   ├── point.h
+|   |   ├── shooter.h
+|   |   ├── target.h
+|   |   ├── viewer.h
+|   |   ├── viewerOnTerminal.cpp
+|   |   └── wall.h
+|   └── testLaser_Game
+|       └── doctest.h
+└── Sources
+    ├── Laser_Game
+    |   ├── game.cpp
+    |   ├── grid.cpp
+    |   ├── ground.cpp
+    |   ├── laser.cpp
+    |   ├── main.cpp
+    |   ├── mirror.cpp
+    |   ├── object.cpp
+    |   ├── point.cpp
+    |   ├── shooter.cpp.cpp
+    |   ├── target.cpp
+    |   ├── viewerOnTerminal.cpp
+    |   └── wall.cpp
+    └── testLaser_Game
+        ├── groundTest.cpp
+        ├── laserTest.cpp
+        ├── main.cpp
+        ├── mirrorTest.cpp
+        ├── objectTest.cpp
+        ├── targetTest.cpp
+        └── wallTest.cpp
 ```
 
 <a id="user-content-contributions" class="anchor" href="#contributions" aria-hidden="true"></a>
@@ -65,6 +106,7 @@ L'équipe du MOE :
 | TAMRABET Meriem   | Développeur           |
 
 Merci à [Discord](https://discord.com) pour la communication au sein du groupe.\
+Merci à [Doctest](https://github.com/doctest/doctest) pour le framework.\
 Merci à [GanttProject](https://www.ganttproject.biz) pour son application GanttProject.\
 Merci à [Google](https://google.com) pour ses applications telles que Doc, Drive, etc.\
 Merci à [shields.io](https://shields.io) pour la création des badges.
