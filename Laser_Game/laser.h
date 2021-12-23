@@ -15,12 +15,9 @@ using namespace enumTypes;
 class laser : public object
 {
     /**
-     * @brief Allows the class tireur to shoot
+     * @brief Allows the class shooter to shoot
      */
     friend laser shooter::tire(double);
-    /**
-     * @brief Allows the program to test the class laser
-     */
     friend laser createLaserForTest(const point&, const directions&, double);
 
     public:
@@ -142,7 +139,9 @@ class laser : public object
 }; // End of laser
 
 // Global functions
-
+/**
+ * @brief Allows the program to test the class laser
+ */
 laser createLaserForTest(const point&, const directions&, double = 1.0);
 
 #endif // LASER_H
