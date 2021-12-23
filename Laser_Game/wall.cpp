@@ -7,7 +7,7 @@
 /**Constructeur de la classe mur initialise a faux pour sa donnee estTouche
 @param p : un point (x,y)
 @return un mur m{false} avec une position*/
-wall::wall(const point& p) : d_affected{false}, object{p}
+wall::wall(const point& p) : object{p}, d_affected{false}
 {}
 
 /**Dis si le mur a ete touche par un laser

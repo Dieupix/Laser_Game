@@ -40,13 +40,7 @@ void viewerOnTerminal::setSpacing(unsigned spacing)
 
 void viewerOnTerminal::print(const unique_ptr<object>& obj) const
 {
-    if(dynamic_cast<target*>(obj.get())) // For the target
-    {
-        auto tmp = dynamic_cast<target*>(obj.get());
-        printCible(*tmp);
-
-    }
-    else if(dynamic_cast<laser*>(obj.get())) // For the laser
+    if(dynamic_cast<laser*>(obj.get())) // For the laser
     {
         auto tmp = dynamic_cast<laser*>(obj.get());
         printLaser(*tmp);
@@ -64,6 +58,12 @@ void viewerOnTerminal::print(const unique_ptr<object>& obj) const
         printShooter(*tmp);
 
     }
+    else if(dynamic_cast<target*>(obj.get())) // For the target
+    {
+        auto tmp = dynamic_cast<target*>(obj.get());
+        printTarget(*tmp);
+
+    }
     else if(dynamic_cast<wall*>(obj.get())) // For the wall
     {
         auto tmp = dynamic_cast<wall*>(obj.get());
@@ -72,11 +72,6 @@ void viewerOnTerminal::print(const unique_ptr<object>& obj) const
     }
     else
         cerr << "Unknown type" << endl;
-}
-
-void viewerOnTerminal::printCible(const target&) const
-{
-    cout << 'O';
 }
 
 void viewerOnTerminal::printGround(const ground& g) const
@@ -173,6 +168,11 @@ void viewerOnTerminal::printShooter(const shooter& s) const
             break;
         }
     }
+}
+
+void viewerOnTerminal::printTarget(const target&) const
+{
+    cout << 'O';
 }
 
 void viewerOnTerminal::printWall(const wall&) const

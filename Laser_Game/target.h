@@ -47,7 +47,7 @@ public :
          * @param[in] : The object to test with
          * @return Returns true if both of  are equals, else false
          */
-    bool operator==(const object& ) const ;
+    bool operator==(const object& ) const ; ///@TODO - Meriem : useless because the target and the laser are both objects
 
 
     /**

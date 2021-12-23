@@ -43,11 +43,11 @@ class viewer
          */
         virtual void print(const unique_ptr<object>&) const = 0;
 
-        virtual void printCible(const target&) const = 0;
         virtual void printGround(const ground&) const = 0;
         virtual void printLaser(const laser&) const = 0;
         virtual void printMirror(const mirror&) const = 0;
         virtual void printShooter(const shooter&) const = 0;
+        virtual void printTarget(const target&) const = 0;
         virtual void printWall(const wall&) const = 0;
 
 }; // End of viewer
