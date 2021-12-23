@@ -10,27 +10,27 @@ using std::string;
 using std::fstream;
 
 
-Game::Game(const ground& terrain) : d_terrain{terrain.getPosition(), 0 , 0 ,
+game::game(const ground& terrain) : d_terrain{terrain.getPosition(), 0 , 0 ,
                                                 terrain.getNbCellsWidth(), terrain.getNbCellsHeight()}
 {}
 
-void Game::addMirror(const mirror& m)
+void game::addMirror(const mirror& m)
 {
     d_terrain.addObjectAt(std::make_unique<mirror>(m), m.getPosition().x(),m.getPosition().y());
 }
-void Game::removeMirror(const mirror& m)
+void game::removeMirror(const mirror& m)
 {
 
 }
-void Game::run()
+void game::run()
 {
 
 }
-void Game::read()
+void game::read()
 {
 
 }
-void Game::save(const string& nameFile) const
+void game::save(const string& nameFile) const
 {
 
         if ( nameFile == "")
@@ -47,7 +47,7 @@ void Game::save(const string& nameFile) const
     }
 
 }
-void Game::start()
+void game::start()
 {
 
 }

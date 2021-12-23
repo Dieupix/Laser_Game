@@ -8,11 +8,11 @@
 
 using std::string;
 
-class Game
+class game
 {
 public :
-    Game(const ground& terrain);
-    ~Game() = default ;
+    game(const ground& terrain);
+    ~game() = default ;
     void addMirror(const mirror& m) ;
     void removeMirror(const mirror& m) ;
     void run() ;
