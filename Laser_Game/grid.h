@@ -7,11 +7,11 @@ class grille
     public:
         /** @brief Construteur d'une grille
          *
-         * @param longueur int le nombre de cellule en longueur de la grille
-         * @param largeur int le nombre de cellule en longueur de la grille
+         * @param longueur double la taille d'une cellule en longueur de la grille
+         * @param largeur double la taille d'une cellule en largeur de la grille
          *
          */
-        grille(int longueur, int largeur);
+        grille(double longueur, double largeur);
 
         /** @brief Destructeur virtuel de la grile
          *
@@ -42,9 +42,8 @@ class grille
          * @param Le nombre de cellule en longueur
          * @param Le nombre de cellule en largeur
          */
-        int d_longueurCells, d_largeurCells;
+        double d_longueurCells, d_largeurCells;
         /// @TODO - Mathis : add getters function for private variable members
-        /// @TODO - Mathis : change types from int to double - DON'T FORGET THE CONSTRUCTOR
 };
 
 std::ostream& operator<<(std::ostream& ost, const grille & g);

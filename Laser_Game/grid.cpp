@@ -1,6 +1,6 @@
 #include "grid.h"
 
-grille::grille(int longueur, int larger) : d_longueurCells{longueur}, d_largeurCells{larger}
+grille::grille(double longueur, double larger) : d_longueurCells{longueur}, d_largeurCells{larger}
 {}
 
 std::ostream& operator<<(std::ostream& ost, const grille& g){
