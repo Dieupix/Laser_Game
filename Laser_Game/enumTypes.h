@@ -17,20 +17,20 @@ namespace enumTypes{
         /**
          * @brief Left direction
          */
-        UP = 1,
+        UP,
         /**
          * @brief Up direction
          */
-        LEFT = 2,
+        LEFT,
         /**
          * @brief Down direction
          */
-        DOWN = 3
+        DOWN
     };
 
-    enum sens : bool  {
+    enum sens : bool{
         basGauche_hautDroit = 0,
-        hautGauche_basDroit = 1
+        hautGauche_basDroit
     };
 }
 
