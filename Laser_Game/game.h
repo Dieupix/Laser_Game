@@ -1,9 +1,12 @@
 #ifndef JEU_H_INCLUDED
 #define JEU_H_INCLUDED
 
-
 #include"mirror.h"
 #include"ground.h"
+
+#include <string>
+
+using std::string;
 
 class Game
 {
@@ -14,7 +17,7 @@ public :
     void removeMirror(const mirror& m) ;
     void run() ;
     void read() ;
-    void save(std::string nameFile) const ;
+    void save(const string& nameFile) const ;
     void start() ;
 private :
     ground d_terrain ;

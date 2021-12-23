@@ -2,8 +2,11 @@
 #include "ground.h"
 #include <fstream>
 
-using std::cout; using std::ofstream;
-using std::endl; using std::string;
+using std::cout;
+using std::endl;
+using std::invalid_argument;
+using std::ofstream;
+using std::string;
 using std::fstream;
 
 
@@ -27,11 +30,11 @@ void Game::read()
 {
 
 }
-void Game::save(std::string nameFile) const
+void Game::save(const string& nameFile) const
 {
 
         if ( nameFile == "")
-            throw "Chemin vide !";
+            throw invalid_argument("Chemin vide !");
 
         fstream file_out;
 
