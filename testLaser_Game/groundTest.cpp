@@ -101,7 +101,7 @@ TEST_CASE("3 - Test of the class ground"
 
     SUBCASE("Test of the print() function")
     {
-        g.addObjectAt(make_unique<tireur>(position, RIGHT), 0, 0);
+        g.addObjectAt(make_unique<shooter>(position, RIGHT), 0, 0);
         string expectedOutput = string("") +    "Ground[(1,1), position(0,0), nbCellsWidth(5), nbCellsHeight(5)]\n" +
                                                 "List of objects (1) :\n" +
                                                 "1 : Tireur[position(0,0), direction(RIGHT)]\n";
