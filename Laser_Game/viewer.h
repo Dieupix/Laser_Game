@@ -47,7 +47,7 @@ class viewer
         virtual void printGround(const ground&) const = 0;
         virtual void printLaser(const laser&) const = 0;
         virtual void printMirror(const mirror&) const = 0;
-        virtual void printShooter(const tireur&) const = 0;
+        virtual void printShooter(const shooter&) const = 0;
         virtual void printWall(const wall&) const = 0;
 
 }; // End of viewer

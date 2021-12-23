@@ -58,9 +58,9 @@ void viewerOnTerminal::print(const unique_ptr<object>& obj) const
         printMirror(*tmp);
 
     }
-    else if(dynamic_cast<tireur*>(obj.get())) // For the shooter
+    else if(dynamic_cast<shooter*>(obj.get())) // For the shooter
     {
-        auto tmp = dynamic_cast<tireur*>(obj.get());
+        auto tmp = dynamic_cast<shooter*>(obj.get());
         printShooter(*tmp);
 
     }
@@ -144,9 +144,9 @@ void viewerOnTerminal::printMirror(const mirror& m) const
     }
 }
 
-void viewerOnTerminal::printShooter(const tireur& t) const
+void viewerOnTerminal::printShooter(const shooter& s) const
 {
-    switch(t.getDirection()){
+    switch(s.getDirection()){
     case RIGHT:
         {
             cout << '>';

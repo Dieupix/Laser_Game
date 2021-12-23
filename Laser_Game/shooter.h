@@ -6,7 +6,7 @@ using namespace enumTypes;
 
 class laser;
 
-class tireur : public object
+class shooter : public object
 {
     public:
 
@@ -16,11 +16,11 @@ class tireur : public object
          * @param directions une direction de l'énumération de directions
          *
          */
-        tireur(const point &p, directions);
+        shooter(const point &p, directions);
 
         /** @brief Destructeur virtuel de la classe
          */
-        virtual ~tireur() = default;
+        virtual ~shooter() = default;
         directions getDirection() const;
         void setDirection(directions direction);
         virtual void print(std::ostream& ost) const override;

@@ -17,7 +17,7 @@ class laser : public object
     /**
      * @brief Allows the class tireur to shoot
      */
-    friend laser tireur::tire(double);
+    friend laser shooter::tire(double);
     /**
      * @brief Allows the program to test the class laser
      */

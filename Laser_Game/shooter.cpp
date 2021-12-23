@@ -1,15 +1,15 @@
 #include "shooter.h"
 #include "laser.h"
 
-tireur::tireur(const point &p, directions direction) : object{p}, direction{direction}
+shooter::shooter(const point &p, directions direction) : object{p}, direction{direction}
 {}
 
-laser tireur::tire(double step)
+laser shooter::tire(double step)
 {
     return {this->getPosition(), direction, step};
 }
 
-void tireur::print(std::ostream& ost) const {
+void shooter::print(std::ostream& ost) const {
     ost << "Tireur[position" << getPosition() << ", direction(";
     switch(direction){
         case directions::RIGHT: {
@@ -34,8 +34,8 @@ void tireur::print(std::ostream& ost) const {
 }
 
 
-directions tireur::getDirection() const{
+directions shooter::getDirection() const{
     return direction;
 }
-void tireur::setDirection(directions direction){
+void shooter::setDirection(directions direction){
 }
