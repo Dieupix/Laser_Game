@@ -92,7 +92,7 @@ void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
 
 void ground::loadFrom(istream& ist)
 {
-    /// @TODO : change the loading method
+    /// @TODO - Alex : change the loading method
 
     stringstream buffer;
     buffer << ist.rdbuf();
@@ -148,7 +148,7 @@ void ground::removeObjectAt(unsigned i, unsigned j)
 
 void ground::saveIn(ostream& ost) const
 {
-    /// @TODO : change the saving method
+    /// @TODO - Alex : change the saving method
 
     string toSave = "";
 

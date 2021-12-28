@@ -58,7 +58,7 @@ public :
      * @param[in] : The laser to test with
      * @return Returns true if both are different, else false
      */
-    bool operator!=(const object& ) const ;
+    bool operator!=(const object& ) const ; ///@TODO - Meriem : useless because the target and the laser are both objects
 
 
 private :

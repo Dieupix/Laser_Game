@@ -10,6 +10,7 @@ using std::string;
 using std::fstream;
 
 
+//TODO - We should use the copy constructor instead
 game::game(const ground& terrain) : d_terrain{terrain.getPosition(), 0 , 0 ,
                                                 terrain.getNbCellsWidth(), terrain.getNbCellsHeight()}
 {}
@@ -36,10 +37,12 @@ void game::save(const string& nameFile) const
         if ( nameFile == "")
             throw invalid_argument("Chemin vide !");
 
+        //TODO - An ofstream could be better?
         fstream file_out;
 
     file_out.open(nameFile);
 
+    //TODO - Use the saveIn() function of the ground
     if (!file_out.is_open()) {
         cout << "failed to open " << nameFile << '\n';
     } else {
