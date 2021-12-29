@@ -79,16 +79,17 @@ void game::save(const string& nameFile) const
         if ( nameFile == "")
             throw invalid_argument("Chemin vide !");
 
-        //TODO - An ofstream could be better?
-        fstream file_out;
+
+      ofstream file_out;
 
     file_out.open(nameFile);
 
-    //TODO - Use the saveIn() function of the ground
+
     if (!file_out.is_open()) {
         cout << "failed to open " << nameFile << '\n';
     } else {
-       d_terrain.print(file_out) ;
+
+       d_terrain.saveIn(file_out) ;
     }
 
 }

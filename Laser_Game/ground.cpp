@@ -4,7 +4,9 @@
 #include <string>
 
 #include "mirror.h"
-
+#include "shooter.h"
+#include "target.h"
+#include "wall.h"
 using std::string;
 using std::stringstream;
 
@@ -164,11 +166,68 @@ void ground::removeObjectAt(unsigned i, unsigned j)
 
 void ground::saveIn(ostream& ost) const
 {
-    /// @TODO - Alex : change the saving method
+     string toSave = "";
 
-    string toSave = "";
+    for(unsigned i = 0; i < getObjects().size(); ++i)
+    {
+        for(unsigned j = 0; j < getObjects()[i].size(); ++j)
+        {
+            auto obj = objects[i][j].get();
+            if(obj)
+            {
+                if(dynamic_cast<mirror*>(obj)) // For the mirror
+                {
+                    auto m = dynamic_cast<mirror*>(obj);
+                    switch(m->getSens())
+                    {
+                    case hautGauche_basDroit:
+                        {
+                            ost << '\\';
+                            break;
+                        }
+                    case basGauche_hautDroit:
+                        {
+                            ost << '/';
+                            break;
+                        }
+                    default:
+                      //  cerr << "ERROR : Sens is not defined" << endl;
+                        break;
+                    }
+
+                }
+                else if(dynamic_cast<shooter*>(obj)) // For the shooter
+                {
+                    auto s = dynamic_cast<shooter*>(obj);
+                    ost<< '>' ;
+
+                }
+                else if(dynamic_cast<target*>(obj)) // For the target
+                {
+                    auto t = dynamic_cast<target*>(obj);
+                    ost<< '<' ;
+
+                }
+                else if(dynamic_cast<wall*>(obj)) // For the wall
+                {
+                    auto w = dynamic_cast<wall*>(obj);
+                    ost<< '*' ;
+
+                }
+                else //cerr << "Unknown type" << endl;
+                    break ;
+            }
+            else ost << ' ' ;
+
+
+        }
+
+            ost << endl;
+
+    }
 
     ost << toSave;
+
 
 }
 
