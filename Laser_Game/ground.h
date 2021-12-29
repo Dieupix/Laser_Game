@@ -65,7 +65,14 @@ class ground : public grille
          * @param[in] nbCellsHeight : The number of cells in height
          * @return Creates a ground that is a grid, with its position, list of objects and number of cells
          */
-        ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight);
+        ground(const point&, double, double, unsigned, unsigned);
+        /**
+         * @brief Copy constructor
+         *
+         * @param g : The ground to copy
+         * @return Creates a ground by copying all the member variables
+         */
+        ground(const ground&);
 
         // Destructor
         /**

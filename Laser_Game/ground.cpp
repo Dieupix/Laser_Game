@@ -18,6 +18,22 @@ ground::ground(const point& position, double cellsWidth, double cellsHeight, uns
         objects[i].resize(nbCellsWidth);
 }
 
+ground::ground(const ground& g) :
+    ///@TODO - I need the getters of the grid...
+    grille{1, 1}, position{g.getPosition()}, nbCellsWidth{g.getNbCellsWidth()}, nbCellsHeight{g.getNbCellsHeight()}, nbOfObjects{g.getNbOfObjects()}, nbOfMirrors{g.getNbOfMirrors()}
+{
+    objects.resize(nbCellsHeight);
+    for(unsigned i = 0; i < nbCellsHeight; ++i)
+    {
+        objects[i].resize(nbCellsWidth);
+        for(unsigned j = 0; j < g.getObjects()[i].size(); ++j)
+        {
+            auto obj = make_unique<object>(*g.getObjects()[i][j].get());
+            objects[i][j] = move(obj);
+        }
+    }
+}
+
 // ---------- End of constructors ----------
 
 // ---------- Destructor ----------
