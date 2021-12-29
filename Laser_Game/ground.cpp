@@ -232,12 +232,12 @@ void ground::saveIn(ostream& ost) const
                 }
                 else if(dynamic_cast<target*>(obj)) // For the target
                 {
-                    toSave += 'X' ;
+                    toSave += 'O' ;
 
                 }
                 else if(dynamic_cast<wall*>(obj)) // For the wall
                 {
-                    toSave += '*' ;
+                    toSave += '#' ;
 
                 }
                 else cerr << "Unknown type" << endl;
