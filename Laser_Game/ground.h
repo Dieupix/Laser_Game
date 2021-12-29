@@ -6,7 +6,12 @@
 
 #include "object.h"
 #include "grid.h"
+#include "mirror.h"
+#include "shooter.h"
+#include "target.h"
+#include "wall.h"
 
+using std::cerr;
 using std::cout;
 using std::endl;
 using std::istream;

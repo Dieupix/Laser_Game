@@ -3,10 +3,6 @@
 #include <sstream>
 #include <string>
 
-#include "mirror.h"
-#include "shooter.h"
-#include "target.h"
-#include "wall.h"
 using std::string;
 using std::stringstream;
 
@@ -166,7 +162,9 @@ void ground::removeObjectAt(unsigned i, unsigned j)
 
 void ground::saveIn(ostream& ost) const
 {
-     string toSave = "";
+    string toSave = "";
+
+    auto blank = '.';
 
     for(unsigned i = 0; i < getObjects().size(); ++i)
     {
@@ -178,57 +176,78 @@ void ground::saveIn(ostream& ost) const
                 if(dynamic_cast<mirror*>(obj)) // For the mirror
                 {
                     auto m = dynamic_cast<mirror*>(obj);
+                    auto str = ' ';
                     switch(m->getSens())
                     {
                     case hautGauche_basDroit:
                         {
-                            ost << '\\';
+                            str = '\\';
                             break;
                         }
                     case basGauche_hautDroit:
                         {
-                            ost << '/';
+                            str = '/';
                             break;
                         }
                     default:
-                      //  cerr << "ERROR : Sens is not defined" << endl;
-                        break;
+                        {
+                            cerr << "ERROR : Sens is not defined" << endl;
+                            break;
+                        }
                     }
-
+                    toSave += str;
                 }
                 else if(dynamic_cast<shooter*>(obj)) // For the shooter
                 {
                     auto s = dynamic_cast<shooter*>(obj);
-                    ost<< '>' ;
-
+                    auto str = ' ';
+                    switch(s->getDirection()){
+                    case RIGHT:
+                        {
+                            str = '>';
+                            break;
+                        }
+                    case LEFT:
+                        {
+                            str = '<';
+                            break;
+                        }
+                    case UP:
+                        {
+                            str = '^';
+                            break;
+                        }
+                    case DOWN:
+                        {
+                            str = 'v';
+                            break;
+                        }
+                    default:
+                        {
+                            cerr << "ERROR : Direction is not defined" << endl;
+                            break;
+                        }
+                    }
+                    toSave += str;
                 }
                 else if(dynamic_cast<target*>(obj)) // For the target
                 {
-                    auto t = dynamic_cast<target*>(obj);
-                    ost<< '<' ;
+                    toSave += 'X' ;
 
                 }
                 else if(dynamic_cast<wall*>(obj)) // For the wall
                 {
-                    auto w = dynamic_cast<wall*>(obj);
-                    ost<< '*' ;
+                    toSave += '*' ;
 
                 }
-                else //cerr << "Unknown type" << endl;
-                    break ;
+                else cerr << "Unknown type" << endl;
             }
-            else ost << ' ' ;
-
-
+            else toSave += blank ;
         }
-
-            ost << endl;
-
+        toSave += '\n';
     }
 
     ost << toSave;
-
-
 }
 
 // ---------- End of functions ----------
