@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Laser Game", "index.html", [
+  [ "Laser_Game", "index.html", [
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [

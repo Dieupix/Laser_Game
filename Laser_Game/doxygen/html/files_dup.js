@@ -1,32 +1,34 @@
 var files_dup =
 [
-    [ "cible.cpp", "cible_8cpp.html", null ],
-    [ "cible.h", "cible_8h.html", [
-      [ "cible", "classcible.html", "classcible" ]
-    ] ],
     [ "enumTypes.h", "enum_types_8h.html", "enum_types_8h" ],
-    [ "grille.cpp", "grille_8cpp.html", "grille_8cpp" ],
-    [ "grille.h", "grille_8h.html", "grille_8h" ],
+    [ "game.cpp", "game_8cpp.html", null ],
+    [ "game.h", "game_8h.html", [
+      [ "game", "classgame.html", "classgame" ]
+    ] ],
+    [ "grid.cpp", "grid_8cpp.html", "grid_8cpp" ],
+    [ "grid.h", "grid_8h.html", "grid_8h" ],
     [ "ground.cpp", "ground_8cpp.html", null ],
     [ "ground.h", "ground_8h.html", [
       [ "ground", "classground.html", "classground" ]
     ] ],
-    [ "laser.cpp", "laser_8cpp.html", null ],
-    [ "laser.h", "laser_8h.html", [
-      [ "laser", "classlaser.html", "classlaser" ]
-    ] ],
+    [ "laser.cpp", "laser_8cpp.html", "laser_8cpp" ],
+    [ "laser.h", "laser_8h.html", "laser_8h" ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
-    [ "miroir.cpp", "miroir_8cpp.html", null ],
-    [ "miroir.h", "miroir_8h.html", [
-      [ "miroir", "classmiroir.html", "classmiroir" ]
+    [ "mirror.cpp", "mirror_8cpp.html", null ],
+    [ "mirror.h", "mirror_8h.html", [
+      [ "mirror", "classmirror.html", "classmirror" ]
     ] ],
     [ "object.cpp", "object_8cpp.html", "object_8cpp" ],
     [ "object.h", "object_8h.html", "object_8h" ],
     [ "point.cpp", "point_8cpp.html", "point_8cpp" ],
     [ "point.h", "point_8h.html", "point_8h" ],
-    [ "tireur.cpp", "tireur_8cpp.html", null ],
-    [ "tireur.h", "tireur_8h.html", [
-      [ "tireur", "classtireur.html", "classtireur" ]
+    [ "shooter.cpp", "shooter_8cpp.html", null ],
+    [ "shooter.h", "shooter_8h.html", [
+      [ "shooter", "classshooter.html", "classshooter" ]
+    ] ],
+    [ "target.cpp", "target_8cpp.html", null ],
+    [ "target.h", "target_8h.html", [
+      [ "target", "classtarget.html", "classtarget" ]
     ] ],
     [ "viewer.h", "viewer_8h.html", [
       [ "viewer", "classviewer.html", "classviewer" ]

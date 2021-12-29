@@ -13,7 +13,7 @@ var classlaser =
     [ "turnLeft", "classlaser.html#a0e551aad660b033c4c17a1e605bdb1bc", null ],
     [ "turnRight", "classlaser.html#a92650818bec58534d91d089ae18b4bff", null ],
     [ "createLaserForTest", "classlaser.html#a2477f29ae69cf57d211fdee0a1377007", null ],
-    [ "tireur::tire", "classlaser.html#a6c6862f998cfe106d1750454ee79a320", null ],
+    [ "shooter::tire", "classlaser.html#af41ab1879be0feee40f2160ee3edfb3f", null ],
     [ "direction", "classlaser.html#aefa7147f347560f0b019578804871d4a", null ],
     [ "step", "classlaser.html#a72f44dd8855efa1771d82476317d24c4", null ]
 ];

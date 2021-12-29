@@ -1,13 +1,14 @@
 var hierarchy =
 [
+    [ "game", "classgame.html", null ],
     [ "grille", "classgrille.html", [
       [ "ground", "classground.html", null ]
     ] ],
     [ "object", "classobject.html", [
-      [ "cible", "classcible.html", null ],
       [ "laser", "classlaser.html", null ],
-      [ "miroir", "classmiroir.html", null ],
-      [ "tireur", "classtireur.html", null ],
+      [ "mirror", "classmirror.html", null ],
+      [ "shooter", "classshooter.html", null ],
+      [ "target", "classtarget.html", null ],
       [ "wall", "classwall.html", null ]
     ] ],
     [ "point", "classpoint.html", null ],

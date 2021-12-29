@@ -1,14 +1,16 @@
 var searchData=
 [
-  ['d_5faffected_0',['d_affected',['../classcible.html#a971e364b62a0bdf9d960a100da8a9bd0',1,'cible::d_affected()'],['../classwall.html#ad73b1c16369669f3dd72bc6e33203b00',1,'wall::d_affected()']]],
-  ['d_5flargeurcells_1',['d_largeurCells',['../classgrille.html#a960112f66dbf0df2707250d7a2720390',1,'grille']]],
-  ['d_5flongueurcells_2',['d_longueurCells',['../classgrille.html#aebee6683ce7ae6652cd57c436f5c3f2e',1,'grille']]],
-  ['d_5fmiroirtouchee_3',['d_miroirtouchee',['../classmiroir.html#a6aacec98302bf68e6aa8cd953b02a6a4',1,'miroir']]],
-  ['d_5fp_4',['d_p',['../classobject.html#a7f047e9b5998434e85a3d63bfc4cbb01',1,'object']]],
-  ['d_5fsens_5',['d_sens',['../classmiroir.html#a210b7c321b9360e5d210c1aec2b4ed6f',1,'miroir']]],
-  ['d_5fx_6',['d_x',['../classpoint.html#a3322ff1f6615ca7ad3b4a7114e59f53f',1,'point']]],
-  ['d_5fy_7',['d_y',['../classpoint.html#a4b43dbbe38fc609dc24123ec46c0da45',1,'point']]],
-  ['direction_8',['direction',['../classlaser.html#aefa7147f347560f0b019578804871d4a',1,'laser::direction()'],['../classtireur.html#a1cd125699701737b8682fa8a705d4784',1,'tireur::direction()']]],
-  ['directions_9',['directions',['../namespaceenum_types.html#a5fe68642b66c7a6ba75569d9e57451c9',1,'enumTypes']]],
-  ['down_10',['DOWN',['../namespaceenum_types.html#a5fe68642b66c7a6ba75569d9e57451c9a40fee05e33977a0cbf287e7e3db9ab3b',1,'enumTypes']]]
+  ['d_5faffected_0',['d_affected',['../classtarget.html#a33c5cc6f748a5ce676dd7b06101b5bf5',1,'target::d_affected()'],['../classwall.html#ad73b1c16369669f3dd72bc6e33203b00',1,'wall::d_affected()']]],
+  ['d_5flargeurcells_1',['d_largeurCells',['../classgrille.html#aeca088b456d74ad30ffd36c1727bb426',1,'grille']]],
+  ['d_5flongueurcells_2',['d_longueurCells',['../classgrille.html#ad18ddd9f2eea775fb43775f4e011cca7',1,'grille']]],
+  ['d_5fmirrortouched_3',['d_mirrortouched',['../classmirror.html#a5635dd03e0d4946107850be691fbfc7c',1,'mirror']]],
+  ['d_5fnb_5fmirror_5fmax_4',['d_nb_mirror_max',['../classgame.html#a4b1db2cd937959102720f87c05722ffb',1,'game']]],
+  ['d_5fp_5',['d_p',['../classobject.html#a7f047e9b5998434e85a3d63bfc4cbb01',1,'object']]],
+  ['d_5fsens_6',['d_sens',['../classmirror.html#a7bc2d410ae3392020f968ac96f464368',1,'mirror']]],
+  ['d_5fterrain_7',['d_terrain',['../classgame.html#a2df12f14785e0b5dd30c360c53233a1a',1,'game']]],
+  ['d_5fx_8',['d_x',['../classpoint.html#a3322ff1f6615ca7ad3b4a7114e59f53f',1,'point']]],
+  ['d_5fy_9',['d_y',['../classpoint.html#a4b43dbbe38fc609dc24123ec46c0da45',1,'point']]],
+  ['direction_10',['direction',['../classlaser.html#aefa7147f347560f0b019578804871d4a',1,'laser::direction()'],['../classshooter.html#a96f650613773082e7883974125ab0d79',1,'shooter::direction()']]],
+  ['directions_11',['directions',['../namespaceenum_types.html#a5fe68642b66c7a6ba75569d9e57451c9',1,'enumTypes']]],
+  ['down_12',['DOWN',['../namespaceenum_types.html#a5fe68642b66c7a6ba75569d9e57451c9a40fee05e33977a0cbf287e7e3db9ab3b',1,'enumTypes']]]
 ];

@@ -1,13 +1,14 @@
 var annotated_dup =
 [
-    [ "cible", "classcible.html", "classcible" ],
+    [ "game", "classgame.html", "classgame" ],
     [ "grille", "classgrille.html", "classgrille" ],
     [ "ground", "classground.html", "classground" ],
     [ "laser", "classlaser.html", "classlaser" ],
-    [ "miroir", "classmiroir.html", "classmiroir" ],
+    [ "mirror", "classmirror.html", "classmirror" ],
     [ "object", "classobject.html", "classobject" ],
     [ "point", "classpoint.html", "classpoint" ],
-    [ "tireur", "classtireur.html", "classtireur" ],
+    [ "shooter", "classshooter.html", "classshooter" ],
+    [ "target", "classtarget.html", "classtarget" ],
     [ "viewer", "classviewer.html", "classviewer" ],
     [ "viewerOnTerminal", "classviewer_on_terminal.html", "classviewer_on_terminal" ],
     [ "wall", "classwall.html", "classwall" ]

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['grille_0',['grille',['../classgrille.html',1,'']]],
-  ['ground_1',['ground',['../classground.html',1,'']]]
+  ['laser_0',['laser',['../classlaser.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['point_0',['point',['../classpoint.html',1,'']]]
+  ['shooter_0',['shooter',['../classshooter.html',1,'']]]
 ];

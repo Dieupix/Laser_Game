@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['laser_0',['laser',['../classlaser.html',1,'']]]
+  ['mirror_0',['mirror',['../classmirror.html',1,'']]]
 ];

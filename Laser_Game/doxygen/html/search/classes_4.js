@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['object_0',['object',['../classobject.html',1,'']]]
+  ['point_0',['point',['../classpoint.html',1,'']]]
 ];
