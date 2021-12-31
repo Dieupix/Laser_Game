@@ -41,7 +41,16 @@ void point::read(std::istream& ist)
 
 void point::print(std::ostream& ost) const
 {
-    ost<<'('<<d_x<<','<<d_y<<')';
+    ost<<toString();
+}
+
+string point::toString() const{
+    string toString = "(";
+    toString += d_x;
+    toString += ", ";
+    toString += d_y;
+    toString += ")";
+    return toString;
 }
 
 std::ostream& operator<<(std::ostream& ost, const point& p){

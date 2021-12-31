@@ -2,6 +2,9 @@
 #define POINT_H
 
 #include <iostream>
+#include <string>
+
+using std::string;
 
 class point
 {
@@ -65,6 +68,8 @@ class point
         * @return void
         */
         void print(std::ostream& ost) const;
+
+        string toString() const;
 
         /**
         * @brief Permet d'écrire sur un flux
