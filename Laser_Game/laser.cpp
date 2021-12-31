@@ -72,27 +72,34 @@ void laser::moveByStep(){
 }
 
 void laser::print(std::ostream& ost) const {
-    ost << "Laser[position" << getPosition() << ", direction(";
+    ost << toString();
+}
+
+string laser::toString() const{
+    string toString = "Laser[position" + getPosition().toString() + ", direction(";
     switch(direction){
         case directions::RIGHT: {
-            ost << "RIGHT";
+            toString += "RIGHT";
             break;
         }case directions::LEFT: {
-            ost << "LEFT";
+            toString += "LEFT";
             break;
         }case directions::UP: {
-            ost << "UP";
+            toString += "UP";
             break;
         }case directions::DOWN: {
-            ost << "DOWN";
+            toString += "DOWN";
             break;
         }
         default:{
-            ost << "ERROR: Direction not defined";
+            toString += "ERROR: Direction not defined";
             break;
         }
     }
-    ost << "), step(" << step << ")]";
+    toString += "), step(";
+    toString += step;
+    toString += ")]";
+    return toString;
 }
 
 void laser::turnLeft(){

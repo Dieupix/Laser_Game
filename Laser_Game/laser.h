@@ -89,13 +89,19 @@ class laser : public object
          */
         void moveByStep();
         /**
-         * @brief A function that prints the characteristics of a laser
-         * @details A laser is printed as Laser[position(x,y), direction(DIRECTION), step(STEP)]
+         * @brief A virtual constant function that prints the characteristics of a laser
          *
          * @param ost : The output stream
-         * @return virtual void
+         * @return Returns nothing
          */
         virtual void print(std::ostream&) const override;
+        /**
+         * @brief A virtual constant function that turns a laser into string
+         * @details A laser is converted as Laser[position(x,y), direction(DIRECTION), step(STEP)]
+         *
+         * @return Returns the laser converted to a string
+         */
+        virtual string toString() const override;
         /**
          * @brief A function that changes the direction of the laser
          * by 90 degrees to the left.
