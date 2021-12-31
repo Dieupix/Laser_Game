@@ -22,6 +22,7 @@ class object
        void move(const point& p);
        void move(double x, double y);
        virtual void print(std::ostream& ost) const;
+       virtual string toString() const;
        bool operator==(const object& o) const;
        bool operator!=(const object& o) const;
 };

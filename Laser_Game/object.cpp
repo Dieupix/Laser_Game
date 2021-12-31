@@ -66,7 +66,13 @@ void object::move(double x, double y)
     d_p.move(x,y);
 }
 
-void object::print(std::ostream&) const {}
+void object::print(std::ostream& ost) const{
+    ost << toString();
+}
+
+string object::toString() const{
+    return d_p.toString();
+}
 
 /**Operateur d'egalite : test si la position d'un objet est la meme que celle passee en parametre
 @param o : un objet
