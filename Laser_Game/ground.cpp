@@ -104,6 +104,24 @@ void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
     }
 }
 
+const shooter& ground::getShooter() const
+{
+    for(unsigned i = 0; i < objects.size(); ++i)
+    {
+        for(unsigned j = 0; j < objects[i].size(); ++j)
+        {
+            auto obj = objects[i][j].get();
+            if(obj)
+            {
+                if(dynamic_cast<shooter*>(obj))
+                {
+                    return obj;
+                }
+            }
+        }
+    }
+}
+
 void ground::loadFrom(istream& ist)
 {
     /// @TODO - Alex : change the loading method

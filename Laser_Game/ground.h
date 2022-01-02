@@ -163,6 +163,12 @@ class ground : public grille
          */
         void addObjectAt(unique_ptr<object>, unsigned, unsigned);
         /**
+         * @brief
+         *
+         * @return Returns the shooter on the ground
+         */
+        const shooter& getShooter() const;
+        /**
          * @brief A function that loads a ground from an input stream
          *
          * @param[in] ist : The input stream to load the ground from
