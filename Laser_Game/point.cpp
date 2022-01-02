@@ -45,12 +45,7 @@ void point::print(std::ostream& ost) const
 }
 
 string point::toString() const{
-    string toString = "(";
-    toString += d_x;
-    toString += ", ";
-    toString += d_y;
-    toString += ")";
-    return toString;
+    return "(" + std::to_string(d_x) + ", " + std::to_string(d_y) + ")";
 }
 
 std::ostream& operator<<(std::ostream& ost, const point& p){

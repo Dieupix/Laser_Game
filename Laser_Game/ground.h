@@ -93,6 +93,7 @@ class ground : public grille
         virtual ~ground() = default;
 
         // Overloads
+        void operator=(const ground&);
 
         // Getters
         /**

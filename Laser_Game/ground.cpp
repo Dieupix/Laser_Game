@@ -43,6 +43,11 @@ ground::ground(const ground& g) :
 
 // ---------- Overloads ----------
 
+void ground::operator=(const ground& g)
+{
+
+}
+
 // ---------- End of overloads ----------
 
 // ---------- Getters ----------
@@ -109,16 +114,16 @@ void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
 
 const shooter& ground::getShooter() const
 {
-    for(unsigned i = 0; i < objects.size(); ++i)
+    for(unsigned i = 0; i < nbCellsHeight; ++i)
     {
-        for(unsigned j = 0; j < objects[i].size(); ++j)
+        for(unsigned j = 0; j < nbCellsWidth; ++j)
         {
             auto obj = objects[i][j].get();
             if(obj)
             {
                 if(dynamic_cast<shooter*>(obj))
                 {
-                    return obj;
+                    return *dynamic_cast<shooter*>(obj);
                 }
             }
         }
@@ -187,9 +192,9 @@ void ground::saveIn(ostream& ost) const
 
     auto blank = '.';
 
-    for(unsigned i = 0; i < getObjects().size(); ++i)
+    for(unsigned i = 0; i < nbCellsHeight; ++i)
     {
-        for(unsigned j = 0; j < getObjects()[i].size(); ++j)
+        for(unsigned j = 0; j < nbCellsWidth; ++j)
         {
             auto obj = objects[i][j].get();
             if(obj)

@@ -13,9 +13,18 @@ wall::wall(const point& p) : object{p}, d_affected{false}
 /**Dis si le mur a ete touche par un laser
 @param l : le laser
 @return VRAI si il a ete touche, FAUX sinon*/
-bool wall::isAffected(const laser& l) const
+bool wall::isAffected(laser& l) const
 {
-    return(getPosition() == l.getPosition());
+    if(getPosition() == l.getPosition())
+    {
+        l.setIsAlive(false);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
 }
 
 /**Change la donnee du mur estTouche

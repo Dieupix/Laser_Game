@@ -9,7 +9,7 @@ class wall : public object
 public:
     wall(const point& p);
     virtual ~wall() = default;
-    bool isAffected(const laser& l) const;
+    bool isAffected(laser& l) const;
     void changeAffected() ;
 
 private:

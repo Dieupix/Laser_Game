@@ -2,7 +2,7 @@
 
 // ---------- Constructors ----------
 
-laser::laser(const point& p, directions direction, double step) : object{p}, direction{direction}, step{step} {}
+laser::laser(const point& p, directions direction, double step) : object{p}, direction{direction}, isAlive{true}, step{step} {}
 
 // ---------- End of constructors ----------
 
@@ -28,6 +28,8 @@ bool laser::operator!=(const laser& l) const{
 
 directions laser::getDirection() const {return this->direction;}
 
+bool laser::getIsAlive() const {return this->isAlive;}
+
 double laser::getStep() const {return this->step;}
 
 // ---------- End of getters ----------
@@ -36,6 +38,10 @@ double laser::getStep() const {return this->step;}
 
 void laser::setDirection(directions direction){
     this->direction = direction;
+}
+
+void laser::setIsAlive(bool isAlive){
+    this->isAlive = isAlive;
 }
 
 void laser::setStep(double step){

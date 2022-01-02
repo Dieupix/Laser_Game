@@ -12,13 +12,12 @@ using std::ifstream;
 
 
 
-//TODO - We should use the copy constructor instead
-game::game(const ground& terrain, int nb_mirror_max, int d_nb_mirror_installed) :   d_terrain{terrain},
-                                                                                    d_nb_mirror_max{nb_mirror_max},
-                                                                                    d_nb_mirror_installed{d_nb_mirror_installed}
+
+game::game() : d_terrain{}, d_nb_mirror_max{0}, d_nb_mirror_installed{0}
 {}
 
-game::game() : d_terrain{}, d_nb_mirror_installed{0}, d_nb_mirror_max{0}
+game::game(const ground& terrain, int nb_mirror_max, int d_nb_mirror_installed) :
+    d_terrain{terrain}, d_nb_mirror_max{nb_mirror_max}, d_nb_mirror_installed{d_nb_mirror_installed}
 {}
 
 void game::addMirror(const point& p, const sens& s)
@@ -64,7 +63,7 @@ point game::askPosition()
 sens game::askSens()
 {
     int inclination_mirror;
-    cout<<"Saisir l'inclinaison du miroir ( 1 pour // ou 2 pour /\ )"<<endl;
+    cout<<"Saisir l'inclinaison du miroir ( 1 pour / ou 2 pour \\ ) : ";
     cin>>inclination_mirror;
     sens s;
     switch(inclination_mirror)
@@ -78,7 +77,7 @@ sens game::askSens()
 }
 void game::run()
 {
-    int choix;
+    int choix, max = 3;
     point p;
     do
     {
@@ -86,6 +85,11 @@ void game::run()
         cout<<"1 - Ajouter un miroir"<<endl;
         cout<<"2 - Enlever un miroir"<<endl;
         cout<<"3 - Afficher le terrain"<<endl;
+
+        cout << endl;
+
+        cout << "> ";
+
         cin>>choix;
 
         switch(choix)
@@ -118,7 +122,13 @@ void game::run()
                     v.printGround(d_terrain);
                     break;
                 }
+            default:
+                {
+                    cerr << "Erreur, entrez un nombre entre 0 et " << max << endl;
+                    break;
+                }
         }
+        cout << endl;
     }
     while(choix != 0);
 }
@@ -161,13 +171,17 @@ void game::save(const string& nameFile) const
 
 void game::start()
 {
-    auto tireur = d_terrain.getShooter();
-    auto laser = tireur.tire();
-    while(laser)
+    auto shooter = d_terrain.getShooter();
+    auto l = shooter.tire();
+    d_terrain.addObjectAt(make_unique<object>(l), l.getPosition().x(), l.getPosition().y());
+    while(l.getIsAlive())
     {
         viewerOnTerminal v;
         v.printGround(d_terrain);
-        laser.moveByStep();
+        l.moveByStep();
+
+        d_terrain.addObjectAt(make_unique<object>(l), l.getPosition().x(), l.getPosition().y());
+
     }
 }
 

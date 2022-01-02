@@ -24,9 +24,16 @@
     bool target::isAffected(laser& L )
     {
 
-         d_affected = (*this == L );
-
-        return(d_affected ) ;
+        if(getPosition() == L.getPosition())
+        {
+            L.setIsAlive(false);
+            d_affected = true;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 // ---------- End of isAffected  -----------------------------

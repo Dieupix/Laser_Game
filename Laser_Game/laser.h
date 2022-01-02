@@ -57,6 +57,12 @@ class laser : public object
          */
         directions getDirection() const;
         /**
+         * @brief Constant getter function for the current status of the laser
+         *
+         * @return Returns the current status of the laser
+         */
+        bool getIsAlive() const;
+        /**
          * @brief Constant getter function for the step of the laser
          *
          * @return Returns the step of the laser
@@ -71,6 +77,13 @@ class laser : public object
          * @return Returns nothing
          */
         void setDirection(directions);
+        /**
+         * @brief Setter function for the current status of the laser
+         *
+         * @param[in] isAlive : The new status of the laser
+         * @return Returns nothing
+         */
+        void setIsAlive(bool);
         /**
          * @brief Setter function for the step of the laser
          *
@@ -125,6 +138,10 @@ class laser : public object
           * @see directions
           */
         directions direction;
+        /**
+         * @brief The current status of the laser
+         */
+        bool isAlive;
         /**
          * @brief The step of the laser
          */

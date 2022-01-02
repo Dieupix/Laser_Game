@@ -76,9 +76,9 @@ void viewerOnTerminal::print(const unique_ptr<object>& obj) const
 
 void viewerOnTerminal::printGround(const ground& g) const
 {
-    for(unsigned i = 0; i < g.getObjects().size(); ++i)
+    for(unsigned i = 0; i < g.getNbCellsHeight(); ++i)
     {
-        for(unsigned j = 0; j < g.getObjects()[i].size(); ++j)
+        for(unsigned j = 0; j < g.getNbCellsWidth(); ++j)
         {
             if(g.getObjects()[i][j])
                 print(g.getObjects()[i][j]);

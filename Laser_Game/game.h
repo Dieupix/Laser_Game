@@ -11,10 +11,10 @@ using std::string;
 class game
 {
 public :
+    game();
     //TODO - Should we not use a default constructor and create a function to load a ground in the game?
     //TODO - Because read() allows the game to load a ground only from a file
     game(const ground& terrain, int nb_mirror_max, int nb_mirror_installed = 0);
-    game(); //si on charge un terrain qui existe deja
     ~game() = default ;
     sens askSens();
     point askPosition();
