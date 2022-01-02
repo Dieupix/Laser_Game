@@ -1,9 +1,10 @@
-#ifndef JEU_H_INCLUDED
-#define JEU_H_INCLUDED
+#ifndef GAME_H_INCLUDED
+#define GAME_H_INCLUDED
 
-#include"mirror.h"
-#include"ground.h"
+#include "mirror.h"
+#include "ground.h"
 #include "viewerOnTerminal.h"
+
 #include <string>
 
 using std::string;
@@ -19,18 +20,18 @@ public :
     sens askSens();
     point askPosition();
     void addMirror(const point& p, const sens& s) ;
+    void loadGround(const ground& terrain);
+    void read(const string& nameFile) ;
     void removeMirror(const point& p) ;
     void run() ;
-    void read(const string& nameFile) ;
     void save(const string& nameFile) const ;
     void start() ;
-    void loadGround(const ground& terrain);
 private :
     ground d_terrain ;
     int d_nb_mirror_max;
     int d_nb_mirror_installed;
 };
 
-#endif // JEU_H_INCLUDED
+#endif // GAME_H_INCLUDED
 
 

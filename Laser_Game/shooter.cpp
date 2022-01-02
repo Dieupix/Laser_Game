@@ -10,32 +10,39 @@ laser shooter::tire(double step)
 }
 
 void shooter::print(std::ostream& ost) const {
-    ost << "Tireur[position" << getPosition() << ", direction(";
+    ost << toString();
+}
+
+string shooter::toString() const
+{
+    string t = "Tireur[position" + getPosition().toString() + ", direction(";
     switch(direction){
         case directions::RIGHT: {
-            ost << "RIGHT";
+            t += "RIGHT";
             break;
         }case directions::LEFT: {
-            ost << "LEFT";
+            t += "LEFT";
             break;
         }case directions::UP: {
-            ost << "UP";
+            t += "UP";
             break;
         }case directions::DOWN: {
-            ost << "DOWN";
+            t += "DOWN";
             break;
         }
         default:{
-            ost << "ERROR: Direction not defined";
+            t += "ERROR: Direction not defined";
             break;
         }
     }
-    ost << ")]";
+    t += ")]";
+
+    return t;
 }
 
+directions shooter::getDirection() const{return this->direction;}
 
-directions shooter::getDirection() const{
-    return direction;
-}
-void shooter::setDirection(directions direction){
+void shooter::setDirection(directions direction)
+{
+    this->direction = direction;
 }

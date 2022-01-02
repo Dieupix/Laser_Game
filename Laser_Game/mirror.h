@@ -52,6 +52,7 @@ class mirror : public object
     *
     */
        virtual void print(std::ostream& ost) const override;
+       virtual string toString() const override;
      private:
         /**
         *  @brief The mirror has Boolean that says whether or

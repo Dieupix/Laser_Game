@@ -38,27 +38,7 @@ public :
        * @param[in] ost :
     */
     virtual void print(std::ostream& ost) const override;
-
-    /**
-         * @brief Binary operator == : constant
-         * @details Tests if all the member variables of the
-         * target and an object are equals.
-         *
-         * @param[in] : The object to test with
-         * @return Returns true if both of  are equals, else false
-         */
-    bool operator==(const object& ) const ; ///@TODO - Meriem : useless because the target and the laser are both objects
-
-
-    /**
-     * @brief Binary operator != : constant
-     * @details Tests if all the member variables of the
-     * target and an object are equals..
-     *
-     * @param[in] : The laser to test with
-     * @return Returns true if both are different, else false
-     */
-    bool operator!=(const object& ) const ; ///@TODO - Meriem : useless because the target and the laser are both objects
+    virtual string toString() const override;
 
 
 private :

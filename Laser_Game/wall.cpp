@@ -37,9 +37,14 @@ void wall::changeAffected()
 /**Imprime le mur
 @param ost : le flot de sortie
 */
-/*
+
 void wall::print(std::ostream& ost) const
 {
-    getPosition().print(ost);
+    ost << toString();
 }
-*/
+
+string wall::toString() const
+{
+    return "Wall[position" + getPosition().toString() + ", affected(" + string(d_affected ? "true" : "false") + ")]";
+}
+

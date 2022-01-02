@@ -1,17 +1,11 @@
 #include "game.h"
 #include "ground.h"
+
 #include <fstream>
 
-using std::cout;
-using std::cin;
-using std::endl;
 using std::invalid_argument;
 using std::ofstream;
-using std::string;
 using std::ifstream;
-
-
-
 
 game::game() : d_terrain{}, d_nb_mirror_max{0}, d_nb_mirror_installed{0}
 {}
@@ -188,4 +182,5 @@ void game::start()
 void game::loadGround(const ground& terrain)
 {
     d_terrain = terrain;
+    d_nb_mirror_installed = terrain.getNbOfMirrors();
 }

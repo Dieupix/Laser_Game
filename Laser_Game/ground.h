@@ -27,7 +27,7 @@ using std::vector;
  * @details This class represents a ground, which is a @a grid
  * at a @a position, with a @a number of cells in width and height and a list of @a objects.
  */
-class ground : public grille
+class ground : public grid
 {
     private:
         /**
@@ -211,6 +211,7 @@ class ground : public grille
          * @return Returns nothing
          */
         void saveIn(ostream&) const;
+        virtual string toString() const override;
 
 }; // End of ground
 

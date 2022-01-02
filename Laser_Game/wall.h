@@ -12,6 +12,9 @@ public:
     bool isAffected(laser& l) const;
     void changeAffected() ;
 
+    virtual void print(std::ostream&) const override;
+    virtual string toString() const override;
+
 private:
     bool d_affected;
 };

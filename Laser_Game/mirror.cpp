@@ -75,24 +75,26 @@ bool mirror::estTouchee(laser& L ) const
 
 void mirror::print(std::ostream& ost) const
 {
+    ost << toString();
+}
 
-    ost << "Miroir [position" << getPosition()<<", sens : " ;
-    switch(getSens() )
+string mirror::toString() const
+{
+    string t = "Miroir[position" + getPosition().toString() + ", sens(";
+    switch(getSens())
     {
         case sens::basGauche_hautDroit :{
-            ost<<"basGauche_hautDroit,";
+            t += "basGauche_hautDroit";
             break;
         }
         case sens::hautGauche_basDroit :{
-            ost<<"hautGauche_basDroit,";
+            t += "hautGauche_basDroit";
             break ;
         }
     }
-    if(d_mirrortouched)
-    ost <<" est touchee]" ;
-    else
-     ost <<" n'est pas touchee]" ;
+    t += "), affected(" + string(d_mirrortouched ? "true" : "false") + ")]";
 
+    return t;
 }
 
 

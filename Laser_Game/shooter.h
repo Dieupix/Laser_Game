@@ -24,7 +24,7 @@ class shooter : public object
         directions getDirection() const;
         void setDirection(directions direction);
         virtual void print(std::ostream& ost) const override;
-
+        virtual string toString() const override;
 
         /** @brief Permet au tireur de tirer
          *

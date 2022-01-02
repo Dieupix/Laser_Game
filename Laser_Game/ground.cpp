@@ -8,11 +8,11 @@ using std::stringstream;
 
 // ---------- Constructors ----------
 
-ground::ground() : grille{1, 1}, position{0, 0}, nbCellsWidth{0}, nbCellsHeight{0}, nbOfObjects{0}, nbOfMirrors{0}
+ground::ground() : grid{1, 1}, position{0, 0}, nbCellsWidth{0}, nbCellsHeight{0}, nbOfObjects{0}, nbOfMirrors{0}
 {}
 
 ground::ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight) :
-    grille{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}, nbOfObjects{0}, nbOfMirrors{0}
+    grid{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}, nbOfObjects{0}, nbOfMirrors{0}
 {
     objects.resize(nbCellsHeight);
     for(unsigned i = 0; i < nbCellsHeight; ++i)
@@ -20,8 +20,7 @@ ground::ground(const point& position, double cellsWidth, double cellsHeight, uns
 }
 
 ground::ground(const ground& g) :
-    ///@TODO - I need the getters of the grid...
-    grille{1, 1}, position{g.getPosition()}, nbCellsWidth{g.getNbCellsWidth()}, nbCellsHeight{g.getNbCellsHeight()}, nbOfObjects{g.getNbOfObjects()}, nbOfMirrors{g.getNbOfMirrors()}
+    grid{g.getCellsWidth(), g.getCellsHeight()}, position{g.getPosition()}, nbCellsWidth{g.getNbCellsWidth()}, nbCellsHeight{g.getNbCellsHeight()}, nbOfObjects{g.getNbOfObjects()}, nbOfMirrors{g.getNbOfMirrors()}
 {
     objects.resize(nbCellsHeight);
     for(unsigned i = 0; i < nbCellsHeight; ++i)
@@ -139,27 +138,9 @@ void ground::loadFrom(istream& ist)
     string loaded = buffer.str();
 }
 
-void ground::print(ostream& ost) const{
-    ost << "Ground[";
-    grille::print(ost);
-    ost << ", position" << position << ", nbCellsWidth(" << nbCellsWidth << "), nbCellsHeight(" << nbCellsHeight << ")]" << endl;
-    ost << "List of objects (" << nbOfObjects << ") :" << endl;
-
-    if(nbOfObjects == 0) cout << "Empty" << endl;
-    else
-    {
-        unsigned k = 0;
-        for(unsigned i = 0; i < objects.size(); ++i)
-        {
-            for(unsigned j = 0; j < objects[i].size(); ++j)
-            {
-                if(objects[i][j])
-                {
-                   ost << ++k << " : " << *objects[i][j] << endl;
-                }
-            }
-        }
-    }
+void ground::print(ostream& ost) const
+{
+    ost << toString();
 }
 
 void ground::removeObjectAt(unsigned i, unsigned j)
@@ -274,6 +255,30 @@ void ground::saveIn(ostream& ost) const
     }
 
     ost << toSave;
+}
+
+string ground::toString() const
+{
+    string t = "Ground[" + grid::toString() + ", position" + position.toString() + ", nbCellsWidth(" + std::to_string(nbCellsWidth) + "), nbCellsHeight(" + std::to_string(nbCellsHeight) + ")]" + '\n';
+    t += "List of objects (" + std::to_string(nbOfObjects) + ") :" + '\n';
+
+    if(nbOfObjects == 0) t += "Empty" + '\n';
+    else
+    {
+        unsigned k = 0;
+        for(unsigned i = 0; i < nbCellsWidth; ++i)
+        {
+            for(unsigned j = 0; j < nbCellsHeight; ++j)
+            {
+                if(objects[i][j])
+                {
+                   t += std::to_string(++k) + " : " + objects[i][j].get()->toString() + '\n';
+                }
+            }
+        }
+    }
+
+    return t;
 }
 
 // ---------- End of functions ----------

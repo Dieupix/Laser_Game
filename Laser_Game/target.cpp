@@ -42,24 +42,10 @@
 
 void target::print(std::ostream& ost) const
 {
-    ost << "Cible[position" << getPosition() <<", ";
-    if( d_affected )
-        ost<<"est touchée par un laser" ;
-    else
-         ost<<"n'est pas touchée par un laser" ;
-
-
- ost<<"]";
+    ost << toString();
 }
 
-bool target::operator==(const object& a ) const
+string target::toString() const
 {
-     return getPosition() == a.getPosition() ;
-
+    return "Cible[position" + getPosition().toString() + ", affected(" + string(d_affected ? "true" : "false") + ")]";
 }
-bool target::operator!=(const object& a ) const
-{
-    return getPosition() == a.getPosition() ;
-
-}
-

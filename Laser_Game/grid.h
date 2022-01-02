@@ -1,24 +1,31 @@
-#ifndef GRILLE_H
-#define GRILLE_H
+#ifndef GRID_H
+#define GRID_H
 #include <iostream>
+#include <string>
 
-class grille
+class grid
 {
     public:
-        /** @brief Construteur d'une grille
+        /** @brief Construteur d'une grid
          *
-         * @param longueur double la taille d'une cellule en longueur de la grille
-         * @param largeur double la taille d'une cellule en largeur de la grille
+         * @param longueur double la taille d'une cellule en longueur de la grid
+         * @param largeur double la taille d'une cellule en largeur de la grid
          *
          */
-        grille(double longueur, double largeur);
+        grid(double largeur, double hauteur);
 
         /** @brief Destructeur virtuel de la grile
          *
          * @return virtual
          *
          */
-        virtual ~grille() = default;
+        virtual ~grid() = default;
+
+        double getCellsHeight() const;
+        double getCellsWidth() const;
+
+        void setCellsHeight(double);
+        void setCellsWidth(double);
 
         /**
         * @brief Permet d'écrire sur un flux
@@ -36,16 +43,16 @@ class grille
          *
          */
         void read(std::istream& ist);
+        virtual std::string toString() const;
     private:
         /** @brief Le nombre de cellule en longueur et en largeur
          *
          * @param Le nombre de cellule en longueur
          * @param Le nombre de cellule en largeur
          */
-        double d_longueurCells, d_largeurCells;
-        /// @TODO - Mathis : add getters function for private variable members
+        double d_largeurCells, d_hauteurCells;
 };
 
-std::ostream& operator<<(std::ostream& ost, const grille & g);
-std::istream& operator>>(std::istream& ist, grille& g);
-#endif // GRILLE_H
+std::ostream& operator<<(std::ostream& ost, const grid & g);
+std::istream& operator>>(std::istream& ist, grid& g);
+#endif // GRID_H

@@ -98,13 +98,12 @@ string laser::toString() const{
             break;
         }
         default:{
-            toString += "ERROR: Direction not defined";
+            toString += "ERROR: Direction is not defined";
             break;
         }
     }
-    toString += "), step(";
-    toString += step;
-    toString += ")]";
+    toString += "), step(" + std::to_string(step) + ")]";
+
     return toString;
 }
 

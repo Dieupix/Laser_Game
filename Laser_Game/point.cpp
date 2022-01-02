@@ -31,7 +31,8 @@ void point::shift(double x, double y)
 void point::read(std::istream& ist)
 {
     double a, b;
-    ist>>a>>b;
+    char c;
+    ist>>c>>a>>c>>b>>c;
     if(ist.good())
     {
         d_x = a;
@@ -45,7 +46,7 @@ void point::print(std::ostream& ost) const
 }
 
 string point::toString() const{
-    return "(" + std::to_string(d_x) + ", " + std::to_string(d_y) + ")";
+    return "(" + std::to_string(d_x) + "," + std::to_string(d_y) + ")";
 }
 
 std::ostream& operator<<(std::ostream& ost, const point& p){
