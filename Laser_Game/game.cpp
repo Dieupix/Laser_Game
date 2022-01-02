@@ -8,70 +8,136 @@ using std::endl;
 using std::invalid_argument;
 using std::ofstream;
 using std::string;
-using std::fstream;
+using std::ifstream;
+
 
 
 //TODO - We should use the copy constructor instead
-game::game(const ground& terrain, int nb_mirror_max) : d_terrain{terrain.getPosition(), 0 , 0 ,
-                                                terrain.getNbCellsWidth(), terrain.getNbCellsHeight()},
-                                                d_nb_mirror_max{nb_mirror_max}
+game::game(const ground& terrain, int nb_mirror_max, int d_nb_mirror_installed) :   d_terrain{terrain},
+                                                                                    d_nb_mirror_max{nb_mirror_max},
+                                                                                    d_nb_mirror_installed{d_nb_mirror_installed}
 {}
 
-void game::addMirror(const mirror& m)
+game::game() : d_terrain{}, d_nb_mirror_installed{0}, d_nb_mirror_max{0}
+{}
+
+void game::addMirror(const point& p, const sens& s)
 {
-    d_terrain.addObjectAt(std::make_unique<mirror>(m), m.getPosition().x(),m.getPosition().y());
+    if(p.x() >= 0 && p.y() >= 0 && p.x() < d_terrain.getNbCellsHeight() && p.y() < d_terrain.getNbCellsWidth() )
+    {
+        auto obj = d_terrain.getObjects()[p.x()][p.y()].get();
+        if(obj)
+        {
+            if(dynamic_cast<mirror*>(obj))
+            {
+                d_terrain.addObjectAt(std::make_unique<mirror>(p,s), p.x(),p.y());
+                ++d_nb_mirror_installed;
+            }
+        }
+    }
 }
-void game::removeMirror(const mirror& m)
+
+void game::removeMirror(const point& p)
 {
-    d_terrain.removeObjectAt(m.getPosition().x(),m.getPosition().y());
+    if(p.x() >= 0 && p.y() >= 0 && p.x() < d_terrain.getNbCellsHeight() && p.y() < d_terrain.getNbCellsWidth() )
+    {
+        auto obj = d_terrain.getObjects()[p.x()][p.y()].get();
+        if(obj)
+        {
+            if(dynamic_cast<mirror*>(obj))
+            {
+                d_terrain.removeObjectAt(p.x(),p.y());
+                --d_nb_mirror_installed;
+            }
+        }
+    }
+}
+
+point game::askPosition()
+{
+    point p;
+    cout<<"Saisir la position : "<<endl;
+    cin>>p;
+    return p;
+}
+
+sens game::askSens()
+{
+    int inclination_mirror;
+    cout<<"Saisir l'inclinaison du miroir ( 1 pour // ou 2 pour /\ )"<<endl;
+    cin>>inclination_mirror;
+    sens s;
+    switch(inclination_mirror)
+    {
+        case(1) :
+        { s = basGauche_hautDroit;break;}
+        case(2) :
+        { s = hautGauche_basDroit;break;}
+    }
+    return s;
 }
 void game::run()
 {
-    /*
-    d_terrain.print(cout);
-    bool stop = false;
-    int nb_mirror_installed = 0;
-    while(!stop && nb_mirror_installed <= d_nb_mirror_max)
+    int choix;
+    point p;
+    do
     {
-        point p;
-        int inclination_mirror;
-        cout<<"Saisir la position du miroir et son inclinaison ( 1 pour / ou 2 pour \ ) . Sinon taper '0'"<<endl;
-        cin>>p>>inclination_mirror;
-        sens s;
-        switch(inclination_mirror)
+        cout<<"0 - Tirer le laser"<<endl;
+        cout<<"1 - Ajouter un miroir"<<endl;
+        cout<<"2 - Enlever un miroir"<<endl;
+        cout<<"3 - Afficher le terrain"<<endl;
+        cin>>choix;
+
+        switch(choix)
         {
-            case(1) :
-            { s = basGauche_hautDroit;break;}
-            case(2) :
-            { s = hautGauche_basDroit;break;}
-            case(0) :
-            { stop = true;break;}
-        }
-        if(!stop)
-        {
-           mirror m{p,s};
-           bool is_already_present = false;
-           for(int i{0} ; i< d_terrain.getObjects().size() ; ++i)
-            {
-                if(p == d_terrain.getObjects()[i]->getPosition())
+            case 0 :
                 {
-                    is_already_present = true;
-                    removeMirror(d_terrain.getObjects()[i]);
-                    nb_mirror_installed--;
+                    start();
+                    break;
                 }
-            }
-           if(!is_already_present)
-           {
-               addMirror(m);
-               nb_mirror_installed++;
-           }
+            case 1 :
+                {
+                    if(d_nb_mirror_installed < d_nb_mirror_max)
+                    {
+                        sens s = askSens();
+                        p = askPosition();
+                        addMirror(p,s);
+                    }
+                    else cout<<"Le nombre maximum de miroirs a ete atteint"<<endl;
+                    break;
+                }
+            case 2 :
+                {
+                    p = askPosition();
+                    removeMirror(p);
+                    break;
+                }
+            case 3 :
+                {
+                    viewerOnTerminal v;
+                    v.printGround(d_terrain);
+                    break;
+                }
         }
     }
-    */
+    while(choix != 0);
 }
-void game::read()
+void game::read(const string& nameFile)
 {
+    if ( nameFile == "")
+        throw invalid_argument("Chemin vide !");
 
+    ifstream file_in;
+    file_in.open(nameFile);
+
+    if(!file_in.is_open())
+    {
+        cout << "failed to open " << nameFile << '\n';
+    }
+    else
+    {
+        d_terrain.loadFrom(file_in);
+    }
 }
 void game::save(const string& nameFile) const
 {
@@ -91,9 +157,21 @@ void game::save(const string& nameFile) const
 
        d_terrain.saveIn(file_out) ;
     }
-
 }
+
 void game::start()
 {
+    auto tireur = d_terrain.getShooter();
+    auto laser = tireur.tire();
+    while(laser)
+    {
+        viewerOnTerminal v;
+        v.printGround(d_terrain);
+        laser.moveByStep();
+    }
+}
 
+void game::loadGround(const ground& terrain)
+{
+    d_terrain = terrain;
 }
