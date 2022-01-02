@@ -171,7 +171,8 @@ class ground : public grid
          */
         void addObjectAt(unique_ptr<object>, unsigned, unsigned);
         /**
-         * @brief
+         * @brief A constant function that gives the shooter on the ground
+         * @details There must be a shooter on the ground !
          *
          * @return Returns the shooter on the ground
          */
@@ -184,12 +185,7 @@ class ground : public grid
          */
         void loadFrom(istream&);
         /**
-         * @brief A constant function that prints a ground on an output stream
-         * @details A ground is printed as : \n
-         * Ground[Grid[cellsWidth(x), cellsHeight(x)], position(x,y), nbCellsWidth(x) nbCellsHeight(x)] \n
-         * Objects (x) : \n
-         * 1 : Object(...) \n
-         * 2 : Object(...)
+         * @brief A virtual constant function that prints a ground on an output stream
          *
          * @param[out] ost : The output stream to print on
          * @return Returns nothing
@@ -212,6 +208,16 @@ class ground : public grid
          * @return Returns nothing
          */
         void saveIn(ostream&) const;
+        /**
+         * @brief A virtual constant function that turns a ground into a string
+         * @details A ground is printed as : \n
+         * Ground[Grid[cellsWidth(x), cellsHeight(x)], position(x,y), nbCellsWidth(x), nbCellsHeight(x)] \n
+         * Objects (#) : \n
+         * 1 : Object(...) \n
+         * 2 : Object(...)
+         *
+         * @return Returns the ground converted into a string
+         */
         virtual string toString() const override;
 
 }; // End of ground

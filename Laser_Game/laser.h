@@ -109,10 +109,10 @@ class laser : public object
          */
         virtual void print(std::ostream&) const override;
         /**
-         * @brief A virtual constant function that turns a laser into string
+         * @brief A virtual constant function that turns a laser into a string
          * @details A laser is converted as Laser[position(x,y), direction(DIRECTION), step(STEP)]
          *
-         * @return Returns the laser converted to a string
+         * @return Returns the laser converted into a string
          */
         virtual string toString() const override;
         /**
