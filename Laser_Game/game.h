@@ -3,7 +3,7 @@
 
 #include"mirror.h"
 #include"ground.h"
-
+#include "viewerOnTerminal.h"
 #include <string>
 
 using std::string;
@@ -13,17 +13,22 @@ class game
 public :
     //TODO - Should we not use a default constructor and create a function to load a ground in the game?
     //TODO - Because read() allows the game to load a ground only from a file
-    game(const ground& terrain, int nb_mirror_max);
+    game(const ground& terrain, int nb_mirror_max, int nb_mirror_installed = 0);
+    game(); //si on charge un terrain qui existe deja
     ~game() = default ;
-    void addMirror(const mirror& m) ;
-    void removeMirror(const mirror& m) ;
+    sens askSens();
+    point askPosition();
+    void addMirror(const point& p, const sens& s) ;
+    void removeMirror(const point& p) ;
     void run() ;
-    void read() ;
+    void read(const string& nameFile) ;
     void save(const string& nameFile) const ;
     void start() ;
+    void loadGround(const ground& terrain);
 private :
     ground d_terrain ;
     int d_nb_mirror_max;
+    int d_nb_mirror_installed;
 };
 
 #endif // JEU_H_INCLUDED
