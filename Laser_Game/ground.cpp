@@ -8,6 +8,9 @@ using std::stringstream;
 
 // ---------- Constructors ----------
 
+ground::ground() : grille{1, 1}, position{0, 0}, nbCellsWidth{0}, nbCellsHeight{0}, nbOfObjects{0}, nbOfMirrors{0}
+{}
+
 ground::ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight) :
     grille{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}, nbOfObjects{0}, nbOfMirrors{0}
 {

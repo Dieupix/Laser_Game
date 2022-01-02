@@ -61,6 +61,12 @@ class ground : public grille
 
         // Constructors
         /**
+         * @brief
+         *
+         * @return
+         */
+        ground();
+        /**
          * @brief Constructor with all member variables
          *
          * @param[in] position : The position of the ground on the grid
