@@ -93,7 +93,8 @@ class ground : public grid
         virtual ~ground() = default;
 
         // Overloads
-        void operator=(const ground&);
+        ground operator=(const ground&) const;
+        ground& operator=(const ground&);
 
         // Getters
         /**

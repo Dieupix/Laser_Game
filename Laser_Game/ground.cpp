@@ -42,9 +42,33 @@ ground::ground(const ground& g) :
 
 // ---------- Overloads ----------
 
-void ground::operator=(const ground& g)
+ground ground::operator=(const ground& g) const
 {
+   return {g};
+}
 
+ground& ground::operator=(const ground& g)
+{
+    setCellsWidth(g.getCellsWidth());
+    setCellsHeight(g.getCellsHeight());
+    nbCellsWidth = g.getNbCellsWidth();
+    nbCellsHeight = g.getNbCellsHeight();
+
+    objects.resize(nbCellsHeight);
+    for(unsigned i = 0; i < nbCellsHeight; ++i)
+    {
+        objects[i].resize(nbCellsWidth);
+        for(unsigned j = 0; j < g.getObjects()[i].size(); ++j)
+        {
+            auto obj = make_unique<object>(*g.getObjects()[i][j].get());
+            objects[i][j] = move(obj);
+        }
+    }
+
+    nbOfObjects = g.getNbOfObjects();
+    nbOfMirrors = g.getNbOfMirrors();
+
+    return *this;
 }
 
 // ---------- End of overloads ----------
