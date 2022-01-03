@@ -1,11 +1,4 @@
 #include "game.h"
-#include "ground.h"
-
-#include <fstream>
-
-using std::invalid_argument;
-using std::ofstream;
-using std::ifstream;
 
 game::game() : d_terrain{}, d_nb_mirror_max{0}, d_nb_mirror_installed{0}
 {}

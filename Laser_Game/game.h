@@ -5,8 +5,12 @@
 #include "ground.h"
 #include "viewerOnTerminal.h"
 
+#include <fstream>
 #include <string>
 
+using std::invalid_argument;
+using std::ifstream;
+using std::ofstream;
 using std::string;
 
 class game
