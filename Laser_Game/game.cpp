@@ -180,7 +180,7 @@ void game::start()
         {
             for(unsigned j = 0; j < d_terrain.getNbCellsWidth(); ++j)
             {
-                d_terrain.getObjects[i][j].collide(l);
+                d_terrain.getObjects()[i][j].get()->collide(l);
             }
         }
 

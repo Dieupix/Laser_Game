@@ -66,6 +66,8 @@ void object::move(double x, double y)
     d_p.move(x,y);
 }
 
+void object::collide(laser&) {}
+
 void object::print(std::ostream& ost) const{
     ost << toString();
 }
