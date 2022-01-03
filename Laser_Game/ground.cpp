@@ -160,6 +160,18 @@ void ground::loadFrom(istream& ist)
     stringstream buffer;
     buffer << ist.rdbuf();
     string loaded = buffer.str();
+
+    for(unsigned i = 0; i < loaded.length(); ++i)
+    {
+        auto c = loaded[i];
+        switch(c)
+        {
+        default:
+            {
+                break;
+            }
+        }
+    }
 }
 
 void ground::print(ostream& ost) const
@@ -193,6 +205,8 @@ void ground::removeObjectAt(unsigned i, unsigned j)
 
 void ground::saveIn(ostream& ost) const
 {
+
+    ///@TODO - Alex : add the characteristics of the ground
     string toSave = "";
 
     auto blank = '.';
