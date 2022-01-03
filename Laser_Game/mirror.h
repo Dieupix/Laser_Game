@@ -6,7 +6,6 @@
 
 using namespace enumTypes;
 
-class laser ;
 class mirror : public object
 {
 
@@ -45,6 +44,8 @@ class mirror : public object
     *
     */
        bool estTouchee(laser& ) const;
+
+    virtual void collide(laser& l) override;
 
           /**
     * @brief Print the  Characteristics of the mirror

@@ -34,29 +34,39 @@ void mirror::changeDirectionLaser(laser& l ) const
       UP,
       LEFT,
       DOWN*/
-if ( estTouchee(l) )
-   {
-
-   switch ( d_sens )
+    if (estTouchee(l))
     {
-    case basGauche_hautDroit :
-        if( (l.getDirection() == directions::UP ) || (l.getDirection() == directions::DOWN)  )
-            l.turnRight() ;
-        else l.turnLeft() ;
-        break;
-    case  hautGauche_basDroit :
-        if( (l.getDirection() == directions::LEFT ) || (l.getDirection() == directions::RIGHT)  )
-            l.turnLeft() ;
-        else l.turnRight() ;
-        break;
 
-
-
+       switch(d_sens)
+       {
+           case basGauche_hautDroit:
+               {
+                    if(l.getDirection() == directions::UP || l.getDirection() == directions::DOWN)
+                        l.turnRight();
+                    else
+                        l.turnLeft();
+                    break;
+               }
+            case hautGauche_basDroit:
+                {
+                    if(l.getDirection() == directions::LEFT || l.getDirection() == directions::RIGHT)
+                        l.turnLeft();
+                    else
+                        l.turnRight();
+                    break;
+                }
+        }
     }
-     }
-
 }
 // ---------------------- Fin changeDirectionLaser -------------------------------
+
+void mirror::collide(laser& l)
+{
+    if(getPosition() == l.getPosition())
+    {
+        changeDirectionLaser(l);
+    }
+}
 
 // ---------------------- estTouchee -------------------------------
 
