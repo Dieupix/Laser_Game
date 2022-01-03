@@ -176,15 +176,18 @@ void game::start()
     {
         l.moveByStep();
 
-        for(unsigned i = 0; i < d_terrain.getNbCellsHeight(); ++i)
+        unsigned i = 0, j = 0;
+        while(i < d_terrain.getNbCellsHeight() and l.getIsAlive())
         {
-            for(unsigned j = 0; j < d_terrain.getNbCellsWidth(); ++j)
+            while(j < d_terrain.getNbCellsWidth() and l.getIsAlive())
             {
                 d_terrain.getObjects()[i][j].get()->collide(l);
+                ++j;
             }
+            ++i;
         }
 
-        d_terrain.addObjectAt(make_unique<object>(l), l.getPosition().x(), l.getPosition().y());
+        if(l.getIsAlive()) d_terrain.addObjectAt(make_unique<object>(l), l.getPosition().x(), l.getPosition().y());
 
         v.printGround(d_terrain);
 
