@@ -29,8 +29,9 @@ ground::ground(const ground& g) :
         objects[i].resize(nbCellsWidth);
         for(unsigned j = 0; j < g.getObjects()[i].size(); ++j)
         {
+            ///@FIXME - Alex : put a copy of the object in the new ground (this)
             auto obj = make_unique<object>(*g.getObjects()[i][j].get());
-            objects[i][j] = move(obj);
+            //objects[i][j] = move(obj);
         }
     }
 }
