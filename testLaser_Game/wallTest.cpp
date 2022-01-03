@@ -1,3 +1,6 @@
+#ifndef WALLTEST_H
+#define WALLTEST_H
+
 #include "doctest.h"
 
 #include "../Laser_Game/point.h"
@@ -15,6 +18,8 @@ TEST_CASE("3 - Test of the class wall")
     }
     laser l = createLaserForTest(p, RIGHT);
     laser nl = createLaserForTest(np, RIGHT);
+
+    ///@FIXME - Manu (or someone else?)
     /*SUBCASE("Test of the affectation")
     {
         SUBCASE("Test of not affected")
@@ -32,3 +37,5 @@ TEST_CASE("3 - Test of the class wall")
         }
     }*/
 }
+
+#endif // WALLTEST_H

@@ -1,3 +1,6 @@
+#ifndef GROUNDTEST_H
+#define GROUNDTEST_H
+
 #include "doctest.h"
 
 #include "../Laser_Game/ground.h"
@@ -67,10 +70,9 @@ TEST_CASE("3 - Test of the class ground"
         }
     }
 
+    /// @TODO - Alex : implement the subcase
     SUBCASE("Test of the addObjectAt() function")
     {
-        /// @TODO - Alex : implement the subcase
-
         WHEN("The object is a mirror")
         {
 
@@ -111,6 +113,7 @@ TEST_CASE("3 - Test of the class ground"
 
         string read = ost.str();
 
+        //CHECK_EQ(read, "I want you to fail"); // SHOULD FAIL
         CHECK_EQ(read, expectedOutput);
     }
 
@@ -144,3 +147,4 @@ TEST_CASE("3 - Test of the class ground"
     }
 }
 
+#endif // GROUNDTEST_H

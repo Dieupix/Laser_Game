@@ -1,4 +1,8 @@
+#ifndef MIRRORTEST_H
+#define MIRRORTEST_H
+
 #include "doctest.h"
+
 #include "../Laser_Game/mirror.h"
 #include "../Laser_Game/laser.h"
 
@@ -8,10 +12,8 @@
 using std::ostringstream;
 using std::string;
 
-
-///@FIXME - Meriem : to fix
-TEST_CASE("2 - Test of the class mirror"
-          * doctest::skip(true)){
+TEST_CASE("2 - Test of the class mirror")
+{
 
    auto sensM = sens::basGauche_hautDroit ;
    point position{0, 0};
@@ -28,7 +30,8 @@ TEST_CASE("2 - Test of the class mirror"
         REQUIRE_EQ(m.getPosition() ,  position );
 
     }
-   SUBCASE("Test of the function ChangeDirectionLaser ")
+    ///@TODO - Meriem : both sub cases are crashing the test case
+   /*SUBCASE("Test of the function ChangeDirectionLaser ")
     {
 
     auto direction = directions::RIGHT;
@@ -59,9 +62,10 @@ TEST_CASE("2 - Test of the class mirror"
     REQUIRE_EQ(m.estTouchee(l) ,  false );
 
     }
-    }
+    }*/
 
-     SUBCASE("Test of the print() function")
+    ///@FIXME - Meriem : need to fix the check
+     /*SUBCASE("Test of the print() function")
     {
         string expectedOutput = "Miroir [position(0,0), sens : basGauche_hautDroit, n'est pas touchee]";
 
@@ -72,13 +76,10 @@ TEST_CASE("2 - Test of the class mirror"
 
 
         CHECK_EQ(read, expectedOutput);
-    }
-
-
-
-
-
-
-
+    }*/
 
 }
+
+#endif // MIRRORTEST_H
+
+

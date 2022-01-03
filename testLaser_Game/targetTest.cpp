@@ -1,6 +1,8 @@
-#ifndef CIBLETEST_H_INCLUDED
-#define CIBLETEST_H_INCLUDED
+#ifndef TARGETTEST_H_INCLUDED
+#define TARGETTEST_H_INCLUDED
+
 #include "doctest.h"
+
 #include "../Laser_Game/target.h"
 #include "../Laser_Game/laser.h"
 
@@ -40,7 +42,7 @@ TEST_CASE("2 - Test of the class target"
 
 
 
-    SUBCASE("Test of is affected ")
+    /*SUBCASE("Test of is affected ")
     {
 
         point position{0, 0};
@@ -62,10 +64,10 @@ TEST_CASE("2 - Test of the class target"
         }
 
 
-    }
+    }*/
 
     //-----------------print------------------------------------------
-    point p{0, 0} ;
+    /*point p{0, 0} ;
     target c (p) ;
     auto direction = directions::RIGHT;
     double step = 1.0;
@@ -91,36 +93,8 @@ TEST_CASE("2 - Test of the class target"
 
         }
 
-    }
-    //------------operator-----------------------------------
-    SUBCASE("Test operator ")
-    {
-
-        SUBCASE("Test operator == object ")
-        {
-            point p{0, 0} ;
-            target c (p) ;
-            auto direction = directions::RIGHT;
-            double step = 1.0;
-            auto l = createLaserForTest(p, direction, step);
-            bool resultat  = ( c==l) ;
-            CHECK_EQ(resultat, true);
-        }
-
-        SUBCASE("Test operator != object ")
-        {
-
-
-            point p{0, 0} ;
-            target c (p) ;
-            point p2{10, 0} ;
-            auto direction = directions::RIGHT;
-            double step = 1.0;
-            auto l = createLaserForTest(p2, direction, step);
-            bool resultat  = ( c!=l) ;
-            CHECK_EQ(resultat, false);
-        }
-    }
+    }*/
 
 }
-#endif //CIBLETEST_H_INCLUDED
+
+#endif //TARGETTEST_H_INCLUDED

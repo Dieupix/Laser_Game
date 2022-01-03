@@ -1,3 +1,6 @@
+#ifndef OBJECTTEST_H
+#define OBJECTTEST_H
+
 #include "doctest.h"
 
 #include "../Laser_Game/object.h"
@@ -31,3 +34,4 @@ TEST_CASE("1 - Test of the class object"){
     }
 }
 
+#endif // OBJECTTEST_H
