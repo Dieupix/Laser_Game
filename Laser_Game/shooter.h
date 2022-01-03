@@ -23,6 +23,8 @@ class shooter : public object
         virtual ~shooter() = default;
         directions getDirection() const;
         void setDirection(directions direction);
+
+        virtual void collide(laser& l);
         virtual void print(std::ostream& ost) const override;
         virtual string toString() const override;
 

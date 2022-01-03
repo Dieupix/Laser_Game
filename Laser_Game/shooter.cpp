@@ -9,6 +9,14 @@ laser shooter::tire(double step)
     return {this->getPosition(), direction, step};
 }
 
+void shooter::collide(laser& l)
+{
+    if(*this == l)
+    {
+        l.setIsAlive(false);
+    }
+}
+
 void shooter::print(std::ostream& ost) const {
     ost << toString();
 }
