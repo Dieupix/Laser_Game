@@ -7,37 +7,23 @@
 /**Constructeur de la classe mur initialise a faux pour sa donnee estTouche
 @param p : un point (x,y)
 @return un mur m{false} avec une position*/
-wall::wall(const point& p) : object{p}, d_affected{false}
+wall::wall(const point& p) : object{p}
 {}
 
 /**Dis si le mur a ete touche par un laser
 @param l : le laser
 @return VRAI si il a ete touche, FAUX sinon*/
-bool wall::isAffected(laser& l) const
+void wall::collide(laser& l)
 {
     if(getPosition() == l.getPosition())
     {
         l.setIsAlive(false);
-        return true;
     }
-    else
-    {
-        return false;
-    }
-
-}
-
-/**Change la donnee du mur estTouche
-*/
-void wall::changeAffected()
-{
-    d_affected = !d_affected;
 }
 
 /**Imprime le mur
 @param ost : le flot de sortie
 */
-
 void wall::print(std::ostream& ost) const
 {
     ost << toString();
@@ -45,6 +31,6 @@ void wall::print(std::ostream& ost) const
 
 string wall::toString() const
 {
-    return "Wall[position" + getPosition().toString() + ", affected(" + string(d_affected ? "true" : "false") + ")]";
+    return "Wall[position" + getPosition().toString() + ")]";
 }
 
