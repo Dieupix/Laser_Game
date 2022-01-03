@@ -46,5 +46,5 @@ void grid::read(std::istream &ist)
 
 std::string grid::toString() const
 {
-    return "(" + std::to_string(d_largeurCells) + "," + std::to_string(d_hauteurCells) + ")";
+    return "Grid[cellsWidth(" + std::to_string(d_largeurCells) + "), cellsHeight(" + std::to_string(d_hauteurCells) + ")]";
 }

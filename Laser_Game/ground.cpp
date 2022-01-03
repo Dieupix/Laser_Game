@@ -210,7 +210,12 @@ void ground::saveIn(ostream& ost) const
 {
 
     ///@TODO - Alex : add the characteristics of the ground
-    string toSave = "";
+
+    string toSave = "Ground[" + grid::toString() +
+                    ", position" + position.toString() +
+                    ", nbCellsWidth(" + std::to_string(nbCellsWidth) +
+                    "), nbCellsHeight(" + std::to_string(nbCellsHeight) +
+                    ")]" + '\n';
 
     auto blank = '.';
 
