@@ -5,6 +5,7 @@
 
 using std::string;
 using std::stringstream;
+using std::to_string;
 
 // ---------- Constructors ----------
 
@@ -159,22 +160,170 @@ const shooter& ground::getShooter() const
 void ground::loadFrom(istream& ist)
 {
     /// @TODO - Alex : change the loading method
+    cout << "Loading..." << endl;
+
+    string loaded = "";
+    auto line = 1;
+
+    for(unsigned i = 0; i < 2; ++i)
+    {
+        getline(ist, loaded);
+
+        try
+        {
+            double d = stod(loaded);
+            if(i == 0)
+            {
+                setCellsWidth(d);
+            }
+            else
+            {
+                setCellsHeight(d);
+            }
+        }
+        catch(...)
+        {
+            cerr << "ERROR: line " << line << endl;
+        }
+
+        ++line;
+    }
+
+    point p;
+    if(ist >> p)
+    {
+        position = p;
+    }
+    ist.get();
+
+    for(unsigned i = 0; i < 2; ++i)
+    {
+        getline(ist, loaded);
+
+        try
+        {
+            double d = stod(loaded);
+
+            switch(i)
+            {
+            case 0:
+                {
+                    nbCellsWidth = d;
+                    break;
+                }
+            case 1:
+                {
+                    nbCellsHeight = d;
+                    break;
+                }
+            default:
+                {
+                    cerr << "ERROR: i = " << i << endl;
+                    break;
+                }
+            }
+        }
+        catch(...)
+        {
+            cerr << "ERROR: line " << line << ": " << loaded << " is not a real" << endl;
+        }
+
+        ++line;
+    }
+
+    objects.resize(nbCellsHeight);
+    for(unsigned i = 0; i < nbCellsHeight; ++i)
+    {
+        objects[i].resize(nbCellsWidth);
+    }
 
     stringstream buffer;
     buffer << ist.rdbuf();
-    string loaded = buffer.str();
+    loaded = buffer.str();
 
-    for(unsigned i = 0; i < loaded.length(); ++i)
+    unsigned i = 0, j = 0;
+    for(unsigned k = 0; k < loaded.length(); ++k)
     {
-        auto c = loaded[i];
+        auto c = loaded[k];
         switch(c)
         {
-        default:
+        case '.':
             {
                 break;
             }
+        case '\n':
+        case '\r':
+            {
+                ++i;
+                j = -1;
+                ++line;
+                break;
+            }
+        case '#':
+            {
+                addObjectAt(make_unique<wall>(point{(double)j, (double)i} + position), i, j);
+                break;
+            }
+        case 'O':
+            {
+                addObjectAt(make_unique<target>(point{(double)j, (double)i} + position), i, j);
+                break;
+            }
+        case '/':
+        case '\\':
+            {
+                sens sMirror = (c == '/' ? basGauche_hautDroit : hautGauche_basDroit);
+                addObjectAt(make_unique<mirror>(point{(double)j, (double)i} + position, sMirror), i, j);
+                break;
+            }
+        case '>':
+        case 'v':
+        case '<':
+        case '^':
+            {
+                directions direction;
+                switch(c)
+                {
+                case '>':
+                    {
+                        direction = RIGHT;
+                        break;
+                    }
+                case 'v':
+                    {
+                        direction = DOWN;
+                        break;
+                    }
+                case '<':
+                    {
+                        direction = LEFT;
+                        break;
+                    }
+                case '^':
+                    {
+                        direction = UP;
+                        break;
+                    }
+                default:
+                    {
+                        cerr << "ERROR: line " << line << ": direction is not defined" << endl;
+                        break;
+                    }
+                }
+
+                addObjectAt(make_unique<shooter>(point{(double)j, (double)i} + position, direction), i, j);
+                break;
+            }
+        default:
+            {
+                cerr << "ERROR: line " << line << ": undefined character" << endl;
+                break;
+            }
         }
+        ++j;
     }
+
+    cout << "Loaded." << endl;
 }
 
 void ground::print(ostream& ost) const
@@ -208,14 +357,14 @@ void ground::removeObjectAt(unsigned i, unsigned j)
 
 void ground::saveIn(ostream& ost) const
 {
-
-    ///@TODO - Alex : add the characteristics of the ground
-
-    string toSave = "Ground[" + grid::toString() +
-                    ", position" + position.toString() +
-                    ", nbCellsWidth(" + std::to_string(nbCellsWidth) +
-                    "), nbCellsHeight(" + std::to_string(nbCellsHeight) +
-                    ")]" + '\n';
+    cout << "Saving..." << endl;
+    string toSave = to_string(getCellsWidth()) + '\n' +
+                    to_string(getCellsHeight()) + '\n' +
+                    position.toString() + '\n' +
+                    to_string(nbCellsWidth) + '\n' +
+                    to_string(nbCellsHeight) + '\n' +
+                    to_string(nbOfObjects) + '\n' +
+                    to_string(nbOfMirrors) + '\n';
 
     auto blank = '.';
 
@@ -301,24 +450,32 @@ void ground::saveIn(ostream& ost) const
     }
 
     ost << toSave;
+    cout << "Saved." << endl;
 }
 
 string ground::toString() const
 {
-    string t = "Ground[" + grid::toString() + ", position" + position.toString() + ", nbCellsWidth(" + std::to_string(nbCellsWidth) + "), nbCellsHeight(" + std::to_string(nbCellsHeight) + ")]" + '\n';
-    t += "List of objects (" + std::to_string(nbOfObjects) + ") :" + '\n';
+    string t = "Ground[" + grid::toString() +
+                    ", position" + position.toString() +
+                    ", nbCellsWidth(" + to_string(nbCellsWidth) +
+                    "), nbCellsHeight(" + to_string(nbCellsHeight) +
+                    "), nbOfObjects(" + to_string(nbOfObjects) +
+                    "), nbOfMirrors(" + to_string(nbOfMirrors) +
+                    ")]" + '\n';
+
+    t += "List of objects (" + to_string(nbOfObjects) + ") :" + '\n';
 
     if(nbOfObjects == 0) t += "Empty" + '\n';
     else
     {
         unsigned k = 0;
-        for(unsigned i = 0; i < nbCellsWidth; ++i)
+        for(unsigned i = 0; i < nbCellsHeight; ++i)
         {
-            for(unsigned j = 0; j < nbCellsHeight; ++j)
+            for(unsigned j = 0; j < nbCellsWidth; ++j)
             {
                 if(objects[i][j])
                 {
-                   t += std::to_string(++k) + " : " + objects[i][j].get()->toString() + '\n';
+                   t += to_string(++k) + " : " + objects[i][j].get()->toString() + '\n';
                 }
             }
         }
