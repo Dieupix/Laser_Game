@@ -49,24 +49,27 @@ ground ground::operator=(const ground& g) const
 
 ground& ground::operator=(const ground& g)
 {
-    setCellsWidth(g.getCellsWidth());
-    setCellsHeight(g.getCellsHeight());
-    nbCellsWidth = g.getNbCellsWidth();
-    nbCellsHeight = g.getNbCellsHeight();
-
-    objects.resize(nbCellsHeight);
-    for(unsigned i = 0; i < nbCellsHeight; ++i)
+    if(this != &g)
     {
-        objects[i].resize(nbCellsWidth);
-        for(unsigned j = 0; j < g.getObjects()[i].size(); ++j)
-        {
-            auto obj = make_unique<object>(*g.getObjects()[i][j].get());
-            objects[i][j] = move(obj);
-        }
-    }
+        setCellsWidth(g.getCellsWidth());
+        setCellsHeight(g.getCellsHeight());
+        nbCellsWidth = g.getNbCellsWidth();
+        nbCellsHeight = g.getNbCellsHeight();
 
-    nbOfObjects = g.getNbOfObjects();
-    nbOfMirrors = g.getNbOfMirrors();
+        objects.resize(nbCellsHeight);
+        for(unsigned i = 0; i < nbCellsHeight; ++i)
+        {
+            objects[i].resize(nbCellsWidth);
+            for(unsigned j = 0; j < g.getObjects()[i].size(); ++j)
+            {
+                auto obj = make_unique<object>(*g.getObjects()[i][j].get());
+                objects[i][j] = move(obj);
+            }
+        }
+
+        nbOfObjects = g.getNbOfObjects();
+        nbOfMirrors = g.getNbOfMirrors();
+    }
 
     return *this;
 }
