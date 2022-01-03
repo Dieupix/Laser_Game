@@ -13,6 +13,11 @@
 
 // ---------- Setters ----------
 
+void target::setAffected(bool b)
+{
+    d_affected = b;
+}
+
 // ---------- End of setters ----------
 
 // ----------  Getters ----------
@@ -21,23 +26,21 @@
 
 // ---------- Functions isAffected ------------------------
 
-    bool target::isAffected(laser& L )
-    {
-
-        if(getPosition() == L.getPosition())
-        {
-            L.setIsAlive(false);
-            d_affected = true;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+bool target::isAffected() const
+{
+    return this->d_affected;
+}
 
 // ---------- End of isAffected  -----------------------------
 
+void target::collide(laser& l)
+{
+    if(*this == l)
+    {
+        l.setIsAlive(false);
+        d_affected = true;
+    }
+}
 
 
 void target::print(std::ostream& ost) const

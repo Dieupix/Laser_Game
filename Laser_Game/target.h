@@ -3,8 +3,6 @@
 
 #include "object.h"
 
-class laser ;
-
 class target : public object
 {
 public :
@@ -31,7 +29,10 @@ public :
        * @return False if not
        */
 
-    bool isAffected(laser& ) ;
+    bool isAffected() const;
+    void setAffected(bool b);
+
+    virtual void collide(laser& l);
 
     /**
        * @brief Print a  target
