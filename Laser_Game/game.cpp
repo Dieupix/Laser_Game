@@ -168,13 +168,25 @@ void game::start()
     auto shooter = d_terrain.getShooter();
     auto l = shooter.tire();
     d_terrain.addObjectAt(make_unique<object>(l), l.getPosition().x(), l.getPosition().y());
+
+    viewerOnTerminal v;
+    v.printGround(d_terrain);
+
     while(l.getIsAlive())
     {
-        viewerOnTerminal v;
-        v.printGround(d_terrain);
         l.moveByStep();
 
+        for(unsigned i = 0; i < d_terrain.getNbCellsHeight(); ++i)
+        {
+            for(unsigned j = 0; j < d_terrain.getNbCellsWidth(); ++j)
+            {
+                d_terrain.getObjects[i][j].collide(l);
+            }
+        }
+
         d_terrain.addObjectAt(make_unique<object>(l), l.getPosition().x(), l.getPosition().y());
+
+        v.printGround(d_terrain);
 
     }
 }
