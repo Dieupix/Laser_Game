@@ -32,6 +32,7 @@ public :
     bool isAffected() const;
     void setAffected(bool b);
 
+    virtual unique_ptr<object> clone() const override;
     virtual void collide(laser& l);
 
     /**
