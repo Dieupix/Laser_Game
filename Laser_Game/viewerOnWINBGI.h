@@ -1,6 +1,8 @@
 #ifndef VIEWERONWINBGI_H
 #define VIEWERONWINBGI_H
 
+#include "../winGraphics/graphics.h"
+
 #include "viewer.h"
 
 class viewerOnWINBGI : public viewer
