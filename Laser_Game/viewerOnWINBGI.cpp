@@ -4,12 +4,12 @@
 
 viewerOnWINBGI::viewerOnWINBGI() : height{500}, width {500}, scale{10}
 {
-
+    ///@TODO - Open graph here
 }
 
 viewerOnWINBGI::viewerOnWINBGI(unsigned w, unsigned h, unsigned s = 10) : height{h}, width{w}, scale{s}
 {
-
+    ///@TODO - Open graph here
 }
 
 // ---------- End of constructors ----------
@@ -18,6 +18,7 @@ viewerOnWINBGI::viewerOnWINBGI(unsigned w, unsigned h, unsigned s = 10) : height
 
 viewerOnWINBGI::~viewerOnWINBGI()
 {
+    ///@TODO - Close graph here
 }
 
 // ---------- End of destructor ----------
@@ -100,6 +101,7 @@ void viewerOnWINBGI::printGround(const ground& g) const
         for(unsigned j = 0; j < g.getNbCellsWidth(); ++j)
         {
             if(g.getObjects()[i][j])
+                ///@TODO - Print objects using the scale variable member
                 print(g.getObjects()[i][j]);
         }
     }
