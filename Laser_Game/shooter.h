@@ -24,6 +24,7 @@ class shooter : public object
         directions getDirection() const;
         void setDirection(directions direction);
 
+        virtual unique_ptr<object> clone() const override;
         virtual void collide(laser& l);
         virtual void print(std::ostream& ost) const override;
         virtual string toString() const override;

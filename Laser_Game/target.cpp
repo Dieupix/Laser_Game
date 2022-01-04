@@ -33,6 +33,11 @@ bool target::isAffected() const
 
 // ---------- End of isAffected  -----------------------------
 
+unique_ptr<object> target::clone() const
+{
+    return make_unique<target>(*this);
+}
+
 void target::collide(laser& l)
 {
     if(*this == l)

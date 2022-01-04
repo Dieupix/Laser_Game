@@ -36,14 +36,15 @@ class mirror : public object
     *   when the laser touch the mirror
     *
     */
-       void changeDirectionLaser(laser& ) const ;
+       void changeDirectionLaser(laser& ) ;
+       virtual unique_ptr<object> clone() const override;
+
        /**
     * @brief Check if the laser touched the mirror
     * @return True : if he touched
     * @return False : if he didn't
     *
     */
-       bool estTouchee(laser& ) const;
 
     virtual void collide(laser& l) override;
 

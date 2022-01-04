@@ -21,19 +21,26 @@ public :
     //TODO - Because read() allows the game to load a ground only from a file
     game(const ground& terrain, int nb_mirror_max, int nb_mirror_installed = 0);
     ~game() = default ;
-    sens askSens();
-    point askPosition();
+
+    int getNbMirrorMax() const;
+    void setNbMirrorMax(int);
+
     void addMirror(const point& p, const sens& s) ;
     void loadGround(const ground& terrain);
     void read(const string& nameFile) ;
     void removeMirror(const point& p) ;
     void run() ;
     void save(const string& nameFile) const ;
-    void start() ;
 private :
     ground d_terrain ;
     int d_nb_mirror_max;
     int d_nb_mirror_installed;
+
+    point reverse(const point& p);
+    sens askSens();
+    point askPosition();
+
+    void start() ;
 };
 
 #endif // GAME_H_INCLUDED

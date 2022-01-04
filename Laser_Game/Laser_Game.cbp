@@ -59,6 +59,8 @@
 		<Unit filename="viewer.h" />
 		<Unit filename="viewerOnTerminal.cpp" />
 		<Unit filename="viewerOnTerminal.h" />
+		<Unit filename="viewerOnWINBGI.cpp" />
+		<Unit filename="viewerOnWINBGI.h" />
 		<Unit filename="wall.cpp" />
 		<Unit filename="wall.h" />
 		<Extensions>

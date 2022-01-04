@@ -7,57 +7,82 @@ game::game(const ground& terrain, int nb_mirror_max, int d_nb_mirror_installed) 
     d_terrain{terrain}, d_nb_mirror_max{nb_mirror_max}, d_nb_mirror_installed{d_nb_mirror_installed}
 {}
 
+
+int game::getNbMirrorMax() const
+{
+    return d_nb_mirror_max;
+}
+
+void game::setNbMirrorMax(int nbMirrorMax)
+{
+    d_nb_mirror_max = nbMirrorMax;
+}
+
 void game::addMirror(const point& p, const sens& s)
 {
-    if(p.x() >= 0 && p.y() >= 0 && p.x() < d_terrain.getNbCellsHeight() && p.y() < d_terrain.getNbCellsWidth() )
+    if(p.y() >= 0 && p.x() >= 0 && p.y() < d_terrain.getNbCellsHeight() && p.x() < d_terrain.getNbCellsWidth() )
     {
-        auto obj = d_terrain.getObjects()[p.x()][p.y()].get();
+        auto obj = d_terrain.getObjects()[p.y()][p.x()].get();
         if(obj)
         {
             if(dynamic_cast<mirror*>(obj))
             {
-                d_terrain.addObjectAt(std::make_unique<mirror>(p,s), p.x(),p.y());
-                ++d_nb_mirror_installed;
+                d_terrain.removeObjectAt(p.y(), p.x());
+                d_terrain.addObjectAt(std::make_unique<mirror>(p,s), p.y(),p.x());
             }
         }
+        else
+        {
+            d_terrain.addObjectAt(std::make_unique<mirror>(p,s), p.y(),p.x());
+            ++d_nb_mirror_installed;
+        }
+    }
+    else
+    {
+        cerr << "ERROR: the mirror is not on the ground" << endl;
     }
 }
 
 void game::removeMirror(const point& p)
 {
-    if(p.x() >= 0 && p.y() >= 0 && p.x() < d_terrain.getNbCellsHeight() && p.y() < d_terrain.getNbCellsWidth() )
+    if(p.y() >= 0 && p.x() >= 0 && p.y() < d_terrain.getNbCellsHeight() && p.x() < d_terrain.getNbCellsWidth() )
     {
-        auto obj = d_terrain.getObjects()[p.x()][p.y()].get();
+        auto obj = d_terrain.getObjects()[p.y()][p.x()].get();
         if(obj)
         {
             if(dynamic_cast<mirror*>(obj))
             {
-                d_terrain.removeObjectAt(p.x(),p.y());
+                d_terrain.removeObjectAt(p.y(),p.x());
                 --d_nb_mirror_installed;
             }
         }
     }
 }
 
+point game::reverse(const point& p)
+{
+    return {p.y(), p.x()};
+}
+
 point game::askPosition()
 {
     point p;
-    cout<<"Saisir la position : "<<endl;
+    cout<<"Saisir la position : ";
     cin>>p;
-    return p;
+    return reverse(p);
 }
 
 sens game::askSens()
 {
-    int inclination_mirror;
-    cout<<"Saisir l'inclinaison du miroir ( 1 pour / ou 2 pour \\ ) : ";
+    char inclination_mirror;
+    cout<<"Saisir l'inclinaison du miroir ( / ou \\ ) : ";
     cin>>inclination_mirror;
     sens s;
     switch(inclination_mirror)
     {
-        case(1) :
+        case('/') :
         { s = basGauche_hautDroit;break;}
-        case(2) :
+        case('\\') :
         { s = hautGauche_basDroit;break;}
     }
     return s;
@@ -160,7 +185,9 @@ void game::start()
 {
     auto shooter = d_terrain.getShooter();
     auto l = shooter.tire();
-    d_terrain.addObjectAt(make_unique<object>(l), l.getPosition().x(), l.getPosition().y());
+    cout << shooter << endl;
+    cout << l << endl;
+    d_terrain.addObjectAt(make_unique<object>(l), l.getPosition().y(), l.getPosition().x());
 
     viewerOnTerminal v;
     v.printGround(d_terrain);
@@ -174,17 +201,29 @@ void game::start()
         {
             while(j < d_terrain.getNbCellsWidth() and l.getIsAlive())
             {
-                d_terrain.getObjects()[i][j].get()->collide(l);
+                auto obj = d_terrain.getObjects()[i][j].get();
+                if(obj)
+                {
+                    obj->collide(l);
+                }
                 ++j;
             }
             ++i;
+            j = 0;
         }
 
-        if(l.getIsAlive()) d_terrain.addObjectAt(make_unique<object>(l), l.getPosition().x(), l.getPosition().y());
+        if(l.getIsAlive()) d_terrain.addObjectAt(make_unique<laser>(l), l.getPosition().y(), l.getPosition().x());
 
         v.printGround(d_terrain);
 
     }
+
+    cout << "LE";
+    for(unsigned i = 0; i < 99; ++i)
+    {
+        cout << "EEEEE";
+    }
+    cout << "TS GOOOOOOO" << endl;
 }
 
 void game::loadGround(const ground& terrain)

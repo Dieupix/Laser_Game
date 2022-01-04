@@ -54,6 +54,8 @@
 		<Unit filename="../Laser_Game/viewer.h" />
 		<Unit filename="../Laser_Game/viewerOnTerminal.cpp" />
 		<Unit filename="../Laser_Game/viewerOnTerminal.h" />
+		<Unit filename="../Laser_Game/viewerOnWINBGI.cpp" />
+		<Unit filename="../Laser_Game/viewerOnWINBGI.h" />
 		<Unit filename="../Laser_Game/wall.cpp" />
 		<Unit filename="../Laser_Game/wall.h" />
 		<Unit filename="doctest.h" />

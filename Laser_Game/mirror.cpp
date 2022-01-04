@@ -28,60 +28,47 @@ sens  mirror::getSens() const
 
 // ---------------------- changeDirectionLaser -------------------------------
 
-void mirror::changeDirectionLaser(laser& l ) const
+void mirror::changeDirectionLaser(laser& l )
 {
     /*  RIGHT,
       UP,
       LEFT,
       DOWN*/
-    if (estTouchee(l))
-    {
-
        switch(d_sens)
        {
            case basGauche_hautDroit:
                {
                     if(l.getDirection() == directions::UP || l.getDirection() == directions::DOWN)
-                        l.turnRight();
-                    else
                         l.turnLeft();
+                    else
+                        l.turnRight();
                     break;
                }
             case hautGauche_basDroit:
                 {
                     if(l.getDirection() == directions::LEFT || l.getDirection() == directions::RIGHT)
-                        l.turnLeft();
-                    else
                         l.turnRight();
+                    else
+                        l.turnLeft();
                     break;
                 }
         }
-    }
 }
 // ---------------------- Fin changeDirectionLaser -------------------------------
+
+unique_ptr<object> mirror::clone() const
+{
+    return make_unique<mirror>(*this);
+}
 
 void mirror::collide(laser& l)
 {
     if(getPosition() == l.getPosition())
     {
+        d_mirrortouched = true;
         changeDirectionLaser(l);
     }
 }
-
-// ---------------------- estTouchee -------------------------------
-
-bool mirror::estTouchee(laser& L ) const
-{
-    bool touchee = (L.getPosition() == getPosition() ) ;
-    if (touchee)
-    {
-        changeDirectionLaser(L) ;
-
-    }
-
-    return(touchee ) ;
-}
-// ---------------------- Fin estTouchee ------------------------------
 
 void mirror::print(std::ostream& ost) const
 {
