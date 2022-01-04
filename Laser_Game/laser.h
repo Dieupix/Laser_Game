@@ -98,7 +98,7 @@ class laser : public object
          *
          * @return virtual unique_ptr<object>
          */
-        virtual unique_ptr<object> clone() const;
+        virtual unique_ptr<object> clone() const override;
         /**
          * @brief A function that moves the laser
          * @details This function moves the laser from its position

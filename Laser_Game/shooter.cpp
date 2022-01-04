@@ -9,6 +9,11 @@ laser shooter::tire(double step)
     return {this->getPosition(), direction, step};
 }
 
+unique_ptr<object> shooter::clone() const
+{
+    return make_unique<shooter>(*this);
+}
+
 void shooter::collide(laser& l)
 {
     if(*this == l)

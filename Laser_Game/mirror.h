@@ -37,7 +37,7 @@ class mirror : public object
     *
     */
        void changeDirectionLaser(laser& ) const ;
-       virtual unique_ptr<object> clone() const;
+       virtual unique_ptr<object> clone() const override;
 
        /**
     * @brief Check if the laser touched the mirror
