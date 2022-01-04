@@ -61,9 +61,9 @@ ground& ground::operator=(const ground& g)
         for(unsigned i = 0; i < nbCellsHeight; ++i)
         {
             objects[i].resize(nbCellsWidth);
-            for(unsigned j = 0; j < g.getObjects()[i].size(); ++j)
+            for(unsigned j = 0; j < nbCellsWidth; ++j)
             {
-                auto obj = make_unique<object>(*g.getObjects()[i][j].get());
+                auto obj = g.getObjects()[i][j].get()->clone();
                 objects[i][j] = move(obj);
             }
         }
