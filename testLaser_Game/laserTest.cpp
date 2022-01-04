@@ -10,8 +10,7 @@
 using std::ostringstream;
 using std::string;
 
-TEST_CASE("2 - Test of the class laser"
-          * doctest::skip(true))
+TEST_CASE("2 - Test of the class laser")
 {
     point position{0, 0};
     auto direction = directions::RIGHT;
@@ -27,6 +26,25 @@ TEST_CASE("2 - Test of the class laser"
         REQUIRE_EQ(l.getStep(), step);
     }
 
+    SUBCASE("Test of the overloads")
+    {
+        auto laserFail = createLaserForTest({0, 0}, LEFT, -1);
+        auto l2 = createLaserForTest(position, direction, step);
+        auto l3 = createLaserForTest(position * 2, direction, step + 5);
+
+        WHEN("both laser are equals")
+        {
+            //CHECK_EQ(l, laserFail); // SHOULD FAIL
+            CHECK_EQ(l, l2);
+        }
+
+        WHEN("the laser are different")
+        {
+            //CHECK_NE(l, laserFail); // SHOULD FAIL
+            CHECK_NE(l, l3);
+        }
+    }
+
     SUBCASE("Test of the setters")
     {
         SUBCASE("Test of the setDirection() function")
@@ -36,6 +54,24 @@ TEST_CASE("2 - Test of the class laser"
 
             //CHECK_EQ(l.getDirection(), directions::UP); // SHOULD FAIL
             CHECK_EQ(l.getDirection(), newDirection);
+        }
+
+        SUBCASE("Test of the setIsAlive() fuction")
+        {
+            WHEN("the laser still alive")
+            {
+                //CHECK_EQ(l.getIsAlive(), false); // SHOULD FAIL
+                CHECK_EQ(l.getIsAlive(), true);
+            }
+
+            WHEN("the laser die")
+            {
+                l.setIsAlive(false);
+
+                //CHECK_EQ(l.getIsAlive(), true); // SHOULD FAIL
+                CHECK_EQ(l.getIsAlive(), false);
+            }
+
         }
 
         SUBCASE("Test of the setStep() function")
@@ -48,48 +84,55 @@ TEST_CASE("2 - Test of the class laser"
         }
     }
 
-    SUBCASE("Test of the moveByStep() function")
+    SUBCASE("Test of the functions")
     {
-        point expectedPosition {1.0, 0};
-        l.moveByStep();
-
-        //CHECK_EQ(l.getPosition(), point{-1.5, 0}); // SHOULD FAIL
-        CHECK_EQ(l.getPosition(), expectedPosition);
-    }
-
-    SUBCASE("Test of the turning functions")
-    {
-        SUBCASE("Test of the turnLeft() function")
+        SUBCASE("Test of the moveByStep() function")
         {
-            auto expectedDirection = directions::UP;
-            l.turnLeft();
+            point expectedPosition {1.0, 0};
+            l.moveByStep();
 
-            //CHECK_EQ(l.getDirection(), directions::DOWN); // SHOULD FAIL
-            CHECK_EQ(l.getDirection(), expectedDirection);
+            //CHECK_EQ(l.getPosition(), point{-1.5, 0}); // SHOULD FAIL
+            CHECK_EQ(l.getPosition(), expectedPosition);
         }
 
-        SUBCASE("Test of the turnRight() function")
+        SUBCASE("Test of the turning functions")
         {
-            auto expectedDirection = directions::DOWN;
-            l.turnRight();
+            SUBCASE("Test of the turnLeft() function")
+            {
+                auto expectedDirection = directions::UP;
+                l.turnLeft();
 
-            //CHECK_EQ(l.getDirection(), directions::UP); // SHOULD FAIL
-            CHECK_EQ(l.getDirection(), expectedDirection);
+                //CHECK_EQ(l.getDirection(), directions::DOWN); // SHOULD FAIL
+                CHECK_EQ(l.getDirection(), expectedDirection);
+            }
+
+            SUBCASE("Test of the turnRight() function")
+            {
+                auto expectedDirection = directions::DOWN;
+                l.turnRight();
+
+                //CHECK_EQ(l.getDirection(), directions::UP); // SHOULD FAIL
+                CHECK_EQ(l.getDirection(), expectedDirection);
+            }
         }
-    }
 
-    ///@FIXME - Alex : fix the subcase
-    SUBCASE("Test of the print() function")
-    {
-        string expectedOutput = "Laser[position(0,0), direction(RIGHT), step(1)]";
+        SUBCASE("")
+        {
 
-        ostringstream ost;
-        l.print(ost);
+        }
 
-        string read = ost.str();
+        SUBCASE("Test of the print() function")
+        {
+            string expectedOutput = "Laser[position(0.000000,0.000000), direction(RIGHT), step(1.000000)]";
 
-        //CHECK_EQ(read, "I want you to fail"); // SHOULD FAIL
-        CHECK_EQ(read, expectedOutput);
+            ostringstream ost;
+            l.print(ost);
+
+            string read = ost.str();
+
+            //CHECK_EQ(read, "I want you to fail"); // SHOULD FAIL
+            CHECK_EQ(read, expectedOutput);
+        }
     }
 }
 
