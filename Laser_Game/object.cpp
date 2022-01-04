@@ -68,6 +68,11 @@ void object::move(double x, double y)
 
 void object::collide(laser&) {}
 
+unique_ptr<object> object::clone() const
+{
+    return make_unique<object>(*this);
+}
+
 void object::print(std::ostream& ost) const{
     ost << toString();
 }

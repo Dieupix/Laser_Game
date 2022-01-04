@@ -4,6 +4,11 @@
 #include "enumTypes.h"
 #include "point.h"
 
+#include <memory>
+
+using std::make_unique;
+using std::unique_ptr;
+
 class laser;
 
 class object
@@ -25,6 +30,7 @@ class object
        void move(double x, double y);
 
        virtual void collide(laser& l);
+       virtual unique_ptr<object> clone() const;
        virtual void print(std::ostream& ost) const;
        virtual string toString() const;
 
