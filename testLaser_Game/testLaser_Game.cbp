@@ -62,6 +62,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="mirrorTest.cpp" />
 		<Unit filename="objectTest.cpp" />
+		<Unit filename="pointTest.cpp" />
+		<Unit filename="shooterTest.cpp" />
 		<Unit filename="targetTest.cpp" />
 		<Unit filename="wallTest.cpp" />
 		<Extensions>
