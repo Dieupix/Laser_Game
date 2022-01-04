@@ -37,6 +37,8 @@ class mirror : public object
     *
     */
        void changeDirectionLaser(laser& ) const ;
+       virtual unique_ptr<object> clone() const;
+
        /**
     * @brief Check if the laser touched the mirror
     * @return True : if he touched

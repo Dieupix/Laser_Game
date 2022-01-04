@@ -60,6 +60,11 @@ void mirror::changeDirectionLaser(laser& l ) const
 }
 // ---------------------- Fin changeDirectionLaser -------------------------------
 
+unique_ptr<object> mirror::clone() const
+{
+    return make_unique<mirror>(*this);
+}
+
 void mirror::collide(laser& l)
 {
     if(getPosition() == l.getPosition())
