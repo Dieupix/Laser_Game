@@ -36,6 +36,7 @@ private :
     int d_nb_mirror_max;
     int d_nb_mirror_installed;
 
+    point reverse(const point& p);
     sens askSens();
     point askPosition();
 

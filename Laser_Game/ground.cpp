@@ -29,7 +29,6 @@ ground::ground(const ground& g) :
         objects[i].resize(nbCellsWidth);
         for(unsigned j = 0; j < g.getObjects()[i].size(); ++j)
         {
-            ///@FIXME - Alex : put a copy of the object in the new ground (this)
             auto obj = g.getObjects()[i][j].get()->clone();
             objects[i][j] = move(obj);
         }
@@ -128,12 +127,13 @@ void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
     }
     else
     {
-        if(!objects[i][j])
+        if(!objects[i][j].get())
         {
             if(dynamic_cast<mirror*>(obj.get()))
             {
                 ++nbOfMirrors;
             }
+
             objects[i][j] = move(obj);
             ++nbOfObjects;
         }
@@ -160,7 +160,6 @@ const shooter& ground::getShooter() const
 
 void ground::loadFrom(istream& ist)
 {
-    /// @TODO - Alex : change the loading method
     cout << "Loading..." << endl;
 
     string loaded = "";
@@ -344,9 +343,10 @@ void ground::removeObjectAt(unsigned i, unsigned j)
     }
     else
     {
-        if(objects[i][j])
+        auto obj = objects[i][j].get();
+        if(obj)
         {
-            if(dynamic_cast<mirror*>(objects[i][j].get()))
+            if(dynamic_cast<mirror*>(obj))
             {
                 --nbOfMirrors;
             }

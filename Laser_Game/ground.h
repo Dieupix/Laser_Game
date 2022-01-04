@@ -7,6 +7,7 @@
 #include "object.h"
 #include "grid.h"
 #include "mirror.h"
+#include "laser.h"
 #include "shooter.h"
 #include "target.h"
 #include "wall.h"
