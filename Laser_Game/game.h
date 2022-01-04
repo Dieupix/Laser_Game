@@ -21,6 +21,10 @@ public :
     //TODO - Because read() allows the game to load a ground only from a file
     game(const ground& terrain, int nb_mirror_max, int nb_mirror_installed = 0);
     ~game() = default ;
+
+    int getNbMirrorMax() const;
+    void setNbMirrorMax(int);
+
     void addMirror(const point& p, const sens& s) ;
     void loadGround(const ground& terrain);
     void read(const string& nameFile) ;

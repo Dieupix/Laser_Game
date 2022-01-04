@@ -7,6 +7,17 @@ game::game(const ground& terrain, int nb_mirror_max, int d_nb_mirror_installed) 
     d_terrain{terrain}, d_nb_mirror_max{nb_mirror_max}, d_nb_mirror_installed{d_nb_mirror_installed}
 {}
 
+
+int game::getNbMirrorMax() const
+{
+    return d_nb_mirror_max;
+}
+
+void game::setNbMirrorMax(int nbMirrorMax)
+{
+    d_nb_mirror_max = nbMirrorMax;
+}
+
 void game::addMirror(const point& p, const sens& s)
 {
     if(p.x() >= 0 && p.y() >= 0 && p.x() < d_terrain.getNbCellsHeight() && p.y() < d_terrain.getNbCellsWidth() )
