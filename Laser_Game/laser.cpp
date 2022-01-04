@@ -52,6 +52,11 @@ void laser::setStep(double step){
 
 // ---------- Functions ----------
 
+unique_ptr<object> laser::clone() const
+{
+    return make_unique<laser>(*this);
+}
+
 void laser::moveByStep(){
     switch(this->direction){
         case directions::RIGHT: {
