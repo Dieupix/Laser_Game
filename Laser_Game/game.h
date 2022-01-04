@@ -19,11 +19,8 @@ public :
     game();
     //TODO - Should we not use a default constructor and create a function to load a ground in the game?
     //TODO - Because read() allows the game to load a ground only from a file
-    game(const ground& terrain, int nb_mirror_max, int nb_mirror_installed = 0);
+    game(const ground& terrain);
     ~game() = default ;
-
-    int getNbMirrorMax() const;
-    void setNbMirrorMax(int);
 
     void addMirror(const point& p, const sens& s) ;
     void loadGround(const ground& terrain);
@@ -33,12 +30,11 @@ public :
     void save(const string& nameFile) const ;
 private :
     ground d_terrain ;
-    int d_nb_mirror_max;
-    int d_nb_mirror_installed;
 
     point reverse(const point& p);
     sens askSens();
     point askPosition();
+    void invertDirection(laser& l) const;
 
     void start() ;
 };

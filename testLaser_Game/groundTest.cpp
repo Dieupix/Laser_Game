@@ -17,9 +17,9 @@ TEST_CASE("3 - Test of the class ground"
 {
     point position(0, 0);
     double cellsWidth = 1.0, cellsHeight = 1.0;
-    unsigned nbCellsWidth = 5, nbCellsHeight = 5;
+    unsigned nbCellsWidth = 5, nbCellsHeight = 5, nbMirrorMax = 0;
 
-    ground g(position, cellsWidth, cellsHeight, nbCellsWidth, nbCellsHeight);
+    ground g(position, cellsWidth, cellsHeight, nbCellsWidth, nbCellsHeight, nbMirrorMax);
 
     SUBCASE("Test of the constructor")
     {
