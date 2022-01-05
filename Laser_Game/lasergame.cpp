@@ -9,14 +9,16 @@ lasergame::lasergame() : d_viewer{make_unique<viewerOnTerminal>()}
 void lasergame::menu()
 {
     string path_Ground;
+    bool flag = false;
     int choice;
     do
     {
         cout<<"========================== LASER GAME ========================"<<endl;
-        cout<<"0 - Quitter le jeu"                                            <<endl;
         cout<<"1 - Choisir un mode graphique"                                 <<endl;
         cout<<"2 - Choisir un terrain"                                        <<endl;
-        cout<<"3 - Lancer une partie"                                         <<endl;
+        if(flag)
+            cout<<"3 - Lancer une partie"                                         <<endl;
+        cout<<"0 - Quitter le jeu"                                            <<endl;
         cout<<"> ";
         cin>>choice;
         //There are 4 possibilities
@@ -32,15 +34,19 @@ void lasergame::menu()
             case 2:
                 {
                     path_Ground = Ground_choice();
+                    flag = true;
                     break;
                 }
             //Starting the game
             case 3 :
                 {
-                    game g{move(d_viewer)};
-                    g.read(path_Ground);
-                    g.run();
-                    break;
+                    if(flag)
+                    {
+                        game g{move(d_viewer)};
+                        g.read(path_Ground);
+                        g.run();
+                        break;
+                    }
                 }
             //Exit the menu
         }
@@ -55,9 +61,9 @@ void lasergame::GraphicType()
     do
     {
         cout<<"========================== MODE =========================="<<endl;
-        cout<<"0 - Retour"                                                <<endl;
         cout<<"1 - Mode graphique"                                        <<endl;
         cout<<"2 - Mode console"                                          <<endl;
+        cout<<"0 - Retour"                                                <<endl;
         cout<<"> ";
         cin>>choice;
         //There are 3 possibilities
