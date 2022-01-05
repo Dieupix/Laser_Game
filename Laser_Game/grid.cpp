@@ -1,50 +1,71 @@
+//Declaring libraries
 #include "grid.h"
 
-grid::grid(double largeur, double hauteur) : d_largeurCells{largeur}, d_hauteurCells{hauteur}
+//---------- Constructors------------------------------
+grid::grid(double width, double height) : d_widthCells{width},
+                                          d_heightCells{height}
 {}
-
-std::ostream& operator<<(std::ostream& ost, const grid& g){
-    g.print(ost);
-    return ost;
-}
-
-std::istream& operator>>(std::istream& ist, grid& g){
-    g.read(ist);
-    return ist;
-}
-
-double grid::getCellsHeight() const {return this->d_hauteurCells;}
-
-double grid::getCellsWidth() const {return this->d_largeurCells;}
-
-void grid::setCellsHeight(double hauteurCells)
+//---------- End of constructors-----------------------
+//---------- Setter------------------------------------
+void grid::setCellsWidth(double new_width)
 {
-    this->d_hauteurCells = hauteurCells;
+    this->d_widthCells = new_width;
 }
 
-void grid::setCellsWidth(double largeurCells)
+void grid::setCellsHeight(double new_height)
 {
-    this->d_largeurCells = largeurCells;
+    this->d_heightCells = new_height;
+}
+//---------- End of Setter-----------------------------
+//---------- Getter------------------------------------
+double grid::getCellsWidth() const
+{
+    return this->d_widthCells;
 }
 
-void grid::print(std::ostream &ost) const
+double grid::getCellsHeight() const
+{
+    return this->d_heightCells;
+}
+//---------- End of Getter-----------------------------
+//---------- Methods ----------------------------------
+void grid::print(ostream &ost) const
 {
     ost<<toString();
 }
 
-void grid::read(std::istream &ist)
+string grid::toString() const
 {
-    int a, b;
-    char c;
-    ist>>c>>a>>c>>b>>c;
-    if(ist.good())
-    {
-        d_largeurCells = a;
-        d_hauteurCells = b;
-    }
+    return "Grid[cellsWidth(" + to_string(d_widthCells) + "), cellsHeight(" + to_string(d_heightCells) + ")]";
 }
 
-std::string grid::toString() const
+void grid::read(istream &ist)
 {
-    return "Grid[cellsWidth(" + std::to_string(d_largeurCells) + "), cellsHeight(" + std::to_string(d_hauteurCells) + ")]";
+    double width, height;
+    char characters;
+    //Reading : (WIDTH , HEIGHT)
+    ist>>characters>>width>>characters>>height>>characters;
+    if(ist.good())
+    {
+        d_widthCells  = width;
+        d_heightCells = height;
+    }
 }
+//---------- End of methods ----------------------------
+//---------- Operators outside class  -----------------
+ostream& operator<<(ostream& ost, const grid& g)
+{
+    g.print(ost);
+    return ost;
+}
+
+istream& operator>>(istream& ist, grid& g)
+{
+    g.read(ist);
+    return ist;
+}
+//---------- End of Operators outside class  ----------
+
+
+
+
