@@ -78,7 +78,7 @@ laser shooter::shoot(double step)
 {
     return {this->getPosition(), direction, step};
 }
-
+//---------- End of methods ----------------------------
 
 
 
