@@ -1,10 +1,9 @@
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 
-#include "mirror.h"
 #include "ground.h"
 #include "viewerOnTerminal.h"
-
+#include "viewerOnWINBGI.h"
 #include <fstream>
 #include <string>
 
@@ -16,20 +15,23 @@ using std::string;
 class game
 {
 public :
-    game();
-    //TODO - Should we not use a default constructor and create a function to load a ground in the game?
-    //TODO - Because read() allows the game to load a ground only from a file
-    game(const ground& terrain);
+    game(unique_ptr<viewer> = make_unique<viewerOnTerminal>());
+    game(const ground&, unique_ptr<viewer> = make_unique<viewerOnTerminal>());
+
     ~game() = default ;
 
     void addMirror(const point& p, const sens& s) ;
+    int score() const;
     void loadGround(const ground& terrain);
     void read(const string& nameFile) ;
     void removeMirror(const point& p) ;
-    void run() ;
+    void menu();
+    void run();
+    void win() const;
     void save(const string& nameFile) const ;
 private :
-    ground d_terrain ;
+    ground d_terrain;
+    unique_ptr<viewer> d_viewer;
 
     point reverse(const point& p);
     sens askSens();

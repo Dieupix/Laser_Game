@@ -176,6 +176,12 @@ class ground : public grid
         const shooter& getShooter() const;
 
         /**
+         * @brief
+         *
+         * @return const target&
+         */
+        const target& getTarget() const;
+        /**
          * @brief Function that loads a ground from an input stream
          *
          * @param[in] ist : The input stream to load the ground from

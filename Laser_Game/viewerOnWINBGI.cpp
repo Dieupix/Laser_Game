@@ -103,6 +103,7 @@ void viewerOnWINBGI::print(const unique_ptr<object>& obj) const
 
 void viewerOnWINBGI::printGround(const ground& g) const
 {
+    cleardevice();
     for(unsigned i = 0; i < g.getNbCellsHeight(); ++i)
     {
         for(unsigned j = 0; j < g.getNbCellsWidth(); ++j)
@@ -182,22 +183,48 @@ void viewerOnWINBGI::printShooter(const shooter& s) const
 {
     point pos = s.getPosition() * 2 * scale;
 
+    point left, right, top;
+
     switch(s.getDirection())
     {
     case RIGHT:
         {
+            left = point(pos.x() - scale, pos.y() - scale);
+            right = point(pos.x() - scale, pos.y() + scale);
+            top = point(pos.x() + scale, pos.y());
+
+            triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
+
             break;
         }
     case LEFT:
         {
+            left = point(pos.x() + scale, pos.y() + scale);
+            right = point(pos.x() + scale, pos.y() - scale);
+            top = point(pos.x() - scale, pos.y());
+
+            triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
+
             break;
         }
     case UP:
         {
+            left = point(pos.x() - scale, pos.y() + scale);
+            right = point(pos.x() + scale, pos.y() + scale);
+            top = point(pos.x(), pos.y() - scale);
+
+            triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
+
             break;
         }
     case DOWN:
         {
+            left = point(pos.x() + scale, pos.y() - scale);
+            right = point(pos.x() - scale, pos.y() - scale);
+            top = point(pos.x(), pos.y() + scale);
+
+            triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
+
             break;
         }
     default:
@@ -226,8 +253,6 @@ void viewerOnWINBGI::printWall(const wall& w) const
     int bottom = pos.y() - scale;
 
     rectangle(left, top, right, bottom);
-
-    //plot(pos.x(), pos.y());
 }
 
 // ---------- End of functions ----------
