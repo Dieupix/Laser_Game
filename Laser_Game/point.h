@@ -65,7 +65,7 @@ class point
         void shift(double x, double y);
 
         /**
-        * @brief Allows to print a flow
+        * @brief Allows to print characteristics of point
         *
         * @param ost : the flow (ostream)
         *

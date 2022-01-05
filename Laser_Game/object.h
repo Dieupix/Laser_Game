@@ -110,7 +110,7 @@ class object
        virtual unique_ptr<object> clone() const;
 
         /**
-        * @brief Virtual procedure that allows to print an object
+        * @brief Virtual procedure that allows to print characteristics of object
         *
         * @return void
         */

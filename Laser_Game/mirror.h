@@ -1,72 +1,84 @@
 #ifndef MIROIR_H_INCLUDED
 #define MIROIR_H_INCLUDED
 
+//Declaring libraries
 #include "enumTypes.h"
 #include "object.h"
 
+//Declaring namespace
 using namespace enumTypes;
 
 class mirror : public object
 {
-
     public:
-   /** @brief constructor of a mirror
-    *
-    * @param[in] have a position
-    * @param[in] have a sens
-    *
-    */
-    mirror( const point& position, sens Smirror ) ;
-
-    // Destructor
-    /**
-     * @brief Default-implemented destructor
-     * @details Destroys the mirror.
-     */
-
-    ~mirror()  = default ;
-
-    /**
-    * @brief  Get Sens of the mirror
-    * @return Sens
-    */
-     sens  getSens() const ;
-     /**
-    * @brief  change the direction of the laser
-    *   when the laser touch the mirror
-    *
-    */
-       void changeDirectionLaser(laser& ) ;
-       virtual unique_ptr<object> clone() const override;
-
-       /**
-    * @brief Check if the laser touched the mirror
-    * @return True : if he touched
-    * @return False : if he didn't
-    *
-    */
-
-    virtual void collide(laser& l) override;
-
-          /**
-    * @brief Print the  Characteristics of the mirror
-    * @param[in] ost
-    *
-    */
-       virtual void print(std::ostream& ost) const override;
-       virtual string toString() const override;
-     private:
         /**
-        *  @brief The mirror has Boolean that says whether or
-        * not the mirror is hit by a laser
-        * he has sens  basGauche_hautDroit and  hautGauche_basDroit
+        * @brief Constructor of mirror
+        *
+        * @param position : position of mirror (const point)
+        * @param Smirror : sense of mirror (enumeration sens)
+        *
+        * @return Create a mirror with position and sense
         */
-       sens d_sens;
+        mirror(const point& position, sens Smirror);
 
+        /**
+        * @brief Virtual destructor of mirror
+        *
+        */
+        virtual ~mirror() = default;
+
+        /**
+        * @brief Function that returns the sense of current mirror
+        *
+        * @return the sense
+        */
+        sens getSens() const;
+
+        /**
+        * @brief  Function that change the direction of the laser when the mirror is touched by laser
+        *
+        * @param l : the laser
+        *
+        * @return void
+        */
+        void changeDirectionLaser(laser& l);
+
+        /**
+        * @brief Virtual function that allows to clone a smart pointer of mirror
+        *
+        * @return a new smart pointer of mirror
+        */
+        virtual unique_ptr<object> clone() const override;
+
+        /**
+        * @brief Virtual procedure that allows to test if the current mirror has the same position in the ground that a laser
+        *
+        * @param l : new laser
+        *
+        * @return void
+        */
+        virtual void collide(laser& l) override;
+
+        /**
+        * @brief Virtual procedure that allows to print characteristics of mirror
+        *
+        * @return void
+        */
+        virtual void print(ostream& ost) const override;
+
+        /**
+        * @brief Virtual function that allows to convert a mirrror in string
+        *
+        * @return a string
+        */
+        virtual string toString() const override;
+
+    private:
+
+        //The sense of the mirror. It can be "hautGauche_basDroit" ou "basGauche_hautDroit"
+        sens d_sens;
+        //A boolean that allows to know when the current mirror is touched by a laser
         bool  d_mirrortouched;
-
 };
-
-
 
 #endif // MIROIR_H_INCLUDED
