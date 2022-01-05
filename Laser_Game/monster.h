@@ -1,7 +1,7 @@
 #ifndef CIBLE_H_INCLUDED
 #define CIBLE_H_INCLUDED
-
 #include "object.h"
+
 
 class monster : public object
 {

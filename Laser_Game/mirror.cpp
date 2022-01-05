@@ -71,17 +71,17 @@ string mirror::toString() const
     {
         case sens::basGauche_hautDroit :
             {
-                str_mirror += "basGauche_hautDroit";
+                str_mirror += " basGauche_hautDroit";
                 break;
             }
         case sens::hautGauche_basDroit :
             {
-                str_mirror += "hautGauche_basDroit";
+                str_mirror += " hautGauche_basDroit";
                 break ;
             }
     }
 
-    str_mirror += "), affected(" + string(d_mirrortouched ? "true" : "false") + ")]";
+    str_mirror += " ), affected(" + string(d_mirrortouched ? "true" : "false") + ")]";
     return str_mirror;
 }
 //---------- End of methods ----------------------------

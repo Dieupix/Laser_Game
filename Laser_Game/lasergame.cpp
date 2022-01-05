@@ -27,9 +27,9 @@ void lasergame::menu()
                 cheminTerrain = choisirTerrain();
                 break;
             case 3 :
-                game partie{d_viewer};
+            /*   game partie{d_viewer};
                 partie.read(cheminTerrain);
-                partie.run();
+                partie.run();*/
                 break;
         }
     }while(choix != 0);
