@@ -446,9 +446,7 @@ void ground::saveIn(ostream& ost) const
                     position.toString()         + '\n' +
                     to_string(nbCellsWidth)     + '\n' +
                     to_string(nbCellsHeight)    + '\n' +
-                    to_string(nbOfObjects)      + '\n' +
-                    to_string(nbOfMirrors)      + '\n' +
-                    to_string(nbOfMirrors)      + '\n' ;
+                    to_string(nbMirrorMax)      + '\n' ;
 
     //Adding objects of the current ground in the string
     for(unsigned i = 0; i < nbCellsHeight; ++i)

@@ -14,8 +14,7 @@ using std::string;
 
 
 
-TEST_CASE("2 - Test of the class target"
-          * doctest::skip(true))
+TEST_CASE("2 - Test of the class target")
 {
 
 
@@ -93,7 +92,7 @@ TEST_CASE("2 - Test of the class target"
     auto l = createLaserForTest(p, direction, step);
     SUBCASE("Test of the print() function")
     {
-        string expectedOutput = "target[position(0,0), est touchée par un laser]";
+        string expectedOutput = "Cible[position(0.000000,0.000000), affected(true)]";
         ostringstream ost;
         c.collide( l) ;
 
@@ -104,7 +103,7 @@ TEST_CASE("2 - Test of the class target"
         {
             point A{10, 0} ;
             target c (A) ;
-            string expectedOutput = "target[position(0,0), n'est pas touchée par un laser]";
+            string expectedOutput = "Cible[position(10.000000,0.000000), affected(false)]";
             ostringstream ost;
             c.collide( l) ;
             c.print(ost);

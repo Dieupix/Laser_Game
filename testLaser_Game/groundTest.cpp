@@ -11,8 +11,7 @@
 using std::stringstream;
 using std::string;
 
-TEST_CASE("3 - Test of the class ground"
-          * doctest::skip(true))
+TEST_CASE("3 - Test of the class ground")
 {
     point position(0, 0);
     double cellsWidth = 1.0, cellsHeight = 1.0;
@@ -23,15 +22,20 @@ TEST_CASE("3 - Test of the class ground"
     SUBCASE("Test of the constructor")
     {
         //REQUIRE_EQ(g.getPosition(), point{-1, -1}); // SHOULD FAIL
+        REQUIRE_EQ(g.getCellsWidth(), cellsWidth);
+        REQUIRE_EQ(g.getCellsHeight(), cellsHeight);
         REQUIRE_EQ(g.getPosition(), position);
         REQUIRE_EQ(g.getNbCellsWidth(), nbCellsWidth);
         REQUIRE_EQ(g.getNbCellsHeight(), nbCellsHeight);
+        REQUIRE_EQ(g.getNbOfObjects(), 0);
+        REQUIRE_EQ(g.getNbOfMirrors(), 0);
+        REQUIRE_EQ(g.getNbMirrorMax(), nbMirrorMax);
+
         REQUIRE_EQ(g.getObjects().size(), nbCellsHeight);
 
         for(unsigned i = 0; i < nbCellsHeight; ++i)
             REQUIRE_EQ(g.getObjects()[i].size(), nbCellsWidth);
 
-        REQUIRE_EQ(g.getNbOfObjects(), 0);
     }
 
     SUBCASE("Test of the setters")
@@ -85,27 +89,48 @@ TEST_CASE("3 - Test of the class ground"
 
     SUBCASE("Test of the loadGround() function")
     {
-        string expectedInput = "";
+        string input = string("") + to_string(cellsWidth) + "\n" +
+                                    to_string(cellsHeight) + "\n" +
+                                    position.toString() + "\n" +
+                                    to_string(nbCellsWidth) +"\n" +
+                                    to_string(nbCellsHeight) + "\n" +
+                                    to_string(nbMirrorMax) + "\n" +
+                                    ".....\n" +
+                                    ".....\n" +
+                                    ".....\n" +
+                                    ".....\n" +
+                                    ".....\n";
 
         stringstream ist;
-        for(auto c : expectedInput)
+        for(auto c : input)
         {
             ist << c;
         }
 
         g.loadFrom(ist);
 
-        /// @TODO - Alex : setup all checks
-        CHECK_EQ(true, true); // SHOULD FAIL
-        CHECK_EQ(false, false);
+        //CHECK_EQ(g.getPosition(), point{-1, -1}); // SHOULD FAIL
+        CHECK_EQ(g.getCellsWidth(), cellsWidth);
+        CHECK_EQ(g.getCellsHeight(), cellsHeight);
+        CHECK_EQ(g.getPosition(), position);
+        CHECK_EQ(g.getNbCellsWidth(), nbCellsWidth);
+        CHECK_EQ(g.getNbCellsHeight(), nbCellsHeight);
+        CHECK_EQ(g.getNbOfObjects(), 0);
+        CHECK_EQ(g.getNbOfMirrors(), 0);
+        CHECK_EQ(g.getNbMirrorMax(), nbMirrorMax);
+
+        CHECK_EQ(g.getObjects().size(), nbCellsHeight);
+
+        for(unsigned i = 0; i < nbCellsHeight; ++i)
+            CHECK_EQ(g.getObjects()[i].size(), nbCellsWidth);
     }
 
     SUBCASE("Test of the print() function")
     {
         g.addObjectAt(make_unique<shooter>(position, RIGHT), 0, 0);
-        string expectedOutput = string("") +    "Ground[(1,1), position(0,0), nbCellsWidth(5), nbCellsHeight(5)]\n" +
+        string expectedOutput = string("") +    "Ground[Grid[cellsWidth(1.000000), cellsHeight(1.000000)], position(0.000000,0.000000), nbCellsWidth(5), nbCellsHeight(5), nbOfObjects(1), nbOfMirrors(0), nbMirrorMax(0)]\n" +
                                                 "List of objects (1) :\n" +
-                                                "1 : Tireur[position(0,0), direction(RIGHT)]\n";
+                                                "1 : Tireur[position(0.000000,0.000000), direction(RIGHT)]\n";
 
         stringstream ost;
         g.print(ost);
@@ -133,14 +158,23 @@ TEST_CASE("3 - Test of the class ground"
 
     SUBCASE("Test of the saveGround() function")
     {
-        string expectedOutput = "";
+        string expectedOutput = string("") +    to_string(cellsWidth) + "\n" +
+                                                to_string(cellsHeight) + "\n" +
+                                                position.toString() + "\n" +
+                                                to_string(nbCellsWidth) +"\n" +
+                                                to_string(nbCellsHeight) + "\n" +
+                                                to_string(nbMirrorMax) + "\n" +
+                                                ".....\n" +
+                                                ".....\n" +
+                                                ".....\n" +
+                                                ".....\n" +
+                                                ".....\n";
 
         stringstream ost;
         g.saveIn(ost);
 
         string read = ost.str();
 
-        /// @TODO - Alex : setup all checks
         //CHECK_EQ(read, "I want you to fail"); // SHOULD FAIL
         CHECK_EQ(read, expectedOutput);
     }

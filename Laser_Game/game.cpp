@@ -98,11 +98,11 @@ void game::run()
     point position;
     do
     {
+        cout<<"========================== COMMANDE =========================="<<endl;
         cout<<"0 - Tirer le laser"     <<endl;
         cout<<"1 - Ajouter un miroir"  <<endl;
         cout<<"2 - Enlever un miroir"  <<endl;
         cout<<"3 - Afficher le terrain"<<endl;
-        cout << endl;
         cout << "> ";
         cin>>choice;
 
