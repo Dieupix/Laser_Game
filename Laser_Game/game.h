@@ -4,7 +4,7 @@
 #include "mirror.h"
 #include "ground.h"
 #include "viewerOnTerminal.h"
-
+#include "viewerOnWINBGI.h"
 #include <fstream>
 #include <string>
 
@@ -27,6 +27,7 @@ public :
     void loadGround(const ground& terrain);
     void read(const string& nameFile) ;
     void removeMirror(const point& p) ;
+    void menu();
     void run();
     void win() const;
     void save(const string& nameFile) const ;

@@ -4,6 +4,7 @@ using namespace std;
 
 #include "game.h"
 #include "viewerOnWINBGI.h"
+#include "lasergame.h"
 
 int main()
 {
@@ -22,8 +23,11 @@ int main()
 
     getch();*/
 
-    game g;
+    /*game g;
     g.read("../grounds/ground1.txt");
 
-    g.run();
+    g.run();*/
+    lasergame l{};
+
+    l.menu();
 }
