@@ -6,8 +6,7 @@ using namespace std;
 
 int main()
 {
-    lasergame l;
+    /*lasergame l;
 
-    l.menu();
-
+    l.menu();*/
 }

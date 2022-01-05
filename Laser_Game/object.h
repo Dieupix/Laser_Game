@@ -10,8 +10,14 @@
 using std::make_unique;
 using std::unique_ptr;
 
+//Declaring class
 class laser;
 
+/**
+ * @class object object.h
+ * @brief A class that represents an object
+ * @details This class represents an object, with a @a position
+*/
 class object
 {
     //Friend of class
@@ -21,6 +27,8 @@ class object
 
         /**
         * @brief Constructor of object
+        *
+        * @param p : point (const point)
         *
         * @return Create an object with a point
         */

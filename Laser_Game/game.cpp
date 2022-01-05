@@ -203,7 +203,7 @@ void game::win() const
 void game::start()
 {
     auto shooter = d_terrain.getShooter();
-    auto l = shooter.tire();
+    auto l = shooter.shoot();
     invertDirection(l);
 
     point pos = reverse(l.getPosition() - d_terrain.getPosition());
