@@ -1,27 +1,37 @@
+//Declaring libraries
 #include "game.h"
 
-game::game(unique_ptr<viewer> viewer) : d_terrain{}, d_viewer{move(viewer)}
+//---------- Constructors------------------------------
+game::game(unique_ptr<viewer> view) : d_ground{},
+                                      d_viewer{move(view)}
 {}
 
-game::game(const ground& terrain, unique_ptr<viewer> viewer) : d_terrain{terrain}, d_viewer{move(viewer)}
+game::game(const ground& g, unique_ptr<viewer> view) : d_ground{g},
+                                                       d_viewer{move(view)}
 {}
-
-void game::addMirror(const point& p, const sens& s)
+//---------- End of constructors-----------------------
+//---------- Methods ----------------------------------
+void game::addMirror(const point& position_mirror, const sens& sense_mirror)
 {
-    auto i = p.x(), j = p.y();
-    if(i >= 0 && j >= 0 && i < d_terrain.getNbCellsHeight() && j < d_terrain.getNbCellsWidth() )
+    auto positionX = position_mirror.x()
+    auto positionY = position_mirror.y();
+
+    //If coordinates of mirror are valid
+    if(positionX >= 0 && positionY >= 0 && positionX < d_ground.getNbCellsHeight() && positionY < d_ground.getNbCellsWidth() )
     {
-        auto obj = d_terrain.getObjects()[i][j].get();
-        point pMirror = reverse(p) + d_terrain.getPosition();
+        auto obj = d_ground.getObjects()[positionX][positionY].get();
+        //Reverse of the position of mirror (due of the grid and the vector objects)
+        point pMirror = reversePosition(position_mirror) + d_ground.getPosition();
+        //If there are already an object in this position
         if(obj)
         {
+            //Moreover, if this object is a mirror, the mirror disappears
             if(dynamic_cast<mirror*>(obj))
             {
-                d_terrain.removeObjectAt(i, j);
+                d_ground.removeObjectAt(positionX, positionY);
             }
         }
-
-        d_terrain.addObjectAt(make_unique<mirror>(pMirror, s), i, j);
+        d_ground.addObjectAt(make_unique<mirror>(pMirror, sense_mirror), positionX, positionY);
     }
     else
     {
@@ -29,30 +39,183 @@ void game::addMirror(const point& p, const sens& s)
     }
 }
 
-int game::score() const
-{
-    return 100*(d_terrain.getNbMirrorMax()/d_terrain.getNbOfMirrors());
-}
-
 void game::removeMirror(const point& p)
 {
-    auto i = p.x(), j = p.y();
-    if(i >= 0 && j >= 0 && i < d_terrain.getNbCellsHeight() && j < d_terrain.getNbCellsWidth())
+    auto positionX = position_mirror.x()
+    auto positionY = position_mirror.y();
+
+    //If coordinates of mirror are valid
+    if(positionX >= 0 && positionY >= 0 && positionX < d_ground.getNbCellsHeight() && positionY < d_ground.getNbCellsWidth())
     {
-        auto obj = d_terrain.getObjects()[i][j].get();
+        auto obj = d_ground.getObjects()[positionX][positionY].get();
+        //If there are an object in this position
         if(obj)
         {
+            //Moreover, if this object is a mirror, the mirror disappears
             if(dynamic_cast<mirror*>(obj))
             {
-                d_terrain.removeObjectAt(i, j);
+                d_ground.removeObjectAt(positionX, positionY);
             }
         }
     }
 }
 
-point game::reverse(const point& p)
+int game::score() const
+{
+    //It can be evoluate with variant
+    return 100*(d_ground.getNbMirrorMax()/d_ground.getNbOfMirrors());
+}
+
+void game::loadGround(const ground& ground_loaded)
+{
+    d_ground = ground_loaded;
+}
+
+void game::read(const string& nameFile)
+{
+    if(nameFile == "")
+    {
+        throw invalid_argument("Chemin vide !");
+    }
+    ifstream file_in;
+    file_in.open(nameFile);
+
+    //If reading is not good (wrong path, file not found, ...)
+    if(!file_in.is_open())
+    {
+        cout << "failed to open " << nameFile << '\n';
+    }
+    else
+    {
+        //Loading
+        d_ground.loadFrom(file_in);
+    }
+}
+
+void game::menu()
+{
+    //--
+}
+
+void game::run()
+{
+    int choice, max_choices = 3;
+    point position;
+    do
+    {
+        cout<<"0 - Tirer le laser"     <<endl;
+        cout<<"1 - Ajouter un miroir"  <<endl;
+        cout<<"2 - Enlever un miroir"  <<endl;
+        cout<<"3 - Afficher le terrain"<<endl;
+        cout << endl;
+        cout << "> ";
+        cin>>choice;
+
+        //There are 4 possibilities (can evolve)
+        switch(choice)
+        {
+            //Shoot the laser
+            case 0:
+                {
+                    start();
+                    break;
+                }
+            //Adding mirrors in game
+            case 1:
+                {
+                    //If adding mirrors is authorized
+                    if(d_ground.getNbOfMirrors() < d_ground.getNbMirrorMax())
+                    {
+                        //Asking the sense of the installed mirror
+                        sens s = askSens();
+                        //Asking the position of the installed mirror
+                        position = askPosition();
+                        addMirror(pposition, s);
+                    }
+                    else cout<<"Le nombre maximum de miroirs a ete atteint ! "<<endl;
+                    break;
+                }
+            //Removing mirror in game
+            case 2 :
+                {
+                    //Asking the position of the removed mirror
+                    position = askPosition();
+                    removeMirror(position);
+                    break;
+                }
+            //Print the ground of the game
+            case 3 :
+                {
+                    d_viewer->printGround(d_ground);
+                    break;
+                }
+            //The choice contains an invalid integer
+            default:
+                {
+                    cerr << "Erreur, entrez un nombre entre 0 et " << max_choices << endl;
+                    break;
+                }
+        }
+        cout << endl;
+    }
+    while(choice != 0);
+}
+
+void game::win() const
+{
+    target t = d_ground.getTarget();
+    if(t.isAffected())
+        cout<<"Votre score est de : "<<score()<<" points, vous etes trop fort !!";
+}
+
+void game::save(const string& nameFile) const
+{
+    if(nameFile == "")
+    {
+        throw invalid_argument("Chemin vide!");
+    }
+    ofstream file_out;
+    file_out.open(nameFile);
+
+    //If opening is not good (wrong path, file not found, ...)
+    if(!file_out.is_open())
+    {
+        cout << "failed to open " << nameFile << '\n';
+    }
+    else
+    {
+       //Saving the game in this file
+       d_ground.saveIn(file_out) ;
+    }
+}
+//---------- Private Methods --------------------------
+point game::reversePosition(const point& p)
 {
     return {p.y(), p.x()};
+}
+
+sens game::askSens()
+{
+    char inclination_mirror;
+    cout<<"Saisir l'inclinaison du miroir ( / ou \\ ) : ";
+    cin>>inclination_mirror;
+    sens s;
+
+    //There are 2 possibilities
+    switch(inclination_mirror)
+    {
+        case('/') :
+        {
+            s = basGauche_hautDroit;
+            break;
+        }
+        case('\\') :
+        {
+            s = hautGauche_basDroit;
+            break;
+        }
+    }
+    return s;
 }
 
 point game::askPosition()
@@ -63,167 +226,57 @@ point game::askPosition()
     return p;
 }
 
-sens game::askSens()
+void game::reverseDirection(laser& l) const
 {
-    char inclination_mirror;
-    cout<<"Saisir l'inclinaison du miroir ( / ou \\ ) : ";
-    cin>>inclination_mirror;
-    sens s;
-    switch(inclination_mirror)
-    {
-        case('/') :
-        { s = basGauche_hautDroit;break;}
-        case('\\') :
-        { s = hautGauche_basDroit;break;}
-    }
-    return s;
-}
-
-void game::invertDirection(laser& l) const
-{
+    //There are 2 possibilities
     switch(l.getDirection())
     {
-    case UP:
+        case UP:
         {
             l.setDirection(DOWN);
             break;
         }
-    case DOWN:
+        case DOWN:
         {
             l.setDirection(UP);
             break;
         }
-    default:
+        default:
         {
             break;
         }
     }
 }
-
-void game::run()
-{
-    int choix, max = 3;
-    point p;
-    do
-    {
-        cout<<"0 - Tirer le laser"<<endl;
-        cout<<"1 - Ajouter un miroir"<<endl;
-        cout<<"2 - Enlever un miroir"<<endl;
-        cout<<"3 - Afficher le terrain"<<endl;
-
-        cout << endl;
-
-        cout << "> ";
-
-        cin>>choix;
-
-        switch(choix)
-        {
-            case 0 :
-                {
-                    start();
-                    break;
-                }
-            case 1 :
-                {
-                    if(d_terrain.getNbOfMirrors() < d_terrain.getNbMirrorMax())
-                    {
-                        sens s = askSens();
-                        p = askPosition();
-                        addMirror(p, s);
-                    }
-                    else cout<<"Le nombre maximum de miroirs a ete atteint"<<endl;
-                    break;
-                }
-            case 2 :
-                {
-                    p = askPosition();
-                    removeMirror(p);
-                    break;
-                }
-            case 3 :
-                {
-                    d_viewer->printGround(d_terrain);
-                    break;
-                }
-            default:
-                {
-                    cerr << "Erreur, entrez un nombre entre 0 et " << max << endl;
-                    break;
-                }
-        }
-        cout << endl;
-    }
-    while(choix != 0);
-}
-void game::read(const string& nameFile)
-{
-    if ( nameFile == "")
-        throw invalid_argument("Chemin vide !");
-
-    ifstream file_in;
-    file_in.open(nameFile);
-
-    if(!file_in.is_open())
-    {
-        cout << "failed to open " << nameFile << '\n';
-    }
-    else
-    {
-        d_terrain.loadFrom(file_in);
-    }
-}
-void game::save(const string& nameFile) const
-{
-
-        if ( nameFile == "")
-            throw invalid_argument("Chemin vide !");
+//---------- End of methods ----------------------------
 
 
-      ofstream file_out;
-
-    file_out.open(nameFile);
 
 
-    if (!file_out.is_open()) {
-        cout << "failed to open " << nameFile << '\n';
-    } else {
-
-       d_terrain.saveIn(file_out) ;
-    }
-}
-
-void game::win() const
-{
-    target t = d_terrain.getTarget();
-    if(t.isAffected())
-        cout<<"Votre score est de : "<<score()<<" points, vous etes trop fort !!";
-}
 
 void game::start()
 {
-    auto shooter = d_terrain.getShooter();
+    auto shooter = d_ground.getShooter();
     auto l = shooter.shoot();
     invertDirection(l);
 
-    point pos = reverse(l.getPosition() - d_terrain.getPosition());
+    point pos = reversePosition(l.getPosition() - d_ground.getPosition());
     unsigned x = pos.x(), y = pos.y();
 
-    d_terrain.addObjectAt(make_unique<object>(l), x, y);
+    d_ground.addObjectAt(make_unique<object>(l), x, y);
 
     while(l.getIsAlive())
     {
         l.moveByStep();
-        pos = reverse(l.getPosition() - d_terrain.getPosition());
+        pos = reversePosition(l.getPosition() - d_ground.getPosition());
         x = pos.x();
         y = pos.y();
 
         unsigned i = 0, j = 0;
-        while(i < d_terrain.getNbCellsHeight() and l.getIsAlive())
+        while(i < d_ground.getNbCellsHeight() and l.getIsAlive())
         {
-            while(j < d_terrain.getNbCellsWidth() and l.getIsAlive())
+            while(j < d_ground.getNbCellsWidth() and l.getIsAlive())
             {
-                auto obj = d_terrain.getObjects()[i][j].get();
+                auto obj = d_ground.getObjects()[i][j].get();
                 if(obj)
                 {
                     invertDirection(l);
@@ -238,13 +291,10 @@ void game::start()
 
         if(l.getIsAlive())
         {
-            d_terrain.addObjectAt(make_unique<laser>(l), x, y);
+            d_ground.addObjectAt(make_unique<laser>(l), x, y);
         }
     }
     win();
 }
 
-void game::loadGround(const ground& terrain)
-{
-    d_terrain = terrain;
-}
+
