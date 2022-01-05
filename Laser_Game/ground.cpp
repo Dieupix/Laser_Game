@@ -1,27 +1,45 @@
+//Declaring libraries
 #include "ground.h"
-
 #include <sstream>
 #include <string>
 
+//Declaring namespace elements
 using std::string;
 using std::stringstream;
 using std::to_string;
 
-// ---------- Constructors ----------
-
-ground::ground() : grid{1, 1}, position{0, 0}, nbCellsWidth{0}, nbCellsHeight{0}, nbOfObjects{0}, nbOfMirrors{0}, nbMirrorMax{0}
+//---------- Constructors------------------------------
+ground::ground() : grid{1, 1},
+                   position{0, 0},
+                   nbCellsWidth{0},
+                   nbCellsHeight{0},
+                   nbOfObjects{0},
+                   nbOfMirrors{0},
+                   nbMirrorMax{0}
 {}
 
-ground::ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight, unsigned nbMirrorMax) :
-    grid{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}, nbOfObjects{0}, nbOfMirrors{0}, nbMirrorMax{nbMirrorMax}
+ground::ground(const point& position, double cellsWidth, double cellsHeight,
+    unsigned nbCellsWidth, unsigned nbCellsHeight, unsigned nbMirrorMax) : grid{cellsWidth, cellsHeight},
+                                                                           position{position},
+                                                                           nbCellsWidth{nbCellsWidth},
+                                                                           nbCellsHeight{nbCellsHeight},
+                                                                           nbOfObjects{0},
+                                                                           nbOfMirrors{0},
+                                                                           nbMirrorMax{nbMirrorMax}
 {
     objects.resize(nbCellsHeight);
     for(unsigned i = 0; i < nbCellsHeight; ++i)
-        objects[i].resize(nbCellsWidth);
+    {
+       objects[i].resize(nbCellsWidth);
+    }
 }
 
-ground::ground(const ground& g) :
-    grid{g.getCellsWidth(), g.getCellsHeight()}, position{g.getPosition()}, nbCellsWidth{g.getNbCellsWidth()}, nbCellsHeight{g.getNbCellsHeight()}, nbOfObjects{g.getNbOfObjects()}, nbOfMirrors{g.getNbOfMirrors()}
+ground::ground(const ground& g) : grid{g.getCellsWidth(), g.getCellsHeight()},
+                                  position{g.getPosition()},
+                                  nbCellsWidth{g.getNbCellsWidth()},
+                                  nbCellsHeight{g.getNbCellsHeight()},
+                                  nbOfObjects{g.getNbOfObjects()},
+                                  nbOfMirrors{g.getNbOfMirrors()}
 {
     objects.resize(nbCellsHeight);
     for(unsigned i = 0; i < nbCellsHeight; ++i)
@@ -34,113 +52,93 @@ ground::ground(const ground& g) :
         }
     }
 }
-
-// ---------- End of constructors ----------
-
-// ---------- Destructor ----------
-
-// ---------- End of destructor ----------
-
-// ---------- Overloads ----------
-
-ground ground::operator=(const ground& g) const
+//---------- End of constructors-----------------------
+//---------- Setter------------------------------------
+void ground::setPosition(const point& position)
 {
-   return {g};
-}
-
-ground& ground::operator=(const ground& g)
-{
-    if(this != &g)
-    {
-        setCellsWidth(g.getCellsWidth());
-        setCellsHeight(g.getCellsHeight());
-        nbCellsWidth = g.getNbCellsWidth();
-        nbCellsHeight = g.getNbCellsHeight();
-
-        objects.resize(nbCellsHeight);
-        for(unsigned i = 0; i < nbCellsHeight; ++i)
-        {
-            objects[i].resize(nbCellsWidth);
-            for(unsigned j = 0; j < nbCellsWidth; ++j)
-            {
-                auto obj = g.getObjects()[i][j].get()->clone();
-                objects[i][j] = move(obj);
-            }
-        }
-
-        nbOfObjects = g.getNbOfObjects();
-        nbOfMirrors = g.getNbOfMirrors();
-    }
-
-    return *this;
-}
-
-// ---------- End of overloads ----------
-
-// ---------- Getters ----------
-
-point ground::getPosition() const {return this->position;}
-
-unsigned ground::getNbCellsWidth() const {return this->nbCellsWidth;}
-
-unsigned ground::getNbCellsHeight() const {return this->nbCellsHeight;}
-
-unsigned ground::getNbOfObjects() const {return this->nbOfObjects;}
-
-unsigned ground::getNbOfMirrors() const {return this->nbOfMirrors;}
-
-unsigned ground::getNbMirrorMax() const {return this->nbMirrorMax;}
-
-const vector<vector<unique_ptr<object>>>& ground::getObjects() const {return this->objects;}
-
-// ---------- End of getters ----------
-
-// ---------- Setters ----------
-
-void ground::setPosition(const point& position){
     this->position = position;
 }
 
-void ground::setNbCellsWidth(unsigned nbCellsWidth){
-    this->nbCellsWidth = nbCellsWidth;
+void ground::setNbCellsWidth(unsigned nbCells)
+{
+    this->nbCellsWidth = nbCells;
     for(unsigned i = 0; i < objects.size(); ++i)
     {
         objects[i].resize(nbCellsWidth);
     }
 }
 
-void ground::setNbCellsHeight(unsigned nbCellsHeight){
-    this->nbCellsHeight = nbCellsHeight;
+void ground::setNbCellsHeight(unsigned nbCells)
+{
+    this->nbCellsHeight = nbCells;
     objects.resize(nbCellsHeight);
 }
 
-void ground::setNbMirrorMax(unsigned nbMirrorMax)
+void ground::setNbMirrorMax(unsigned MirrorMax)
 {
-    this->nbMirrorMax = nbMirrorMax;
+    this->nbMirrorMax = MirrorMax;
+}
+//---------- End of Setter-----------------------------
+//---------- Getter------------------------------------
+point ground::getPosition() const
+{
+    return this->position;
 }
 
-// ---------- End of setters ----------
+unsigned ground::getNbCellsWidth() const
+{
+    return this->nbCellsWidth;
+}
 
-// ---------- Functions --------
+unsigned ground::getNbCellsHeight() const
+{
+    return this->nbCellsHeight;
+}
 
-void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
+unsigned ground::getNbOfObjects() const
+{
+    return this->nbOfObjects;
+}
+
+unsigned ground::getNbOfMirrors() const
+{
+    return this->nbOfMirrors;
+}
+
+unsigned ground::getNbMirrorMax() const
+{
+    return this->nbMirrorMax;
+}
+
+const vector<vector<unique_ptr<object>>>& ground::getObjects() const
+{
+    return this->objects;
+}
+//---------- End of Getter-----------------------------
+//---------- Methods ----------------------------------
+void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j)
+{
+    //If i isn't in the ground
     if(i > nbCellsHeight)
     {
         throw std::out_of_range("addObject: the i index is out of range");
     }
+    //If j isn't in the ground
     else if(j > nbCellsWidth)
     {
         throw std::out_of_range("addObject: the j index is out of range");
     }
+    //I and j are in the ground
     else
     {
+        //If there aren't object in this position
         if(!objects[i][j].get())
         {
+            //If this object is a mirror
             if(dynamic_cast<mirror*>(obj.get()))
             {
                 ++nbOfMirrors;
             }
-
             objects[i][j] = move(obj);
             ++nbOfObjects;
         }
@@ -500,6 +498,59 @@ string ground::toString() const
 
     return t;
 }
+
+
+
+
+ground ground::operator=(const ground& g) const
+{
+   return {g};
+}
+
+ground& ground::operator=(const ground& g)
+{
+    if(this != &g)
+    {
+        setCellsWidth(g.getCellsWidth());
+        setCellsHeight(g.getCellsHeight());
+        nbCellsWidth = g.getNbCellsWidth();
+        nbCellsHeight = g.getNbCellsHeight();
+
+        objects.resize(nbCellsHeight);
+        for(unsigned i = 0; i < nbCellsHeight; ++i)
+        {
+            objects[i].resize(nbCellsWidth);
+            for(unsigned j = 0; j < nbCellsWidth; ++j)
+            {
+                auto obj = g.getObjects()[i][j].get()->clone();
+                objects[i][j] = move(obj);
+            }
+        }
+
+        nbOfObjects = g.getNbOfObjects();
+        nbOfMirrors = g.getNbOfMirrors();
+    }
+
+    return *this;
+}
+
+// ---------- End of overloads ----------
+
+// ---------- Getters ----------
+
+
+
+// ---------- End of getters ----------
+
+// ---------- Setters ----------
+
+
+
+// ---------- End of setters ----------
+
+// ---------- Functions --------
+
+
 
 // ---------- End of functions ----------
 
