@@ -78,9 +78,9 @@ std::ostream& operator<<(std::ostream& ost, const object& o)
     return ost;
 }
 //---------- End of Operators outside class  ----------
-//---------- Globals Methods --------------------------
+//---------- Globals Functions ------------------------
 object createObjectForTest(const point& p)
 {
     return {p};
 }
-//---------- End of Globals Methods -------------------
+//---------- End of Globals Functions -----------------

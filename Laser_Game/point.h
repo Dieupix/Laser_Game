@@ -10,6 +10,11 @@ using std::string;
 using std::ostream;
 using std::istream;
 
+/**
+ * @class point point.h
+ * @brief A class that represents a point
+ * @details This class represents a point, with a @a coordinate @a x (double) and a @a coordinate @a y (double)
+*/
 class point
 {
     public:

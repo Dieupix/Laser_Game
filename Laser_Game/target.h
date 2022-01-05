@@ -4,6 +4,11 @@
 //Declaring libraries
 #include "object.h"
 
+/**
+ * @class target target.h
+ * @brief A class that represents a target
+ * @details This class represents a target, which a @a position and with an @a affectation (boolean)
+*/
 class target : public object
 {
     public :

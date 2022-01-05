@@ -13,6 +13,11 @@ using std::unique_ptr;
 //Declaring class
 class laser;
 
+/**
+ * @class object object.h
+ * @brief A class that represents an object
+ * @details This class represents an object, with a @a position
+*/
 class object
 {
     //Friend of class
