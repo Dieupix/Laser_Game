@@ -4,7 +4,6 @@
 #include "doctest.h"
 
 #include "../Laser_Game/ground.h"
-#include "../Laser_Game/shooter.h"
 
 #include <string>
 #include <sstream>

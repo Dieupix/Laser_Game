@@ -116,9 +116,14 @@ TEST_CASE("2 - Test of the class laser")
             }
         }
 
-        SUBCASE("")
+        SUBCASE("Test of the toString() function")
         {
+            string expectedOutput = "Laser[position(0.000000,0.000000), direction(RIGHT), step(1.000000)]";
 
+            string read = l.toString();
+
+            //REQUIRE_EQ(read, "I want you to fail"); // SHOULD FAIL
+            REQUIRE_EQ(read, expectedOutput);
         }
 
         SUBCASE("Test of the print() function")
