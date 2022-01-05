@@ -73,6 +73,11 @@ class point
         */
         void print(ostream& ost) const;
 
+        /**
+        * @brief Allows to convert a point to string
+        *
+        * @return a string
+        */
         string toString() const;
 
         /**
@@ -196,7 +201,7 @@ class point
          *
          * @param ost : the flow (ostream)
          * @param p   : the point to print (const point)
-
+         *
          * @return the flow
          */
         ostream& operator<<(ostream& ost, const point & p);
@@ -205,7 +210,7 @@ class point
          *
          * @param ist : the flow (istream)
          * @param p   : the point to read (const point)
-
+         *
          * @return the flow
          */
         istream& operator>>(istream& ist, point& p);
