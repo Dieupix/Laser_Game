@@ -247,54 +247,67 @@ void game::reverseDirection(laser& l) const
         }
     }
 }
-//---------- End of methods ----------------------------
-
-
-
-
 
 void game::start()
 {
     auto shooter = d_ground.getShooter();
-    auto l = shooter.shoot();
-    invertDirection(l);
+    auto laser = shooter.shoot();
+    reverseDirection(laser);
 
-    point pos = reversePosition(l.getPosition() - d_ground.getPosition());
-    unsigned x = pos.x(), y = pos.y();
+    point position = reversePosition(laser.getPosition() - d_ground.getPosition());
+    unsigned x = position.x(),
+             y = position.y();
 
-    d_ground.addObjectAt(make_unique<object>(l), x, y);
+    //Adding laser in the ground of the game
+    d_ground.addObjectAt(make_unique<object>(laser), x, y);
 
-    while(l.getIsAlive())
+    //While the laser is alive (the laser does not touch a wall, the shooter or a target
+    while(laser.getIsAlive())
     {
-        l.moveByStep();
-        pos = reversePosition(l.getPosition() - d_ground.getPosition());
+        //The laser move by step
+        laser.moveByStep();
+
+        //Changing current position of laser
+        position = reversePosition(l.getPosition() - d_ground.getPosition());
         x = pos.x();
         y = pos.y();
 
         unsigned i = 0, j = 0;
-        while(i < d_ground.getNbCellsHeight() and l.getIsAlive())
+        //If the laser is dead, stopped while
+        while(i < d_ground.getNbCellsHeight() and laser.getIsAlive())
         {
-            while(j < d_ground.getNbCellsWidth() and l.getIsAlive())
+            //If the laser is dead, stopped while
+            while(j < d_ground.getNbCellsWidth() and laser.getIsAlive())
             {
                 auto obj = d_ground.getObjects()[i][j].get();
+                //If there are an object in this position
                 if(obj)
                 {
-                    invertDirection(l);
-                    obj->collide(l);
-                    invertDirection(l);
+                    //Reversing position to test if the laser hit an other object
+                    reverseDirection(laser);
+                    obj->collide(laser);
+                    //Reversing to move after
+                    reverseDirection(laser);
                 }
                 ++j;
             }
             ++i;
+            //Reset of counter j
             j = 0;
         }
-
+        //If the laser is still alive, add laser in the game
         if(l.getIsAlive())
         {
             d_ground.addObjectAt(make_unique<laser>(l), x, y);
         }
     }
+    //Test if we win this game
     win();
 }
+//---------- End of methods ----------------------------
+
+
+
+
 
 
