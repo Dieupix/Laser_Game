@@ -1,217 +1,222 @@
 #ifndef POINT_H
 #define POINT_H
 
+//Declaring libraries
 #include <iostream>
 #include <string>
 
+//Declaring namespace elements
 using std::string;
+using std::ostream;
+using std::istream;
 
 class point
 {
     public:
         /**
-        * @brief Constructeur d'un point par defaut sans parametre
+        * @brief Constructor by default of point
         *
-        * @return Creer un point en x = 0.0 et y = 0.0
+        * @return Create a point with x = 0.0 and y = 0.0
         */
         point();
 
         /**
-        * @brief Constructeur d'un point avec les coordonnees x et y en parametres
+        * @brief Constructor of point with parameters
         *
-        * @param x : Coordonnee de x
-        * @param y : Coordonnee de y
+        * @param x : Cartesian coordinates of x (double)
+        * @param y : Cartesian coordinates of y (double)
         *
-        * @return Creer un point
+        * @return Create a point
         */
         point(double x, double y);
 
         /**
-        * @brief Fonction qui retourne la coordonee du point en x
+        * @brief Function that returns the coordinate x of point
         *
-        * @return La coordonnee x du point
+        * @return the coordinate x
         */
         double x() const;
 
         /**
-        * @brief Fonction qui retourne la coordonee du point en y
+        * @brief Function that returns the coordinate y of point
         *
-        * @return La coordonnee y du point
+        * @return the coordinate y
         */
         double y() const;
 
         /**
-        * @brief Procedure qui deplace un point aux cordonnees x et y en parametre
+        * @brief Procedure that moves coordinates of point on a new x and new y
         *
-        * @param x double : nouvelle coordonee du point en x
-        * @param y double : nouvelle coordonee du point en y
+        * @param x : new coordinate x of point (double)
+        * @param y : new coordinate y of point (double)
         *
-        * @return Déplace un point aux cordonnees (x,y)
+        * @return void
         */
         void move(double x, double y);
 
         /**
-        * @brief Procédure qui translate un point grace aux coordonnees (x,y) en parametres
+        * @brief Procedure that translate a point thanks coordinates (x,y) in parameters
         *
-        * @param x double : nouvelle coordonee du point en x
-        * @param y double : nouvelle coordonee du point en y
+        * @param x : new coordinate x of point (double)
+        * @param y : new coordinate y of point (double)
         *
-        * @return Translate un point grace aux cordonnees (x,y)
+        * @return void
         */
         void shift(double x, double y);
 
         /**
-        * @brief Permet de lire un flux
+        * @brief Allows to print a flow
         *
-        * @param ost ostream&
+        * @param ost : the flow (ostream)
         *
         * @return void
         */
-        void print(std::ostream& ost) const;
+        void print(ostream& ost) const;
 
         string toString() const;
 
         /**
-        * @brief Permet d'écrire sur un flux
+        * @brief Allows to read a flow
         *
-        * @param ist istream&
+        * @param ist : the flow (istream)
         *
         * @return void
         */
-        void read(std::istream& ist);
+        void read(istream& ist);
 
-        /** @brief Permet de tester l'égaliter de 2 points
+        /** @brief Allows to test equality between 2 points
          *
-         * @param p const point&
-         * @return un bool (vrai/faux)
+         * @param p : a point (const point)
          *
+         * @return a boolean
          */
         bool operator==(const point& p) const;
 
-        /** @brief Permet de tester la difference de 2 points
+        /** @brief Allows to test inequality between 2 points
          *
-         * @param p const point&
-         * @return un bool (vrai/faux)
+         * @param p : a point (const point)
          *
+         * @return a boolean
          */
         bool operator!=(const point& p) const;
 
-        /** @brief Permet l'affection d'un point
+        /** @brief Allows to test affectation between 2 points
          *
-         * @param p const point&
-         * @return point
+         * @param p : a point (const point)
          *
+         * @return a point
          */
         point operator=(const point& p) const;
 
-        /** @brief Permet l'affection d'un point
+        /** @brief Allows to test affectation between 2 points
          *
-         * @param p const point&
-         * @return point&
+         * @param p : a point (const point)
          *
+         * @return the current point
          */
         point& operator=(const point& p);
 
-        /** @brief Permet la soustraction
+        /** @brief Allows to test reverse of the current point
          *
-         * @return point
+         * @return a new point (reverse of the current point)
          *
          */
         point operator-() const;
 
-        /** @brief Permet l'addition
+        /** @brief Allows to test addition between 2 points
          *
-         * @param p const point&
-         * @return point
+         * @param p : a point (const point)
          *
+         * @return a point
          */
         point operator+(const point& p) const;
 
-        /** @brief Permet l'addition et l'affectation
+        /** @brief Allows to test addition and affectation between 2 points
          *
-         * @param p const point&
-         * @return point&
+         * @param p : a point (const point)
          *
+         * @return the current point modified
          */
         point& operator+=(const point& p);
 
-        /** @brief Permet la soustraction de deux points
+        /** @brief Allows to test substraction between 2 points
          *
-         * @param p const point&
-         * @return point
+         * @param p : a point (const point)
          *
+         * @return a point
          */
         point operator-(const point& p) const;
 
-        /** @brief Permet la soustraction et l'affectation
+        /** @brief Allows to test substraction and affectation between 2 points
          *
-         * @param p const point&
-         * @return point&
+         * @param p : a point (const point)
          *
+         * @return the current point modified
          */
         point& operator-=(const point& p);
 
-        /** @brief Permet la multiplication par un coefficient reel
+        /** @brief Allows to test multiplication between a point and a real
          *
-         * @param d double
-         * @return point
+         * @param coef : a real coefficient (double)
          *
+         * @return a point
          */
-        point operator*(double d) const;
+        point operator*(double coef) const;
 
-        /** @brief Permet la multiplication et l'affectation
+        /** @brief Allows to test multiplication and affectation between a point and a real
          *
-         * @param d double
-         * @return point&
+         * @param coef : a real coefficient (double)
          *
+         * @return the current point modified
          */
-        point& operator*=(double d);
+        point& operator*=(double coef);
 
-        /** @brief Permet la division par un reel
+        /** @brief Allows to test divison between a point and a real
          *
-         * @param d double
-         * @return point
+         * @param coef : a real coefficient (double)
          *
+         * @return a point
          */
-        point operator/(double d) const;
+        point operator/(double coef) const;
 
-        /** @brief Permet la division et l'affectation
+        /** @brief Allows to test division and affectation between a point and a real
          *
-         * @param d double
-         * @return point&
+         * @param coef : a real coefficient (double)
          *
+         * @return the current point modified
          */
-        point& operator/=(double d);
+        point& operator/=(double coef);
 
     private:
+        //The coordinates of point
         double d_x, d_y;
 };
 
-        /** @brief Permet d'imprimer un point
+        /** @brief Allows to print a point
          *
-         * @param ost std::ostream&
-         * @param p const point&
-         * @return le flux d'un point
-         *
-         */
-        std::ostream& operator<<(std::ostream& ost, const point & p);
+         * @param ost : the flow (ostream)
+         * @param p   : the point to print (const point)
 
-        /** @brief Permet de lire un point
-         *
-         * @param ost std::ostream&
-         * @param p const point&
-         * @return le flux d'un point
-         *
+         * @return the flow
          */
-        std::istream& operator>>(std::istream& ist, point& p);
+        ostream& operator<<(ostream& ost, const point & p);
 
-        /** @brief Permet de multiplier un point par un reel
+        /** @brief Allows to read a point
          *
-         * @param d double
-         * @param p const point&
-         * @return point
-         *
+         * @param ist : the flow (istream)
+         * @param p   : the point to read (const point)
+
+         * @return the flow
          */
-        point operator*(double d, const point& p);
+        istream& operator>>(istream& ist, point& p);
+
+        /** @brief Allows to test multiplication between a point and a real
+         *
+         * @param coef : a real coefficient (double)
+         * @param p    : a point (const point)
+         *
+         * @return a point
+         */
+        point operator*(double coef, const point& p);
 
 #endif // POINT_H
