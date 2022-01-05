@@ -41,8 +41,12 @@
 		<Unit filename="../Laser_Game/ground.h" />
 		<Unit filename="../Laser_Game/laser.cpp" />
 		<Unit filename="../Laser_Game/laser.h" />
+		<Unit filename="../Laser_Game/lasergame.cpp" />
+		<Unit filename="../Laser_Game/lasergame.h" />
 		<Unit filename="../Laser_Game/mirror.cpp" />
 		<Unit filename="../Laser_Game/mirror.h" />
+		<Unit filename="../Laser_Game/monster.cpp" />
+		<Unit filename="../Laser_Game/monster.h" />
 		<Unit filename="../Laser_Game/object.cpp" />
 		<Unit filename="../Laser_Game/object.h" />
 		<Unit filename="../Laser_Game/point.cpp" />
@@ -61,10 +65,12 @@
 		<Unit filename="../winGraphics/graphics.h" />
 		<Unit filename="../winGraphics/winbgi.cpp" />
 		<Unit filename="doctest.h" />
+		<Unit filename="gameTest..cpp" />
 		<Unit filename="groundTest.cpp" />
 		<Unit filename="laserTest.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="mirrorTest.cpp" />
+		<Unit filename="monsterTest.cpp" />
 		<Unit filename="objectTest.cpp" />
 		<Unit filename="pointTest.cpp" />
 		<Unit filename="shooterTest.cpp" />

@@ -36,6 +36,12 @@ void lasergame::menu()
                 }
             //Starting the game
             case 3 :
+<<<<<<< HEAD
+            /*   game partie{d_viewer};
+                partie.read(cheminTerrain);
+                partie.run();*/
+                break;
+=======
                 {
                     game g{move(d_viewer)};
                     g.read(path_Ground);
@@ -43,6 +49,7 @@ void lasergame::menu()
                     break;
                 }
             //Exit the menu
+>>>>>>> e3e37fb517976c8543a07e00f077698fa8be75ab
         }
         cout << endl;
     }
