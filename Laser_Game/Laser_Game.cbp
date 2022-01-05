@@ -36,6 +36,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../winGraphics/graphics.h" />
+		<Unit filename="../winGraphics/winbgi.cpp" />
 		<Unit filename="enumTypes.h" />
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
@@ -48,6 +50,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="mirror.cpp" />
 		<Unit filename="mirror.h" />
+		<Unit filename="monster.cpp" />
+		<Unit filename="monster.h" />
 		<Unit filename="object.cpp" />
 		<Unit filename="object.h" />
 		<Unit filename="point.cpp" />

@@ -2,14 +2,14 @@
 
 // ---------- Constructors ----------
 
-viewerOnWINBGI::viewerOnWINBGI() : height{500}, width {500}, scale{10}
+viewerOnWINBGI::viewerOnWINBGI() : width{500}, height{500}, scale{25}
 {
-    ///@TODO - Open graph here
+    initialize();
 }
 
-viewerOnWINBGI::viewerOnWINBGI(unsigned w, unsigned h, unsigned s = 10) : height{h}, width{w}, scale{s}
+viewerOnWINBGI::viewerOnWINBGI(unsigned w, unsigned h, float s = 25) : width{w}, height{h}, scale{s}
 {
-    ///@TODO - Open graph here
+    initialize();
 }
 
 // ---------- End of constructors ----------
@@ -18,7 +18,7 @@ viewerOnWINBGI::viewerOnWINBGI(unsigned w, unsigned h, unsigned s = 10) : height
 
 viewerOnWINBGI::~viewerOnWINBGI()
 {
-    ///@TODO - Close graph here
+    closegraph();
 }
 
 // ---------- End of destructor ----------
@@ -33,7 +33,7 @@ unsigned viewerOnWINBGI::getHeight() const {return this->height;}
 
 unsigned viewerOnWINBGI::getWidth() const {return this->width;}
 
-unsigned viewerOnWINBGI::getScale() const {return this->scale;}
+float viewerOnWINBGI::getScale() const {return this->scale;}
 
 // ---------- End of getters ----------
 
@@ -49,7 +49,7 @@ void viewerOnWINBGI::setWidth(unsigned w)
     this->width = w;
 }
 
-void viewerOnWINBGI::setScale(unsigned s)
+void viewerOnWINBGI::setScale(float s)
 {
     this->scale = s;
 }
@@ -57,6 +57,13 @@ void viewerOnWINBGI::setScale(unsigned s)
 // ---------- End of setters ----------
 
 // ---------- Functions --------
+
+void viewerOnWINBGI::initialize()
+{
+    opengraphsize(width, height);
+    setbkcolor(BLACK);
+    setcolor(WHITE);
+}
 
 void viewerOnWINBGI::print(const unique_ptr<object>& obj) const
 {
@@ -101,7 +108,6 @@ void viewerOnWINBGI::printGround(const ground& g) const
         for(unsigned j = 0; j < g.getNbCellsWidth(); ++j)
         {
             if(g.getObjects()[i][j])
-                ///@TODO - Print objects using the scale variable member
                 print(g.getObjects()[i][j]);
         }
     }
@@ -109,18 +115,32 @@ void viewerOnWINBGI::printGround(const ground& g) const
 
 void viewerOnWINBGI::printLaser(const laser& l) const
 {
+    point pos = l.getPosition() * 2 * scale;
+
     switch(l.getDirection())
     {
     case RIGHT:
     case LEFT:
         {
-            cout << '-';
+            int x0 = pos.x() - scale;
+            int y0 = pos.y();
+            int x1 = pos.x() + scale;
+            int y1 = pos.y();
+
+            line(x0, y0, x1, y1);
+
             break;
         }
     case UP:
     case DOWN:
         {
-            cout << '|';
+            int x0 = pos.x();
+            int y0 = pos.y() + scale;
+            int x1 = pos.x();
+            int y1 = pos.y() - scale;
+
+            line(x0, y0, x1, y1);
+
             break;
         }
     default:
@@ -133,16 +153,23 @@ void viewerOnWINBGI::printLaser(const laser& l) const
 
 void viewerOnWINBGI::printMirror(const mirror& m) const
 {
+    point pos = m.getPosition() * 2 * scale;
+
+    int left = pos.x() - scale;
+    int top = pos.y() + scale;
+    int right = pos.x() + scale;
+    int bottom = pos.y() - scale;
+
     switch(m.getSens())
     {
     case hautGauche_basDroit:
         {
-            cout << '\\';
+            line(left, bottom, right, top);
             break;
         }
     case basGauche_hautDroit:
         {
-            cout << '/';
+            line(left, top, right, bottom);
             break;
         }
     default:
@@ -153,25 +180,24 @@ void viewerOnWINBGI::printMirror(const mirror& m) const
 
 void viewerOnWINBGI::printShooter(const shooter& s) const
 {
-    switch(s.getDirection()){
+    point pos = s.getPosition() * 2 * scale;
+
+    switch(s.getDirection())
+    {
     case RIGHT:
         {
-            cout << '>';
             break;
         }
     case LEFT:
         {
-            cout << '<';
             break;
         }
     case UP:
         {
-            cout << '^';
             break;
         }
     case DOWN:
         {
-            cout << 'v';
             break;
         }
     default:
@@ -182,14 +208,26 @@ void viewerOnWINBGI::printShooter(const shooter& s) const
     }
 }
 
-void viewerOnWINBGI::printTarget(const target&) const
+void viewerOnWINBGI::printTarget(const target& t) const
 {
-    cout << 'O';
+    point pos = t.getPosition() * 2 * scale;
+
+    int x = pos.x(), y = pos.y();
+    circle(x, y, scale);
 }
 
-void viewerOnWINBGI::printWall(const wall&) const
+void viewerOnWINBGI::printWall(const wall& w) const
 {
-    cout << '#';
+    point pos = w.getPosition() * 2 * scale;
+
+    int left = pos.x() - scale;
+    int top = pos.y() + scale;
+    int right = pos.x() + scale;
+    int bottom = pos.y() - scale;
+
+    rectangle(left, top, right, bottom);
+
+    //plot(pos.x(), pos.y());
 }
 
 // ---------- End of functions ----------

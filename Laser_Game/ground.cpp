@@ -9,11 +9,11 @@ using std::to_string;
 
 // ---------- Constructors ----------
 
-ground::ground() : grid{1, 1}, position{0, 0}, nbCellsWidth{0}, nbCellsHeight{0}, nbOfObjects{0}, nbOfMirrors{0}
+ground::ground() : grid{1, 1}, position{0, 0}, nbCellsWidth{0}, nbCellsHeight{0}, nbOfObjects{0}, nbOfMirrors{0}, nbMirrorMax{0}
 {}
 
-ground::ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight) :
-    grid{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}, nbOfObjects{0}, nbOfMirrors{0}
+ground::ground(const point& position, double cellsWidth, double cellsHeight, unsigned nbCellsWidth, unsigned nbCellsHeight, unsigned nbMirrorMax) :
+    grid{cellsWidth, cellsHeight}, position{position}, nbCellsWidth{nbCellsWidth}, nbCellsHeight{nbCellsHeight}, nbOfObjects{0}, nbOfMirrors{0}, nbMirrorMax{nbMirrorMax}
 {
     objects.resize(nbCellsHeight);
     for(unsigned i = 0; i < nbCellsHeight; ++i)
@@ -61,9 +61,9 @@ ground& ground::operator=(const ground& g)
         for(unsigned i = 0; i < nbCellsHeight; ++i)
         {
             objects[i].resize(nbCellsWidth);
-            for(unsigned j = 0; j < g.getObjects()[i].size(); ++j)
+            for(unsigned j = 0; j < nbCellsWidth; ++j)
             {
-                auto obj = make_unique<object>(*g.getObjects()[i][j].get());
+                auto obj = g.getObjects()[i][j].get()->clone();
                 objects[i][j] = move(obj);
             }
         }
@@ -89,6 +89,8 @@ unsigned ground::getNbOfObjects() const {return this->nbOfObjects;}
 
 unsigned ground::getNbOfMirrors() const {return this->nbOfMirrors;}
 
+unsigned ground::getNbMirrorMax() const {return this->nbMirrorMax;}
+
 const vector<vector<unique_ptr<object>>>& ground::getObjects() const {return this->objects;}
 
 // ---------- End of getters ----------
@@ -112,6 +114,11 @@ void ground::setNbCellsHeight(unsigned nbCellsHeight){
     objects.resize(nbCellsHeight);
 }
 
+void ground::setNbMirrorMax(unsigned nbMirrorMax)
+{
+    this->nbMirrorMax = nbMirrorMax;
+}
+
 // ---------- End of setters ----------
 
 // ---------- Functions --------
@@ -119,11 +126,11 @@ void ground::setNbCellsHeight(unsigned nbCellsHeight){
 void ground::addObjectAt(unique_ptr<object> obj, unsigned i, unsigned j){
     if(i > nbCellsHeight)
     {
-        throw std::out_of_range("The i index is out of range");
+        throw std::out_of_range("addObject: the i index is out of range");
     }
     else if(j > nbCellsWidth)
     {
-        throw std::out_of_range("The j index is out of range");
+        throw std::out_of_range("addObject: the j index is out of range");
     }
     else
     {
@@ -196,13 +203,14 @@ void ground::loadFrom(istream& ist)
     }
     ist.get();
 
-    for(unsigned i = 0; i < 2; ++i)
+    unsigned nbOfInter = 3;
+    for(unsigned i = 0; i < nbOfInter; ++i)
     {
         getline(ist, loaded);
 
         try
         {
-            double d = stod(loaded);
+            unsigned d = stoi(loaded);
 
             switch(i)
             {
@@ -214,6 +222,11 @@ void ground::loadFrom(istream& ist)
             case 1:
                 {
                     nbCellsHeight = d;
+                    break;
+                }
+            case 2:
+                {
+                    nbMirrorMax = d;
                     break;
                 }
             default:
@@ -245,6 +258,7 @@ void ground::loadFrom(istream& ist)
     for(unsigned k = 0; k < loaded.length(); ++k)
     {
         auto c = loaded[k];
+        point pos = point{(double)j, (double)i} + position;
         switch(c)
         {
         case '.':
@@ -261,19 +275,19 @@ void ground::loadFrom(istream& ist)
             }
         case '#':
             {
-                addObjectAt(make_unique<wall>(point{(double)j, (double)i} + position), i, j);
+                addObjectAt(make_unique<wall>(pos), i, j);
                 break;
             }
         case 'O':
             {
-                addObjectAt(make_unique<target>(point{(double)j, (double)i} + position), i, j);
+                addObjectAt(make_unique<target>(pos), i, j);
                 break;
             }
         case '/':
         case '\\':
             {
                 sens sMirror = (c == '/' ? basGauche_hautDroit : hautGauche_basDroit);
-                addObjectAt(make_unique<mirror>(point{(double)j, (double)i} + position, sMirror), i, j);
+                addObjectAt(make_unique<mirror>(pos, sMirror), i, j);
                 break;
             }
         case '>':
@@ -311,7 +325,7 @@ void ground::loadFrom(istream& ist)
                     }
                 }
 
-                addObjectAt(make_unique<shooter>(point{(double)j, (double)i} + position, direction), i, j);
+                addObjectAt(make_unique<shooter>(pos, direction), i, j);
                 break;
             }
         default:
@@ -365,6 +379,7 @@ void ground::saveIn(ostream& ost) const
                     to_string(nbCellsWidth) + '\n' +
                     to_string(nbCellsHeight) + '\n' +
                     to_string(nbOfObjects) + '\n' +
+                    to_string(nbOfMirrors) + '\n' +
                     to_string(nbOfMirrors) + '\n';
 
     auto blank = '.';
@@ -462,6 +477,7 @@ string ground::toString() const
                     "), nbCellsHeight(" + to_string(nbCellsHeight) +
                     "), nbOfObjects(" + to_string(nbOfObjects) +
                     "), nbOfMirrors(" + to_string(nbOfMirrors) +
+                    "), nbMirrorMax(" + to_string(nbMirrorMax) +
                     ")]" + '\n';
 
     t += "List of objects (" + to_string(nbOfObjects) + ") :" + '\n';

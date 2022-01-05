@@ -1,59 +1,45 @@
 #include "game.h"
 
-game::game() : d_terrain{}, d_nb_mirror_max{0}, d_nb_mirror_installed{0}
+game::game() : d_terrain{}
 {}
 
-game::game(const ground& terrain, int nb_mirror_max, int d_nb_mirror_installed) :
-    d_terrain{terrain}, d_nb_mirror_max{nb_mirror_max}, d_nb_mirror_installed{d_nb_mirror_installed}
+game::game(const ground& terrain) : d_terrain{terrain}
 {}
-
-
-int game::getNbMirrorMax() const
-{
-    return d_nb_mirror_max;
-}
-
-void game::setNbMirrorMax(int nbMirrorMax)
-{
-    d_nb_mirror_max = nbMirrorMax;
-}
 
 void game::addMirror(const point& p, const sens& s)
 {
-    if(p.y() >= 0 && p.x() >= 0 && p.y() < d_terrain.getNbCellsHeight() && p.x() < d_terrain.getNbCellsWidth() )
+    auto i = p.x(), j = p.y();
+    if(i >= 0 && j >= 0 && i < d_terrain.getNbCellsHeight() && j < d_terrain.getNbCellsWidth() )
     {
-        auto obj = d_terrain.getObjects()[p.y()][p.x()].get();
+        auto obj = d_terrain.getObjects()[i][j].get();
+        point pMirror = reverse(p) + d_terrain.getPosition();
         if(obj)
         {
             if(dynamic_cast<mirror*>(obj))
             {
-                d_terrain.removeObjectAt(p.y(), p.x());
-                d_terrain.addObjectAt(std::make_unique<mirror>(p,s), p.y(),p.x());
+                d_terrain.removeObjectAt(i, j);
             }
         }
-        else
-        {
-            d_terrain.addObjectAt(std::make_unique<mirror>(p,s), p.y(),p.x());
-            ++d_nb_mirror_installed;
-        }
+
+        d_terrain.addObjectAt(make_unique<mirror>(pMirror, s), i, j);
     }
     else
     {
-        cerr << "ERROR: the mirror is not on the ground" << endl;
+        cerr << "ERROR: the position is not on the ground" << endl;
     }
 }
 
 void game::removeMirror(const point& p)
 {
-    if(p.y() >= 0 && p.x() >= 0 && p.y() < d_terrain.getNbCellsHeight() && p.x() < d_terrain.getNbCellsWidth() )
+    auto i = p.x(), j = p.y();
+    if(i >= 0 && j >= 0 && i < d_terrain.getNbCellsHeight() && j < d_terrain.getNbCellsWidth())
     {
-        auto obj = d_terrain.getObjects()[p.y()][p.x()].get();
+        auto obj = d_terrain.getObjects()[i][j].get();
         if(obj)
         {
             if(dynamic_cast<mirror*>(obj))
             {
-                d_terrain.removeObjectAt(p.y(),p.x());
-                --d_nb_mirror_installed;
+                d_terrain.removeObjectAt(i, j);
             }
         }
     }
@@ -69,7 +55,7 @@ point game::askPosition()
     point p;
     cout<<"Saisir la position : ";
     cin>>p;
-    return reverse(p);
+    return p;
 }
 
 sens game::askSens()
@@ -87,6 +73,28 @@ sens game::askSens()
     }
     return s;
 }
+
+void game::invertDirection(laser& l) const
+{
+    switch(l.getDirection())
+    {
+    case UP:
+        {
+            l.setDirection(DOWN);
+            break;
+        }
+    case DOWN:
+        {
+            l.setDirection(UP);
+            break;
+        }
+    default:
+        {
+            break;
+        }
+    }
+}
+
 void game::run()
 {
     int choix, max = 3;
@@ -113,11 +121,11 @@ void game::run()
                 }
             case 1 :
                 {
-                    if(d_nb_mirror_installed < d_nb_mirror_max)
+                    if(d_terrain.getNbOfMirrors() < d_terrain.getNbMirrorMax())
                     {
                         sens s = askSens();
                         p = askPosition();
-                        addMirror(p,s);
+                        addMirror(p, s);
                     }
                     else cout<<"Le nombre maximum de miroirs a ete atteint"<<endl;
                     break;
@@ -185,16 +193,18 @@ void game::start()
 {
     auto shooter = d_terrain.getShooter();
     auto l = shooter.tire();
-    cout << shooter << endl;
-    cout << l << endl;
-    d_terrain.addObjectAt(make_unique<object>(l), l.getPosition().y(), l.getPosition().x());
 
-    viewerOnTerminal v;
-    v.printGround(d_terrain);
+    point pos = l.getPosition() - d_terrain.getPosition();
+    unsigned x = pos.y(), y = pos.x();
+
+    d_terrain.addObjectAt(make_unique<object>(l), x, y);
 
     while(l.getIsAlive())
     {
         l.moveByStep();
+        pos = reverse(l.getPosition() - d_terrain.getPosition());
+        x = pos.x();
+        y = pos.y();
 
         unsigned i = 0, j = 0;
         while(i < d_terrain.getNbCellsHeight() and l.getIsAlive())
@@ -204,30 +214,28 @@ void game::start()
                 auto obj = d_terrain.getObjects()[i][j].get();
                 if(obj)
                 {
+                    invertDirection(l);
                     obj->collide(l);
+                    invertDirection(l);
                 }
                 ++j;
             }
             ++i;
             j = 0;
         }
+        cout << l << endl;
 
-        if(l.getIsAlive()) d_terrain.addObjectAt(make_unique<laser>(l), l.getPosition().y(), l.getPosition().x());
-
-        v.printGround(d_terrain);
-
+        if(l.getIsAlive())
+        {
+            d_terrain.addObjectAt(make_unique<laser>(l), x, y);
+        }
     }
 
-    cout << "LE";
-    for(unsigned i = 0; i < 99; ++i)
-    {
-        cout << "EEEEE";
-    }
-    cout << "TS GOOOOOOO" << endl;
+    viewerOnTerminal v;
+    v.printGround(d_terrain);
 }
 
 void game::loadGround(const ground& terrain)
 {
     d_terrain = terrain;
-    d_nb_mirror_installed = terrain.getNbOfMirrors();
 }

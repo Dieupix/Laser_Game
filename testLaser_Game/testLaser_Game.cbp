@@ -58,6 +58,8 @@
 		<Unit filename="../Laser_Game/viewerOnWINBGI.h" />
 		<Unit filename="../Laser_Game/wall.cpp" />
 		<Unit filename="../Laser_Game/wall.h" />
+		<Unit filename="../winGraphics/graphics.h" />
+		<Unit filename="../winGraphics/winbgi.cpp" />
 		<Unit filename="doctest.h" />
 		<Unit filename="groundTest.cpp" />
 		<Unit filename="laserTest.cpp" />

@@ -6,7 +6,7 @@
 // ---------- Constructeur-------------------------------
 
 
-mirror::mirror(const point& position ,sens Smirror) : object{position} , d_sens{basGauche_hautDroit},
+mirror::mirror(const point& position ,sens Smirror) : object{position} , d_sens{Smirror},
                                   d_mirrortouched {false}
 {
 
@@ -30,29 +30,39 @@ sens  mirror::getSens() const
 
 void mirror::changeDirectionLaser(laser& l )
 {
-    /*  RIGHT,
-      UP,
-      LEFT,
-      DOWN*/
-       switch(d_sens)
-       {
-           case basGauche_hautDroit:
-               {
-                    if(l.getDirection() == directions::UP || l.getDirection() == directions::DOWN)
-                        l.turnLeft();
-                    else
-                        l.turnRight();
-                    break;
-               }
-            case hautGauche_basDroit:
-                {
-                    if(l.getDirection() == directions::LEFT || l.getDirection() == directions::RIGHT)
-                        l.turnRight();
-                    else
-                        l.turnLeft();
-                    break;
-                }
+    /*
+        RIGHT,
+        UP,
+        LEFT,
+        DOWN
+    */
+
+    switch(d_sens)
+    {
+    case basGauche_hautDroit:
+        {
+            if(l.getDirection() == UP || l.getDirection() == DOWN)
+                l.turnRight();
+            else
+                l.turnLeft();
+
+            break;
         }
+    case hautGauche_basDroit:
+        {
+            if(l.getDirection() == RIGHT || l.getDirection() == LEFT)
+                l.turnRight();
+            else
+                l.turnLeft();
+
+            break;
+        }
+    default:
+        {
+            std::cerr << "ERROR: Sens is not defined" << std::endl;
+            break;
+        }
+    }
 }
 // ---------------------- Fin changeDirectionLaser -------------------------------
 

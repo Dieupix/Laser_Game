@@ -53,6 +53,10 @@ class ground : public grid
          */
         unsigned nbOfMirrors;
         /**
+         * @brief The maximum number of mirrors
+         */
+        unsigned nbMirrorMax;
+        /**
          * @brief The list of objects
          * @details Contains all the objects that are on the ground.
          */
@@ -62,9 +66,9 @@ class ground : public grid
 
         // Constructors
         /**
-         * @brief
+         * @brief Default constructor
          *
-         * @return
+         * @return Creates a ground with its default values
          */
         ground();
         /**
@@ -75,9 +79,10 @@ class ground : public grid
          * @param[in] cellsHeight : The size of each cells in height
          * @param[in] nbCellsWidth : The number of cells in width
          * @param[in] nbCellsHeight : The number of cells in height
+         * @param[in] nbMirrorMax : The maximum number of mirrors
          * @return Creates a ground that is a grid, with its position, list of objects and number of cells
          */
-        ground(const point&, double, double, unsigned, unsigned);
+        ground(const point&, double, double, unsigned, unsigned, unsigned);
         /**
          * @brief Copy constructor
          *
@@ -129,6 +134,12 @@ class ground : public grid
          */
         unsigned getNbOfMirrors() const;
         /**
+         * @brief
+         *
+         * @return unsigned
+         */
+        unsigned getNbMirrorMax() const;
+        /**
          * @brief Getter function for the list of objects
          *
          * @return Returns the list of objects
@@ -157,6 +168,13 @@ class ground : public grid
          * @return Returns nothing
          */
         void setNbCellsHeight(unsigned);
+        /**
+         * @brief
+         *
+         * @param nbMirrorMax :
+         * @return Returns nothing
+         */
+        void setNbMirrorMax(unsigned);
 
         // Functions
         /**
