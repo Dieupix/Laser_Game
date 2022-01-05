@@ -109,9 +109,18 @@ void viewerOnWINBGI::printGround(const ground& g) const
         for(unsigned j = 0; j < g.getNbCellsWidth(); ++j)
         {
             if(g.getObjects()[i][j])
+            {
                 print(g.getObjects()[i][j]);
+            }
+            else
+            {
+                point pos = point(j, i) + g.getPosition();
+                pos *= 2 * scale;
+                plot(pos.x(), pos.y());
+            }
         }
     }
+    waituntilbuttonpressed();
 }
 
 void viewerOnWINBGI::printLaser(const laser& l) const

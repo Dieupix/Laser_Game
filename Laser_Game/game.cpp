@@ -195,6 +195,7 @@ void game::save(const string& nameFile) const
 
 void game::win() const
 {
+    d_viewer->printGround(d_terrain);
     target t = d_terrain.getTarget();
     if(t.isAffected())
         cout<<"Votre score est de : "<<score()<<" points, vous etes trop fort !!";

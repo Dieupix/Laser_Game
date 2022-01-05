@@ -57,65 +57,65 @@ class laser : public object
         void setDirection(directions dir);
 
         /**
-        * @brief Function that allows to change propriety isAlive
-        *
-        * @param b : a boolean
-        *
-        * @return void
-        */
+         * @brief Function that allows to change propriety isAlive
+         *
+         * @param b : a boolean
+         *
+         * @return void
+         */
         void setIsAlive(bool alive);
 
         /**
-        * @brief Function that get step of the laser
-        *
-        * @param new_step : the new step (double)
-        *
-        * @return the step of the laser
-        */
+         * @brief Function that get step of the laser
+         *
+         * @param new_step : the new step (double)
+         *
+         * @return the step of the laser
+         */
         void setStep(double new_step);
 
         /**
-        * @brief Virtual function that allows to clone a smart pointer of laser
-        *
-        * @return a new smart pointer of laser
-        */
+         * @brief Virtual function that allows to clone a smart pointer of laser
+         *
+         * @return a new smart pointer of laser
+         */
         virtual unique_ptr<object> clone() const override;
 
         /**
-        * @brief Procedure that allows to move the laser by step
-        *
-        * @return void
-        */
+         * @brief Procedure that allows to move the laser by step
+         *
+         * @return void
+         */
         void moveByStep();
 
         /**
-        * @brief Virtual procedure that allows to print characteristics of laser
-        *
-        * @param ost : the flow (ostream)
-        *
-        * @return void
-        */
+         * @brief Virtual procedure that allows to print characteristics of laser
+         *
+         * @param ost : the flow (ostream)
+         *
+         * @return void
+         */
         virtual void print(std::ostream& ost) const override;
 
         /**
-        * @brief Virtual function that allows to convert a laser in string
-        *
-        * @return a string
-        */
+         * @brief Virtual function that allows to convert a laser in string
+         *
+         * @return a string
+         */
         virtual string toString() const override;
 
         /**
-        * @brief Procedure that allows to turn the laser on left
-        *
-        * @return void
-        */
+         * @brief Procedure that allows to turn the laser on left
+         *
+         * @return void
+         */
         void turnLeft();
 
         /**
-        * @brief Procedure that allows to turn the laser on right
-        *
-        * @return void
-        */
+         * @brief Procedure that allows to turn the laser on right
+         *
+         * @return void
+         */
         void turnRight();
 
         /** @brief Allows to test equality between 2 lasers
@@ -143,25 +143,25 @@ class laser : public object
         double step;
 
         /**
-        * @brief Constructor of laser (private)
-        *
-        * @param p : point (const point)
-        * @param direction : the direction of the laser (enumeration directions)
-        * @param step_laser : the step (double, 1.0 by default)
-        *
-        * @return Create a laser with a position, a direction and a step
-        */
-        laser(const point& p , directions direction, double sstep_laser = 1.0);
-};
-
-        /** @brief Allows to create a laser for test
+         * @brief Constructor of laser (private)
          *
          * @param p : point (const point)
          * @param direction : the direction of the laser (enumeration directions)
          * @param step_laser : the step (double, 1.0 by default)
          *
-         * @return a new laser
+         * @return Create a laser with a position, a direction and a step
          */
-        laser createLaserForTest(const point& p, const directions& direction, double step_laser = 1.0);
+        laser(const point& p , directions direction, double sstep_laser = 1.0);
+};
+
+/** @brief Allows to create a laser for test
+ *
+ * @param p : point (const point)
+ * @param direction : the direction of the laser (enumeration directions)
+ * @param step_laser : the step (double, 1.0 by default)
+ *
+ * @return a new laser
+ */
+laser createLaserForTest(const point& p, const directions& direction, double step_laser = 1.0);
 
 #endif // LASER_H
