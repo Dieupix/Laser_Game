@@ -1,100 +1,135 @@
+//Declaring libraries
 #include "lasergame.h"
 
+//---------- Constructors------------------------------
 lasergame::lasergame() : d_viewer{make_unique<viewerOnTerminal>()}
 {}
-
+//---------- End of constructors-----------------------
+//---------- Methods ----------------------------------
 void lasergame::menu()
 {
-    string cheminTerrain;
-    int choix;
+    string path_Ground;
+    int choice;
     do
     {
-        cout<<"==========================LASER GAME=========================="<<endl;
-        cout<<"1 - Choisir un mode graphique"<<endl;
-        cout<<"2 - Choisir un terrain"<<endl;
-        cout<<"3 - Lancer une partie"<<endl;
-        cout<<"0 - Quitter le jeu"<<endl;
-
+        cout<<"========================== LASER GAME ========================"<<endl;
+        cout<<"0 - Quitter le jeu"                                            <<endl;
+        cout<<"1 - Choisir un mode graphique"                                 <<endl;
+        cout<<"2 - Choisir un terrain"                                        <<endl;
+        cout<<"3 - Lancer une partie"                                         <<endl;
         cout<<">";
-        cin>> choix;
-
-        switch(choix)
+        cin>>choice;
+        //There are 4 possibilities
+        switch(choice)
         {
-            case 1 :
-                typeGraphique();
-                break;
-            case 2 :
-                cheminTerrain = choisirTerrain();
-                break;
+            //Making choice for graphic type
+            case 1:
+                {
+                    GraphicType();
+                    break;
+                }
+            //Making choice for a ground
+            case 2:
+                {
+                    path_Ground = Ground_choice();
+                    break;
+                }
+            //Starting the game
             case 3 :
+<<<<<<< HEAD
             /*   game partie{d_viewer};
                 partie.read(cheminTerrain);
                 partie.run();*/
                 break;
+=======
+                {
+                    game g{move(d_viewer)};
+                    g.read(path_Ground);
+                    g.run();
+                    break;
+                }
+            //Exit the menu
+>>>>>>> e3e37fb517976c8543a07e00f077698fa8be75ab
         }
-    }while(choix != 0);
+    }
+    while(choice != 0);
 }
 
-void lasergame::typeGraphique()
+void lasergame::GraphicType()
 {
-    int choix;
+    int choice;
     do
     {
-        cout<<"1 - Mode graphique"<<endl;
-        cout<<"2 - Mode console"<<endl;
-        cout<<"0 - Retour"<<endl;
-
+        cout<<"========================== MODE =========================="<<endl;
+        cout<<"0 - Retour"                                                <<endl;
+        cout<<"1 - Mode graphique"                                        <<endl;
+        cout<<"2 - Mode console"                                          <<endl;
         cout<<">";
-        cin>>choix;
-
-        switch(choix)
+        cin>>choice;
+        //There are 3 possibilities
+        switch(choice)
         {
-        case 1 :
-            d_viewer = move(make_unique<viewerOnWINBGI>());
-            break;
-        case 2 :
-            d_viewer = move(make_unique<viewerOnTerminal>());
-            break;
+            //Graphic mode (WINBGI)
+            case 1:
+                {
+                    d_viewer = move(make_unique<viewerOnWINBGI>());
+                    break;
+                }
+            //Terminal mode
+            case 2:
+                {
+                    d_viewer = move(make_unique<viewerOnTerminal>());
+                    break;
+                }
+            //Back to menu
         }
-    }while(choix != 0);
+    }
+    while(choice != 0);
 }
 
-void lasergame::afficheTerrain(const string& path)
+void lasergame::printGround(const string& path)
 {
-    viewerOnTerminal afficheur{};
-    ground terrain{};
-
+    viewerOnTerminal viewerOT{};
+    ground g{};
     ifstream ifs(path);
-
-    terrain.loadFrom(ifs);
-    afficheur.printGround(terrain);
+    //Loading of the file
+    g.loadFrom(ifs);
+    //Print of the ground
+    viewerOT.printGround(g);
 }
 
-string lasergame::choisirTerrain()
+string lasergame::Ground_choice()
 {
-    int choix;
+    int choice;
     do
     {
+        cout<<"0 - Retour"<<endl;
         cout<<"==========================Terrain 1=========================="<<endl;
-        afficheTerrain("../grounds/ground1.txt");
+        printGround("../grounds/ground1.txt");
         cout<<"============================================================="<<endl;
         cout<<"==========================Terrain 2=========================="<<endl;
-        afficheTerrain("../grounds/ground2.txt");
+        printGround("../grounds/ground2.txt");
         cout<<"============================================================="<<endl;
-        cout<<"0 - Retour"<<endl;
-
         cout<<">";
-        cin>>choix;
+        cin>>choice;
 
-        switch(choix)
+        switch(choice)
         {
+            //Ground 1
             case 1 :
-                return "../grounds/ground1.txt";
-                break;
+                {
+                    return "../grounds/ground1.txt";
+                    break;
+                }
+            //Ground 2
             case 2 :
-                return "../grounds/ground2.txt";
-                break;
+                {
+                    return "../grounds/ground2.txt";
+                    break;
+                }
+            //Back to menu
         }
-    }while(choix != 0);
+    }
+    while(choice != 0);
 }
-
+//---------- End of methods ----------------------------

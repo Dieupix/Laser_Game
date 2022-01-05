@@ -36,7 +36,7 @@ TEST_CASE("3 - Test of the shooter class")
   /*
     SUBCASE("Test de tire")
     {
-        auto laserTest = tireurTest.tire();
+        auto laserTest = tireurTest.shoot();
         REQUIRE_EQ(tireurTest.getDirection(), laserTest.getDirection());
         REQUIRE_EQ(tireurTest.getPosition(), laserTest.getPosition());
         REQUIRE_EQ(1.0, laserTest.getStep());
