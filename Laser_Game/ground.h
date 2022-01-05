@@ -28,9 +28,9 @@ using std::vector;
 /**
  * @class ground ground.h
  * @brief A class that represents a ground
- * @details This class represents a ground, with a @a position, a @a number @a of @a cells (width and height),
+ * @details This class represents a ground, which is a @a grid, with a @a position, a @a number @a of @a cells (width and height),
  * a @a number @a of @ objects in the ground, a @a number @a of @a mirrors @a installed,
- * a @a limit @a number @a of @a installed @a mirrors and a @a vector of smart pointer of objects (matrix), which a @a grid
+ * a @a limit @a number @a of @a installed @a mirrors and a @a vector of smart pointer of objects (matrix)
 */
 class ground : public grid
 {

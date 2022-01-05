@@ -17,7 +17,7 @@ void lasergame::menu()
         cout<<"1 - Choisir un mode graphique"                                 <<endl;
         cout<<"2 - Choisir un terrain"                                        <<endl;
         cout<<"3 - Lancer une partie"                                         <<endl;
-        cout<<">";
+        cout<<"> ";
         cin>>choice;
         //There are 4 possibilities
         switch(choice)
@@ -44,6 +44,7 @@ void lasergame::menu()
                 }
             //Exit the menu
         }
+        cout << endl;
     }
     while(choice != 0);
 }
@@ -57,7 +58,7 @@ void lasergame::GraphicType()
         cout<<"0 - Retour"                                                <<endl;
         cout<<"1 - Mode graphique"                                        <<endl;
         cout<<"2 - Mode console"                                          <<endl;
-        cout<<">";
+        cout<<"> ";
         cin>>choice;
         //There are 3 possibilities
         switch(choice)
@@ -66,16 +67,23 @@ void lasergame::GraphicType()
             case 1:
                 {
                     d_viewer = move(make_unique<viewerOnWINBGI>());
+                    choice = 0;
                     break;
                 }
             //Terminal mode
             case 2:
                 {
                     d_viewer = move(make_unique<viewerOnTerminal>());
+                    choice = 0;
                     break;
                 }
-            //Back to menu
+            default:
+                {
+                    cerr << "Erreur, veuillez saisir un mode graphique" << endl;
+                    break;
+                }
         }
+        //Back to menu
     }
     while(choice != 0);
 }
@@ -103,7 +111,7 @@ string lasergame::Ground_choice()
         cout<<"==========================Terrain 2=========================="<<endl;
         printGround("../grounds/ground2.txt");
         cout<<"============================================================="<<endl;
-        cout<<">";
+        cout<<"> ";
         cin>>choice;
 
         switch(choice)
@@ -120,8 +128,13 @@ string lasergame::Ground_choice()
                     return "../grounds/ground2.txt";
                     break;
                 }
-            //Back to menu
+            default:
+                {
+                    cerr << "Erreur, veuillez saisir un numero de terrain" << endl;
+                    break;
+                }
         }
+        //Back to menu
     }
     while(choice != 0);
 }

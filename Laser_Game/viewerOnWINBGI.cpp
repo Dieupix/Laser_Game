@@ -2,7 +2,7 @@
 
 // ---------- Constructors ----------
 
-viewerOnWINBGI::viewerOnWINBGI() : width{500}, height{500}, scale{25}
+viewerOnWINBGI::viewerOnWINBGI() : width{500}, height{500}, scale{20}
 {
     initialize();
 }
