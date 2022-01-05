@@ -16,7 +16,7 @@ using namespace enumTypes;
 class laser : public object
 {
     //Friend of class
-    friend laser shooter::tire(double);
+    friend laser shooter::shoot(double);
     friend laser createLaserForTest(const point&, const directions&, double);
 
     public:

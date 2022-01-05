@@ -192,7 +192,7 @@ void game::save(const string& nameFile) const
 void game::start()
 {
     auto shooter = d_terrain.getShooter();
-    auto l = shooter.tire();
+    auto l = shooter.shoot();
 
     point pos = l.getPosition() - d_terrain.getPosition();
     unsigned x = pos.y(), y = pos.x();
