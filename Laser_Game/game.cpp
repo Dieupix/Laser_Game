@@ -29,6 +29,11 @@ void game::addMirror(const point& p, const sens& s)
     }
 }
 
+int game::score() const
+{
+    return 100*(d_terrain.getNbMirrorMax()/d_terrain.getNbOfMirrors());
+}
+
 void game::removeMirror(const point& p)
 {
     auto i = p.x(), j = p.y();
@@ -189,6 +194,13 @@ void game::save(const string& nameFile) const
     }
 }
 
+void game::win() const
+{
+    target t = d_terrain.getTarget();
+    if(t.isAffected())
+        cout<<"Votre score est de : "<<score()<<" points, vous etes trop fort !!";
+}
+
 void game::start()
 {
     auto shooter = d_terrain.getShooter();
@@ -230,9 +242,9 @@ void game::start()
             d_terrain.addObjectAt(make_unique<laser>(l), x, y);
         }
     }
-
     viewerOnTerminal v;
     v.printGround(d_terrain);
+    win();
 }
 
 void game::loadGround(const ground& terrain)

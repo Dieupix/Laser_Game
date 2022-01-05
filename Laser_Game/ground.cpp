@@ -165,6 +165,24 @@ const shooter& ground::getShooter() const
     }
 }
 
+const target& ground::getTarget() const
+{
+    for(unsigned i = 0; i < nbCellsHeight; ++i)
+    {
+        for(unsigned j = 0; j < nbCellsWidth; ++j)
+        {
+            auto obj = objects[i][j].get();
+            if(obj)
+            {
+                if(dynamic_cast<target*>(obj))
+                {
+                    return *dynamic_cast<target*>(obj);
+                }
+            }
+        }
+    }
+}
+
 void ground::loadFrom(istream& ist)
 {
     cout << "Loading..." << endl;

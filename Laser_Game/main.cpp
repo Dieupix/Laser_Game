@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    ifstream ifs("../grounds/ground1.txt");
+    /*ifstream ifs("../grounds/ground1.txt");
     ground g;
     g.loadFrom(ifs);
 
@@ -20,10 +20,10 @@ int main()
     viewerOnWINBGI v;
     v.printGround(g);
 
-    getch();
+    getch();*/
 
-    /*game g;
+    game g;
     g.read("../grounds/ground1.txt");
 
-    g.run();*/
+    g.run();
 }

@@ -23,10 +23,12 @@ public :
     ~game() = default ;
 
     void addMirror(const point& p, const sens& s) ;
+    int score() const;
     void loadGround(const ground& terrain);
     void read(const string& nameFile) ;
     void removeMirror(const point& p) ;
-    void run() ;
+    void run();
+    void win() const;
     void save(const string& nameFile) const ;
 private :
     ground d_terrain ;

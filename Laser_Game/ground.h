@@ -61,7 +61,6 @@ class ground : public grid
          * @details Contains all the objects that are on the ground.
          */
         vector<vector<unique_ptr<object>>> objects;
-
     public:
 
         // Constructors
@@ -196,6 +195,8 @@ class ground : public grid
          * @return Returns the shooter on the ground
          */
         const shooter& getShooter() const;
+
+        const target& getTarget() const;
         /**
          * @brief A function that loads a ground from an input stream
          *
