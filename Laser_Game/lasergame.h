@@ -11,7 +11,7 @@ class lasergame
         void menu();
         void typeGraphique();
         void afficheTerrain(const string& path);
-        void choisirTerrain();
+        string choisirTerrain();
     private:
         unique_ptr<viewer> d_viewer;
 };

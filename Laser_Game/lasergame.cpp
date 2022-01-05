@@ -1,6 +1,6 @@
 #include "lasergame.h"
 
-lasergame::lasergame()
+lasergame::lasergame() : d_viewer{make_unique<viewerOnTerminal>()}
 {}
 
 void lasergame::menu()
@@ -50,10 +50,10 @@ void lasergame::typeGraphique()
         switch(choix)
         {
         case 1 :
-            d_viewer = make_unique<viewerOnWINBGI>();
+            d_viewer = move(make_unique<viewerOnWINBGI>());
             break;
         case 2 :
-            d_viewer = make_unique<viewerOnTerminal>();
+            d_viewer = move(make_unique<viewerOnTerminal>());
             break;
         }
     }while(choix != 0);

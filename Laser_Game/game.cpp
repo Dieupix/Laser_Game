@@ -1,9 +1,9 @@
 #include "game.h"
 
-game::game() : d_terrain{}
+game::game(unique_ptr<viewer> viewer) : d_terrain{}, d_viewer{move(viewer)}
 {}
 
-game::game(const ground& terrain) : d_terrain{terrain}
+game::game(const ground& terrain, unique_ptr<viewer> viewer) : d_terrain{terrain}, d_viewer{move(viewer)}
 {}
 
 void game::addMirror(const point& p, const sens& s)
@@ -143,8 +143,7 @@ void game::run()
                 }
             case 3 :
                 {
-                    viewerOnTerminal v;
-                    v.printGround(d_terrain);
+                    d_viewer->printGround(d_terrain);
                     break;
                 }
             default:
@@ -205,9 +204,10 @@ void game::start()
 {
     auto shooter = d_terrain.getShooter();
     auto l = shooter.tire();
+    invertDirection(l);
 
-    point pos = l.getPosition() - d_terrain.getPosition();
-    unsigned x = pos.y(), y = pos.x();
+    point pos = reverse(l.getPosition() - d_terrain.getPosition());
+    unsigned x = pos.x(), y = pos.y();
 
     d_terrain.addObjectAt(make_unique<object>(l), x, y);
 
@@ -235,15 +235,12 @@ void game::start()
             ++i;
             j = 0;
         }
-        cout << l << endl;
 
         if(l.getIsAlive())
         {
             d_terrain.addObjectAt(make_unique<laser>(l), x, y);
         }
     }
-    viewerOnTerminal v;
-    v.printGround(d_terrain);
     win();
 }
 
