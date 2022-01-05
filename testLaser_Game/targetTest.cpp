@@ -13,7 +13,7 @@ using std::ostringstream;
 using std::string;
 
 
-///@FIXME - Meriem : to fix
+
 TEST_CASE("2 - Test of the class target"
           * doctest::skip(true))
 {
@@ -40,9 +40,26 @@ TEST_CASE("2 - Test of the class target"
 
     //-------------- isAffected ------------------------------------------
 
+   SUBCASE("Test of is affected ")
+    {
+            point P{0, 0} ;
+            target c (P) ;
+
+                 REQUIRE(c.isAffected() == false ) ;
 
 
-    /*SUBCASE("Test of is affected ")
+    }
+     SUBCASE("Test of set affected ")
+    {
+            point P{0, 0} ;
+            target c (P) ;
+            c.setAffected(true) ;
+            REQUIRE(c.isAffected() == true ) ;
+
+
+    }
+
+    SUBCASE("Test of Clone ")
     {
 
         point position{0, 0};
@@ -50,24 +67,26 @@ TEST_CASE("2 - Test of the class target"
         double step = 1.0;
 
         auto l = createLaserForTest(position, direction, step);
-        SUBCASE("Test  is affected ")
+        SUBCASE("Test clone when target  is affected  ")
         {
             point P{0, 0} ;
             target c (P) ;
-            REQUIRE(c.isAffected(l) == true ) ;
+            c.collide( l) ;
+            REQUIRE(c.isAffected() == true ) ;
         }
-        SUBCASE("Test  is NOT affected ")
+        SUBCASE("Test clone when target is not affected  ")
         {
-            point P{0, 0} ;
+            point P{1, 0} ;
             target c (P) ;
-            REQUIRE(c.isAffected(l) == false ) ;
+            c.collide( l) ;
+            REQUIRE(c.isAffected() == false ) ;
         }
 
 
-    }*/
+    }
 
     //-----------------print------------------------------------------
-    /*point p{0, 0} ;
+    point p{0, 0} ;
     target c (p) ;
     auto direction = directions::RIGHT;
     double step = 1.0;
@@ -76,7 +95,8 @@ TEST_CASE("2 - Test of the class target"
     {
         string expectedOutput = "target[position(0,0), est touchée par un laser]";
         ostringstream ost;
-        c.isAffected(l) ;
+        c.collide( l) ;
+
         c.print(ost);
         string read = ost.str();
         CHECK_EQ(read, expectedOutput);
@@ -86,14 +106,14 @@ TEST_CASE("2 - Test of the class target"
             target c (A) ;
             string expectedOutput = "target[position(0,0), n'est pas touchée par un laser]";
             ostringstream ost;
-            c.isAffected(l) ;
+            c.collide( l) ;
             c.print(ost);
             string read = ost.str();
             CHECK_EQ(read, expectedOutput);
 
         }
 
-    }*/
+    }
 
 }
 
