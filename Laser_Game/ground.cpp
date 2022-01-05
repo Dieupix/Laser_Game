@@ -167,8 +167,6 @@ const shooter& ground::getShooter() const
 
 void ground::loadFrom(istream& ist)
 {
-    cout << "Loading..." << endl;
-
     string loaded = "";
     auto line = 1;
 
@@ -336,8 +334,6 @@ void ground::loadFrom(istream& ist)
         }
         ++j;
     }
-
-    cout << "Loaded." << endl;
 }
 
 void ground::print(ostream& ost) const
@@ -372,7 +368,6 @@ void ground::removeObjectAt(unsigned i, unsigned j)
 
 void ground::saveIn(ostream& ost) const
 {
-    cout << "Saving..." << endl;
     string toSave = to_string(getCellsWidth()) + '\n' +
                     to_string(getCellsHeight()) + '\n' +
                     position.toString() + '\n' +
@@ -466,7 +461,6 @@ void ground::saveIn(ostream& ost) const
     }
 
     ost << toSave;
-    cout << "Saved." << endl;
 }
 
 string ground::toString() const
