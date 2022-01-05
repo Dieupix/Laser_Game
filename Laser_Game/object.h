@@ -10,6 +10,7 @@
 using std::make_unique;
 using std::unique_ptr;
 
+//Declaring class
 class laser;
 
 class object
@@ -21,6 +22,8 @@ class object
 
         /**
         * @brief Constructor of object
+        *
+        * @param p : point (const point)
         *
         * @return Create an object with a point
         */
