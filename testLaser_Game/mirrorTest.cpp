@@ -110,12 +110,7 @@ TEST_CASE("2 - Test of the class mirror")
 
     SUBCASE("Test of the print() function")
     {
-<<<<<<< HEAD
         string expectedOutput = "Miroir[position(0.000000,0.000000), sens( basGauche_hautDroit ), affected(false)]";
-=======
-        string expectedOutput = "Miroir[position(0.000000,0.000000), sens(basGauche_hautDroit), affected(false)]";
->>>>>>> e3e37fb517976c8543a07e00f077698fa8be75ab
-
         ostringstream ost;
         Tmiroir.print(ost);
 
