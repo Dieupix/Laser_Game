@@ -19,7 +19,6 @@ TEST_CASE("3 - Test of the class wall")
     laser l = createLaserForTest(p, RIGHT);
     laser nl = createLaserForTest(np, RIGHT);
 
-    ///@FIXME - Manu (or someone else?)
     SUBCASE("Test of the affectation")
     {
         SUBCASE("Test of not affected")
@@ -36,11 +35,6 @@ TEST_CASE("3 - Test of the class wall")
             bool flagTest = l.getIsAlive();
             REQUIRE_NE(flagTest, flagInitial);
         }
-        /*SUBCASE("Test of change affectation")
-        {
-            REQUIRE_EQ(w.changeAffected(), true);
-            REQUIRE_EQ(w.changeAffected(), false);
-        }*/
     }
 }
 
