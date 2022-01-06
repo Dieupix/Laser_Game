@@ -47,6 +47,13 @@ class game
         ~game() = default ;
 
         /**
+        * @brief Function that allows to valid a position in the ground
+        *
+        * @return a boolean
+        */
+        bool validPosition(int positionX, int positionY);
+
+        /**
         * @brief Procedure that allows to add a mirror in the game
         *
         * @param position_mirror : the position of the mirror (const point)

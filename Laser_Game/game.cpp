@@ -11,13 +11,18 @@ game::game(const ground& g, unique_ptr<viewer> view) : d_ground{g},
 {}
 //---------- End of constructors-----------------------
 //---------- Methods ----------------------------------
+bool game::validPosition(int positionX, int positionY)
+{
+    return positionX >= 0 && positionY >= 0 && positionX < d_ground.getNbCellsHeight() && positionY < d_ground.getNbCellsWidth();
+}
+
 void game::addMirror(const point& position_mirror, const sens& sense_mirror)
 {
     auto positionX = position_mirror.x();
     auto positionY = position_mirror.y();
 
     //If coordinates of mirror are valid
-    if(positionX >= 0 && positionY >= 0 && positionX < d_ground.getNbCellsHeight() && positionY < d_ground.getNbCellsWidth() )
+    if(validPosition(positionX,positionY))
     {
         auto obj = d_ground.getObjects()[positionX][positionY].get();
         //Reverse of the position of mirror (due of the grid and the vector objects)
@@ -45,7 +50,7 @@ void game::removeMirror(const point& p)
     auto positionY = p.y();
 
     //If coordinates of mirror are valid
-    if(positionX >= 0 && positionY >= 0 && positionX < d_ground.getNbCellsHeight() && positionY < d_ground.getNbCellsWidth())
+    if(validPosition(positionX,positionY))
     {
         auto obj = d_ground.getObjects()[positionX][positionY].get();
         //If there are an object in this position
