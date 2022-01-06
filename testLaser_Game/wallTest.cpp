@@ -17,15 +17,15 @@ TEST_CASE("3 - Test of the class wall")
         REQUIRE_EQ(w.getPosition(), p);
     }
     laser l = createLaserForTest(p, RIGHT);
-    laser nl = createLaserForTest(np, RIGHT);
+    laser new_laser = createLaserForTest(np, RIGHT);
 
     SUBCASE("Test of the affectation")
     {
         SUBCASE("Test of not affected")
         {
-            bool flagInitial = nl.getIsAlive();
-            w.collide(nl);
-            bool flagTest = nl.getIsAlive();
+            bool flagInitial = new_laser.getIsAlive();
+            w.collide(new_laser);
+            bool flagTest = new_laser.getIsAlive();
             REQUIRE_EQ(flagTest, flagInitial);
         }
         SUBCASE("Test of affected")

@@ -8,21 +8,22 @@
 
 using std::ostringstream;
 using std::string;
+
 TEST_CASE("3 - Test of the shooter class")
 {
-    point p {4, 3};
+    point p{4,3};
     auto direction = directions::RIGHT;
     shooter tireurTest {p, direction};
     SUBCASE("Test du constructeur")
     {
-        REQUIRE_EQ(p, tireurTest.getPosition()); //on verifie la position
-        REQUIRE_EQ(direction, tireurTest.getDirection()); //on verifie la direction
+        REQUIRE_EQ(p, tireurTest.getPosition());            //on verifie la position
+        REQUIRE_EQ(direction, tireurTest.getDirection());   //on verifie la direction
     }
     SUBCASE("Test de setpoint()")
     {
         point nouveauPoint{5,3};
         tireurTest.setPosition(nouveauPoint);
-        REQUIRE_NE(p, tireurTest.getPosition()); //on verifie que l'ancienne position n'est plus valide
+        REQUIRE_NE(p, tireurTest.getPosition());            //on verifie que l'ancienne position n'est plus valide
         REQUIRE_EQ(nouveauPoint, tireurTest.getPosition()); //on verifie que la nouvelle position est valide
     }
 
@@ -30,7 +31,7 @@ TEST_CASE("3 - Test of the shooter class")
     {
         auto nouvelleDirection = directions::LEFT;
         tireurTest.setDirection(nouvelleDirection);
-        REQUIRE_NE(direction, tireurTest.getDirection()); //on verifie que l'ancienne direction n'est plus valide
+        REQUIRE_NE(direction, tireurTest.getDirection());         //on verifie que l'ancienne direction n'est plus valide
         REQUIRE_EQ(nouvelleDirection, tireurTest.getDirection()); //on verifie que la nouvelle position est valide
     }
     SUBCASE("Test de tire")
@@ -49,7 +50,6 @@ TEST_CASE("3 - Test of the shooter class")
         string read = ost.str();
         CHECK_EQ(read, expectedOutput);
     }
-
 }
 
 #endif //SHOOTERTEST_H
