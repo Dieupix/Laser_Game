@@ -58,6 +58,8 @@ class lasergame
         */
         string Ground_choice();
 
+        unique_ptr<viewer> selectViewer() const;
+
     private:
         unsigned d_viewer;
 };

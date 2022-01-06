@@ -47,26 +47,7 @@ void lasergame::menu()
                 {
                     if(flag)
                     {
-                        unique_ptr<viewer> d_v;
-
-                        switch(d_viewer)
-                        {
-                        case 1:
-                            {
-                                d_v = make_unique<viewerOnWINBGI>();
-                                break;
-                            }
-                        case 2:
-                            {
-                                d_v = make_unique<viewerOnTerminal>();
-                                break;
-                            }
-                        default:
-                            {
-                                cerr << "d_viewer is not defined";
-                                break;
-                            }
-                        }
+                        unique_ptr<viewer> d_v = selectViewer();
 
                         game g{move(d_v)};
                         g.read(path_Ground);
@@ -159,18 +140,15 @@ string lasergame::Ground_choice()
             case 1 :
                 {
                     return "../grounds/ground1.txt";
-                    break;
                 }
             //Ground 2
             case 2 :
                 {
                     return "../grounds/ground2.txt";
-                    break;
                 }
             case 3:
                 {
                     return "../grounds/ground3.txt";
-                    break;
                 }
             default:
                 {
@@ -181,6 +159,28 @@ string lasergame::Ground_choice()
         //Back to menu
     }
     while(choice != 0);
+
+    return "";
+}
+
+unique_ptr<viewer> lasergame::selectViewer() const
+{
+    switch(d_viewer)
+    {
+    case 1:
+        {
+            return make_unique<viewerOnWINBGI>();
+        }
+    case 2:
+        {
+            return make_unique<viewerOnTerminal>();
+        }
+    default:
+        {
+            cerr << "d_viewer is not defined" << endl;
+            return make_unique<viewerOnTerminal>();
+        }
+    }
 }
 
 //---------- End of methods ----------------------------
