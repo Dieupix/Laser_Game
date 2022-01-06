@@ -162,6 +162,8 @@ void game::win() const
     target t = d_ground.getTarget();
     if(t.isAffected())
         cout<<"Votre score est de : "<<score()<<" points, vous etes trop fort !!";
+    else
+        cout<<"Vous avez perdu !!";
 }
 
 void game::save(const string& nameFile) const
