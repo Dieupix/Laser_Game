@@ -7,7 +7,7 @@ viewerOnWINBGI::viewerOnWINBGI() : width{500}, height{500}, scale{20}
     initialize();
 }
 
-viewerOnWINBGI::viewerOnWINBGI(unsigned w, unsigned h, float s = 25) : width{w}, height{h}, scale{s}
+viewerOnWINBGI::viewerOnWINBGI(unsigned w, unsigned h, float s = 20) : width{w}, height{h}, scale{s}
 {
     initialize();
 }

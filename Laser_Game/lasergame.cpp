@@ -8,9 +8,14 @@ lasergame::lasergame() : d_viewer{1}
 //---------- Methods ----------------------------------
 void lasergame::menu()
 {
+    cout << "Launching game..." << endl;
+
     string path_Ground;
     bool flag = false;
     int choice;
+
+    cout << "Game launched." << endl << endl;
+
     do
     {
         cout<<"========================== LASER GAME ========================"<<endl;
@@ -74,6 +79,10 @@ void lasergame::menu()
         cout << endl;
     }
     while(choice != 0);
+
+    cout << "Closing game..." << endl;
+
+    cout << "Game closed." << endl;
 }
 
 void lasergame::GraphicType()
