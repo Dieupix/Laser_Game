@@ -1,108 +1,101 @@
+//Declaring libraries
 #include "viewerOnWINBGI.h"
 
-// ---------- Constructors ----------
-
-viewerOnWINBGI::viewerOnWINBGI() : width{500}, height{500}, scale{20}
+//---------- Constructors------------------------------
+viewerOnWINBGI::viewerOnWINBGI() :  width{500},
+                                    height{500},
+                                    scale{20}
 {
     initialize();
 }
 
-viewerOnWINBGI::viewerOnWINBGI(unsigned w, unsigned h, float s = 25) : width{w}, height{h}, scale{s}
+viewerOnWINBGI::viewerOnWINBGI(unsigned new_width, unsigned new_height, float new_scale = 25) : width{new_width},
+                                                                                                height{new_height},
+                                                                                                scale{new_scale}
 {
     initialize();
 }
-
-// ---------- End of constructors ----------
-
-// ---------- Destructor ----------
-
+//---------- End of constructors-----------------------
+//---------- Destructor--------------------------------
 viewerOnWINBGI::~viewerOnWINBGI()
 {
     closegraph();
 }
-
-// ---------- End of destructor ----------
-
-// ---------- Overloads ----------
-
-// ---------- End of overloads ----------
-
-// ---------- Getters ----------
-
-unsigned viewerOnWINBGI::getHeight() const {return this->height;}
-
-unsigned viewerOnWINBGI::getWidth() const {return this->width;}
-
-float viewerOnWINBGI::getScale() const {return this->scale;}
-
-// ---------- End of getters ----------
-
-// ---------- Setters ----------
-
-void viewerOnWINBGI::setHeight(unsigned h)
+//---------- End of Destructor-------------------------
+//---------- Setter------------------------------------
+void viewerOnWINBGI::setWidth(unsigned new_width)
 {
-    this->height = h;
+    this->width = new_width;
 }
 
-void viewerOnWINBGI::setWidth(unsigned w)
+void viewerOnWINBGI::setHeight(unsigned new_height)
 {
-    this->width = w;
+    this->height = new_height;
 }
 
-void viewerOnWINBGI::setScale(float s)
+void viewerOnWINBGI::setScale(float new_scale)
 {
-    this->scale = s;
+    this->scale = new_scale;
+}
+//---------- End of Setter-----------------------------
+//---------- Getter------------------------------------
+unsigned viewerOnWINBGI::getWidth() const
+{
+    return this->width;
 }
 
-// ---------- End of setters ----------
-
-// ---------- Functions --------
-
-void viewerOnWINBGI::initialize()
+unsigned viewerOnWINBGI::getHeight() const
 {
-    opengraphsize(width, height);
-    setbkcolor(BLACK);
-    setcolor(WHITE);
+    return this->height;
 }
 
+float viewerOnWINBGI::getScale() const
+{
+    return this->scale;
+}
+//---------- End of Getter-----------------------------
+//---------- Methods ----------------------------------
 void viewerOnWINBGI::print(const unique_ptr<object>& obj) const
 {
-    if(dynamic_cast<laser*>(obj.get())) // For the laser
+    //There are many possibilities (1 per object)
+    //If this object is a laser
+    if(dynamic_cast<laser*>(obj.get()))
     {
-        auto tmp = dynamic_cast<laser*>(obj.get());
-        printLaser(*tmp);
-
+        auto print_laser = dynamic_cast<laser*>(obj.get());
+        printLaser(*print_laser);
     }
-    else if(dynamic_cast<mirror*>(obj.get())) // For the mirror
+    //If this object is a mirror
+    else if(dynamic_cast<mirror*>(obj.get()))
     {
-        auto tmp = dynamic_cast<mirror*>(obj.get());
-        printMirror(*tmp);
-
+        auto print_mirror = dynamic_cast<mirror*>(obj.get());
+        printMirror(*print_mirror);
     }
-    else if(dynamic_cast<shooter*>(obj.get())) // For the shooter
+    //If this object is a shooter
+    else if(dynamic_cast<shooter*>(obj.get()))
     {
-        auto tmp = dynamic_cast<shooter*>(obj.get());
-        printShooter(*tmp);
-
+        auto print_shooter = dynamic_cast<shooter*>(obj.get());
+        printShooter(*print_shooter);
     }
-    else if(dynamic_cast<target*>(obj.get())) // For the target
+    //If this object is a target
+    else if(dynamic_cast<target*>(obj.get()))
     {
-        auto tmp = dynamic_cast<target*>(obj.get());
-        printTarget(*tmp);
-
+        auto print_target = dynamic_cast<target*>(obj.get());
+        printTarget(*print_target);
     }
-    else if(dynamic_cast<wall*>(obj.get())) // For the wall
+    //If this object is a wall
+    else if(dynamic_cast<wall*>(obj.get()))
     {
-        auto tmp = dynamic_cast<wall*>(obj.get());
-        printWall(*tmp);
-
+        auto print_wall = dynamic_cast<wall*>(obj.get());
+        printWall(*print_wall);
     }
+    //If this object is an unknown type
     else
         cerr << "Unknown type" << endl;
 }
 
 void viewerOnWINBGI::printGround(const ground& g) const
 {
+    //Clear window
     cleardevice();
     for(unsigned i = 0; i < g.getNbCellsHeight(); ++i)
     {
@@ -114,9 +107,10 @@ void viewerOnWINBGI::printGround(const ground& g) const
             }
             else
             {
-                point pos = point(j, i) + g.getPosition();
-                pos *= 2 * scale;
-                plot(pos.x(), pos.y());
+                //If ther are not object, print a pixel
+                point position = point(j, i) + g.getPosition();
+                position *= 2 * scale;
+                plot(position.x(), position.y());
             }
         }
     }
@@ -125,147 +119,151 @@ void viewerOnWINBGI::printGround(const ground& g) const
 
 void viewerOnWINBGI::printLaser(const laser& l) const
 {
-    point pos = l.getPosition() * 2 * scale;
-
+    point position = l.getPosition() * 2 * scale;
+    //There are 4 possibilities
     switch(l.getDirection())
     {
-    case RIGHT:
-    case LEFT:
-        {
-            int x0 = pos.x() - scale;
-            int y0 = pos.y();
-            int x1 = pos.x() + scale;
-            int y1 = pos.y();
-
-            line(x0, y0, x1, y1);
-
-            break;
-        }
-    case UP:
-    case DOWN:
-        {
-            int x0 = pos.x();
-            int y0 = pos.y() + scale;
-            int x1 = pos.x();
-            int y1 = pos.y() - scale;
-
-            line(x0, y0, x1, y1);
-
-            break;
-        }
-    default:
-        {
-            cerr << "ERROR : Direction is not defined" << endl;
-            break;
-        }
+        //RIGHT or LEFT
+        case RIGHT:
+        case LEFT:
+            {
+                //Initializing position
+                int x0 = position.x() - scale;
+                int y0 = position.y();
+                int x1 = position.x() + scale;
+                int y1 = position.y();
+                //Print
+                line(x0, y0, x1, y1);
+                break;
+            }
+        //UP or DOWN
+        case UP:
+        case DOWN:
+            {
+                //Initializing position
+                int x0 = position.x();
+                int y0 = position.y() + scale;
+                int x1 = position.x();
+                int y1 = position.y() - scale;
+                //Print
+                line(x0, y0, x1, y1);
+                break;
+            }
+        default:
+            {
+                cerr << "ERROR : Direction is not defined" << endl;
+                break;
+            }
     }
 }
 
 void viewerOnWINBGI::printMirror(const mirror& m) const
 {
-    point pos = m.getPosition() * 2 * scale;
+    point position = m.getPosition() * 2 * scale;
 
-    int left = pos.x() - scale;
-    int top = pos.y() + scale;
-    int right = pos.x() + scale;
-    int bottom = pos.y() - scale;
-
+    int left    = position.x() - scale;
+    int top     = position.y() + scale;
+    int right   = position.x() + scale;
+    int bottom  = position.y() - scale;
+    //There are 2 possibilities
     switch(m.getSens())
     {
-    case hautGauche_basDroit:
-        {
-            line(left, bottom, right, top);
+        case hautGauche_basDroit:
+            {
+                line(left, bottom, right, top);
+                break;
+            }
+        case basGauche_hautDroit:
+            {
+                line(left, top, right, bottom);
+                break;
+            }
+        default:
+            cerr << "ERROR : Sens is not defined" << endl;
             break;
-        }
-    case basGauche_hautDroit:
-        {
-            line(left, top, right, bottom);
-            break;
-        }
-    default:
-        cerr << "ERROR : Sens is not defined" << endl;
-        break;
     }
 }
 
 void viewerOnWINBGI::printShooter(const shooter& s) const
 {
-    point pos = s.getPosition() * 2 * scale;
+    point position = s.getPosition() * 2 * scale;
 
     point left, right, top;
-
+    //There are 4 possibilities
     switch(s.getDirection())
     {
-    case RIGHT:
-        {
-            left = point(pos.x() - scale, pos.y() - scale);
-            right = point(pos.x() - scale, pos.y() + scale);
-            top = point(pos.x() + scale, pos.y());
+        case RIGHT:
+            {
+                left  = point(position.x() - scale, position.y() - scale);
+                right = point(position.x() - scale, position.y() + scale);
+                top   = point(position.x() + scale, position.y());
 
-            triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
+                triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
+                break;
+            }
+        case LEFT:
+            {
+                left  = point(position.x() + scale, position.y() + scale);
+                right = point(position.x() + scale, position.y() - scale);
+                top   = point(position.x() - scale, position.y());
 
-            break;
-        }
-    case LEFT:
-        {
-            left = point(pos.x() + scale, pos.y() + scale);
-            right = point(pos.x() + scale, pos.y() - scale);
-            top = point(pos.x() - scale, pos.y());
+                triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
+                break;
+            }
+        case UP:
+            {
+                left  = point(position.x() - scale, position.y() + scale);
+                right = point(position.x() + scale, position.y() + scale);
+                top   = point(position.x(), position.y() - scale);
 
-            triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
+                triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
+                break;
+            }
+        case DOWN:
+            {
+                left  = point(position.x() + scale, position.y() - scale);
+                right = point(position.x() - scale, position.y() - scale);
+                top   = point(position.x(), position.y() + scale);
 
-            break;
-        }
-    case UP:
-        {
-            left = point(pos.x() - scale, pos.y() + scale);
-            right = point(pos.x() + scale, pos.y() + scale);
-            top = point(pos.x(), pos.y() - scale);
-
-            triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
-
-            break;
-        }
-    case DOWN:
-        {
-            left = point(pos.x() + scale, pos.y() - scale);
-            right = point(pos.x() - scale, pos.y() - scale);
-            top = point(pos.x(), pos.y() + scale);
-
-            triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
-
-            break;
-        }
-    default:
-        {
-            cerr << "ERROR : Direction is not defined" << endl;
-            break;
-        }
+                triangle(left.x(), left.y(), right.x(), right.y(), top.x(), top.y());
+                break;
+            }
+        default:
+            {
+                cerr << "ERROR : Direction is not defined" << endl;
+                break;
+            }
     }
 }
 
 void viewerOnWINBGI::printTarget(const target& t) const
 {
-    point pos = t.getPosition() * 2 * scale;
-
-    int x = pos.x(), y = pos.y();
+    //Initialize position of the target
+    point position = t.getPosition() * 2 * scale;
+    int x = position.x(), y = position.y();
+    //Target is a circle
     circle(x, y, scale);
 }
 
 void viewerOnWINBGI::printWall(const wall& w) const
 {
-    point pos = w.getPosition() * 2 * scale;
+    //Initialize position of the wall
+    point position = w.getPosition() * 2 * scale;
 
-    int left = pos.x() - scale;
-    int top = pos.y() + scale;
-    int right = pos.x() + scale;
-    int bottom = pos.y() - scale;
+    int left   = position.x() - scale;
+    int top    = position.y() + scale;
+    int right  = position.x() + scale;
+    int bottom = position.y() - scale;
 
+    //Target is a rectangle
     rectangle(left, top, right, bottom);
 }
-
-// ---------- End of functions ----------
-
-// ---------- Global functions ----------
-
-// ---------- End of global functions ----------
+//---------- End of methods ----------------------------
+//---------- Private Methods ---------------------------
+void viewerOnWINBGI::initialize()
+{
+    opengraphsize(width, height);
+    setbkcolor(BLACK);
+    setcolor(WHITE);
+}
+//---------- End of private methods --------------------

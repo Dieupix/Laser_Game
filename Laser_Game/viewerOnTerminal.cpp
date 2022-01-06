@@ -37,35 +37,30 @@ void viewerOnTerminal::print(const unique_ptr<object>& obj) const
     {
         auto print_laser = dynamic_cast<laser*>(obj.get());
         printLaser(*print_laser);
-
     }
     //If this object is a mirror
     else if(dynamic_cast<mirror*>(obj.get()))
     {
         auto print_mirror = dynamic_cast<mirror*>(obj.get());
         printMirror(*print_mirror);
-
     }
     //If this object is a shooter
     else if(dynamic_cast<shooter*>(obj.get()))
     {
         auto print_shooter = dynamic_cast<shooter*>(obj.get());
         printShooter(*print_shooter);
-
     }
     //If this object is a target
     else if(dynamic_cast<target*>(obj.get()))
     {
         auto print_target = dynamic_cast<target*>(obj.get());
         printTarget(*print_target);
-
     }
     //If this object is a wall
     else if(dynamic_cast<wall*>(obj.get()))
     {
         auto print_wall = dynamic_cast<wall*>(obj.get());
         printWall(*print_wall);
-
     }
     //If this object is an unknown type
     else
