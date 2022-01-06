@@ -1,75 +1,73 @@
+//Declaring libraries
 #include "viewerOnTerminal.h"
 
-// ---------- Constructors ----------
-
-viewerOnTerminal::viewerOnTerminal(char blank, unsigned spacing) : blank{blank}, spacing{spacing} {}
-
-// ---------- End of constructors ----------
-
-// ---------- Destructor ----------
-
-// ---------- End of destructor ----------
-
-// ---------- Overloads ----------
-
-// ---------- End of overloads ----------
-
-// ---------- Getters ----------
-
-char viewerOnTerminal::getBlank() const {return this->blank;}
-
-unsigned viewerOnTerminal::getSpacing() const {return this->spacing;}
-
-// ---------- End of getters ----------
-
-// ---------- Setters ----------
-
-void viewerOnTerminal::setBlank(char blank)
+//---------- Constructors------------------------------
+viewerOnTerminal::viewerOnTerminal(char car_blank, unsigned space) :  blank{car_blank},
+                                                                      spacing{space}
+{}
+//---------- End of constructors-----------------------
+//---------- Setter------------------------------------
+void viewerOnTerminal::setBlank(char new_blank)
 {
-    this->blank = blank;
+    this->blank = new_blank;
 }
 
-void viewerOnTerminal::setSpacing(unsigned spacing)
+void viewerOnTerminal::setSpacing(unsigned new_space)
 {
-    this->spacing = spacing;
+    this->spacing = new_space;
+}
+//---------- End of Setter-----------------------------
+//---------- Getter------------------------------------
+char viewerOnTerminal::getBlank() const
+{
+    return this->blank;
 }
 
-// ---------- End of setters ----------
-
-// ---------- Functions --------
-
+unsigned viewerOnTerminal::getSpacing() const
+{
+    return this->spacing;
+}
+//---------- End of Getter-----------------------------
+//---------- Methods ----------------------------------
 void viewerOnTerminal::print(const unique_ptr<object>& obj) const
 {
-    if(dynamic_cast<laser*>(obj.get())) // For the laser
+    //There are many possibilities (1 per object)
+    //If this object is a laser
+    if(dynamic_cast<laser*>(obj.get()))
     {
-        auto tmp = dynamic_cast<laser*>(obj.get());
-        printLaser(*tmp);
+        auto print_laser = dynamic_cast<laser*>(obj.get());
+        printLaser(*print_laser);
 
     }
-    else if(dynamic_cast<mirror*>(obj.get())) // For the mirror
+    //If this object is a mirror
+    else if(dynamic_cast<mirror*>(obj.get()))
     {
-        auto tmp = dynamic_cast<mirror*>(obj.get());
-        printMirror(*tmp);
+        auto print_mirror = dynamic_cast<mirror*>(obj.get());
+        printMirror(*print_mirror);
 
     }
-    else if(dynamic_cast<shooter*>(obj.get())) // For the shooter
+    //If this object is a shooter
+    else if(dynamic_cast<shooter*>(obj.get()))
     {
-        auto tmp = dynamic_cast<shooter*>(obj.get());
-        printShooter(*tmp);
+        auto print_shooter = dynamic_cast<shooter*>(obj.get());
+        printShooter(*print_shooter);
 
     }
-    else if(dynamic_cast<target*>(obj.get())) // For the target
+    //If this object is a target
+    else if(dynamic_cast<target*>(obj.get()))
     {
-        auto tmp = dynamic_cast<target*>(obj.get());
-        printTarget(*tmp);
+        auto print_target = dynamic_cast<target*>(obj.get());
+        printTarget(*print_target);
 
     }
-    else if(dynamic_cast<wall*>(obj.get())) // For the wall
+    //If this object is a wall
+    else if(dynamic_cast<wall*>(obj.get()))
     {
-        auto tmp = dynamic_cast<wall*>(obj.get());
-        printWall(*tmp);
+        auto print_wall = dynamic_cast<wall*>(obj.get());
+        printWall(*print_wall);
 
     }
+    //If this object is an unknown type
     else
         cerr << "Unknown type" << endl;
 }
@@ -84,8 +82,8 @@ void viewerOnTerminal::printGround(const ground& g) const
                 print(g.getObjects()[i][j]);
             else
                 cout << blank;
-
-            for(unsigned i = 0; i < spacing; ++i) cout << ' ';
+            for(unsigned i = 0; i < spacing; ++i)
+                cout << ' ';
         }
         if(spacing == 0)
             cout << endl;
@@ -97,76 +95,82 @@ void viewerOnTerminal::printGround(const ground& g) const
 
 void viewerOnTerminal::printLaser(const laser& l) const
 {
+    //There are 4 possibilities
     switch(l.getDirection())
     {
-    case RIGHT:
-    case LEFT:
-        {
-            cout << '-';
-            break;
-        }
-    case UP:
-    case DOWN:
-        {
-            cout << '|';
-            break;
-        }
-    default:
-        {
-            cerr << "ERROR : Direction is not defined" << endl;
-            break;
-        }
+        //RIGHT or LEFT
+        case RIGHT:
+        case LEFT:
+            {
+                cout << '-';
+                break;
+            }
+        //UP or DOWN
+        case UP:
+        case DOWN:
+            {
+                cout << '|';
+                break;
+            }
+        default:
+            {
+                cerr << "ERROR : Direction is not defined" << endl;
+                break;
+            }
     }
 }
 
 void viewerOnTerminal::printMirror(const mirror& m) const
 {
+    //There are 2 possibilities
     switch(m.getSens())
     {
-    case hautGauche_basDroit:
-        {
-            cout << '\\';
+        case hautGauche_basDroit:
+            {
+                cout << '\\';
+                break;
+            }
+        case basGauche_hautDroit:
+            {
+                cout << '/';
+                break;
+            }
+        default:
+            cerr << "ERROR : Sens is not defined" << endl;
             break;
-        }
-    case basGauche_hautDroit:
-        {
-            cout << '/';
-            break;
-        }
-    default:
-        cerr << "ERROR : Sens is not defined" << endl;
-        break;
     }
 }
 
 void viewerOnTerminal::printShooter(const shooter& s) const
 {
-    switch(s.getDirection()){
-    case RIGHT:
-        {
-            cout << '>';
-            break;
-        }
-    case LEFT:
-        {
-            cout << '<';
-            break;
-        }
-    case UP:
-        {
-            cout << '^';
-            break;
-        }
-    case DOWN:
-        {
-            cout << 'v';
-            break;
-        }
-    default:
-        {
-            cerr << "ERROR : Direction is not defined" << endl;
-            break;
-        }
+    //There are 4 possibilities
+    switch(s.getDirection())
+    {
+        case RIGHT:
+            {
+                cout << '>';
+                break;
+            }
+        case LEFT:
+            {
+                cout << '<';
+                break;
+            }
+        case UP:
+            {
+                cout << '^';
+                break;
+            }
+        case DOWN:
+            {
+                cout << 'v';
+                break;
+            }
+        default:
+            {
+                cerr << "ERROR : Direction is not defined" << endl;
+                break;
+            }
     }
 }
 
@@ -179,9 +183,4 @@ void viewerOnTerminal::printWall(const wall&) const
 {
     cout << '#';
 }
-
-// ---------- End of functions ----------
-
-// ---------- Global functions ----------
-
-// ---------- End of global functions ----------
+//---------- End of methods ----------------------------
