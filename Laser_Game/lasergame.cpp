@@ -2,7 +2,7 @@
 #include "lasergame.h"
 
 //---------- Constructors------------------------------
-lasergame::lasergame() : d_viewer{make_unique<viewerOnTerminal>()}
+lasergame::lasergame() : d_viewer{1}
 {}
 //---------- End of constructors-----------------------
 //---------- Methods ----------------------------------
@@ -42,7 +42,28 @@ void lasergame::menu()
                 {
                     if(flag)
                     {
-                        game g{move(d_viewer)};
+                        unique_ptr<viewer> d_v;
+
+                        switch(d_viewer)
+                        {
+                        case 1:
+                            {
+                                d_v = make_unique<viewerOnWINBGI>();
+                                break;
+                            }
+                        case 2:
+                            {
+                                d_v = make_unique<viewerOnTerminal>();
+                                break;
+                            }
+                        default:
+                            {
+                                cerr << "d_viewer is not defined";
+                                break;
+                            }
+                        }
+
+                        game g{move(d_v)};
                         g.read(path_Ground);
                         g.run();
                         break;
@@ -72,14 +93,14 @@ void lasergame::GraphicType()
             //Graphic mode (WINBGI)
             case 1:
                 {
-                    d_viewer = move(make_unique<viewerOnWINBGI>());
+                    d_viewer = 1;
                     choice = 0;
                     break;
                 }
             //Terminal mode
             case 2:
                 {
-                    d_viewer = move(make_unique<viewerOnTerminal>());
+                    d_viewer = 2;
                     choice = 0;
                     break;
                 }
@@ -117,6 +138,9 @@ string lasergame::Ground_choice()
         cout<<"==========================Terrain 2=========================="<<endl;
         printGround("../grounds/ground2.txt");
         cout<<"============================================================="<<endl;
+        cout<<"==========================Terrain 3=========================="<<endl;
+        printGround("../grounds/ground3.txt");
+        cout<<"============================================================="<<endl;
         cout<<"> ";
         cin>>choice;
 
@@ -132,6 +156,11 @@ string lasergame::Ground_choice()
             case 2 :
                 {
                     return "../grounds/ground2.txt";
+                    break;
+                }
+            case 3:
+                {
+                    return "../grounds/ground3.txt";
                     break;
                 }
             default:

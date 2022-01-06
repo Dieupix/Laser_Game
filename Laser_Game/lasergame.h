@@ -59,7 +59,7 @@ class lasergame
         string Ground_choice();
 
     private:
-        unique_ptr<viewer> d_viewer;
+        unsigned d_viewer;
 };
 
 #endif // LASERGAME_H
