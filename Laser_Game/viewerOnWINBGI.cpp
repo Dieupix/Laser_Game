@@ -9,9 +9,10 @@ viewerOnWINBGI::viewerOnWINBGI() :  width{500},
     initialize();
 }
 
-viewerOnWINBGI::viewerOnWINBGI(unsigned new_width, unsigned new_height, float new_scale = 25) : width{new_width},
+viewerOnWINBGI::viewerOnWINBGI(unsigned new_width, unsigned new_height, float new_scale = 20) : width{new_width},
                                                                                                 height{new_height},
                                                                                                 scale{new_scale}
+
 {
     initialize();
 }

@@ -58,8 +58,10 @@ class lasergame
         */
         string Ground_choice();
 
+        unique_ptr<viewer> selectViewer() const;
+
     private:
-        unique_ptr<viewer> d_viewer;
+        unsigned d_viewer;
 };
 
 #endif // LASERGAME_H

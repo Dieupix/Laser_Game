@@ -15,7 +15,7 @@ TEST_CASE("3 - Test of the class ground")
 {
     point position(0, 0);
     double cellsWidth = 1.0, cellsHeight = 1.0;
-    unsigned nbCellsWidth = 5, nbCellsHeight = 5, nbMirrorMax = 0;
+    unsigned nbCellsWidth = 5, nbCellsHeight = 5, nbMirrorMax = 1;
 
     ground g(position, cellsWidth, cellsHeight, nbCellsWidth, nbCellsHeight, nbMirrorMax);
 
@@ -128,7 +128,13 @@ TEST_CASE("3 - Test of the class ground")
     SUBCASE("Test of the print() function")
     {
         g.addObjectAt(make_unique<shooter>(position, RIGHT), 0, 0);
-        string expectedOutput = string("") +    "Ground[Grid[cellsWidth(1.000000), cellsHeight(1.000000)], position(0.000000,0.000000), nbCellsWidth(5), nbCellsHeight(5), nbOfObjects(1), nbOfMirrors(0), nbMirrorMax(0)]\n" +
+        string expectedOutput = string("") +    "Ground[Grid[cellsWidth(" + to_string(cellsWidth) + ")" +
+                                                ", cellsHeight(" + to_string(cellsHeight) + ")]" +
+                                                ", position" + position.toString() +
+                                                ", nbCellsWidth(" + to_string(nbCellsWidth) + ")" +
+                                                ", nbCellsHeight(" + to_string(nbCellsHeight) + ")" +
+                                                ", nbOfObjects(1), nbOfMirrors(0)" +
+                                                ", nbMirrorMax(" + to_string(nbMirrorMax) + ")" + "]\n" +
                                                 "List of objects (1) :\n" +
                                                 "1 : Tireur[position(0.000000,0.000000), direction(RIGHT)]\n";
 
@@ -143,7 +149,6 @@ TEST_CASE("3 - Test of the class ground")
 
     SUBCASE("Test of the removeObjectAt() function")
     {
-        /// @TODO - Alex : implement the subcase
 
         WHEN("The object is a mirror")
         {
