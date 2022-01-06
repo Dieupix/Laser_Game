@@ -90,8 +90,6 @@ TEST_CASE("3 - Test of the class ground")
         for(unsigned i = 0; i < nbCellsHeight; ++i)
             CHECK_EQ(g.getObjects()[i].size(), nbCellsWidth);
     }
-    stringstream ost;
-    string read = ost.str();
     SUBCASE("Test of the print() function")
     {
         g.addObjectAt(make_unique<shooter>(position, RIGHT), 0, 0);
@@ -104,7 +102,9 @@ TEST_CASE("3 - Test of the class ground")
                                                 ", nbMirrorMax(" + to_string(nbMirrorMax) + ")" + "]\n" +
                                                 "List of objects (1) :\n" +
                                                 "1 : Tireur[position(0.000000,0.000000), direction(RIGHT)]\n";
+        stringstream ost;
         g.print(ost);
+        string read = ost.str();
         //CHECK_EQ(read, "I want you to fail"); // SHOULD FAIL
         CHECK_EQ(read, expectedOutput);
     }
@@ -121,7 +121,9 @@ TEST_CASE("3 - Test of the class ground")
                                                 ".....\n" +
                                                 ".....\n" +
                                                 ".....\n";
+        stringstream ost;
         g.saveIn(ost);
+        string read = ost.str();
         //CHECK_EQ(read, "I want you to fail"); // SHOULD FAIL
         CHECK_EQ(read, expectedOutput);
     }
