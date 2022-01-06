@@ -39,12 +39,12 @@ TEST_CASE("2 - Test of the class target")
         SUBCASE("Test clone when target  is affected  ")
         {
             tar.collide(l);
-            REQUIRE(tar.isAffected() == true);
+            REQUIRE_EQ(tar.isAffected(), true);
         }
         SUBCASE("Test clone when target is not affected  ")
         {
             tar.collide(l);
-            REQUIRE(tar.isAffected() == false ) ;
+            REQUIRE_NE(tar.isAffected(), false ) ;
         }
     }
     SUBCASE("Test of the print() function")
