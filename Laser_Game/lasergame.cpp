@@ -130,6 +130,7 @@ string lasergame::Ground_choice()
         cout<<"==========================Terrain 3=========================="<<endl;
         printGround("../grounds/ground3.txt");
         cout<<"============================================================="<<endl;
+        cout<<"======================CHOIX DU TERRAIN======================="<<endl;
         cout<<"1 - Terrain 1"<<endl;
         cout<<"2 - Terrain 2"<<endl;
         cout<<"3 - Terrain 3"<<endl;
