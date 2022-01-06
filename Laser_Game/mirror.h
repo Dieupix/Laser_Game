@@ -8,6 +8,11 @@
 //Declaring namespace
 using namespace enumTypes;
 
+/**
+ * @class mirror mirror.h
+ * @brief A class that represents a mirror
+ * @details This class represents a mirror, with a @a sense and @a parameter that allows to know when the mirror is touched by the laser, which a @a position
+*/
 class mirror : public object
 {
     public:

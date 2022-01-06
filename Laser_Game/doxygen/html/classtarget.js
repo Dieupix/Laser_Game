@@ -2,9 +2,11 @@ var classtarget =
 [
     [ "target", "classtarget.html#ae4dd22334db874779e30d18f7171333e", null ],
     [ "~target", "classtarget.html#afd53dcc24e37df69ca89d464ab2a383c", null ],
-    [ "isAffected", "classtarget.html#a0936be12ede3679a5e69fa6e3b083415", null ],
-    [ "operator!=", "classtarget.html#ad6c39f9e936d983726d2a0e329bc48e8", null ],
-    [ "operator==", "classtarget.html#a92bf53b69fc5e3d6a8965572aed82796", null ],
-    [ "print", "classtarget.html#a9a3e76a6eaf6fdec1769abf138e1beab", null ],
+    [ "clone", "classtarget.html#af2ed17991f009f41dbc69a774e090f41", null ],
+    [ "collide", "classtarget.html#a7b4e6daa7036594a7846772c02652820", null ],
+    [ "isAffected", "classtarget.html#a25099ea31b7661f5e7e63280e37e5979", null ],
+    [ "print", "classtarget.html#a0a263bd7e016cd1ead8045463910af1d", null ],
+    [ "setAffected", "classtarget.html#aecf6e14c4fd45ddc949dbb324b5cc942", null ],
+    [ "toString", "classtarget.html#ab68b68a1ae2b25d7566f295c0b9b6c4f", null ],
     [ "d_affected", "classtarget.html#a33c5cc6f748a5ce676dd7b06101b5bf5", null ]
 ];

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['target_0',['target',['../classtarget.html#ae4dd22334db874779e30d18f7171333e',1,'target']]],
-  ['tire_1',['tire',['../classshooter.html#a7909ee807df52c98edb0bcd10295839f',1,'shooter']]],
-  ['turnleft_2',['turnLeft',['../classlaser.html#a0e551aad660b033c4c17a1e605bdb1bc',1,'laser']]],
-  ['turnright_3',['turnRight',['../classlaser.html#a92650818bec58534d91d089ae18b4bff',1,'laser']]]
+  ['validposition_341',['validPosition',['../classgame.html#abc7ab3e51080d3d9112d300b248294c8',1,'game']]],
+  ['vieweronterminal_342',['viewerOnTerminal',['../classviewer_on_terminal.html#a92a1946c7f09f73bacff7a7d99ca0817',1,'viewerOnTerminal']]],
+  ['vieweronwinbgi_343',['viewerOnWINBGI',['../classviewer_on_w_i_n_b_g_i.html#af76551ed17982f0f6948a081ab700112',1,'viewerOnWINBGI::viewerOnWINBGI()'],['../classviewer_on_w_i_n_b_g_i.html#a34ba5d0e6d15ca53077974c2f6d1528b',1,'viewerOnWINBGI::viewerOnWINBGI(unsigned new_width, unsigned new_height, float new_scale)']]]
 ];

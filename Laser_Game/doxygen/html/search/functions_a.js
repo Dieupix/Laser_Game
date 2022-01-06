@@ -1,15 +1,7 @@
 var searchData=
 [
-  ['save_0',['save',['../classgame.html#ad5e304a3c05710f4f23bdd01fab4ee91',1,'game']]],
-  ['savein_1',['saveIn',['../classground.html#ad2dbe06d594847aad62d67315a0c094e',1,'ground']]],
-  ['setblank_2',['setBlank',['../classviewer_on_terminal.html#aaa4e8031f192106c1fd81aa1cb5c5026',1,'viewerOnTerminal']]],
-  ['setdirection_3',['setDirection',['../classlaser.html#a815873ad87ebb7bd5bcb4bc4091d260b',1,'laser::setDirection()'],['../classshooter.html#a83ac6214485de5562d00b211d94e9613',1,'shooter::setDirection()']]],
-  ['setnbcellsheight_4',['setNbCellsHeight',['../classground.html#a340611bb064ffccf8843a9d43eb0684e',1,'ground']]],
-  ['setnbcellswidth_5',['setNbCellsWidth',['../classground.html#a08716386f6009e00e9884f5756a89800',1,'ground']]],
-  ['setposition_6',['setPosition',['../classground.html#a54878949b2f2983219df58d4aeac5d42',1,'ground::setPosition()'],['../classobject.html#aace3df290d66977ea6ab85c9a07a437b',1,'object::setPosition()']]],
-  ['setspacing_7',['setSpacing',['../classviewer_on_terminal.html#af6c7e85cb6a8c10af6471b6dcbfa9b50',1,'viewerOnTerminal']]],
-  ['setstep_8',['setStep',['../classlaser.html#a12e0bb56faff0ecd64f42e503bf118a6',1,'laser']]],
-  ['shift_9',['shift',['../classobject.html#ab69df69ad3966424dffe0deaa82386f7',1,'object::shift(double x, double y)'],['../classobject.html#aa600f302192a0bd0eb5112b3b13c86db',1,'object::shift(const point &amp;p)'],['../classpoint.html#a1aff8ad12f75d54505f3011365d9e555',1,'point::shift()']]],
-  ['shooter_10',['shooter',['../classshooter.html#a168018adaab8fbd88994440f60e97212',1,'shooter']]],
-  ['start_11',['start',['../classgame.html#aedb665cc9bbc7297ab634c5a55bd80d2',1,'game']]]
+  ['target_337',['target',['../classtarget.html#ae4dd22334db874779e30d18f7171333e',1,'target']]],
+  ['tostring_338',['toString',['../classgrid.html#ae40d27d9e62f0740567f203f7fb586ae',1,'grid::toString()'],['../classground.html#a551020e99fb87a1ce6ef51f85c4fcca4',1,'ground::toString()'],['../classlaser.html#af7b42ba80cacbc08ba2b8e9b8c4bff4f',1,'laser::toString()'],['../classmirror.html#a0b6266fc02e7c3d0c58e4cd1c26ea1d5',1,'mirror::toString()'],['../classmonster.html#a3cc8c8269c9bce35392b29db0201a3c5',1,'monster::toString()'],['../classobject.html#a93c5d3b95c792f92ea1e1075975a092d',1,'object::toString()'],['../classpoint.html#a80c2c5c33eb88f702efd52782b7c8aad',1,'point::toString()'],['../classshooter.html#af8c9a0474c350eb6adcc40e9a57e2875',1,'shooter::toString()'],['../classtarget.html#ab68b68a1ae2b25d7566f295c0b9b6c4f',1,'target::toString()'],['../classwall.html#ac36b02c7f8f67da7782a3bf97ba17a7a',1,'wall::toString()']]],
+  ['turnleft_339',['turnLeft',['../classlaser.html#a0e551aad660b033c4c17a1e605bdb1bc',1,'laser']]],
+  ['turnright_340',['turnRight',['../classlaser.html#a92650818bec58534d91d089ae18b4bff',1,'laser']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['objects_0',['objects',['../classground.html#aa36d8685c15d3ea6692bd2c0a9ef30b7',1,'ground']]]
+  ['isalive_376',['isAlive',['../classlaser.html#ae249b9f53df1883368240ddfa4150688',1,'laser']]]
 ];

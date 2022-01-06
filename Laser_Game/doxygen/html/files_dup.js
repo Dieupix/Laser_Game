@@ -13,10 +13,18 @@ var files_dup =
     ] ],
     [ "laser.cpp", "laser_8cpp.html", "laser_8cpp" ],
     [ "laser.h", "laser_8h.html", "laser_8h" ],
+    [ "lasergame.cpp", "lasergame_8cpp.html", null ],
+    [ "lasergame.h", "lasergame_8h.html", [
+      [ "lasergame", "classlasergame.html", "classlasergame" ]
+    ] ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "mirror.cpp", "mirror_8cpp.html", null ],
     [ "mirror.h", "mirror_8h.html", [
       [ "mirror", "classmirror.html", "classmirror" ]
+    ] ],
+    [ "monster.cpp", "monster_8cpp.html", null ],
+    [ "monster.h", "monster_8h.html", [
+      [ "monster", "classmonster.html", "classmonster" ]
     ] ],
     [ "object.cpp", "object_8cpp.html", "object_8cpp" ],
     [ "object.h", "object_8h.html", "object_8h" ],
@@ -36,6 +44,10 @@ var files_dup =
     [ "viewerOnTerminal.cpp", "viewer_on_terminal_8cpp.html", null ],
     [ "viewerOnTerminal.h", "viewer_on_terminal_8h.html", [
       [ "viewerOnTerminal", "classviewer_on_terminal.html", "classviewer_on_terminal" ]
+    ] ],
+    [ "viewerOnWINBGI.cpp", "viewer_on_w_i_n_b_g_i_8cpp.html", null ],
+    [ "viewerOnWINBGI.h", "viewer_on_w_i_n_b_g_i_8h.html", [
+      [ "viewerOnWINBGI", "classviewer_on_w_i_n_b_g_i.html", "classviewer_on_w_i_n_b_g_i" ]
     ] ],
     [ "wall.cpp", "wall_8cpp.html", null ],
     [ "wall.h", "wall_8h.html", [

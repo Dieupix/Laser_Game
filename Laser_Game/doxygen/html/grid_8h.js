@@ -1,6 +1,6 @@
 var grid_8h =
 [
-    [ "grille", "classgrille.html", "classgrille" ],
-    [ "operator<<", "grid_8h.html#a6a15046725888d4ef3050975b20015ac", null ],
-    [ "operator>>", "grid_8h.html#a9f922f7404d31200d835820503b8f776", null ]
+    [ "grid", "classgrid.html", "classgrid" ],
+    [ "operator<<", "grid_8h.html#a916750d2b5f8daedcc9ef55b9f6ec1c1", null ],
+    [ "operator>>", "grid_8h.html#a06830974a9ce6b4db44bd7a6d8e56558", null ]
 ];

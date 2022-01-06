@@ -1,58 +1,101 @@
 #ifndef CIBLE_H_INCLUDED
 #define CIBLE_H_INCLUDED
+//Declaring libraries
 #include "object.h"
 
+//Declaring namespace elements
+using std::cout;
+using std::cin;
+using std::string;
 
+/**
+ * @class monster monster.h
+ * @brief A class that represents a monster
+ * @details This class represents a monster, with a @a name, an @a affectation, which a @a position
+*/
 class monster : public object
 {
 public :
-    /** @brief constructor of a monster
-    *
-    * @param[in] have a position
-    *
-    */
-    monster(const point& position , std::string name) ;
+        /**
+        * @brief Constructor of monster
+        *
+        * @param position : the position of the monster
+        * @param name : the name of the monster
+        *
+        * @return Create a monster with a position and a name
+        */
+        monster(const point& position , std::string name);
 
-    // Destructor
-    /**
-     * @brief Default-implemented destructor
-     * @details Destroys the monster.
-     */
-    virtual ~monster() = default;
-    std::string getName() const ;
-    void setName() ;
+        /**
+        * @brief Virtual destructor by default of object
+        */
+        virtual ~monster() = default;
 
-    /**
-       * @brief A function that moves the monster
-       * @details This function test if the monster is hit by the laser
-       * @param[in] Laser
-       * @return  True if the monster is hit by the laser
-       * @return False if not
-       */
+        /**
+        * @brief Function that set name of the monster
+        *
+        * @return void
+        */
+        void setName(const string& name);
 
-    bool isAffected() const;
-    void setAffected(bool b);
+        /**
+        * @brief Function that set affectation of the monster
+        *
+        * @param b : a boolean
+        *
+        * @return void
+        */
+        void setAffected(bool b);
 
-    virtual unique_ptr<object> clone() const override;
-    virtual void collide(laser& l);
+        /**
+        * @brief Function that get name of the monster
+        *
+        * @return the current name of the current monster
+        */
+        std::string getName() const;
 
-    /**
-       * @brief Print a  monster
-       * @param[in] ost :
-    */
-    virtual void print(std::ostream& ost) const override;
-    virtual string toString() const override;
+        /**
+        * @brief Function that get affectation of the monster
+        *
+        * @return the current affectation of the current monster
+        */
+        bool isAffected() const;
 
+        /**
+        * @brief Virtual function override that allows to clone a smart pointer of monster
+        *
+        * @return a new smart pointer of object
+        */
+        virtual unique_ptr<object> clone() const override;
 
-private :
-    std::string d_name ;
-    /**
-    * @brief Boolean that says whether or
-    * not the monster is hit by a laser
-    */
-    bool d_affected ;
+        /**
+        * @brief Virtual procedure that allows to test if the current monster has the same position in the ground that a laser
+        *
+        * @param l : new laser
+        *
+        * @return void
+        */
+        virtual void collide(laser& l);
 
+        /**
+        * @brief Virtual procedure that allows to print characteristics of monster
+        *
+        * @return void
+        */
+        virtual void print(std::ostream& ost) const override;
+
+        /**
+        * @brief Virtual function that allows to convert a monster in string
+        *
+        * @return a string
+        */
+        virtual string toString() const override;
+
+    private :
+        //The name of the monster
+        std::string d_name;
+        //The affectation of the monster
+        bool d_affected;
 };
-
 
 #endif // MONSTER_H_INCLUDED
