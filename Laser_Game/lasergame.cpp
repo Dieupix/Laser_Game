@@ -39,7 +39,8 @@ void lasergame::menu()
             case 2:
                 {
                     path_Ground = Ground_choice();
-                    flag = true;
+                    if(path_Ground != "-1")
+                        flag = true;
                     break;
                 }
             //Starting the game
@@ -48,7 +49,6 @@ void lasergame::menu()
                     if(flag)
                     {
                         unique_ptr<viewer> d_v = selectViewer();
-
                         game g{move(d_v)};
                         g.read(path_Ground);
                         g.run();
@@ -121,7 +121,6 @@ string lasergame::Ground_choice()
     int choice;
     do
     {
-        cout<<"0 - Retour"<<endl;
         cout<<"==========================Terrain 1=========================="<<endl;
         printGround("../grounds/ground1.txt");
         cout<<"============================================================="<<endl;
@@ -131,6 +130,10 @@ string lasergame::Ground_choice()
         cout<<"==========================Terrain 3=========================="<<endl;
         printGround("../grounds/ground3.txt");
         cout<<"============================================================="<<endl;
+        cout<<"1 - Terrain 1"<<endl;
+        cout<<"2 - Terrain 2"<<endl;
+        cout<<"3 - Terrain 3"<<endl;
+        cout<<"0 - Retour"<<endl;
         cout<<"> ";
         cin>>choice;
 
@@ -153,6 +156,7 @@ string lasergame::Ground_choice()
             default:
                 {
                     cerr << "Erreur, veuillez saisir un numero de terrain" << endl;
+                    return "-1";
                     break;
                 }
         }

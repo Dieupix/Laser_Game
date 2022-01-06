@@ -33,7 +33,6 @@ TEST_CASE("3 - Test of the shooter class")
         REQUIRE_NE(direction, tireurTest.getDirection()); //on verifie que l'ancienne direction n'est plus valide
         REQUIRE_EQ(nouvelleDirection, tireurTest.getDirection()); //on verifie que la nouvelle position est valide
     }
-  /*
     SUBCASE("Test de tire")
     {
         auto laserTest = tireurTest.shoot();
@@ -50,7 +49,7 @@ TEST_CASE("3 - Test of the shooter class")
         string read = ost.str();
         CHECK_EQ(read, expectedOutput);
     }
-*/
+
 }
 
 #endif //SHOOTERTEST_H
