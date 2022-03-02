@@ -2,7 +2,7 @@
 
 # Projet de POO - Laser Game
 
-[![License Apach-2.0](https://img.shields.io/github/license/Dieupix/Maquette_FST?color=dark&style=for-the-badge)](https://github.com/Dieupix/Maquette_FST/blob/main/LICENSE)
+[![License Apach-2.0](https://img.shields.io/github/license/Dieupix/Laser_Game?color=dark&style=for-the-badge)](https://github.com/Dieupix/Laser_Game/blob/main/LICENSE)
 [![Faculté FST](https://img.shields.io/badge/Faculté-FST-blue?style=for-the-badge)](https://www.fst.uha.fr)
 [![Université UHA](https://img.shields.io/badge/Université-UHA-darkblue?style=for-the-badge)](https://www.uha.fr)
 
