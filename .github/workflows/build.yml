@@ -42,7 +42,7 @@ jobs:
           New-Item -ItemType directory -Path build
           New-Item -ItemType file -Path CMakeLists.txt
           cmake -S . -B build
-          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --clean-first --config Debug
+          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --target clean --config Debug
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
