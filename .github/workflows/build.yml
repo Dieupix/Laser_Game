@@ -1,7 +1,6 @@
 name: SonarCloud
 on:
-  # Trigger analysis when pushing in master or pull requests, and when creating
-  # a pull request.
+  # Trigger analysis when pushing in main or pull requests, and when creating a pull request.
   push:
     branches:
       - main
@@ -40,7 +39,7 @@ jobs:
           echo "$HOME\.sonar\build-wrapper-win-x86" | Out-File -Append -FilePath $env:GITHUB_PATH -Encoding utf8
       - name: Run build-wrapper
         run: |
-          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --config Release
+          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }}
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
