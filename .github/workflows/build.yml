@@ -41,8 +41,8 @@ jobs:
         run: |
           New-Item -ItemType directory -Path build
           New-Item -ItemType file -Path CMakeLists.txt
-          cmake --target clean -S . -B build
-          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --config Release
+          cmake -S . -B build
+          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --target clean --config Release
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
