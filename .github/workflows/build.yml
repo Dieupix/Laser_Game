@@ -41,7 +41,7 @@ jobs:
         run: |
           New-Item -ItemType directory -Path build
           New-Item -ItemType file -Path CMakeLists.txt
-          # cmake -S . -B build
+          cmake -S . -B build
           build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --config Release
       - name: Run sonar-scanner
         env:
