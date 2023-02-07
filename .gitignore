@@ -45,6 +45,10 @@ obj/
 # Specific to doxygen
 doxygen/
 
+### macOS ###
+# General
+.DS_Store
+
 ### Xcode ###
 # Xcode
 #

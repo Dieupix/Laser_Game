@@ -1,147 +1,167 @@
 #ifndef LASER_H
 #define LASER_H
 
+//Declaring libraries
 #include "object.h"
+#include "shooter.h"
 
+//Declaring namespace
 using namespace enumTypes;
-
-#include "tireur.h"
 
 /**
  * @class laser laser.h
  * @brief A class that represents a laser
- * @details This class represents a laser, which is an @a object
- * with a @a direction and a @a step.
+ * @details This class represents a laser, which is an @a object with a @a direction and a @a step.
  */
 class laser : public object
 {
-    /**
-     * @brief Allows the class tireur to shoot
-     */
-    friend laser tireur::tire(double);
-    /**
-     * @brief Allows the program to test the class laser
-     */
+    //Friend of class
+    friend laser shooter::shoot(double);
     friend laser createLaserForTest(const point&, const directions&, double);
 
     public:
 
-        // Destructor
         /**
-         * @brief Default-implemented destructor
-         * @details Destroys the laser.
-         */
+        * @brief Virtual destructor by default of laser
+        */
         virtual ~laser() = default;
 
-        // Overloads
         /**
-         * @brief Binary operator == : constant
-         * @details Tests if all the member variables of two
-         * lasers are equals.
-         *
-         * @param l : The laser to test with
-         * @return Returns true if both of the lasers are equals, else false
-         */
-        bool operator==(const laser&) const;
-        /**
-         * @brief Binary operator != : constant
-         * @details Tests if at least one of the member variables of two
-         * lasers are different.
-         *
-         * @param l : The laser to test with
-         * @return Returns true if both of the lasers are different, else false
-         */
-        bool operator!=(const laser&) const;
-
-        // Getters
-        /**
-         * @brief Constant getter function for the direction of the laser
-         *
-         * @return Returns the direction of the laser
-         */
+        * @brief Function that get direction of the laser
+        *
+        * @return the direction of the current laser
+        */
         directions getDirection() const;
+
         /**
-         * @brief Constant getter function for the step of the laser
-         *
-         * @return Returns the step of the laser
-         */
+        * @brief Function that allows to know when the laser is alive
+        *
+        * @return a boolean
+        */
+        bool getIsAlive() const;
+
+        /**
+        * @brief Function that get step of the laser
+        *
+        * @return the step of the laser
+        */
         double getStep() const;
 
-        // Setters
         /**
-         * @brief Setter function for the direction of the laser
-         *
-         * @param[in] direction : The new direction of the laser
-         * @return Returns nothing
-         */
-        void setDirection(directions);
-        /**
-         * @brief Setter function for the step of the laser
-         *
-         * @param[in] step : The new step of the laser
-         * @return Returns nothing
-         */
-        void setStep(double);
+        * @brief Function that set direction of the laser
+        *
+        * @param dir : the new direction (enumeration directions)
+        *
+        * @return void
+        */
+        void setDirection(directions dir);
 
-        // Functions
         /**
-         * @brief A function that moves the laser
-         * @details This function moves the laser from its position
-         * by its direction and its step.
+         * @brief Function that allows to change propriety isAlive
          *
-         * @return Returns nothing
+         * @param b : a boolean
+         *
+         * @return void
+         */
+        void setIsAlive(bool alive);
+
+        /**
+         * @brief Function that get step of the laser
+         *
+         * @param new_step : the new step (double)
+         *
+         * @return the step of the laser
+         */
+        void setStep(double new_step);
+
+        /**
+         * @brief Virtual function that allows to clone a smart pointer of laser
+         *
+         * @return a new smart pointer of laser
+         */
+        virtual unique_ptr<object> clone() const override;
+
+        /**
+         * @brief Procedure that allows to move the laser by step
+         *
+         * @return void
          */
         void moveByStep();
+
         /**
-         * @brief A function that prints the characteristics of a laser
-         * @details A laser is printed as Laser[position(x,y), direction(DIRECTION), step(STEP)]
+         * @brief Virtual procedure that allows to print characteristics of laser
          *
-         * @param ost : The output stream
-         * @return virtual void
+         * @param ost : the flow (ostream)
+         *
+         * @return void
          */
-        virtual void print(std::ostream&) const override;
+        virtual void print(std::ostream& ost) const override;
+
         /**
-         * @brief A function that changes the direction of the laser
-         * by 90 degrees to the left.
-         * @see directions
+         * @brief Virtual function that allows to convert a laser in string
          *
-         * @return Returns nothing
+         * @return a string
+         */
+        virtual string toString() const override;
+
+        /**
+         * @brief Procedure that allows to turn the laser on left
+         *
+         * @return void
          */
         void turnLeft();
+
         /**
-         * @brief A function that changes the direction of the laser
-         * by 90 degrees to the right.
-         * @see directions
+         * @brief Procedure that allows to turn the laser on right
          *
-         * @return Returns nothing
+         * @return void
          */
         void turnRight();
 
-    private:
-         /**
-          * @brief The direction of the laser
-          * @see directions
-          */
-        directions direction;
-        /**
-         * @brief The step of the laser
+        /** @brief Allows to test equality between 2 lasers
+         *
+         * @param l : a laser (const laser)
+         *
+         * @return a boolean
          */
+        bool operator==(const laser& l) const;
+
+        /** @brief Allows to test inequality between 2 lasers
+         *
+         * @param l : a laser (const laser)
+         *
+         * @return a boolean
+         */
+        bool operator!=(const laser& l) const;
+
+    private:
+        //The direction of laser
+        directions direction;
+        //A boolean that allows to know when the laser is alive or not
+        bool isAlive;
+        //The step of the laser
         double step;
 
-        // Constructors
         /**
-         * @brief Constructor with a position, a direction and a step
+         * @brief Constructor of laser (private)
          *
-         * @param[in] p : The initial position of the laser
-         * @param[in] direction : The initial direction of the laser
-         * @param[in] step : The step of the laser when it moves (by default 1.0)
-         * @return Creates a laser with its parameters
+         * @param p : point (const point)
+         * @param direction : the direction of the laser (enumeration directions)
+         * @param step_laser : the step (double, 1.0 by default)
+         *
+         * @return Create a laser with a position, a direction and a step
          */
-        laser(const point&, directions, double = 1.0);
+        laser(const point& p , directions direction, double sstep_laser = 1.0);
+};
 
-
-}; // End of laser
-
-// Global functions
+/** @brief Allows to create a laser for test
+ *
+ * @param p : point (const point)
+ * @param direction : the direction of the laser (enumeration directions)
+ * @param step_laser : the step (double, 1.0 by default)
+ *
+ * @return a new laser
+ */
+laser createLaserForTest(const point& p, const directions& direction, double step_laser = 1.0);
 
 #endif // LASER_H

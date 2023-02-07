@@ -1,36 +1,51 @@
 #ifndef ENUMTYPES_H_INCLUDED
 #define ENUMTYPES_H_INCLUDED
 
-namespace enumTypes{
-
-    // Enumerations
+/**
+ * @namespace enumTypes
+ * @brief An enumeration that contains directions and sense
+ * @details This enumeration contains @a directions and @a sense
+*/
+namespace enumTypes
+{
     /**
      * @brief Enumeration of the directions
-     * @details This enumeration defines the different directions
-     * an object can have.
+     * @details This enumeration defines the different directions an object can have.
      */
-    enum directions : short unsigned int{
+    enum directions : short unsigned int
+    {
         /**
          * @brief Right direction
-         */
+        */
         RIGHT = 0,
         /**
          * @brief Left direction
-         */
-        UP = 1,
+        */
+        UP,
         /**
          * @brief Up direction
-         */
-        LEFT = 2,
+        */
+        LEFT,
         /**
          * @brief Down direction
-         */
-        DOWN = 3
+        */
+        DOWN
     };
 
-    enum sens : bool  {
+    /**
+     * @brief Enumeration of the senses
+     * @details This enumeration defines the different sense that a mirror can have.
+    */
+    enum sens : bool
+    {
+        /**
+         * @brief Equals '/'
+        */
         basGauche_hautDroit = 0,
-        hautGauche_basDroit = 1
+        /**
+         * @brief Equals '\'
+        */
+        hautGauche_basDroit
     };
 }
 

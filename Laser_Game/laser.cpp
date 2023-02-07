@@ -1,111 +1,153 @@
+//Declaring libraries
 #include "laser.h"
 
-// ---------- Constructors ----------
 
-laser::laser(const point& p, directions direction, double step) : object{p}, direction{direction}, step{step} {}
-
-// ---------- End of constructors ----------
-
-// ---------- Destructor ----------
-
-// ---------- End of destructor ----------
-
-// ---------- Overloads ----------
-
-bool laser::operator==(const laser& l) const{
-    return  getPosition() == l.getPosition() and
-            getDirection() == l.getDirection() and
-            getStep() == l.getStep();
+//---------- Constructors------------------------------
+laser::laser(const point& p, directions direction, double step_laser) : object{p},
+                                                                        direction{direction},
+                                                                        isAlive{true},
+                                                                        step{step_laser}
+{}
+//---------- End of constructors-----------------------
+//---------- Setter------------------------------------
+void laser::setDirection(directions dir)
+{
+    this->direction = dir;
 }
 
-bool laser::operator!=(const laser& l) const{
-    return not operator==(l);
+void laser::setIsAlive(bool isAlive)
+{
+    this->isAlive = isAlive;
 }
 
-// ---------- End of overloads ----------
-
-// ---------- Getters ----------
-
-directions laser::getDirection() const {return this->direction;}
-
-double laser::getStep() const {return this->step;}
-
-// ---------- End of getters ----------
-
-// ---------- Setters ----------
-
-void laser::setDirection(directions direction){
-    this->direction = direction;
+void laser::setStep(double new_step)
+{
+    this->step = new_step;
+}
+//---------- End of Setter-----------------------------
+//---------- Getter------------------------------------
+directions laser::getDirection() const
+{
+    return this->direction;
 }
 
-void laser::setStep(double step){
-    this->step = step;
+bool laser::getIsAlive() const
+{
+    return this->isAlive;
 }
 
-// ---------- End of setters ----------
+double laser::getStep() const
+{
+    return this->step;
+}
+//---------- End of Getter-----------------------------
+//---------- Methods ----------------------------------
+unique_ptr<object> laser::clone() const
+{
+    return make_unique<laser>(*this);
+}
 
-// ---------- Functions ----------
-
-void laser::moveByStep(){
-    switch(this->direction){
-        case directions::RIGHT: {
-            shift(this->step, 0);
+void laser::moveByStep()
+{
+    switch(this->direction)
+    {
+        case directions::RIGHT:
+        {
+            shift(step, 0);
             break;
         }
-        case directions::LEFT: {
-            shift(-this->step, 0);
+        case directions::LEFT:
+        {
+            shift(-step, 0);
             break;
         }
-        case directions::UP: {
-            shift(0, this->step);
+        case directions::UP:
+        {
+            shift(0, step);
             break;
         }
-        case directions::DOWN: {
-            shift(0, -this->step);
+        case directions::DOWN:
+        {
+            shift(0, -step);
             break;
         }
-        default: {
-            std::cerr << "Error:  laser::moveByStep(): the direction \"" << this->direction << "\" is not defined" << std::endl;
+        default:
+        {
+            std::cerr << "Error: laser::moveByStep(): the direction \"" << this->direction << "\" is not defined" << std::endl;
             break;
         }
     }
 }
 
-void laser::print(std::ostream& ost) const {
-    ost << "Laser[position" << getPosition() << ", direction(";
+void laser::print(std::ostream& ost) const
+{
+    ost << toString();
+}
+
+string laser::toString() const
+{
+    string toString = "Laser[position" + getPosition().toString() + ", direction(";
     switch(direction){
-        case directions::RIGHT: {
-            ost << "RIGHT";
-            break;
-        }case directions::LEFT: {
-            ost << "LEFT";
-            break;
-        }case directions::UP: {
-            ost << "UP";
-            break;
-        }case directions::DOWN: {
-            ost << "DOWN";
+        case directions::RIGHT:
+        {
+            toString += "RIGHT";
             break;
         }
-        default:{
-            ost << "ERROR: Direction not defined";
+        case directions::LEFT:
+        {
+            toString += "LEFT";
+            break;
+        }
+        case directions::UP:
+        {
+            toString += "UP";
+            break;
+        }
+        case directions::DOWN:
+        {
+            toString += "DOWN";
+            break;
+        }
+        default:
+        {
+            toString += "ERROR: Direction is not defined";
             break;
         }
     }
-    ost << "), step(" << step << ")]";
+    toString += "), step(" + std::to_string(step) + ")]";
+    return toString;
 }
 
-void laser::turnLeft(){
+void laser::turnLeft()
+{
+    //Turn left equals : RIGHT --> UP , UP --> LEFT, LEFT --> DOWN, DOWN --> RIGHT
     this->direction = static_cast<directions>(static_cast<directions>(this->direction + 1) % 4);
 }
 
-void laser::turnRight(){
+void laser::turnRight()
+{
+    //Turn right equals : RIGHT --> DOWN , UP --> RIGHT, LEFT --> UP, DOWN --> LEFT
     this->direction = static_cast<directions>(static_cast<directions>(this->direction - 1) % 4);
 }
+//---------- End of methods ----------------------------
+//---------- Operators in class  -----------------------
+bool laser::operator==(const laser& l) const
+{
+    bool same_position = getPosition() == l.getPosition();
+    bool same_direction = getDirection() == l.getDirection();
+    bool same_step = getStep() == l.getStep();
+    return  same_position && same_direction && same_step;
+}
 
-// ---------- End of functions ----------
-
-// ---------- Global functions ----------
-
-// ---------- End of global functions ----------
+bool laser::operator!=(const laser& l) const
+{
+    return not operator==(l);
+}
+//---------- End of Operators in class  ---------------
+//---------- Globals Functions ------------------------
+laser createLaserForTest(const point& p, const directions& direction, double step)
+{
+    return {p, direction, step};
+}
+//---------- End of Globals Functions -----------------
 
